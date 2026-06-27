@@ -17,16 +17,20 @@
   html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#1a2a35;font-family:'Nunito',system-ui,sans-serif}
   button:active{filter:brightness(0.86)!important;transform:translateY(3px)!important;transition:transform .07s,filter .07s!important}
   @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes phaseFadeOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(18px)}}
   @keyframes kidPop{0%{opacity:0;transform:scale(0.2) rotate(-14deg)}55%{transform:scale(1.18) rotate(5deg)}78%{transform:scale(0.96) rotate(-2deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
   @keyframes wobbleKid{0%,100%{transform:rotate(0) scale(1)}20%{transform:rotate(-8deg) scale(1.04)}40%{transform:rotate(8deg) scale(1.04)}60%{transform:rotate(-5deg)}80%{transform:rotate(4deg)}}
   @keyframes cardFlipKid{0%{transform:rotateY(-95deg) scale(0.85);opacity:0}65%{transform:rotateY(7deg) scale(1.04)}100%{transform:rotateY(0) scale(1);opacity:1}}
+  @keyframes cardFlipSmooth{0%{transform:rotateY(-88deg) scale(.96);opacity:.35;filter:blur(2px)}58%{transform:rotateY(6deg) scale(1.015);opacity:1;filter:blur(0)}100%{transform:rotateY(0) scale(1);opacity:1;filter:blur(0)}}
+  @keyframes p3SubscreenIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes p3SubscreenOut{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-16px) scale(.985)}}
   @keyframes rainFall{to{transform:translateY(120vh)}}
-  @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
   @keyframes glowRing{0%,100%{box-shadow:0 0 0 0 rgba(61,190,108,.7)}50%{box-shadow:0 0 0 18px rgba(61,190,108,0)}}
   @keyframes signalRun{0%{left:2%;opacity:0}8%{opacity:1}92%{opacity:1}100%{left:98%;opacity:0}}
   @keyframes ctaBounce{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.03)}}
   @keyframes slideIn{from{opacity:0;transform:translateX(46px)}to{opacity:1;transform:none}}
   @keyframes nodePop{0%{opacity:0;transform:scale(0.6) translateY(10px)}70%{transform:scale(1.06) translateY(-2px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+  @keyframes chipFlyToSlot{0%{opacity:0;transform:translateY(86px) scale(1.18)}72%{opacity:1;transform:translateY(-6px) scale(1.03)}100%{opacity:1;transform:translateY(0) scale(1)}}
   @keyframes simCloudBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
   @keyframes simSunSpin{to{transform:rotate(360deg)}}
   @keyframes simDrop{0%{transform:translateY(-12px);opacity:0}14%{opacity:1}100%{transform:translateY(250px);opacity:0}}
@@ -61,6 +65,14 @@
     </sc-for>
   </div>
 
+  <!-- Temporary developer slide controls -->
+  <div style="position:absolute;top:6px;left:6px;z-index:80;display:flex;align-items:center;gap:4px;padding:5px 6px;border-radius:10px;background:rgba(0,0,0,0.38);border:1px solid rgba(255,255,255,0.18);box-shadow:0 4px 14px rgba(0,0,0,0.22);">
+    <span style="font-family:'Nunito';font-weight:900;font-size:10px;color:rgba(255,248,232,0.78);letter-spacing:0;">DEV</span>
+    <sc-for list="{{ devDots }}" as="dot" hint-placeholder-count="7">
+      <button onClick="{{ dot.onClick }}" title="{{ dot.title }}" style="{{ dot.style }}">{{ dot.num }}</button>
+    </sc-for>
+  </div>
+
   <!-- Progress dots -->
   <div style="position:absolute;top:18px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:40;background:rgba(0,0,0,0.3);padding:8px 16px;border-radius:999px;">
     <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="7">
@@ -83,12 +95,12 @@
       </video>
       <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,25,35,0.25) 0%,rgba(15,25,35,0.55) 100%);"></div>
       <sc-if value="{{ p1ShowPlay }}" hint-placeholder-val="{{ true }}">
-        <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:28px;animation:fadeUp .5s ease;">
-          <button onClick="{{ playVideo }}" style="display:flex;flex-direction:column;align-items:center;gap:18px;background:none;border:none;cursor:pointer;">
-            <span style="width:104px;height:104px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#3DBE6C;color:white;font-size:46px;animation:glowRing 2.4s ease-in-out infinite;padding-left:6px;border:4px solid #1A8A45;box-shadow:0 7px 0 #0D6B30;"><i class="ti ti-player-play-filled"></i></span>
-            <span style="font-family:'Nunito';font-weight:900;font-size:22px;color:#FFF8E8;text-shadow:0 2px 10px rgba(0,0,0,0.7);">Play Krish's story</span>
+        <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:34px;animation:fadeUp .5s ease;">
+          <button onClick="{{ playVideo }}" style="display:flex;flex-direction:column;align-items:center;gap:24px;background:none;border:none;cursor:pointer;">
+            <span style="width:158px;height:158px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#3DBE6C;color:white;font-size:74px;animation:glowRing 2.4s ease-in-out infinite;padding-left:10px;border:6px solid #1A8A45;box-shadow:0 11px 0 #0D6B30,0 20px 38px rgba(0,0,0,0.3);"><i class="ti ti-player-play-filled"></i></span>
+            <span style="font-family:'Nunito';font-weight:900;font-size:34px;color:#FFF8E8;text-shadow:0 3px 12px rgba(0,0,0,0.72);">Play Krish's story</span>
           </button>
-          <button onClick="{{ skipVideo }}" style="padding:12px 26px;border-radius:14px;background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.28);color:rgba(255,248,232,0.7);cursor:pointer;font-family:'Nunito';font-weight:700;font-size:15px;">Skip storyline →</button>
+          <button onClick="{{ skipVideo }}" style="min-width:380px;padding:21px 42px;border-radius:24px;background:rgba(255,255,255,0.13);border:3px solid rgba(255,255,255,0.34);color:rgba(255,248,232,0.82);cursor:pointer;font-family:'Nunito';font-weight:900;font-size:24px;box-shadow:0 8px 0 rgba(0,0,0,0.18);">Skip storyline →</button>
         </div>
       </sc-if>
       <sc-if value="{{ videoEnded }}" hint-placeholder-val="{{ false }}">
@@ -105,35 +117,46 @@
        (body chain animation)
   ============================= -->
   <sc-if value="{{ isPhase2 }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Phase 2 — Feel" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:70px 60px 190px;">
-      <div style="width:100%;display:flex;flex-direction:column;align-items:center;animation:fadeUp .5s ease;">
-        <h1 style="font-family:'Nunito';font-weight:900;font-size:34px;margin:0 0 6px;text-align:center;color:#FFF8E8;text-shadow:0 3px 16px rgba(0,0,0,0.75);">How does your body feel rain?</h1>
-        <p style="margin:0 0 32px;color:rgba(255,248,232,0.78);font-size:18px;text-shadow:0 1px 8px rgba(0,0,0,0.6);">Tap the button and watch the signal travel.</p>
+    <div data-screen-label="Phase 2 — Feel" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:118px 54px 34px 360px;">
+      <sc-if value="{{ p2ActivityScreen }}" hint-placeholder-val="{{ true }}">
+        <div style="{{ p2ActivityStyle }}">
+          <h1 style="font-family:'Nunito';font-weight:900;font-size:34px;margin:0 0 6px;text-align:center;color:#FFF8E8;text-shadow:0 3px 16px rgba(0,0,0,0.75);">How does your body feel rain?</h1>
+          <p style="margin:0 0 32px;color:rgba(255,248,232,0.78);font-size:18px;text-shadow:0 1px 8px rgba(0,0,0,0.6);">Tap the button and watch the signal travel.</p>
 
-        <div style="display:flex;align-items:stretch;justify-content:center;gap:12px;flex-wrap:wrap;">
-          <sc-for list="{{ feelNodes }}" as="node" hint-placeholder-count="4">
-            <div style="display:contents">
-              <sc-if value="{{ node.notFirst }}" hint-placeholder-val="{{ false }}">
-                <span style="{{ node.arrowStyle }}">→</span>
-              </sc-if>
-              <div style="{{ node.style }}">
-                <i class="ti {{ node.icon }}" style="font-size:30px;color:{{ node.iconColor }};"></i>
-                <div style="font-family:'Nunito';font-weight:900;font-size:17px;margin-top:10px;color:{{ node.textColor }};">{{ node.label }}</div>
-                <div style="font-size:12px;margin-top:6px;line-height:1.4;color:{{ node.descColor }};">{{ node.behavior }}</div>
+          <div style="display:flex;align-items:stretch;justify-content:center;gap:12px;flex-wrap:wrap;">
+            <sc-for list="{{ feelNodes }}" as="node" hint-placeholder-count="4">
+              <div style="display:contents">
+                <sc-if value="{{ node.notFirst }}" hint-placeholder-val="{{ false }}">
+                  <span style="{{ node.arrowStyle }}">→</span>
+                </sc-if>
+                <div style="{{ node.style }}">
+                  <i class="ti {{ node.icon }}" style="font-size:30px;color:{{ node.iconColor }};"></i>
+                  <div style="font-family:'Nunito';font-weight:900;font-size:17px;margin-top:10px;color:{{ node.textColor }};">{{ node.label }}</div>
+                  <div style="font-size:12px;margin-top:6px;line-height:1.4;color:{{ node.descColor }};">{{ node.behavior }}</div>
+                </div>
               </div>
-            </div>
-          </sc-for>
-        </div>
+            </sc-for>
+          </div>
 
-        <div style="margin-top:36px;min-height:64px;display:flex;align-items:center;">
-          <sc-if value="{{ feelShowStart }}" hint-placeholder-val="{{ true }}">
-            <button onClick="{{ onFeelStart }}" style="padding:16px 42px;border-radius:20px;background:#FF9F43;color:white;border:3px solid #C96E00;cursor:pointer;font-family:'Nunito';font-weight:900;font-size:20px;box-shadow:0 7px 0 #8A4900;">⚡ Start the signal</button>
-          </sc-if>
-          <sc-if value="{{ feelLit }}" hint-placeholder-val="{{ false }}">
-            <div style="display:flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;background:rgba(255,255,255,0.96);border:3px solid #3DBE6C;font-family:'Nunito';font-weight:900;font-size:15px;color:#0D5C2A;box-shadow:0 5px 0 rgba(0,0,0,0.12);animation:kidPop .4s ease;">✅ Sense → Signal → Think → Act</div>
-          </sc-if>
+          <div style="margin-top:36px;min-height:64px;display:flex;align-items:center;">
+            <sc-if value="{{ feelShowStart }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ onFeelStart }}" style="padding:16px 42px;border-radius:20px;background:#FF9F43;color:white;border:3px solid #C96E00;cursor:pointer;font-family:'Nunito';font-weight:900;font-size:20px;box-shadow:0 7px 0 #8A4900;">⚡ Start the signal</button>
+            </sc-if>
+            <sc-if value="{{ feelLit }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;align-items:center;gap:10px;padding:14px 24px;border-radius:999px;background:rgba(255,255,255,0.96);border:3px solid #3DBE6C;font-family:'Nunito';font-weight:900;font-size:15px;color:#0D5C2A;box-shadow:0 5px 0 rgba(0,0,0,0.12);animation:kidPop .4s ease;">✅ Sense → Signal → Think → Act</div>
+            </sc-if>
+          </div>
         </div>
-      </div>
+      </sc-if>
+      <sc-if value="{{ p2WrapScreen }}" hint-placeholder-val="{{ false }}">
+        <div style="width:100%;max-width:900px;margin-left:auto;margin-top:-140px;display:flex;align-items:center;justify-content:center;animation:fadeUp .7s ease both;">
+          <div style="width:100%;min-height:430px;padding:42px 48px;border-radius:28px;background:rgba(255,251,240,0.97);border:4px solid #FFB800;box-shadow:0 10px 0 #C9A100,0 24px 48px rgba(0,0,0,0.28);display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-family:'Nunito';font-weight:900;font-size:42px;line-height:1.12;color:#1a2744;margin-bottom:20px;">That is the whole chain.</div>
+            <div style="font-size:28px;line-height:1.38;color:#5a3a00;font-family:'Nunito';font-weight:900;">Your body already runs this circuit. I wanted to build the same thing for clothes!</div>
+            <div style="font-family:'Nunito';font-weight:900;font-size:30px;line-height:1.22;color:#0D5C2A;margin-top:22px;">Sense → Signal → Think → Act.</div>
+          </div>
+        </div>
+      </sc-if>
     </div>
   </sc-if>
 
@@ -141,33 +164,38 @@
        PHASE 3 — HOW WOULD YOU SOLVE IT
   ============================= -->
   <sc-if value="{{ isPhase3 }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Phase 3 — Problem" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:70px 60px 190px;">
+    <div data-screen-label="Phase 3 — Problem" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:208px 54px 74px 380px;">
 
       <sc-if value="{{ p2Build }}" hint-placeholder-val="{{ true }}">
-        <div style="width:100%;max-width:1020px;display:flex;flex-direction:column;align-items:center;animation:fadeUp .5s ease;">
-          <h1 style="font-family:'Nunito';font-weight:900;font-size:36px;margin:0 0 6px;text-align:center;color:#FFF8E8;text-shadow:0 3px 16px rgba(0,0,0,0.75);">If you were Krish, how would you fill this?</h1>
-          <p style="margin:0 0 32px;color:rgba(255,248,232,0.78);font-size:18px;text-shadow:0 1px 8px rgba(0,0,0,0.6);">There's no wrong answer — just think it through.</p>
-          <div style="background:rgba(255,255,255,0.94);border-radius:24px;padding:24px 32px;border:3px solid rgba(0,0,0,0.1);box-shadow:0 8px 0 rgba(0,0,0,0.14),0 16px 40px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:nowrap;overflow-x:auto;">
-            <div style="padding:12px 18px;border-radius:14px;background:#E8F9F0;border:3px solid #3DBE6C;font-family:'Nunito';font-weight:800;font-size:15px;color:#0D5C2A;white-space:nowrap;box-shadow:0 4px 0 #1A8A45;">🌧️ It rains</div>
-            <span style="color:#3DBE6C;font-size:28px;flex-shrink:0;font-weight:900;">→</span>
+        <div style="width:100%;max-width:900px;display:flex;flex-direction:column;align-items:center;animation:fadeUp .5s ease;">
+          <h1 style="font-family:'Nunito';font-weight:900;font-size:34px;margin:0 0 6px;text-align:center;color:#FFF8E8;text-shadow:0 3px 16px rgba(0,0,0,0.75);">If you were Krish, how would you fill this?</h1>
+          <p style="margin:0 0 24px;color:rgba(255,248,232,0.78);font-size:18px;text-shadow:0 1px 8px rgba(0,0,0,0.6);">There's no wrong answer — just think it through.</p>
+          <div style="width:100%;min-height:214px;margin-top:18px;background:rgba(255,255,255,0.94);border-radius:24px;padding:26px 24px;border:3px solid rgba(0,0,0,0.1);box-shadow:0 8px 0 rgba(0,0,0,0.14),0 16px 40px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:nowrap;overflow:hidden;">
+            <div style="width:106px;min-height:78px;padding:10px 12px;border-radius:14px;background:#E8F9F0;border:3px solid #3DBE6C;font-family:'Nunito';font-weight:800;font-size:14px;color:#0D5C2A;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 4px 0 #1A8A45;">🌧️ It rains</div>
+            <span style="color:#3DBE6C;font-size:26px;flex-shrink:0;font-weight:900;">→</span>
             <sc-for list="{{ p2Slots }}" as="slot" hint-placeholder-count="4">
               <div style="display:contents">
                 <button onClick="{{ slot.onClick }}" style="{{ slot.style }}">{{ slot.label }}</button>
                 <span style="color:rgba(44,62,80,0.3);font-size:24px;flex-shrink:0;font-weight:900;">→</span>
               </div>
             </sc-for>
-            <div style="padding:12px 18px;border-radius:14px;background:#E8F9F0;border:3px solid #3DBE6C;font-family:'Nunito';font-weight:800;font-size:15px;color:#0D5C2A;white-space:nowrap;box-shadow:0 4px 0 #1A8A45;">👔 Clothes come inside</div>
+            <div style="width:146px;min-height:78px;padding:10px 12px;border-radius:14px;background:#E8F9F0;border:3px solid #3DBE6C;font-family:'Nunito';font-weight:800;font-size:14px;color:#0D5C2A;display:flex;align-items:center;justify-content:center;text-align:center;box-shadow:0 4px 0 #1A8A45;">👔 Clothes come inside</div>
           </div>
-          <div style="margin-top:28px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center;max-width:760px;">
+          <div style="margin-top:34px;min-height:126px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;align-items:center;max-width:760px;">
             <sc-for list="{{ p2ChipList }}" as="chip" hint-placeholder-count="4">
               <button onClick="{{ chip.onClick }}" style="{{ chip.style }}">{{ chip.label }}</button>
             </sc-for>
           </div>
+          <sc-if value="{{ p2Ready }}" hint-placeholder-val="{{ false }}">
+            <button onClick="{{ p2Reveal }}" style="margin-top:6px;width:620px;max-width:100%;display:flex;align-items:center;justify-content:center;gap:14px;padding:24px 46px;border-radius:24px;background:#3DBE6C;color:white;border:3px solid #1A8A45;cursor:pointer;font-family:'Nunito';font-weight:900;font-size:24px;box-shadow:0 9px 0 #0D6B30,0 16px 30px rgba(0,0,0,0.3);animation:ctaBounce 2.6s ease-in-out infinite;">
+              <span>See what Krish came up with</span><span style="font-size:26px;">→</span>
+            </button>
+          </sc-if>
         </div>
       </sc-if>
 
       <sc-if value="{{ p2revealed }}" hint-placeholder-val="{{ false }}">
-        <div style="width:100%;max-width:1100px;display:flex;flex-direction:column;align-items:center;animation:fadeUp .5s ease;">
+        <div style="width:100%;max-width:900px;margin-top:-170px;display:flex;flex-direction:column;align-items:center;animation:fadeUp .5s ease;">
           <h1 style="font-family:'Nunito';font-weight:900;font-size:34px;margin:0 0 6px;text-align:center;color:#FFF8E8;text-shadow:0 3px 16px rgba(0,0,0,0.75);">Here's what Krish came up with</h1>
           <p style="margin:0 0 36px;color:rgba(255,248,232,0.78);font-size:18px;text-shadow:0 1px 8px rgba(0,0,0,0.6);">Three steps. That's all it takes.</p>
           <div style="display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:nowrap;">
@@ -181,6 +209,9 @@
               </div>
             </sc-for>
           </div>
+          <button onClick="{{ p2MeetComponents }}" style="margin-top:48px;width:620px;max-width:100%;display:flex;align-items:center;justify-content:center;gap:14px;padding:24px 46px;border-radius:24px;background:#3DBE6C;color:white;border:3px solid #1A8A45;cursor:pointer;font-family:'Nunito';font-weight:900;font-size:24px;box-shadow:0 9px 0 #0D6B30,0 16px 30px rgba(0,0,0,0.3);animation:ctaBounce 2.6s ease-in-out infinite;">
+            <span>Meet the real components</span><span style="font-size:26px;">→</span>
+          </button>
         </div>
       </sc-if>
     </div>
@@ -190,50 +221,49 @@
        PHASE 4 — NERVOUS SYSTEM (flip cards)
   ============================= -->
   <sc-if value="{{ isPhase4 }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Phase 4 — Discover" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:70px 60px 190px;">
+    <div data-screen-label="Phase 4 — Discover" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:108px 46px 34px 350px;">
 
       <sc-if value="{{ p3Board }}" hint-placeholder-val="{{ true }}">
-        <div style="width:100%;display:flex;flex-direction:column;align-items:center;animation:fadeUp .5s ease;">
-          <h1 style="font-family:'Nunito';font-weight:900;font-size:28px;margin:0 0 26px;text-align:center;color:#FFF8E8;text-shadow:0 3px 16px rgba(0,0,0,0.75);">Krish's components — tap the glowing card to flip it!</h1>
-          <div style="display:flex;gap:16px;justify-content:center;perspective:1400px;">
-            <sc-for list="{{ p3Cards }}" as="card" hint-placeholder-count="0">
-              <button onClick="{{ card.onClick }}" style="{{ card.wrapStyle }}">
-                <sc-if value="{{ card.showFront }}" hint-placeholder-val="{{ true }}">
-                  <div style="position:absolute;inset:0;border-radius:18px;overflow:hidden;background:#FFFBF0;border:3px dashed #FFB800;">
-                    <div style="{{ card.frontBgStyle }}"></div>
-                    <div style="position:absolute;bottom:0;left:0;right:0;padding:8px;background:rgba(255,251,240,0.96);border-top:2px dashed #FFB800;text-align:center;">
-                      <span style="font-family:'Nunito';font-weight:800;font-size:11px;color:#c08000;">Tap to reveal! 👆</span>
-                    </div>
+        <div style="{{ p3BoardStyle }}">
+          <h1 style="font-family:'Nunito';font-weight:900;font-size:32px;margin:0 0 16px;text-align:center;color:#FFF8E8;text-shadow:0 3px 16px rgba(0,0,0,0.75);">Krish's components — tap the glowing card to flip it!</h1>
+
+          <div style="width:100%;display:flex;justify-content:center;perspective:1600px;">
+            <button onClick="{{ p3Card.onClick }}" style="{{ p3Card.wrapStyle }}">
+              <sc-if value="{{ p3Card.showFront }}" hint-placeholder-val="{{ true }}">
+                <div style="position:absolute;inset:0;border-radius:28px;overflow:hidden;background:linear-gradient(180deg,#FFFEF8 0%,#FFF3CC 100%);border:4px dashed #FFB800;box-shadow:inset 0 0 0 8px rgba(255,255,255,.55);">
+                  <div style="{{ p3Card.frontBgStyle }}"></div>
+                  <div style="position:absolute;left:18px;right:18px;bottom:18px;padding:14px 18px;border-radius:18px;background:rgba(255,251,240,0.96);border:2px solid rgba(255,184,0,.55);display:flex;align-items:center;justify-content:center;gap:9px;">
+                    <i class="ti ti-hand-finger" style="font-size:20px;color:#C96E00;"></i>
+                    <span style="font-family:'Nunito';font-weight:900;font-size:17px;color:#9B6800;">Tap to reveal</span>
                   </div>
-                </sc-if>
-                <sc-if value="{{ card.showBack }}" hint-placeholder-val="{{ false }}">
-                  <div style="position:absolute;inset:0;border-radius:18px;overflow:hidden;border:3px solid #3DBE6C;box-shadow:0 6px 0 rgba(0,0,0,0.12);animation:cardFlipKid .5s ease both;">
-                    <div style="{{ card.blurBgStyle }}"></div>
-                    <div style="position:absolute;inset:0;background:rgba(255,255,255,0.8);"></div>
-                    <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:16px;">
-                      <i class="ti {{ card.icon }}" style="font-size:32px;color:#3DBE6C;"></i>
-                      <div style="font-family:'Nunito';font-weight:900;font-size:14px;color:#1a2744;margin-top:8px;text-align:center;line-height:1.25;">{{ card.name }}</div>
-                      <div style="font-size:11.5px;color:#5a6c7d;margin-top:6px;text-align:center;line-height:1.35;">{{ card.behavior }}</div>
-                      <sc-if value="{{ card.done }}" hint-placeholder-val="{{ false }}">
-                        <i class="ti ti-circle-check-filled" style="position:absolute;top:8px;right:8px;font-size:20px;color:#3DBE6C;"></i>
-                      </sc-if>
+                </div>
+              </sc-if>
+              <sc-if value="{{ p3Card.showBack }}" hint-placeholder-val="{{ false }}">
+                <div style="position:absolute;inset:0;border-radius:28px;overflow:hidden;border:4px solid #3DBE6C;box-shadow:0 9px 0 #1A8A45,0 22px 42px rgba(0,0,0,0.28);animation:cardFlipSmooth .62s cubic-bezier(.18,.9,.22,1) both;background:#F7FFF5;">
+                  <div style="{{ p3Card.blurBgStyle }}"></div>
+                  <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(247,255,245,.96));"></div>
+                  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;padding:28px 32px;text-align:center;">
+                    <div style="width:72px;height:72px;border-radius:21px;background:#E8F9F0;border:3px solid #3DBE6C;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 0 #1A8A45;margin-bottom:14px;">
+                      <i class="ti {{ p3Card.icon }}" style="font-size:37px;color:#3DBE6C;"></i>
                     </div>
+                    <div style="font-family:'Nunito';font-weight:900;font-size:31px;color:#1a2744;line-height:1.05;">{{ p3Card.name }}</div>
+                    <div style="font-size:18px;color:#536A7C;margin-top:11px;line-height:1.34;max-width:360px;">{{ p3Card.behavior }}</div>
                   </div>
-                </sc-if>
-              </button>
-            </sc-for>
+                </div>
+              </sc-if>
+            </button>
           </div>
 
-          <div style="margin-top:28px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+          <div style="margin-top:34px;min-height:118px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;">
             <sc-if value="{{ p3GotIt }}" hint-placeholder-val="{{ false }}">
               <button onClick="{{ p3onGotIt }}" style="padding:16px 42px;border-radius:20px;background:#3DBE6C;color:white;border:3px solid #1A8A45;cursor:pointer;font-family:'Nunito';font-weight:900;font-size:20px;animation:kidPop .35s ease;box-shadow:0 7px 0 #0D6B30;">Got it! 👍</button>
             </sc-if>
 
             <sc-if value="{{ p3Mcq }}" hint-placeholder-val="{{ false }}">
-              <div style="display:flex;flex-direction:column;align-items:center;animation:fadeUp .35s ease;">
-                <div style="background:rgba(255,255,255,0.96);border-radius:22px;padding:20px 32px 18px;border:3px solid rgba(0,0,0,0.1);box-shadow:0 7px 0 rgba(0,0,0,0.14),0 14px 32px rgba(0,0,0,0.22);">
-                  <div style="font-family:'Nunito';font-weight:900;font-size:19px;margin-bottom:16px;text-align:center;color:#1a2744;">If this were part of Krish's body — what would it be?</div>
-                  <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+              <div style="display:flex;flex-direction:column;align-items:center;animation:fadeUp .35s ease;width:100%;">
+                <div style="width:100%;max-width:760px;background:rgba(255,255,255,0.96);border-radius:20px;padding:14px 24px 15px;border:3px solid rgba(0,0,0,0.1);box-shadow:0 6px 0 rgba(0,0,0,0.14),0 12px 28px rgba(0,0,0,0.2);">
+                  <div style="font-family:'Nunito';font-weight:900;font-size:18px;margin-bottom:12px;text-align:center;color:#1a2744;">If this were part of Krish's body — what would it be?</div>
+                  <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
                     <sc-for list="{{ p3Chips }}" as="chip" hint-placeholder-count="5">
                       <button onClick="{{ chip.onClick }}" style="{{ chip.style }}">
                         <i class="ti {{ chip.icon }}" style="font-size:18px;"></i>
@@ -249,7 +279,12 @@
               <div style="{{ p3ResultStyle }}">
                 <div style="font-family:'Nunito';font-weight:900;font-size:22px;color:{{ p3ResultColor }};">{{ p3ResultTitle }}</div>
                 <div style="font-size:16px;color:#5a6c7d;margin-top:8px;max-width:520px;text-align:center;line-height:1.45;">{{ p3ResultLine }}</div>
-                <button onClick="{{ p3onContinue }}" style="margin-top:18px;padding:14px 34px;border-radius:18px;background:#3DBE6C;color:white;border:3px solid #1A8A45;cursor:pointer;font-family:'Nunito';font-weight:900;font-size:17px;box-shadow:0 6px 0 #0D6B30;">{{ p3ContinueLabel }} →</button>
+                <sc-if value="{{ p3ShowContinue }}" hint-placeholder-val="{{ false }}">
+                  <button onClick="{{ p3onContinue }}" style="margin-top:18px;padding:14px 34px;border-radius:18px;background:#3DBE6C;color:white;border:3px solid #1A8A45;cursor:pointer;font-family:'Nunito';font-weight:900;font-size:17px;box-shadow:0 6px 0 #0D6B30;">{{ p3ContinueLabel }} →</button>
+                </sc-if>
+                <sc-if value="{{ p3AutoAdvance }}" hint-placeholder-val="{{ false }}">
+                  <div style="margin-top:14px;font-family:'Nunito';font-weight:900;font-size:15px;color:#0D5C2A;">Next component is coming up...</div>
+                </sc-if>
               </div>
             </sc-if>
           </div>
@@ -279,8 +314,9 @@
        PHASE 5 — BUILD KRISH'S CIRCUIT
   ============================= -->
   <sc-if value="{{ isPhase5 }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Phase 5 — Circuit" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:70px 60px 190px;">
-      <div style="width:100%;display:flex;flex-direction:column;align-items:center;animation:fadeUp .5s ease;">
+    <div data-screen-label="Phase 5 — Circuit" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:118px 54px 34px 360px;">
+      <sc-if value="{{ p4ActivityScreen }}" hint-placeholder-val="{{ true }}">
+      <div style="{{ p4ActivityStyle }}">
         <h1 style="font-family:'Nunito';font-weight:900;font-size:30px;margin:0 0 4px;text-align:center;color:#FFF8E8;text-shadow:0 3px 16px rgba(0,0,0,0.75);">Now build Krish's circuit.</h1>
         <p style="margin:0 0 28px;color:rgba(255,248,232,0.78);font-size:17px;text-shadow:0 1px 8px rgba(0,0,0,0.6);">Tap a part, then tap a slot. Same chain: Feel → Think → Act.</p>
 
@@ -325,6 +361,22 @@
           </sc-if>
         </div>
       </div>
+      </sc-if>
+      <sc-if value="{{ p4WrapScreen }}" hint-placeholder-val="{{ false }}">
+        <div style="width:100%;max-width:880px;margin-left:auto;margin-top:-80px;display:flex;flex-direction:column;align-items:center;justify-content:center;animation:fadeUp .7s ease both;">
+          <div style="width:100%;min-height:390px;padding:38px 42px;border-radius:28px;background:rgba(255,251,240,0.97);border:4px solid #3DBE6C;box-shadow:0 10px 0 #1A8A45,0 24px 48px rgba(0,0,0,0.28);display:grid;grid-template-columns:minmax(0,1fr) 360px;align-items:center;gap:34px;overflow:hidden;">
+            <div style="min-width:0;">
+              <div style="font-family:'Nunito';font-weight:900;font-size:42px;line-height:1.12;color:#1a2744;margin-bottom:20px;">Circuit live.</div>
+              <div style="font-size:28px;line-height:1.38;color:#0D5C2A;font-family:'Nunito';font-weight:900;">Feel → Think → Act.</div>
+              <div style="font-size:26px;line-height:1.38;color:#5a3a00;font-family:'Nunito';font-weight:900;margin-top:18px;">Same chain. That's my machine.</div>
+            </div>
+            <img src="assets/diagram.png" alt="" style="width:100%;max-width:360px;height:250px;object-fit:contain;border-radius:18px;display:block;filter:drop-shadow(0 12px 20px rgba(0,0,0,0.18));" />
+          </div>
+          <button onClick="{{ p4RunSimulation }}" style="margin-top:56px;width:620px;max-width:100%;display:flex;align-items:center;justify-content:center;gap:18px;padding:28px 58px;border-radius:28px;background:#3DBE6C;color:white;border:4px solid #1A8A45;cursor:pointer;font-family:'Nunito';font-weight:900;font-size:27px;box-shadow:0 11px 0 #0D6B30,0 18px 34px rgba(0,0,0,0.32);animation:ctaBounce 2.6s ease-in-out infinite;">
+            <span>Run the simulation</span><span style="font-size:30px;">→</span>
+          </button>
+        </div>
+      </sc-if>
     </div>
   </sc-if>
 
@@ -353,33 +405,41 @@
 
   <!-- Krish — bottom left (hidden on phase 4 summary to avoid overlap) -->
   <sc-if value="{{ krishNeutral }}" hint-placeholder-val="false">
-    <div style="position:absolute;left:26px;bottom:0;z-index:30;display:flex;flex-direction:column;align-items:flex-start;pointer-events:none;">
+    <div style="position:absolute;left:-118px;top:34px;bottom:-10px;width:650px;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;pointer-events:none;overflow:visible;">
       <sc-if value="{{ showSpeech }}" hint-placeholder-val="false">
-        <div style="margin-left:10px;margin-bottom:6px;max-width:265px;padding:14px 18px;border-radius:18px 18px 18px 4px;background:#FFFBF0;border:3px solid #FFB800;color:#5a3a00;font-size:14px;font-family:'Nunito';font-weight:700;line-height:1.5;animation:kidPop .4s ease;box-shadow:0 5px 0 #C9A100;">{{ speechText }}</div>
+        <div style="margin-bottom:10px;max-width:286px;padding:14px 17px;border-radius:18px 18px 18px 4px;background:#FFFBF0;border:3px solid #FFB800;color:#5a3a00;font-size:14px;font-family:'Nunito';font-weight:700;line-height:1.45;animation:kidPop .4s ease;box-shadow:0 5px 0 #C9A100;">{{ speechText }}</div>
       </sc-if>
-      <img src="assets/krish_mistake.png" alt="Krish" style="height:200px;width:auto;display:block;filter:drop-shadow(0 14px 30px rgba(0,0,0,0.45));animation:floatY 5s ease-in-out infinite;" />
+      <img src="assets/krish_speaking_v2.png" alt="Krish" style="height:calc(100vh - 12px);max-width:none;width:auto;display:block;object-fit:contain;filter:drop-shadow(0 18px 34px rgba(0,0,0,0.48));" />
     </div>
   </sc-if>
   <sc-if value="{{ krishExcited }}" hint-placeholder-val="false">
-    <div style="position:absolute;left:26px;bottom:0;z-index:30;display:flex;flex-direction:column;align-items:flex-start;pointer-events:none;">
+    <div style="position:absolute;left:-118px;top:34px;bottom:-10px;width:650px;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;pointer-events:none;overflow:visible;">
       <sc-if value="{{ showSpeech }}" hint-placeholder-val="false">
-        <div style="margin-left:10px;margin-bottom:6px;max-width:265px;padding:14px 18px;border-radius:18px 18px 18px 4px;background:#FFFBF0;border:3px solid #FFB800;color:#5a3a00;font-size:14px;font-family:'Nunito';font-weight:700;line-height:1.5;animation:kidPop .4s ease;box-shadow:0 5px 0 #C9A100;">{{ speechText }}</div>
+        <div style="margin-bottom:10px;max-width:286px;padding:14px 17px;border-radius:18px 18px 18px 4px;background:#FFFBF0;border:3px solid #FFB800;color:#5a3a00;font-size:14px;font-family:'Nunito';font-weight:700;line-height:1.45;animation:kidPop .4s ease;box-shadow:0 5px 0 #C9A100;">{{ speechText }}</div>
       </sc-if>
-      <img src="assets/krish_smile_point.png" alt="Krish" style="height:200px;width:auto;display:block;filter:drop-shadow(0 14px 30px rgba(0,0,0,0.45));animation:floatY 5s ease-in-out infinite;" />
+      <img src="assets/krish_celebrate.png" alt="Krish" style="height:calc(100vh - 12px);max-width:none;width:auto;display:block;object-fit:contain;filter:drop-shadow(0 18px 34px rgba(0,0,0,0.48));" />
     </div>
   </sc-if>
   <sc-if value="{{ krishThinking }}" hint-placeholder-val="false">
-    <div style="position:absolute;left:26px;bottom:0;z-index:30;display:flex;flex-direction:column;align-items:flex-start;pointer-events:none;">
+    <div style="position:absolute;left:-118px;top:34px;bottom:-10px;width:650px;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;pointer-events:none;overflow:visible;">
       <sc-if value="{{ showSpeech }}" hint-placeholder-val="false">
-        <div style="margin-left:10px;margin-bottom:6px;max-width:265px;padding:14px 18px;border-radius:18px 18px 18px 4px;background:#FFFBF0;border:3px solid #FFB800;color:#5a3a00;font-size:14px;font-family:'Nunito';font-weight:700;line-height:1.5;animation:kidPop .4s ease;box-shadow:0 5px 0 #C9A100;">{{ speechText }}</div>
+        <div style="margin-bottom:10px;max-width:286px;padding:14px 17px;border-radius:18px 18px 18px 4px;background:#FFFBF0;border:3px solid #FFB800;color:#5a3a00;font-size:14px;font-family:'Nunito';font-weight:700;line-height:1.45;animation:kidPop .4s ease;box-shadow:0 5px 0 #C9A100;">{{ speechText }}</div>
       </sc-if>
-      <img src="assets/krish_thinking.png" alt="Krish" style="height:200px;width:auto;display:block;filter:drop-shadow(0 14px 30px rgba(0,0,0,0.45));animation:floatY 5s ease-in-out infinite;" />
+      <img src="assets/krish_think.png" alt="Krish" style="height:calc(100vh - 12px);max-width:none;width:auto;display:block;object-fit:contain;filter:drop-shadow(0 18px 34px rgba(0,0,0,0.48));" />
+    </div>
+  </sc-if>
+  <sc-if value="{{ krishMistake }}" hint-placeholder-val="false">
+    <div style="position:absolute;left:-118px;top:34px;bottom:-10px;width:650px;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;pointer-events:none;overflow:visible;">
+      <sc-if value="{{ showSpeech }}" hint-placeholder-val="false">
+        <div style="margin-bottom:10px;max-width:286px;padding:14px 17px;border-radius:18px 18px 18px 4px;background:#FFFBF0;border:3px solid #FFB800;color:#5a3a00;font-size:14px;font-family:'Nunito';font-weight:700;line-height:1.45;animation:kidPop .4s ease;box-shadow:0 5px 0 #C9A100;">{{ speechText }}</div>
+      </sc-if>
+      <img src="assets/krish_mistake_new.png" alt="Krish" style="height:calc(100vh - 12px);max-width:none;width:auto;display:block;object-fit:contain;filter:drop-shadow(0 18px 34px rgba(0,0,0,0.48));" />
     </div>
   </sc-if>
 
   <!-- CTA — bottom right -->
   <sc-if value="{{ ctaVisible }}" hint-placeholder-val="{{ false }}">
-    <button onClick="{{ ctaClick }}" style="position:absolute;right:36px;bottom:36px;z-index:35;display:flex;align-items:center;gap:10px;padding:18px 38px;border-radius:22px;background:#3DBE6C;color:white;border:3px solid #1A8A45;cursor:pointer;font-family:'Nunito';font-weight:900;font-size:20px;box-shadow:0 8px 0 #0D6B30,0 14px 28px rgba(0,0,0,0.28);animation:ctaBounce 2.6s ease-in-out infinite;">
+    <button onClick="{{ ctaClick }}" style="{{ ctaStyle }}">
       <span>{{ ctaLabel }}</span><span style="font-size:22px;">→</span>
     </button>
   </sc-if>
@@ -452,9 +512,9 @@ class Component extends DCLogic {
   ];
   P4ORDER  = ['sensor','arduino','servo'];
   P4ERRORS = {
-    sensor: 'Step 1 has to feel the rain first \u2014 that\u2019s the Rain Sensor.',
-    arduino:'Step 2 has to decide what to do \u2014 that\u2019s the Arduino, the brain.',
-    servo:  'Step 3 has to move the clothes \u2014 that\u2019s the Servo Motor.',
+    sensor: 'Step 1 should notice the weather first.',
+    arduino:'Step 2 should use the signal and choose what happens next.',
+    servo:  'Step 3 should be the part that makes something move.',
   };
 
   SIM_STEPS = [
@@ -483,15 +543,15 @@ class Component extends DCLogic {
     outroStarted:false, outroEnded:false,
     outroNeedsPlay:false,
     // phase 2 feel chain
-    feelStep:-1,
+    feelStep:-1, phase2Leaving:false, phase2Wrap:false,
     // phase 3 problem
     p2slots:[null,null,null,null], p2revealed:false,
     // phase 4 flip cards
-    p3idx:0, p3view:'front', p3matched:[], p3picked:null, p3done:false,
+    p3idx:0, p3view:'front', p3matched:[], p3picked:null, p3done:false, p3transition:false,
     // phase 5 circuit
-    p4slots:[null,null,null], p4picked:null, p4error:null, p4correct:false,
+    p4slots:[null,null,null], p4picked:null, p4error:null, p4correct:false, p4Leaving:false, p4Wrap:false,
     // phase 6 simulation
-    simStep:0, simWeather:'rain',
+    simStep:0, simWeather:'rain', simDone:false,
   };
 
   // ——— SOUND ———
@@ -513,20 +573,24 @@ class Component extends DCLogic {
     this._lastHovered=null;
     this._sfxHover=(e)=>{const t=e.target&&e.target.closest&&e.target.closest('button');if(t&&t!==this._lastHovered){this._lastHovered=t;this.playSfx('hover');}};
     this._sfxClick=(e)=>{if(e.target&&e.target.closest&&e.target.closest('button'))this.playSfx('click');};
+    this._simMessage=(e)=>{if(e.data&&e.data.type==='smartDryerSimulationDone')this.setState({simDone:!!e.data.done});};
     document.addEventListener('mouseover',this._sfxHover);
     document.addEventListener('click',this._sfxClick);
+    window.addEventListener('message',this._simMessage);
   }
   componentWillUnmount(){
     document.removeEventListener('mouseover',this._sfxHover);
     document.removeEventListener('click',this._sfxClick);
+    window.removeEventListener('message',this._simMessage);
     if(this._feelTimers)this._feelTimers.forEach(clearTimeout);
     if(this._p4timers)this._p4timers.forEach(clearTimeout);
-    clearTimeout(this._dripTimer);clearTimeout(this._musicTimer);clearTimeout(this._outroTimer);
+    if(this._p3timers)this._p3timers.forEach(clearTimeout);
+    clearTimeout(this._musicTimer);clearTimeout(this._outroTimer);
+    if(this._bgmAudio){this._bgmAudio.pause();this._bgmAudio=null;}
     if(this.audioCtx)this.audioCtx.close().catch(()=>{});
   }
 
-  // ——— AMBIENT AUDIO ———
-  _mkNoise(ctx){const size=2*ctx.sampleRate;const buf=ctx.createBuffer(1,size,ctx.sampleRate);const d=buf.getChannelData(0);for(let i=0;i<size;i++)d[i]=Math.random()*2-1;const src=ctx.createBufferSource();src.buffer=buf;src.loop=true;return src;}
+  // ——— AUDIO ———
   ensureAudio(){
     if(this._audioReady)return;
     try{
@@ -534,28 +598,25 @@ class Component extends DCLogic {
       if(!this.audioCtx)this.audioCtx=new Ctx();
       const ctx=this.audioCtx;this._audioReady=true;
       const master=ctx.createGain();master.gain.value=this.state.muted?0:1;master.connect(ctx.destination);this._masterGain=master;
-      const n1=this._mkNoise(ctx),hp=ctx.createBiquadFilter(),lp=ctx.createBiquadFilter(),rg1=ctx.createGain();hp.type='highpass';hp.frequency.value=290;lp.type='lowpass';lp.frequency.value=1050;rg1.gain.value=0.055;n1.connect(hp);hp.connect(lp);lp.connect(rg1);rg1.connect(master);n1.start(0);
-      const n2=this._mkNoise(ctx),bp=ctx.createBiquadFilter(),rg2=ctx.createGain();bp.type='bandpass';bp.frequency.value=2600;bp.Q.value=1.6;rg2.gain.value=0.028;n2.connect(bp);bp.connect(rg2);rg2.connect(master);n2.start(0);
-      const drip=()=>{try{const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';const t=ctx.currentTime;o.frequency.setValueAtTime(800+Math.random()*700,t);o.frequency.exponentialRampToValueAtTime(250+Math.random()*150,t+0.13);g.gain.setValueAtTime(0.035+Math.random()*0.04,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.15);o.connect(g);g.connect(master);o.start(t);o.stop(t+0.17);}catch(e){}this._dripTimer=setTimeout(drip,500+Math.random()*2200);};
-      drip();this.startMusic();
+      this.startMusic();
     }catch(e){}
   }
   startMusic(){
     if(this._musicStarted)return;this._musicStarted=true;
-    const ctx=this.audioCtx;if(!ctx)return;
-    const delayNode=ctx.createDelay(1.0);delayNode.delayTime.value=0.42;const fbGain=ctx.createGain();fbGain.gain.value=0.32;const wetGain=ctx.createGain();wetGain.gain.value=0.28;delayNode.connect(fbGain);fbGain.connect(delayNode);delayNode.connect(wetGain);wetGain.connect(this._masterGain);const out=this._masterGain;
-    const playNote=(freq,startT,dur,vol,type='sine',send=true)=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(0,startT);g.gain.linearRampToValueAtTime(vol,startT+Math.min(1.2,dur*0.35));g.gain.setValueAtTime(vol,startT+dur-Math.min(1.4,dur*0.4));g.gain.linearRampToValueAtTime(0,startT+dur+0.6);o.connect(g);g.connect(out);if(send){const s=ctx.createGain();s.gain.value=0.35;g.connect(s);s.connect(delayNode);}o.start(startT);o.stop(startT+dur+0.8);};
-    const chords=[[110,164.8,220,261.6],[73.4,110,146.8,174.6],[87.3,130.8,174.6,220],[98,146.8,196,246.9]];
-    const melody=[[440,523.3,659.3],[440,587.3,523.3],[523.3,659.3,523.3],[659.3,587.3,440]];
-    const CHORD_DUR=7;
-    const scheduleLoop=(startT,ci)=>{chords[ci%4].forEach(f=>playNote(f,startT,CHORD_DUR,0.038));melody[ci%4].forEach((f,i)=>playNote(f*2,startT+1.6+i*1.7,1.5,0.022,'triangle'));this._musicTimer=setTimeout(()=>scheduleLoop(startT+CHORD_DUR,ci+1),(CHORD_DUR-1.5)*1000);};
-    scheduleLoop(ctx.currentTime+0.3,0);
+    try{
+      const a=new Audio('assets/new_bgm.wav');
+      a.loop=true;
+      a.preload='auto';
+      a.volume=this.state.muted?0:0.42;
+      this._bgmAudio=a;
+      if(!this.state.muted)a.play().catch(()=>{});
+    }catch(e){}
   }
 
-  toggleMute=()=>{this.ensureAudio();this.setState(s=>{const m=!s.muted;if(this._masterGain)this._masterGain.gain.value=m?0:1;return{muted:m};});};
+  toggleMute=()=>{this.ensureAudio();this.setState(s=>{const m=!s.muted;if(this._masterGain)this._masterGain.gain.value=m?0:1;if(this._bgmAudio){this._bgmAudio.volume=m?0:0.42;if(m)this._bgmAudio.pause();else this._bgmAudio.play().catch(()=>{});}return{muted:m};});};
   goPhase=(n)=>{
     this.ensureAudio();this.playSfx('transition');
-    this.setState(s=>({phase:n,maxReached:Math.max(s.maxReached,n),outroStarted:n===7?false:s.outroStarted,outroEnded:n===7?false:s.outroEnded,outroNeedsPlay:false}),()=>{
+    this.setState(s=>({phase:n,maxReached:Math.max(s.maxReached,n),outroStarted:n===7?false:s.outroStarted,outroEnded:n===7?false:s.outroEnded,outroNeedsPlay:false,simDone:n===6?false:s.simDone}),()=>{
       if(n===7)this._playOutroSoon();
     });
   };
@@ -571,7 +632,7 @@ class Component extends DCLogic {
     const v=this.outroVideoRef.current;
     if(!v){this.setState({outroNeedsPlay:true});return;}
     try{
-      v.muted=true;
+      v.muted=false;
       if(v.readyState>0)v.currentTime=0;
       else v.load();
       const p=v.play();
@@ -585,9 +646,13 @@ class Component extends DCLogic {
   onFeelStart=()=>{
     if(this._feelTimers)this._feelTimers.forEach(clearTimeout);
     this._feelTimers=[];
+    this.setState({feelStep:-1,phase2Leaving:false,phase2Wrap:false});
     for(let i=0;i<this.FEEL_NODES.length;i++){
-      this._feelTimers.push(setTimeout(()=>this.setState({feelStep:i}),350+i*750));
+      this._feelTimers.push(setTimeout(()=>this.setState({feelStep:i}),i*3000));
     }
+    const wrapAt=this.FEEL_NODES.length*3000;
+    this._feelTimers.push(setTimeout(()=>this.setState({phase2Leaving:true}),wrapAt-700));
+    this._feelTimers.push(setTimeout(()=>this.setState({phase2Wrap:true,phase2Leaving:false}),wrapAt));
   };
 
   // Phase 3 — problem
@@ -599,18 +664,31 @@ class Component extends DCLogic {
   p3flip=()=>{this.playSfx('flip');this.setState({p3view:'back'});};
   p3gotIt=()=>{this.playSfx('click');this.setState({p3view:'mcq'});};
   p3pick=(bodyKey)=>{
-    const s=this.state;if(s.p3matched.includes(bodyKey))return;
+    const s=this.state;
     const correct=bodyKey===this.COMPONENTS[s.p3idx].body;
     this.playSfx(correct?'correct':'wrong');
-    this.setState(prev=>{if(prev.p3matched.includes(bodyKey))return{};if(correct)return{p3view:'correct',p3matched:prev.p3matched.concat([bodyKey]),p3picked:bodyKey};return{p3view:'wrong',p3picked:bodyKey};});
+    if(correct){
+      if(this._p3timers)this._p3timers.forEach(clearTimeout);
+      this._p3timers=[
+        setTimeout(()=>this.setState({p3transition:true}),2600),
+        setTimeout(()=>this.p3continue(),3000),
+      ];
+    }
+    this.setState(prev=>{
+      if(correct){
+        const matched=prev.p3matched.includes(bodyKey)?prev.p3matched:prev.p3matched.concat([bodyKey]);
+        return{p3view:'correct',p3matched:matched,p3picked:bodyKey,p3transition:false};
+      }
+      return{p3view:'wrong',p3picked:bodyKey,p3transition:false};
+    });
   };
-  p3continue=()=>{this.setState(s=>{const next=s.p3idx+1;if(next>=this.COMPONENTS.length)return{p3done:true};return{p3idx:next,p3view:'front',p3picked:null};});};
+  p3continue=()=>{this.setState(s=>{const next=s.p3idx+1;if(next>=this.COMPONENTS.length)return{p3done:true,p3transition:false};return{p3idx:next,p3view:'front',p3picked:null,p3transition:false};});};
 
   // Phase 5 — circuit builder
   p4pick=(key)=>this.setState(s=>({p4picked:s.p4picked===key?null:key}));
   p4slot=(i)=>{this.setState(s=>{const slots=s.p4slots.slice();if(slots[i]){slots[i]=null;return{p4slots:slots,p4error:null,p4correct:false};}if(!s.p4picked)return{};for(let k=0;k<slots.length;k++)if(slots[k]===s.p4picked)slots[k]=null;slots[i]=s.p4picked;return{p4slots:slots,p4picked:null,p4error:null};});};
-  p4test=()=>{const s=this.state;let firstWrong=-1;for(let i=0;i<this.P4ORDER.length;i++)if(s.p4slots[i]!==this.P4ORDER[i]){firstWrong=i;break;}if(firstWrong===-1){this.ensureAudio();this.playSfx('correct');this.setState({p4correct:true,p4error:null});}else{this.playSfx('wrong');this.setState({p4error:this.P4ERRORS[this.P4ORDER[firstWrong]],p4correct:false});}};
-  p4clear=()=>this.setState({p4slots:[null,null,null],p4picked:null,p4error:null,p4correct:false});
+  p4test=()=>{const s=this.state;let firstWrong=-1;for(let i=0;i<this.P4ORDER.length;i++)if(s.p4slots[i]!==this.P4ORDER[i]){firstWrong=i;break;}if(firstWrong===-1){this.ensureAudio();this.playSfx('correct');if(this._p4timers)this._p4timers.forEach(clearTimeout);this._p4timers=[setTimeout(()=>this.setState({p4Leaving:true}),900),setTimeout(()=>this.setState({p4Wrap:true,p4Leaving:false}),1600)];this.setState({p4correct:true,p4error:null,p4Leaving:false,p4Wrap:false});}else{this.playSfx('wrong');this.setState({p4error:this.P4ERRORS[this.P4ORDER[firstWrong]],p4correct:false,p4Leaving:false,p4Wrap:false});}};
+  p4clear=()=>{if(this._p4timers)this._p4timers.forEach(clearTimeout);this.setState({p4slots:[null,null,null],p4picked:null,p4error:null,p4correct:false,p4Leaving:false,p4Wrap:false});};
 
   // Phase 6 — simulation
   simGoStep=(i)=>{this.ensureAudio();this.playSfx('click');this.setState({simStep:Math.max(0,Math.min(this.SIM_STEPS.length-1,i))});};
@@ -630,6 +708,10 @@ class Component extends DCLogic {
       const ph=i+1,isCur=ph===s.phase,done=ph<s.phase,reachable=ph<=s.maxReached;
       return{num:String(ph),onClick:reachable?()=>this.goPhase(ph):()=>{},style:{width:'32px',height:'32px',borderRadius:'50%',padding:0,cursor:reachable?'pointer':'default',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Nunito'",fontWeight:900,fontSize:'13px',transition:'all .25s ease',background:isCur?YELLOW:(done?ACCENT:'rgba(255,255,255,0.2)'),border:'3px solid '+(isCur?'#C9A100':(done?'#1A8A45':'rgba(255,255,255,0.35)')),boxShadow:'0 3px 0 '+(isCur?'#8A6D00':(done?'#0D6B30':'rgba(0,0,0,0.18)')),color:isCur?'#5a3a00':(done?'white':'rgba(255,255,255,0.45)'),transform:isCur?'scale(1.18)':'scale(1)'}};
     });
+    const devDots=Array.from({length:7}).map((_,i)=>{
+      const ph=i+1,isCur=ph===s.phase;
+      return{num:String(ph),title:'Jump to screen '+ph,onClick:()=>this.goPhase(ph),style:{width:'21px',height:'21px',borderRadius:'7px',padding:0,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Nunito'",fontWeight:900,fontSize:'10px',transition:'all .16s ease',background:isCur?'#FFD700':'rgba(255,255,255,0.9)',border:'2px solid '+(isCur?'#C9A100':'rgba(255,255,255,0.58)'),boxShadow:isCur?'0 2px 0 #8A6D00':'0 2px 0 rgba(0,0,0,0.25)',color:isCur?'#5a3a00':'#1a2744'}};
+    });
 
     // phase 2 feel chain
     const feelLit=s.feelStep>=this.FEEL_NODES.length-1;
@@ -641,57 +723,62 @@ class Component extends DCLogic {
         textColor:lit?'#1a2744':'rgba(44,62,80,0.45)',
         descColor:lit?'#5a6c7d':'rgba(44,62,80,0.3)',
         arrowStyle:{color:lit?ACCENT:'rgba(255,255,255,0.28)',fontSize:'28px',alignSelf:'center',transition:'color .4s ease',fontWeight:900,textShadow:'0 2px 6px rgba(0,0,0,0.35)'},
-        style:{width:'195px',minHeight:'185px',padding:'22px 14px',borderRadius:'22px',textAlign:'center',display:'flex',flexDirection:'column',alignItems:'center',transition:'all .45s ease',background:lit?'rgba(255,255,255,0.97)':'rgba(255,255,255,0.65)',border:'3px solid '+(lit?ACCENT:'rgba(255,255,255,0.32)'),boxShadow:lit?'0 6px 0 #1A8A45,0 12px 24px rgba(0,0,0,0.15)':'0 4px 0 rgba(0,0,0,0.08)',opacity:lit?1:0.72,animation:lit?'nodePop .45s ease':'none'}};
+        style:{width:'178px',minHeight:'310px',padding:'34px 16px',borderRadius:'22px',textAlign:'center',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',transition:'all .45s ease',background:lit?'rgba(255,255,255,0.97)':'rgba(255,255,255,0.65)',border:'3px solid '+(lit?ACCENT:'rgba(255,255,255,0.32)'),boxShadow:lit?'0 6px 0 #1A8A45,0 12px 24px rgba(0,0,0,0.15)':'0 4px 0 rgba(0,0,0,0.08)',opacity:lit?1:0.72,animation:lit?'nodePop .45s ease':'none'}};
     });
 
     // krish mood + speech
     // NOTE: speech is suppressed on p3done (summary screen) to avoid overlap
     let mood='neutral',speech=null;
     if(s.phase===1&&s.videoEnded)mood='excited';
-    if(s.phase===2&&feelLit){mood='excited';speech="Your body already runs this circuit. I wanted to build the same thing for clothes!";}
-    if(s.phase===3&&s.p2revealed){mood='excited';speech="This is exactly what I thought! But I needed real components. Let me show you.";}
+    if(s.phase===2&&s.phase2Wrap){mood='excited';speech=null;}
+    if(s.phase===3&&!s.p2revealed)mood='thinking';
+    if(s.phase===3&&s.p2revealed){mood='excited';speech=null;}
     if(s.phase===4){
       if(s.p3done){mood='excited';speech=null;} // suppressed — summary table needs full space
-      else if(s.p3view==='correct'){mood='excited';speech=this.COMPONENTS[s.p3idx].krish;}
-      else if(s.p3view==='wrong'){mood='thinking';speech="Think about what the "+this.COMPONENTS[s.p3idx].name+" does \u2014 then find its match.";}
+      else if(s.p3view==='correct'){mood='excited';speech=null;}
+      else if(s.p3view==='wrong'){mood='mistake';speech=null;}
+      else mood='thinking';
     }
-    if(s.phase===5&&s.p4correct){mood='excited';speech="Feel \u2192 Think \u2192 Act. Same chain. That\u2019s my machine.";}
+    if(s.phase===5&&!s.p4correct)mood=s.p4error?'mistake':'thinking';
+    if(s.phase===5&&s.p4correct){mood='excited';speech=null;}
     if(s.phase===7){mood='excited';speech="Time to build. Let\u2019s go!";}
 
     // CTA
     let ctaVisible=false,ctaLabel='',ctaClick=()=>{};
     if(s.phase===1&&s.videoEnded){ctaVisible=true;ctaLabel="Let\u2019s Go!";ctaClick=()=>this.goPhase(2);}
-    if(s.phase===2&&feelLit){ctaVisible=true;ctaLabel='Now, how would you solve it?';ctaClick=()=>this.goPhase(3);}
-    if(s.phase===3){
-      if(!s.p2revealed){ctaVisible=true;ctaLabel='See what Krish came up with';ctaClick=this.p2reveal;}
-      else{ctaVisible=true;ctaLabel='Meet the real components';ctaClick=()=>this.goPhase(4);}
-    }
+    if(s.phase===2&&s.phase2Wrap){ctaVisible=true;ctaLabel='Now, how would you solve it?';ctaClick=()=>this.goPhase(3);}
     if(s.phase===4&&s.p3done){ctaVisible=true;ctaLabel='Wire his brain';ctaClick=()=>this.goPhase(5);}
-    if(s.phase===5&&s.p4correct){ctaVisible=true;ctaLabel='Run the simulation';ctaClick=()=>this.goPhase(6);}
-    if(s.phase===6){ctaVisible=true;ctaLabel='Watch the outro';ctaClick=()=>this.goPhase(7);}
+    if(s.phase===6&&s.simDone){ctaVisible=true;ctaLabel='Watch the outro';ctaClick=()=>this.goPhase(7);}
+    const phase3Ready=s.phase===3&&!s.p2revealed&&s.p2slots.every(Boolean);
+    const phase3ColumnCta=s.phase===3&&s.p2revealed;
+    const ctaStyle=phase3ColumnCta?
+      {position:'absolute',left:'calc(380px + ((100vw - 434px) / 2))',bottom:'42px',transform:'translateX(-50%)',zIndex:35,display:'flex',alignItems:'center',justifyContent:'center',gap:'14px',minWidth:'560px',padding:'22px 46px',borderRadius:'24px',background:'#3DBE6C',color:'white',border:'3px solid #1A8A45',cursor:'pointer',fontFamily:"'Nunito'",fontWeight:900,fontSize:'23px',boxShadow:'0 9px 0 #0D6B30,0 16px 30px rgba(0,0,0,0.3)',animation:'ctaBounce 2.6s ease-in-out infinite'}:
+      {position:'absolute',right:'36px',bottom:'36px',zIndex:35,display:'flex',alignItems:'center',gap:'10px',padding:'18px 38px',borderRadius:'22px',background:'#3DBE6C',color:'white',border:'3px solid #1A8A45',cursor:'pointer',fontFamily:"'Nunito'",fontWeight:900,fontSize:'20px',boxShadow:'0 8px 0 #0D6B30,0 14px 28px rgba(0,0,0,0.28)',animation:'ctaBounce 2.6s ease-in-out infinite'};
 
     // phase 3 — problem slots & chips
-    const p2Slots=s.p2slots.map((v,i)=>({label:v||'?',onClick:v?()=>this.p2remove(i):()=>{},style:v?{minWidth:'122px',padding:'12px 16px',borderRadius:'14px',cursor:'pointer',fontFamily:"'Nunito'",fontWeight:800,fontSize:'14px',display:'flex',alignItems:'center',justifyContent:'center',transition:'all .2s ease',whiteSpace:'nowrap',background:'#FFF3CC',border:'3px solid '+WARM,color:'#5a3a00',boxShadow:'0 4px 0 #C96E00'}:{minWidth:'122px',padding:'12px 16px',borderRadius:'14px',cursor:'pointer',fontFamily:"'Nunito'",fontWeight:900,fontSize:'22px',display:'flex',alignItems:'center',justifyContent:'center',transition:'all .2s ease',whiteSpace:'nowrap',background:'rgba(255,255,255,0.94)',border:'3px dashed #FFB800',color:'#FFB800',boxShadow:'none'}}));
-    const p2ChipList=this.shuffledP2Chips.map(label=>{const used=s.p2slots.includes(label);return{label,onClick:used?()=>{}:()=>this.p2place(label),style:{padding:'14px 26px',borderRadius:'18px',cursor:used?'default':'pointer',fontFamily:"'Nunito'",fontWeight:800,fontSize:'15.5px',transition:'all .2s ease',background:used?'rgba(255,255,255,0.55)':'rgba(255,255,255,0.96)',border:'3px solid '+(used?'rgba(0,0,0,0.08)':BLUE),color:used?'rgba(44,62,80,0.3)':'#1a2744',boxShadow:used?'none':'0 5px 0 #1A5BA8'}};});
-    const p2KrishChain=this.P2KRISH.map((n,i)=>({label:n.label,icon:n.icon,notFirst:i>0,style:{display:'flex',flexDirection:'column',alignItems:'center',gap:'8px',padding:'18px 24px',borderRadius:'18px',background:'rgba(255,255,255,0.96)',border:'3px solid '+ACCENT,boxShadow:'0 6px 0 #1A8A45',animation:'slideIn .5s ease both',animationDelay:(i*0.15)+'s',minWidth:'100px'}}));
+    const p2Slots=s.p2slots.map((v,i)=>({label:v||'?',onClick:v?()=>this.p2remove(i):()=>{},style:v?{width:'102px',minHeight:'100px',padding:'14px 12px',borderRadius:'14px',cursor:'pointer',fontFamily:"'Nunito'",fontWeight:800,fontSize:'13px',display:'flex',alignItems:'center',justifyContent:'center',textAlign:'center',transition:'all .2s ease',whiteSpace:'normal',background:'#FFF3CC',border:'3px solid '+WARM,color:'#5a3a00',boxShadow:'0 4px 0 #C96E00',animation:'chipFlyToSlot .5s ease both'}:{width:'102px',minHeight:'100px',padding:'14px 12px',borderRadius:'14px',cursor:'pointer',fontFamily:"'Nunito'",fontWeight:900,fontSize:'22px',display:'flex',alignItems:'center',justifyContent:'center',textAlign:'center',transition:'all .2s ease',whiteSpace:'normal',background:'rgba(255,255,255,0.94)',border:'3px dashed #FFB800',color:'#FFB800',boxShadow:'none'}}));
+    const p2ChipList=this.shuffledP2Chips.map(label=>{const used=s.p2slots.includes(label);return{label,onClick:used?()=>{}:()=>this.p2place(label),style:used?{display:'none'}:{padding:'16px 30px',borderRadius:'18px',cursor:'pointer',fontFamily:"'Nunito'",fontWeight:900,fontSize:'17px',transition:'all .2s ease',background:'rgba(255,255,255,0.96)',border:'3px solid '+BLUE,color:'#1a2744',boxShadow:'0 5px 0 #1A5BA8'}};});
+    const p2KrishChain=this.P2KRISH.map((n,i)=>({label:n.label,icon:n.icon,notFirst:i>0,style:{display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'12px',padding:'30px 26px',borderRadius:'18px',background:'rgba(255,255,255,0.96)',border:'3px solid '+ACCENT,boxShadow:'0 6px 0 #1A8A45',animation:'slideIn .5s ease both',animationDelay:(i*0.15)+'s',minWidth:'150px',minHeight:'220px'}}));
 
-    // phase 4 — flip cards
+    // phase 4 — flip card subscreens
     const p3board=!s.p3done;
-    const p3Cards=this.COMPONENTS.map((c,i)=>{
-      const status=i<s.p3idx?'done':(i===s.p3idx?'active':'upcoming');
-      const flipped=status==='done'||(status==='active'&&s.p3view!=='front');
-      const active=status==='active';
-      return{name:c.name,behavior:c.behavior,icon:c.icon,done:status==='done',showFront:!flipped,showBack:flipped,
-        onClick:(active&&s.p3view==='front')?this.p3flip:()=>{},
-        wrapStyle:{position:'relative',width:'152px',height:'212px',border:'none',background:'none',padding:0,cursor:(active&&s.p3view==='front')?'pointer':'default',transition:'transform .3s ease,filter .3s ease',transform:active?'translateY(-12px) scale(1.06)':'none',opacity:status==='upcoming'?0.62:1,filter:active?'drop-shadow(0 0 14px rgba(255,215,0,0.75))':'drop-shadow(0 8px 16px rgba(0,0,0,0.35))',borderRadius:'18px'},
-        frontBgStyle:{position:'absolute',inset:0,backgroundImage:"url('"+c.img+"')",backgroundSize:'contain',backgroundPosition:'center',backgroundRepeat:'no-repeat',backgroundOrigin:'content-box',padding:'14px'},
-        blurBgStyle:{position:'absolute',top:'-8px',left:'-8px',right:'-8px',bottom:'-8px',backgroundImage:"url('"+c.img+"')",backgroundSize:'cover',backgroundPosition:'center',filter:'blur(10px)',opacity:0.28}};
-    });
+    const curComp=this.COMPONENTS[Math.min(s.p3idx,this.COMPONENTS.length-1)];
+    const p3BoardStyle={width:'100%',maxWidth:'760px',display:'flex',flexDirection:'column',alignItems:'center',animation:s.p3transition?'p3SubscreenOut .42s ease both':'p3SubscreenIn .48s ease both'};
+    const currentFlipped=s.p3view!=='front';
+    const p3Card={name:curComp.name,behavior:curComp.behavior,icon:curComp.icon,showFront:!currentFlipped,showBack:currentFlipped,
+      onClick:s.p3view==='front'?this.p3flip:()=>{},
+      wrapStyle:{position:'relative',width:'390px',height:'318px',border:'none',background:'none',padding:0,cursor:s.p3view==='front'?'pointer':'default',transition:'transform .35s ease,filter .35s ease',transform:s.p3view==='front'?'translateY(-4px)':'none',filter:s.p3view==='front'?'drop-shadow(0 0 20px rgba(255,215,0,.76)) drop-shadow(0 14px 20px rgba(0,0,0,.3))':'drop-shadow(0 12px 20px rgba(0,0,0,.34))',borderRadius:'28px'},
+      frontBgStyle:{position:'absolute',inset:'18px 26px 58px',backgroundImage:"url('"+curComp.img+"')",backgroundSize:'contain',backgroundPosition:'center',backgroundRepeat:'no-repeat',filter:'drop-shadow(0 12px 16px rgba(0,0,0,.18))'},
+      blurBgStyle:{position:'absolute',top:'-16px',left:'-16px',right:'-16px',bottom:'-16px',backgroundImage:"url('"+curComp.img+"')",backgroundSize:'cover',backgroundPosition:'center',filter:'blur(16px)',opacity:0.2}};
     const p3GotIt=p3board&&s.p3view==='back';
     const p3Mcq=p3board&&s.p3view==='mcq';
     const p3Result=p3board&&(s.p3view==='correct'||s.p3view==='wrong');
-    const curComp=this.COMPONENTS[Math.min(s.p3idx,this.COMPONENTS.length-1)];
-    const p3Chips=this.shuffledBody.map(b=>{const dis=s.p3matched.includes(b.key);return{label:b.label,icon:b.icon,onClick:dis?()=>{}:()=>this.p3pick(b.key),style:{display:'flex',alignItems:'center',gap:'8px',padding:'13px 20px',borderRadius:'16px',cursor:dis?'default':'pointer',fontFamily:"'Nunito'",fontWeight:800,fontSize:'15px',transition:'all .2s ease',background:dis?'rgba(255,255,255,0.55)':'rgba(255,255,255,0.96)',border:'3px solid '+(dis?'rgba(0,0,0,0.07)':BLUE),color:dis?'rgba(44,62,80,0.28)':'#1a2744',boxShadow:dis?'none':'0 5px 0 #1A5BA8'}};});
+    const p3Chips=this.shuffledBody.map(b=>{
+      const accepted=s.p3matched.includes(b.key);
+      const picked=s.p3picked===b.key;
+      const pickedWrong=picked&&s.p3view==='wrong'&&!accepted;
+      return{label:b.label,icon:b.icon,onClick:()=>this.p3pick(b.key),style:{display:'flex',alignItems:'center',gap:'8px',padding:'11px 18px',borderRadius:'15px',cursor:'pointer',fontFamily:"'Nunito'",fontWeight:900,fontSize:'15px',transition:'all .2s ease',background:pickedWrong?'#FFE7E7':'rgba(255,255,255,0.96)',border:'3px solid '+(pickedWrong?WRONG:BLUE),color:pickedWrong?'#7D0A0A':'#1a2744',boxShadow:pickedWrong?'0 5px 0 #B31010':'0 5px 0 #1A5BA8',transform:'none'}};
+    });
     const correct=s.p3view==='correct';
     const p3ResultColor=correct?ACCENT:WRONG;
     const p3ResultTitle=correct?(curComp.name+' = '+curComp.body):("It\u2019s the "+curComp.body);
@@ -699,15 +786,20 @@ class Component extends DCLogic {
     const lastCard=s.p3idx>=this.COMPONENTS.length-1;
     const p3ContinueLabel=lastCard?'See the full picture':'Next card';
     const p3ResultStyle={display:'flex',flexDirection:'column',alignItems:'center',padding:'24px 34px',borderRadius:'22px',background:'rgba(255,255,255,0.97)',border:'3px solid '+(correct?ACCENT:WRONG),boxShadow:'0 6px 0 '+(correct?'#1A8A45':'#B31010')+',0 12px 32px rgba(0,0,0,0.22)',animation:'kidPop .4s ease'};
-    const p3SummaryRows=this.COMPONENTS.map((c,i)=>{const body=this.BODY.find(b=>b.key===c.body);return{name:c.name,icon:c.icon,body:c.body,bodyIcon:body?body.icon:'ti-circle',insight:c.insight,style:{display:'flex',alignItems:'center',gap:'18px',padding:'14px 22px',background:i%2===0?'#F7FFF5':'#FFFFFF',borderBottom:i<this.COMPONENTS.length-1?'2px solid rgba(0,0,0,0.06)':'none'}};});
+    const p3ShowContinue=s.p3view==='wrong';
+    const p3AutoAdvance=s.p3view==='correct';
+    const p3SummaryRows=this.COMPONENTS.map((c,i)=>{const body=this.BODY.find(b=>b.key===c.body);return{name:c.name,icon:c.icon,body:c.body,bodyIcon:body?body.icon:'ti-circle',insight:c.insight,style:{display:'flex',alignItems:'center',gap:'18px',minHeight:'78px',padding:'18px 22px',background:i%2===0?'#F7FFF5':'#FFFFFF',borderBottom:i<this.COMPONENTS.length-1?'2px solid rgba(0,0,0,0.06)':'none'}};});
 
     // phase 5 — circuit builder
-    const slotBase={width:'170px',height:'130px',borderRadius:'20px',cursor:'pointer',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'8px',transition:'all .25s ease'};
+    const slotBase={width:'196px',height:'258px',borderRadius:'20px',cursor:'pointer',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'12px',transition:'all .25s ease'};
     const p4Slots=s.p4slots.map((v,i)=>{const part=v?this.P4PARTS.find(p=>p.key===v):null,filled=!!v;return{filled,icon:part?part.icon:'',label:filled?part.label:('Step '+(i+1)),notLast:i<2,onClick:()=>this.p4slot(i),labelStyle:{fontFamily:"'Nunito'",fontWeight:filled?900:700,fontSize:filled?'15px':'14px',color:filled?'#1a2744':'rgba(44,62,80,0.45)'},style:filled?{...slotBase,background:'rgba(255,255,255,0.97)',border:'3px solid '+ACCENT,boxShadow:'0 5px 0 #1A8A45'}:{...slotBase,background:'rgba(255,255,255,0.88)',border:'3px dashed '+BLUE}};});
     const p4ChipList=this.shuffledP4Parts.map(p=>{const used=s.p4slots.includes(p.key),picked=s.p4picked===p.key;return{label:p.label,icon:p.icon,onClick:used?()=>{}:()=>this.p4pick(p.key),style:{display:'flex',alignItems:'center',gap:'10px',padding:'14px 22px',borderRadius:'16px',cursor:used?'default':'pointer',fontFamily:"'Nunito'",fontWeight:800,fontSize:'16px',transition:'all .2s ease',background:picked?'#FFF3CC':(used?'rgba(255,255,255,0.55)':'rgba(255,255,255,0.96)'),border:'3px solid '+(picked?WARM:(used?'rgba(0,0,0,0.07)':BLUE)),color:used?'rgba(44,62,80,0.28)':'#1a2744',boxShadow:picked?'0 5px 0 #C96E00':(used?'none':'0 5px 0 #1A5BA8'),transform:picked?'translateY(-4px)':'none'}};});
     const allFilled=s.p4slots.every(Boolean);
     const p4ShowTest=!s.p4correct&&!s.p4error;
     const p4TestStyle={padding:'16px 38px',borderRadius:'18px',cursor:allFilled?'pointer':'default',fontFamily:"'Nunito'",fontWeight:900,fontSize:'19px',background:allFilled?ACCENT:'rgba(255,255,255,0.55)',color:allFilled?'white':'rgba(44,62,80,0.35)',border:'3px solid '+(allFilled?'#1A8A45':'rgba(0,0,0,0.08)'),boxShadow:allFilled?'0 6px 0 #0D6B30':'none',transition:'all .2s ease'};
+    const p4ActivityScreen=s.phase===5&&!s.p4Wrap;
+    const p4WrapScreen=s.phase===5&&s.p4Wrap;
+    const p4ActivityStyle={width:'100%',maxWidth:'900px',display:'flex',flexDirection:'column',alignItems:'center',animation:s.p4Leaving?'phaseFadeOut .7s ease both':'fadeUp .5s ease'};
 
     // phase 6 — digital build tutorial
     const simStep=Math.max(0,Math.min(this.SIM_STEPS.length-1,s.simStep));
@@ -764,34 +856,40 @@ class Component extends DCLogic {
     const simLine=simData.line;
 
     return{
-      rainDrops:this.rainDrops,dots,bgImageOpacity,
+      rainDrops:this.rainDrops,dots,devDots,bgImageOpacity,
       muteIcon:s.muted?'ti-volume-off':'ti-volume',toggleMute:this.toggleMute,
       isPhase1:s.phase===1,isPhase2:s.phase===2,isPhase3:s.phase===3,
       isPhase4:s.phase===4,isPhase5:s.phase===5,isPhase6:s.phase===6,isPhase7:s.phase===7,
       // phase 2 feel
       feelNodes,feelLit,feelShowStart,onFeelStart:this.onFeelStart,
+      p2ActivityScreen:s.phase===2&&!s.phase2Wrap,
+      p2WrapScreen:s.phase===2&&s.phase2Wrap,
+      p2ActivityStyle:{width:'100%',maxWidth:'900px',display:'flex',flexDirection:'column',alignItems:'center',animation:s.phase2Leaving?'phaseFadeOut .7s ease both':'fadeUp .5s ease'},
       // krish + cta
       krishNeutral:s.phase!==1&&s.phase<6&&mood==='neutral',
       krishExcited:s.phase!==1&&s.phase<6&&mood==='excited',
       krishThinking:s.phase!==1&&s.phase<6&&mood==='thinking',
-      showSpeech:s.phase<6&&!!speech,speechText:speech||'',
-      ctaVisible,ctaLabel,ctaClick,
+      krishMistake:s.phase!==1&&s.phase<6&&mood==='mistake',
+      showSpeech:s.phase<6&&s.phase!==4&&s.phase!==5&&!!speech,speechText:speech||'',
+      ctaVisible,ctaLabel,ctaClick,ctaStyle,
       // phase 1
       videoRef:this.videoRef,videoMuted:s.muted,onVideoEnd:this.onVideoEnd,
       p1ShowPlay:!s.videoStarted&&!s.videoEnded,playVideo:this.playVideo,videoEnded:s.videoEnded,skipVideo:this.skipVideo,
       // phase 7 outro
       outroVideoRef:this.outroVideoRef,playOutro:this.playOutro,onOutroEnd:this.onOutroEnd,
-      outroVideoMuted:true,outroNeedsPlay:s.outroNeedsPlay,
+      outroVideoMuted:false,outroNeedsPlay:s.outroNeedsPlay,
       // phase 3
       p2Build:!s.p2revealed,p2revealed:s.p2revealed,p2Slots,p2ChipList,p2KrishChain,
+      p2Ready:phase3Ready,p2Reveal:this.p2reveal,
+      p2MeetComponents:()=>this.goPhase(4),
       // phase 4
-      p3Board:p3board,p3Cards,p3done:s.p3done,
+      p3Board:p3board,p3BoardStyle,p3Card,p3done:s.p3done,
       p3GotIt,p3onGotIt:this.p3gotIt,p3Mcq,p3Chips,
-      p3Result,p3ResultStyle,p3ResultColor,p3ResultTitle,p3ResultLine,p3ContinueLabel,p3onContinue:this.p3continue,
+      p3Result,p3ResultStyle,p3ResultColor,p3ResultTitle,p3ResultLine,p3ContinueLabel,p3onContinue:this.p3continue,p3ShowContinue,p3AutoAdvance,
       p3SummaryRows,
       // phase 5
       p4Slots,p4ChipList,p4ShowTest,p4TestStyle,p4onTest:this.p4test,
-      p4error:s.p4error,p4onClear:this.p4clear,p4correct:s.p4correct,
+      p4error:s.p4error,p4onClear:this.p4clear,p4correct:s.p4correct,p4ActivityScreen,p4WrapScreen,p4ActivityStyle,p4RunSimulation:()=>this.goPhase(6),
       // phase 6
       simParts,strawBars:this.strawBars,simBuildSteps,simPrev:this.simPrev,simNext:this.simNext,
       simPrevStyle,simNextStyle,simCounter,simStepNum,simTitle,simLine,simShowWeather,

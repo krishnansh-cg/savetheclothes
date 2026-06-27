@@ -26,7 +26,7 @@ html,body{margin:0;padding:0;-webkit-font-smoothing:antialiased;}
 @keyframes roofOpenA{from{transform:translateX(0px) rotate(0deg)}to{transform:translateX(156px) rotate(-7deg)}}
 </style>
 </helmet>
-<div style="position:fixed;inset:0;overflow:hidden;font-family:'Nunito',sans-serif;background:linear-gradient(180deg,#bfe6ff 0%,#dff3ff 55%,#f1fbff 100%);display:flex;align-items:center;justify-content:center;">
+<div style="{{ appBgStyle }}">
 
   <div style="position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;">
     <sc-for list="{{ bubbles }}" as="b" hint-placeholder-count="6">
@@ -40,6 +40,7 @@ html,body{margin:0;padding:0;-webkit-font-smoothing:antialiased;}
       </div>
     </sc-for>
   </div>
+  <div style="{{ appWeatherOverlayStyle }}"></div>
 
   <div style="position:absolute;inset:0;pointer-events:none;z-index:90;overflow:hidden;">
     <sc-for list="{{ confetti }}" as="c" hint-placeholder-count="0"><div style="{{ c.style }}"></div></sc-for>
@@ -118,14 +119,11 @@ html,body{margin:0;padding:0;-webkit-font-smoothing:antialiased;}
         <div style="width:100%;display:flex;align-items:center;justify-content:space-between;">
           <button onClick="{{ buildAgain }}" style="border:none;cursor:pointer;background:#ffffff;color:#2b6fb0;font-family:'Fredoka';font-weight:600;font-size:15px;padding:9px 18px;border-radius:30px;box-shadow:0 4px 0 #cfe6f5;" style-hover="transform:translateY(2px);box-shadow:0 2px 0 #cfe6f5;">⟲ Restart</button>
           <div></div>
-          <sc-if value="{{ isPlay }}" hint-placeholder-val="{{ false }}">
-            <div style="font-family:'Fredoka';font-weight:700;font-size:24px;color:#8a4fff;">🎮 Play Time!</div>
-          </sc-if>
-          <button onClick="{{ toggleSound }}" style="border:none;cursor:pointer;background:#ffffff;color:#2b6fb0;font-size:20px;width:48px;height:48px;border-radius:50%;box-shadow:0 4px 0 #cfe6f5;display:flex;align-items:center;justify-content:center;" style-hover="transform:translateY(2px);box-shadow:0 2px 0 #cfe6f5;">{{ soundLabel }}</button>
+          <div style="width:48px;height:48px;"></div>
         </div>
 
         <sc-if value="{{ isSteps }}" hint-placeholder-val="{{ true }}">
-          <div style="position:absolute;left:18px;top:90px;z-index:30;display:flex;flex-direction:column;gap:8px;align-items:center;background:rgba(255,255,255,.58);border:2px solid rgba(255,255,255,.86);border-radius:24px;padding:10px 8px;box-shadow:0 7px 0 rgba(80,150,190,.16);">
+          <div style="position:absolute;left:52px;top:180px;z-index:30;display:flex;flex-direction:column;gap:8px;align-items:center;background:rgba(255,255,255,.58);border:2px solid rgba(255,255,255,.86);border-radius:24px;padding:10px 8px;box-shadow:0 7px 0 rgba(80,150,190,.16);">
             <sc-for list="{{ stepDots }}" as="dot" hint-placeholder-count="9">
               <div style="{{ dot.style }}">{{ dot.num }}</div>
             </sc-for>
@@ -144,7 +142,7 @@ html,body{margin:0;padding:0;-webkit-font-smoothing:antialiased;}
         </sc-if>
 
         <!-- SCENE CARD -->
-        <div style="margin-top:14px;width:760px;height:448px;background:linear-gradient(180deg,#dff4ff 0%,#eafaff 100%);border-radius:30px;box-shadow:0 10px 0 #cfe6f5, inset 0 0 0 4px #ffffff;overflow:hidden;position:relative;flex-shrink:0;">
+        <div style="{{ sceneCardStyle }}">
           <div style="position:relative;width:700px;height:420px;margin:14px auto 0;">
 
             <!-- ground -->
@@ -263,18 +261,19 @@ html,body{margin:0;padding:0;-webkit-font-smoothing:antialiased;}
             </sc-if>
 
           </div>
+          <div style="{{ weatherOverlayStyle }}"></div>
         </div>
 
         <!-- STEPS controls -->
         <sc-if value="{{ isSteps }}" hint-placeholder-val="{{ true }}">
-          <div style="margin-top:14px;font-family:'Nunito';font-weight:800;font-size:20px;color:#3a5a72;text-align:center;max-width:680px;min-height:30px;text-wrap:balance;">{{ stepCaption }}</div>
+          <div style="{{ stepCaptionStyle }}">{{ stepCaption }}</div>
           <sc-if value="{{ isStep8 }}" hint-placeholder-val="{{ false }}">
             <div style="display:flex;gap:14px;margin-top:10px;align-items:center;">
               <button onClick="{{ makeRain }}" style="border:none;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:700;font-size:18px;white-space:nowrap;color:#fff;background:linear-gradient(180deg,#3a97ff,#1f6fe0);padding:11px 24px;border-radius:36px;box-shadow:0 5px 0 #1657b8;" style-hover="transform:translateY(2px);box-shadow:0 3px 0 #1657b8;">{{ rainLabel }}</button>
               <button onClick="{{ makeSun }}" style="border:none;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:700;font-size:18px;white-space:nowrap;color:#fff;background:linear-gradient(180deg,#ffc24d,#ff9f1c);padding:11px 24px;border-radius:36px;box-shadow:0 5px 0 #e07f00;" style-hover="transform:translateY(2px);box-shadow:0 3px 0 #e07f00;">{{ sunLabel }}</button>
             </div>
           </sc-if>
-          <div style="display:flex;gap:18px;margin-top:12px;align-items:center;">
+          <div style="position:absolute;right:20px;top:330px;display:flex;flex-direction:column;gap:30px;align-items:stretch;z-index:35;width:120px;">
             <button onClick="{{ prev }}" style="border:none;cursor:pointer;font-family:'Fredoka';font-weight:600;font-size:20px;color:#5b86a6;background:#fff;padding:13px 30px;border-radius:40px;box-shadow:0 5px 0 #cfe6f5;" style-hover="transform:translateY(2px);box-shadow:0 3px 0 #cfe6f5;">◀ Back</button>
             <button onClick="{{ next }}" style="border:none;cursor:pointer;font-family:'Fredoka';font-weight:700;font-size:22px;color:#fff;background:linear-gradient(180deg,#46c95f,#2ea84a);padding:14px 40px;border-radius:40px;box-shadow:0 6px 0 #1f8a3a;" style-hover="transform:translateY(2px);box-shadow:0 4px 0 #1f8a3a;">{{ nextLabel }}</button>
           </div>
@@ -347,17 +346,18 @@ class Component extends DCLogic {
   sRain(){ this.ensureAudio(); for(let i=0;i<6;i++) this.beep(280+Math.random()*140,0.08,'sine',0.05,i*0.07); }
   sSun(){ this.ensureAudio(); [523,659,784,1047].forEach((f,i)=>this.beep(f,0.16,'triangle',0.1,i*0.07)); }
   sCheer(){ this.ensureAudio(); [523,659,784,1047,1319].forEach((f,i)=>this.beep(f,0.2,'triangle',0.13,i*0.09)); this.beep(392,0.4,'sine',0.07,0.1); }
+  notifyDone(done){ try{ window.parent&&window.parent.postMessage({type:'smartDryerSimulationDone',done:!!done},'*'); }catch(e){} }
 
   /* ---------- actions ---------- */
-  start(){ this.ensureAudio(); this.sPop(); this.setState({screen:'steps', step:1, raining:false}); }
+  start(){ this.ensureAudio(); this.sPop(); this.notifyDone(false); this.setState({screen:'steps', step:1, raining:false}); }
   next(){ this.ensureAudio(); const n=this.state.step;
     if(n<9){ this.sPop(); this.setState({step:n+1, raining:false}); }
-    else { this.sCheer(); this.spawnConfetti(); this.setState({screen:'play', raining:false}); } }
+    else { this.sCheer(); this.spawnConfetti(); this.notifyDone(true); this.setState({screen:'play', raining:false}); } }
   prev(){ this.ensureAudio(); this.sPop(); const n=this.state.step;
-    if(n>1) this.setState({step:n-1, raining:false}); else this.setState({screen:'intro'}); }
+    this.notifyDone(false); if(n>1) this.setState({step:n-1, raining:false}); else this.setState({screen:'intro'}); }
   makeRain(){ this.ensureAudio(); this.sRain(); this.setState({raining:true}); }
   makeSun(){ this.ensureAudio(); this.sSun(); this.setState({raining:false}); }
-  buildAgain(){ this.ensureAudio(); this.sPop(); clearInterval(this._demo); this.setState({screen:'intro', step:0, raining:false, confetti:[]}); }
+  buildAgain(){ this.ensureAudio(); this.sPop(); this.notifyDone(false); clearInterval(this._demo); this.setState({screen:'intro', step:0, raining:false, confetti:[]}); }
   toggleSound(){ this.ensureAudio(); this.setState(s=>({soundOn:!s.soundOn})); }
 
   spawnConfetti(){
@@ -410,6 +410,32 @@ class Component extends DCLogic {
     const roofClosedV = showRoof && roofClosed;
     const roofOpenV   = showRoof && !roofClosed;
     const notRaining  = !raining;
+    const appBgStyle = {
+      position:'fixed',inset:0,overflow:'hidden',fontFamily:"'Nunito',sans-serif",
+      background:'linear-gradient(180deg,#bfe6ff 0%,#dff3ff 55%,#f1fbff 100%)',
+      display:'flex',alignItems:'center',justifyContent:'center',
+      transition:'background 1s ease'
+    };
+    const appWeatherOverlayStyle = {
+      position:'absolute',inset:0,zIndex:1,pointerEvents:'none',
+      background:'linear-gradient(180deg,rgba(34,54,78,.58) 0%,rgba(55,76,96,.42) 54%,rgba(62,75,82,.3) 100%)',
+      opacity:raining?1:0,
+      transition:'opacity 1s ease'
+    };
+    const sceneCardStyle = {
+      marginTop:'14px',width:'760px',height:'448px',
+      background:raining?'linear-gradient(180deg,#879bb0 0%,#9caab4 100%)':'linear-gradient(180deg,#dff4ff 0%,#eafaff 100%)',
+      borderRadius:'30px',
+      boxShadow:raining?'0 10px 0 #5f7181, inset 0 0 0 4px rgba(255,255,255,.62)':'0 10px 0 #cfe6f5, inset 0 0 0 4px #ffffff',
+      overflow:'hidden',position:'relative',flexShrink:0,
+      transition:'background 1s ease, box-shadow 1s ease'
+    };
+    const weatherOverlayStyle = {
+      position:'absolute',inset:0,zIndex:30,pointerEvents:'none',
+      background:'linear-gradient(180deg,rgba(19,35,56,.35) 0%,rgba(32,47,62,.22) 60%,rgba(25,43,52,.28) 100%)',
+      opacity:raining?1:0,
+      transition:'opacity 1s ease'
+    };
 
     const rays = this.rayIdx.map(i=>({ style:{ position:'absolute', left:'calc(50% - 4px)', top:'calc(50% - 10px)',
       width:'8px', height:'20px', background:'#ffcf33', borderRadius:'4px',
@@ -469,6 +495,7 @@ class Component extends DCLogic {
 
     return {
       frameStyle:{ width:'1080px', height:'772px', position:'relative', zIndex:2, transform:`scale(${scale})`, flexShrink:0 },
+      appBgStyle,appWeatherOverlayStyle,sceneCardStyle,weatherOverlayStyle,
       isIntro, isApp, isSteps, isPlay,
       soundLabel: soundOn ? '🔊' : '🔇',
       showFunFact: this.props.showFunFact !== false,
@@ -478,6 +505,9 @@ class Component extends DCLogic {
       bubbles:this.bubbles, confetti:confettiV,
       ...dotB, stepDots, stepBadge:String(rs), stepBadgeStyle,
       stepTitle:cur.t, stepCaption:cur.c,
+      stepCaptionStyle: isSteps && rs===8
+        ? { marginTop:'10px', fontFamily:"'Nunito'", fontWeight:800, fontSize:'18px', color:'#3a5a72', textAlign:'center', maxWidth:'700px', minHeight:'26px', textWrap:'balance' }
+        : { marginTop:'48px', fontFamily:"'Nunito'", fontWeight:800, fontSize:'24px', color:'#3a5a72', textAlign:'center', maxWidth:'700px', minHeight:'36px', textWrap:'balance', lineHeight:'1.4' },
       nextLabel: rs>=9 ? "Let's Play! ▶" : 'Next ▶',
       celebText,
       showServo, showSensor, showBoard, showWires, showBattery, showClothes,
