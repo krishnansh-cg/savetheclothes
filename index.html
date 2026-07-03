@@ -1041,7 +1041,7 @@ class Component extends DCLogic {
     const p2ResultFlow=[
       {label:'It rains',img:'assets/screen3/rain.webp',color:p2ResultTheme.main,soft:'#F8FCF8',imgSize:'68px'},
       ...this.P2ANSWER.map(label=>({label,img:this.P2INFO[label].img,color:p2ResultTheme.main,soft:this.P2INFO[label].soft,imgSize:'68px'})),
-      {label:'Clothes come inside',img:'assets/screen3/house.webp',color:p2ResultTheme.main,soft:'#F8FCF8',imgSize:'68px'},
+            {label:'Clothes come inside',img:'assets/screen3/house.webp',color:p2ResultTheme.main,soft:'#F8FCF8',imgSize:'96px'},
     ].map((item,i,arr)=>({label:item.label,img:item.img,notLast:i<arr.length-1,
       imgStyle:{width:item.imgSize,height:item.imgSize,objectFit:'contain',flexShrink:0},
       labelStyle:{fontFamily:"'Nunito'",fontWeight:900,fontSize:'15px',lineHeight:1.16,color:p2ResultTheme.text},
