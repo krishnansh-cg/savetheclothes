@@ -24,9 +24,21 @@ html,body{margin:0;padding:0;-webkit-font-smoothing:antialiased;}
 @keyframes popIn{0%{transform:scale(0)}68%{transform:scale(1.16)}100%{transform:scale(1)}}
 @keyframes roofShut{from{transform:translateX(156px) rotate(-7deg)}to{transform:translateX(0px) rotate(0deg)}}
 @keyframes roofOpenA{from{transform:translateX(0px) rotate(0deg)}to{transform:translateX(156px) rotate(-7deg)}}
+@keyframes arrowNudge{0%,100%{transform:translate(0,0) rotate(var(--arrow-rot))}50%{transform:translate(var(--arrow-x),var(--arrow-y)) rotate(var(--arrow-rot))}}
+@keyframes rainSheet{0%{transform:translate3d(0,-80px,0);opacity:0}12%{opacity:.9}100%{transform:translate3d(-32px,480px,0);opacity:.35}}
+@keyframes sunshineGlow{0%,100%{opacity:.74;transform:translateX(-3px)}50%{opacity:.96;transform:translateX(4px)}}
+html,body{height:100%;overflow:hidden;background:#bfe6ff}
+.dryer-app{width:100vw;height:100vh;min-width:0;min-height:0}
+.dryer-frame{transform-origin:center center!important}
+@media (max-width: 760px), (max-height: 520px) {
+  .dryer-frame{transform-origin:center top!important}
+}
+@media (max-width: 480px) {
+  .dryer-frame{transform-origin:center top!important}
+}
 </style>
 </helmet>
-<div style="{{ appBgStyle }}">
+<div class="dryer-app" style="{{ appBgStyle }}">
 
   <div style="position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden;">
     <sc-for list="{{ bubbles }}" as="b" hint-placeholder-count="6">
@@ -46,251 +58,131 @@ html,body{margin:0;padding:0;-webkit-font-smoothing:antialiased;}
     <sc-for list="{{ confetti }}" as="c" hint-placeholder-count="0"><div style="{{ c.style }}"></div></sc-for>
   </div>
 
-  <div style="{{ frameStyle }}">
+  <div class="dryer-frame" style="{{ frameStyle }}">
 
     <!-- ============ INTRO ============ -->
     <sc-if value="{{ isIntro }}" hint-placeholder-val="{{ true }}">
-      <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 50px;position:relative;">
-        <button onClick="{{ toggleSound }}" style="position:absolute;top:24px;right:30px;border:none;cursor:pointer;background:#ffffff;color:#2b6fb0;font-size:22px;width:54px;height:54px;border-radius:50%;box-shadow:0 4px 0 #cfe6f5;display:flex;align-items:center;justify-content:center;" style-hover="transform:translateY(2px);box-shadow:0 2px 0 #cfe6f5;">{{ soundLabel }}</button>
-
-        <div style="font-family:'Fredoka',sans-serif;font-weight:600;font-size:28px;color:#3a8dd6;letter-spacing:.5px;">Let's Build Your</div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:56px;line-height:1.18;text-align:center;margin-top:4px;max-width:840px;">
+      <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:72px 50px 12px;position:relative;">
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:44px;line-height:1.06;text-align:center;margin-top:0;max-width:900px;">
           <span style="color:#2f88ff;">Rain-Sensing</span> <span style="color:#2bb24c;">Smart</span> <span style="color:#ff8a00;">Clothes</span> <span style="color:#8a4fff;">Dryer!</span>
         </div>
-        <div style="font-family:'Nunito';font-weight:800;font-size:20px;color:#5b86a6;margin-top:18px;">A super-fun build for young makers — tap your way through it! ✨</div>
+        <div style="font-family:'Nunito';font-weight:800;font-size:17px;color:#5b86a6;margin-top:10px;">A super-fun build for young makers — tap your way through it! ✨</div>
 
-        <div style="display:flex;gap:18px;flex-wrap:wrap;justify-content:center;margin-top:34px;">
-          <div style="width:138px;height:140px;background:#fff;border-radius:22px;box-shadow:0 6px 0 #d4ebf8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:10px;">
-            <div style="width:74px;height:50px;background:#222a35;border-radius:7px;position:relative;box-shadow:inset 0 2px 3px rgba(255,255,255,.12);">
-              <div style="position:absolute;top:8px;left:8px;width:26px;height:18px;background:#3a4658;border-radius:3px;"></div>
-              <div style="position:absolute;bottom:7px;left:8px;display:flex;gap:4px;"><div style="width:6px;height:6px;border-radius:2px;background:#ffd23f;"></div><div style="width:6px;height:6px;border-radius:2px;background:#4caf50;"></div><div style="width:6px;height:6px;border-radius:2px;background:#ff5a5a;"></div><div style="width:6px;height:6px;border-radius:2px;background:#2f88ff;"></div></div>
-              <div style="position:absolute;top:9px;right:7px;width:14px;height:9px;background:#9aa6b6;border-radius:2px;"></div>
+        <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:8px;margin-top:14px;">
+          <div style="font-family:'Fredoka';font-weight:700;font-size:16px;color:#2b4a63;background:#ffffffb8;padding:7px 20px;border-radius:999px;box-shadow:0 4px 0 #d4ebf8;">Smart machine components</div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+            <div style="width:132px;height:108px;background:#fff;border-radius:18px;box-shadow:0 5px 0 #d4ebf8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:8px;">
+              <img src="assets/components/arduino.png" alt="" style="width:100px;height:52px;object-fit:contain;filter:drop-shadow(0 6px 8px rgba(0,0,0,.14));" />
+              <div style="font-family:'Fredoka';font-weight:700;font-size:15px;color:#2b4a63;text-align:center;">Arduino</div>
             </div>
-            <div style="font-family:'Fredoka';font-weight:600;font-size:14px;color:#2b4a63;text-align:center;">Controller Board</div>
-          </div>
-          <div style="width:138px;height:140px;background:#fff;border-radius:22px;box-shadow:0 6px 0 #d4ebf8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:10px;">
-            <div style="width:42px;height:58px;background:linear-gradient(160deg,#3a97ff,#1f6fe0);border-radius:8px;position:relative;box-shadow:inset 0 2px 3px rgba(255,255,255,.3);">
-              <div style="position:absolute;top:0;left:0;right:0;height:12px;background:#e23b3b;border-radius:8px 8px 0 0;"></div>
-              <div style="position:absolute;top:6px;left:7px;width:8px;height:5px;background:#cfd9e6;border-radius:2px;"></div>
-              <div style="position:absolute;bottom:9px;left:0;right:0;text-align:center;color:#fff;font-family:'Fredoka';font-weight:700;font-size:15px;">9V</div>
+            <div style="width:132px;height:108px;background:#fff;border-radius:18px;box-shadow:0 5px 0 #d4ebf8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:8px;">
+              <img src="assets/components/jumper_wires.png" alt="" style="width:98px;height:52px;object-fit:contain;filter:drop-shadow(0 6px 8px rgba(0,0,0,.14));" />
+              <div style="font-family:'Fredoka';font-weight:700;font-size:15px;color:#2b4a63;text-align:center;">Jumper Wires</div>
             </div>
-            <div style="font-family:'Fredoka';font-weight:600;font-size:14px;color:#2b4a63;text-align:center;">9V Battery</div>
-          </div>
-          <div style="width:138px;height:140px;background:#fff;border-radius:22px;box-shadow:0 6px 0 #d4ebf8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:10px;">
-            <div style="width:74px;height:50px;display:flex;flex-direction:column;justify-content:center;gap:7px;">
-              <div style="height:7px;border-radius:6px;background:#ff5a5a;"></div>
-              <div style="height:7px;border-radius:6px;background:#ffd23f;width:90%;"></div>
-              <div style="height:7px;border-radius:6px;background:#2f88ff;"></div>
-              <div style="height:7px;border-radius:6px;background:#4caf50;width:85%;"></div>
+            <div style="width:132px;height:108px;background:#fff;border-radius:18px;box-shadow:0 5px 0 #d4ebf8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:8px;">
+              <img src="assets/components/rain_sensor.png" alt="" style="width:100px;height:52px;object-fit:contain;filter:drop-shadow(0 6px 8px rgba(0,0,0,.14));" />
+              <div style="font-family:'Fredoka';font-weight:700;font-size:15px;color:#2b4a63;text-align:center;">Rain Sensor</div>
             </div>
-            <div style="font-family:'Fredoka';font-weight:600;font-size:14px;color:#2b4a63;text-align:center;">Wires</div>
-          </div>
-          <div style="width:138px;height:140px;background:#fff;border-radius:22px;box-shadow:0 6px 0 #d4ebf8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:10px;">
-            <div style="width:54px;height:46px;background:linear-gradient(160deg,#3a7bf0,#2456c8);border-radius:7px;position:relative;box-shadow:inset 0 2px 3px rgba(255,255,255,.25);">
-              <div style="position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid #cfd8e3;"></div>
-              <div style="position:absolute;top:7px;left:8px;width:38px;height:9px;border-radius:3px;background:rgba(255,255,255,.25);"></div>
+            <div style="width:132px;height:108px;background:#fff;border-radius:18px;box-shadow:0 5px 0 #d4ebf8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:8px;">
+              <img src="assets/components/servo_motor.png" alt="" style="width:96px;height:52px;object-fit:contain;filter:drop-shadow(0 6px 8px rgba(0,0,0,.14));" />
+              <div style="font-family:'Fredoka';font-weight:700;font-size:15px;color:#2b4a63;text-align:center;">Servo Motor</div>
             </div>
-            <div style="font-family:'Fredoka';font-weight:600;font-size:14px;color:#2b4a63;text-align:center;">Servo Motor</div>
           </div>
-          <div style="width:138px;height:140px;background:#fff;border-radius:22px;box-shadow:0 6px 0 #d4ebf8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:10px;">
-            <div style="width:50px;height:60px;background:repeating-linear-gradient(90deg,#a86f31 0 5px,#5e3d18 5px 8px);border-radius:5px;border:2px solid #5e3d18;box-shadow:inset 0 0 0 2px #c98a45;"></div>
-            <div style="font-family:'Fredoka';font-weight:600;font-size:14px;color:#2b4a63;text-align:center;">Rain Sensor</div>
-          </div>
-          <div style="width:138px;height:140px;background:#fff;border-radius:22px;box-shadow:0 6px 0 #d4ebf8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:10px;">
-            <div style="width:60px;height:54px;display:flex;justify-content:center;gap:4px;transform:rotate(-6deg);">
-              <div style="width:5px;height:52px;background:#ffd23f;border-radius:3px;"></div><div style="width:5px;height:52px;background:#ffcf33;border-radius:3px;"></div><div style="width:5px;height:52px;background:#ffd23f;border-radius:3px;"></div><div style="width:5px;height:52px;background:#f6b800;border-radius:3px;"></div><div style="width:5px;height:52px;background:#ffd23f;border-radius:3px;"></div><div style="width:5px;height:52px;background:#ffcf33;border-radius:3px;"></div>
+          <div style="font-family:'Fredoka';font-weight:700;font-size:16px;color:#6b93b2;background:#ffffff9e;padding:7px 20px;border-radius:999px;box-shadow:0 4px 0 #d4ebf8;">Other essential components</div>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+            <div style="width:132px;height:94px;background:rgba(255,255,255,.94);border-radius:18px;box-shadow:0 5px 0 #d4ebf8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:8px;">
+              <img src="uploads/battery.jpeg" alt="" style="width:62px;height:46px;object-fit:contain;filter:drop-shadow(0 6px 8px rgba(0,0,0,.14));" />
+              <div style="font-family:'Fredoka';font-weight:700;font-size:15px;color:#2b4a63;text-align:center;">9V Battery</div>
             </div>
-            <div style="font-family:'Fredoka';font-weight:600;font-size:14px;color:#2b4a63;text-align:center;">Straws</div>
+            <div style="width:132px;height:94px;background:rgba(255,255,255,.94);border-radius:18px;box-shadow:0 5px 0 #d4ebf8;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:8px;">
+              <div style="width:72px;height:40px;display:flex;justify-content:center;gap:5px;transform:rotate(-6deg);">
+                <div style="width:6px;height:52px;background:#ffd23f;border-radius:3px;"></div><div style="width:6px;height:52px;background:#ffcf33;border-radius:3px;"></div><div style="width:6px;height:52px;background:#ffd23f;border-radius:3px;"></div><div style="width:6px;height:52px;background:#f6b800;border-radius:3px;"></div><div style="width:6px;height:52px;background:#ffd23f;border-radius:3px;"></div><div style="width:6px;height:52px;background:#ffcf33;border-radius:3px;"></div>
+              </div>
+              <div style="font-family:'Fredoka';font-weight:700;font-size:15px;color:#2b4a63;text-align:center;">Straws</div>
+            </div>
           </div>
         </div>
 
-        <button onClick="{{ start }}" style="margin-top:38px;border:none;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:700;font-size:28px;color:#fff;background:linear-gradient(180deg,#46c95f,#2ea84a);padding:18px 52px;border-radius:50px;box-shadow:0 7px 0 #1f8a3a;animation:pulse 2s ease-in-out infinite;" style-hover="transform:translateY(3px);box-shadow:0 4px 0 #1f8a3a;">Let's Build! ▶</button>
+        <button onClick="{{ start }}" style="margin-top:12px;border:none;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;color:#fff;background:linear-gradient(180deg,#46c95f,#2ea84a);padding:12px 42px;border-radius:50px;box-shadow:0 6px 0 #1f8a3a;animation:pulse 2s ease-in-out infinite;" style-hover="transform:translateY(3px);box-shadow:0 4px 0 #1f8a3a;">Let's Build! ▶</button>
         <sc-if value="{{ showFunFact }}" hint-placeholder-val="{{ true }}">
-          <div style="margin-top:22px;font-family:'Nunito';font-weight:800;font-size:16px;color:#6b93b2;background:#ffffffaa;padding:10px 20px;border-radius:30px;">💡 Fun Fact: the rain sensor feels water and tells the roof to close!</div>
+          <div style="margin-top:10px;font-family:'Nunito';font-weight:800;font-size:15px;color:#6b93b2;background:#ffffffaa;padding:9px 20px;border-radius:30px;">💡 Fun Fact: the rain sensor feels water and tells the roof to close!</div>
         </sc-if>
       </div>
     </sc-if>
 
     <!-- ============ APP (steps + play) ============ -->
     <sc-if value="{{ isApp }}" hint-placeholder-val="{{ false }}">
-      <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;padding:22px 40px;position:relative;">
+      <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:104px 40px 60px;position:relative;">
 
         <!-- top bar -->
-        <div style="width:100%;display:flex;align-items:center;justify-content:space-between;">
-          <button onClick="{{ buildAgain }}" style="border:none;cursor:pointer;background:#ffffff;color:#2b6fb0;font-family:'Fredoka';font-weight:600;font-size:15px;padding:9px 18px;border-radius:30px;box-shadow:0 4px 0 #cfe6f5;" style-hover="transform:translateY(2px);box-shadow:0 2px 0 #cfe6f5;">⟲ Restart</button>
-          <div></div>
-          <div style="width:48px;height:48px;"></div>
+        <div style="position:absolute;top:14px;right:62px;display:flex;align-items:center;justify-content:flex-end;gap:12px;z-index:45;">
+          <button onClick="{{ buildAgain }}" style="height:34px;border:none;cursor:pointer;background:#ffffff;color:#2b6fb0;font-family:'Fredoka';font-weight:600;font-size:12px;padding:0 14px;border-radius:20px;box-shadow:0 3px 0 #cfe6f5;" style-hover="transform:translateY(2px);box-shadow:0 1px 0 #cfe6f5;">⟲ Restart</button>
         </div>
 
-        <sc-if value="{{ isSteps }}" hint-placeholder-val="{{ true }}">
-          <div style="position:absolute;left:52px;top:180px;z-index:30;display:flex;flex-direction:column;gap:8px;align-items:center;background:rgba(255,255,255,.58);border:2px solid rgba(255,255,255,.86);border-radius:24px;padding:10px 8px;box-shadow:0 7px 0 rgba(80,150,190,.16);">
-            <sc-for list="{{ stepDots }}" as="dot" hint-placeholder-count="9">
-              <div style="{{ dot.style }}">{{ dot.num }}</div>
-            </sc-for>
-          </div>
-        </sc-if>
-
-        <!-- title -->
-        <sc-if value="{{ isSteps }}" hint-placeholder-val="{{ true }}">
-          <div style="display:flex;align-items:center;gap:14px;margin-top:14px;">
-            <div style="{{ stepBadgeStyle }}">{{ stepBadge }}</div>
-            <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:34px;color:#1f3b52;">{{ stepTitle }}</div>
-          </div>
-        </sc-if>
         <sc-if value="{{ isPlay }}" hint-placeholder-val="{{ false }}">
           <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:32px;color:#1f3b52;margin-top:12px;">{{ celebText }}</div>
         </sc-if>
 
-        <!-- SCENE CARD -->
-        <div style="{{ sceneCardStyle }}">
-          <div style="position:relative;width:700px;height:420px;margin:14px auto 0;">
-
-            <!-- ground -->
-            <div style="position:absolute;left:0;right:0;bottom:0;height:84px;background:linear-gradient(180deg,#bfe69a,#a6d97f);z-index:1;"></div>
-            <div style="position:absolute;left:0;right:0;bottom:0;height:18px;background:#8fc96a;z-index:1;"></div>
-
-            <!-- SUN -->
-            <sc-if value="{{ showSun }}" hint-placeholder-val="{{ true }}">
-            <div style="position:absolute;left:556px;top:8px;width:84px;height:84px;z-index:2;">
-              <div style="position:relative;width:84px;height:84px;animation:bob 3s ease-in-out infinite;">
-                <div style="position:absolute;inset:0;animation:spin 16s linear infinite;">
-                  <sc-for list="{{ rays }}" as="r" hint-placeholder-count="8"><div style="{{ r.style }}"></div></sc-for>
+        <div style="{{ tutorialLayoutStyle }}">
+          <sc-if value="{{ isSteps }}" hint-placeholder-val="{{ true }}">
+            <div style="{{ stepGuideCardStyle }}">
+              <sc-for list="{{ stepGuideRows }}" as="row" hint-placeholder-count="8">
+                <div style="{{ row.rowStyle }}">
+                  <div style="{{ row.dotStyle }}">{{ row.num }}</div>
+                  <div style="min-width:0;">
+                    <div style="{{ row.titleStyle }}">{{ row.title }}</div>
+                  </div>
                 </div>
-                <div style="position:absolute;left:18px;top:18px;width:48px;height:48px;border-radius:50%;background:radial-gradient(circle at 35% 32%,#ffe680,#ffb300);box-shadow:0 0 22px rgba(255,196,0,.6);"></div>
-              </div>
-            </div>
-            </sc-if>
-
-            <!-- CLOUD + RAIN -->
-            <sc-if value="{{ showCloud }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;left:360px;top:14px;width:120px;height:54px;z-index:3;">
-              <div style="position:relative;width:120px;height:54px;animation:bob 4s ease-in-out infinite;">
-                <div style="position:absolute;left:8px;bottom:0;width:104px;height:30px;background:#9fb0c6;border-radius:18px;"></div>
-                <div style="position:absolute;left:6px;bottom:14px;width:44px;height:44px;border-radius:50%;background:#b9c6d8;"></div>
-                <div style="position:absolute;left:38px;bottom:20px;width:54px;height:54px;border-radius:50%;background:#c7d3e2;"></div>
-                <div style="position:absolute;left:74px;bottom:14px;width:40px;height:40px;border-radius:50%;background:#b9c6d8;"></div>
-              </div>
-            </div>
-            <sc-for list="{{ raindrops }}" as="rd" hint-placeholder-count="14"><div style="{{ rd.style }}"></div></sc-for>
-            </sc-if>
-
-            <!-- HOUSE BODY -->
-            <div style="position:absolute;left:180px;top:96px;width:330px;height:266px;background:linear-gradient(180deg,#e0b277,#d09a55);border-radius:14px;border:3px solid #b07a3e;box-shadow:0 8px 0 #a06f38;z-index:2;">
-              <div style="position:absolute;left:16px;top:16px;right:16px;bottom:16px;background:linear-gradient(180deg,#cf9d5d,#c08f4d);border-radius:8px;box-shadow:inset 0 6px 14px rgba(0,0,0,.18);"></div>
-            </div>
-
-            <!-- door -->
-            <div style="position:absolute;left:212px;top:222px;width:78px;height:140px;background:linear-gradient(180deg,#d7dde2,#c2c9d0);border-radius:8px 8px 0 0;border:3px solid #aeb6bf;z-index:3;">
-              <div style="position:absolute;right:10px;top:64px;width:9px;height:9px;border-radius:50%;background:#8a929c;"></div>
-            </div>
-
-            <!-- window -->
-            <div style="position:absolute;left:372px;top:140px;width:106px;height:96px;background:linear-gradient(180deg,#cdeeff,#a9ddf7);border-radius:46px 46px 8px 8px;border:4px solid #ffffff;box-shadow:0 3px 6px rgba(0,0,0,.12);z-index:3;">
-              <div style="position:absolute;left:50%;top:8px;bottom:8px;width:3px;background:#ffffff;transform:translateX(-50%);"></div>
-              <div style="position:absolute;left:8px;right:8px;top:52%;height:3px;background:#ffffff;"></div>
-            </div>
-            <div style="position:absolute;left:366px;top:232px;width:120px;height:16px;background:linear-gradient(180deg,#5ec45e,#3da53d);border-radius:5px;z-index:3;box-shadow:0 3px 0 #2f8a2f;"></div>
-
-            <!-- clothes rack pole -->
-            <div style="position:absolute;left:206px;top:300px;width:280px;height:6px;background:#9a6a36;border-radius:4px;z-index:4;"></div>
-            <div style="position:absolute;left:208px;top:300px;width:6px;height:60px;background:#9a6a36;border-radius:3px;z-index:4;"></div>
-            <div style="position:absolute;left:480px;top:300px;width:6px;height:60px;background:#9a6a36;border-radius:3px;z-index:4;"></div>
-
-            <!-- clothes -->
-            <sc-if value="{{ showClothes }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;left:214px;top:300px;width:282px;height:70px;z-index:5;">
-              <div style="position:absolute;left:18px;top:6px;width:34px;height:42px;background:#ff5a5a;border-radius:7px 7px 11px 11px;transform-origin:50% 0;animation:sway 2.6s ease-in-out infinite;box-shadow:inset 0 -6px 8px rgba(0,0,0,.12);"></div>
-              <div style="position:absolute;left:64px;top:6px;width:34px;height:48px;background:#ffd23f;border-radius:7px 7px 11px 11px;transform-origin:50% 0;animation:sway 2.6s ease-in-out .2s infinite;box-shadow:inset 0 -6px 8px rgba(0,0,0,.1);"></div>
-              <div style="position:absolute;left:110px;top:6px;width:34px;height:40px;background:#4caf50;border-radius:7px 7px 11px 11px;transform-origin:50% 0;animation:sway 2.6s ease-in-out .4s infinite;box-shadow:inset 0 -6px 8px rgba(0,0,0,.12);"></div>
-              <div style="position:absolute;left:156px;top:6px;width:34px;height:50px;background:#2f88ff;border-radius:7px 7px 11px 11px;transform-origin:50% 0;animation:sway 2.6s ease-in-out .6s infinite;box-shadow:inset 0 -6px 8px rgba(0,0,0,.12);"></div>
-              <div style="position:absolute;left:202px;top:6px;width:34px;height:44px;background:#ff8a00;border-radius:7px 7px 11px 11px;transform-origin:50% 0;animation:sway 2.6s ease-in-out .8s infinite;box-shadow:inset 0 -6px 8px rgba(0,0,0,.1);"></div>
-              <div style="position:absolute;left:248px;top:6px;width:34px;height:46px;background:#9b5de5;border-radius:7px 7px 11px 11px;transform-origin:50% 0;animation:sway 2.6s ease-in-out 1s infinite;box-shadow:inset 0 -6px 8px rgba(0,0,0,.12);"></div>
-            </div>
-            </sc-if>
-
-            <!-- wires -->
-            <sc-if value="{{ showWires }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;left:0;top:0;width:700px;height:420px;z-index:7;pointer-events:none;">
-              <svg width="700" height="420" viewBox="0 0 700 420" style="position:absolute;left:0;top:0;pointer-events:none;">
-                <path d="M598 322 Q470 410 300 396" fill="none" stroke="#e23b3b" stroke-width="5" stroke-linecap="round"></path>
-                <path d="M270 392 Q210 300 206 138" fill="none" stroke="#ff8a00" stroke-width="5" stroke-linecap="round"></path>
-                <path d="M330 392 Q360 392 386 392" fill="none" stroke="#2b2b2b" stroke-width="5" stroke-linecap="round"></path>
-              </svg>
-            </div>
-            </sc-if>
-
-            <!-- controller board -->
-            <sc-if value="{{ showBoard }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;left:196px;top:372px;width:176px;height:44px;background:#222a35;border-radius:8px;border:2px solid #11161f;box-shadow:0 4px 0 #0c1118;z-index:9;">
-              <div style="position:absolute;top:8px;left:10px;width:40px;height:22px;background:#3a4658;border-radius:4px;"></div>
-              <div style="position:absolute;bottom:8px;left:10px;display:flex;gap:5px;"><div style="width:7px;height:7px;border-radius:2px;background:#ffd23f;"></div><div style="width:7px;height:7px;border-radius:2px;background:#4caf50;"></div><div style="width:7px;height:7px;border-radius:2px;background:#ff5a5a;"></div><div style="width:7px;height:7px;border-radius:2px;background:#2f88ff;"></div><div style="width:7px;height:7px;border-radius:2px;background:#ff8a00;"></div></div>
-              <div style="position:absolute;top:11px;right:12px;width:18px;height:12px;background:#9aa6b6;border-radius:2px;"></div>
-            </div>
-            </sc-if>
-
-            <!-- battery -->
-            <sc-if value="{{ showBattery }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;left:388px;top:374px;width:96px;height:42px;background:linear-gradient(160deg,#3a97ff,#1f6fe0);border-radius:8px;box-shadow:0 4px 0 #1657b8;z-index:9;">
-              <div style="position:absolute;top:0;left:0;right:0;height:11px;background:#e23b3b;border-radius:8px 8px 0 0;"></div>
-              <div style="position:absolute;bottom:7px;left:0;right:0;text-align:center;color:#fff;font-family:'Fredoka';font-weight:700;font-size:15px;">9V</div>
-            </div>
-            </sc-if>
-
-            <!-- rain sensor (outside) -->
-            <sc-if value="{{ showSensor }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;left:556px;top:250px;width:84px;height:118px;z-index:6;">
-              <div style="position:absolute;left:18px;top:62px;width:8px;height:46px;background:#ffd23f;border-radius:4px;transform:rotate(8deg);"></div>
-              <div style="position:relative;width:64px;height:80px;transform:rotate(-10deg);background:repeating-linear-gradient(90deg,#a86f31 0 5px,#5e3d18 5px 8px);border-radius:6px;border:2px solid #5e3d18;box-shadow:inset 0 0 0 2px #c98a45;"></div>
-            </div>
-            </sc-if>
-
-            <!-- servo -->
-            <sc-if value="{{ showServo }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;left:178px;top:56px;width:54px;height:44px;background:linear-gradient(160deg,#3a7bf0,#2456c8);border-radius:8px;border:2px solid #1d4fbf;box-shadow:0 4px 0 #1d4fbf;z-index:6;">
-              <div style="position:absolute;top:-9px;left:50%;transform:translateX(-50%);width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid #cfd8e3;"></div>
-              <div style="position:absolute;top:8px;left:7px;width:34px;height:9px;border-radius:3px;background:rgba(255,255,255,.28);"></div>
-            </div>
-            </sc-if>
-
-            <!-- ROOF (straw, sliding lid) -->
-            <sc-if value="{{ roofClosedV }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;left:176px;top:92px;width:352px;height:52px;border-radius:10px;background:repeating-linear-gradient(91deg,#ffd23f 0 7px,#f3b600 7px 12px);border:2px solid #e0a800;box-shadow:0 5px 0 rgba(0,0,0,.14);transform-origin:0% 100%;z-index:8;transform:translateX(0px) rotate(0deg);transition:transform .5s cubic-bezier(.4,0,.2,1);"></div>
-            </sc-if>
-            <sc-if value="{{ roofOpenV }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;left:176px;top:92px;width:352px;height:52px;border-radius:10px;background:repeating-linear-gradient(91deg,#ffd23f 0 7px,#f3b600 7px 12px);border:2px solid #e0a800;box-shadow:0 5px 0 rgba(0,0,0,.14);transform-origin:0% 100%;z-index:8;transform:translateX(156px) rotate(-7deg);transition:transform .5s cubic-bezier(.4,0,.2,1);"></div>
-            </sc-if>
-
-          </div>
-          <div style="{{ weatherOverlayStyle }}"></div>
-        </div>
-
-        <!-- STEPS controls -->
-        <sc-if value="{{ isSteps }}" hint-placeholder-val="{{ true }}">
-          <div style="{{ stepCaptionStyle }}">{{ stepCaption }}</div>
-          <sc-if value="{{ isStep8 }}" hint-placeholder-val="{{ false }}">
-            <div style="display:flex;gap:14px;margin-top:10px;align-items:center;">
-              <button onClick="{{ makeRain }}" style="border:none;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:700;font-size:18px;white-space:nowrap;color:#fff;background:linear-gradient(180deg,#3a97ff,#1f6fe0);padding:11px 24px;border-radius:36px;box-shadow:0 5px 0 #1657b8;" style-hover="transform:translateY(2px);box-shadow:0 3px 0 #1657b8;">{{ rainLabel }}</button>
-              <button onClick="{{ makeSun }}" style="border:none;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:700;font-size:18px;white-space:nowrap;color:#fff;background:linear-gradient(180deg,#ffc24d,#ff9f1c);padding:11px 24px;border-radius:36px;box-shadow:0 5px 0 #e07f00;" style-hover="transform:translateY(2px);box-shadow:0 3px 0 #e07f00;">{{ sunLabel }}</button>
+              </sc-for>
             </div>
           </sc-if>
-          <div style="position:absolute;right:20px;top:330px;display:flex;flex-direction:column;gap:30px;align-items:stretch;z-index:35;width:120px;">
-            <button onClick="{{ prev }}" style="border:none;cursor:pointer;font-family:'Fredoka';font-weight:600;font-size:20px;color:#5b86a6;background:#fff;padding:13px 30px;border-radius:40px;box-shadow:0 5px 0 #cfe6f5;" style-hover="transform:translateY(2px);box-shadow:0 3px 0 #cfe6f5;">◀ Back</button>
-            <button onClick="{{ next }}" style="border:none;cursor:pointer;font-family:'Fredoka';font-weight:700;font-size:22px;color:#fff;background:linear-gradient(180deg,#46c95f,#2ea84a);padding:14px 40px;border-radius:40px;box-shadow:0 6px 0 #1f8a3a;" style-hover="transform:translateY(2px);box-shadow:0 4px 0 #1f8a3a;">{{ nextLabel }}</button>
+
+          <div style="{{ sceneColumnStyle }}">
+            <!-- SCENE CARD -->
+            <div style="{{ sceneCardStyle }}">
+              <div style="{{ photoStageStyle }}">
+                <img src="{{ sceneImageSrc }}" alt="Rain-sensing smart dryer build" style="{{ sceneImageStyle }}" />
+                <sc-if value="{{ showHighlight }}" hint-placeholder-val="{{ true }}">
+                  <div style="{{ highlightStyle }}">{{ highlightArrow }}</div>
+                </sc-if>
+                <sc-if value="{{ showSunEffect }}" hint-placeholder-val="{{ false }}">
+                  <div style="{{ sunBeamStyle }}"></div>
+                  <div style="{{ sunWarmthStyle }}"></div>
+                </sc-if>
+              </div>
+              <sc-if value="{{ showRainEffect }}" hint-placeholder-val="{{ false }}">
+                <div style="{{ rainLayerStyle }}">
+                  <sc-for list="{{ rainStreaks }}" as="drop" hint-placeholder-count="24">
+                    <div style="{{ drop.style }}"></div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <div style="{{ weatherOverlayStyle }}"></div>
+            </div>
+
+            <!-- STEPS controls -->
+            <sc-if value="{{ isSteps }}" hint-placeholder-val="{{ true }}">
+              <sc-if value="{{ isStep8 }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:4px;margin-top:10px;align-items:center;justify-content:center;background:rgba(255,255,255,.56);border:2px solid rgba(255,255,255,.8);border-radius:999px;padding:4px;box-shadow:0 4px 0 rgba(80,150,190,.16);">
+                  <button onClick="{{ makeRain }}" style="{{ rainToggleStyle }}" style-hover="transform:translateY(1px);">☔ Raining</button>
+                  <button onClick="{{ makeSun }}" style="{{ sunToggleStyle }}" style-hover="transform:translateY(1px);">☀ Sunshine</button>
+                </div>
+              </sc-if>
+              <div style="display:flex;gap:14px;justify-content:center;margin-top:14px;width:100%;">
+                <button onClick="{{ prev }}" style="{{ navBackStyle }}" style-hover="transform:translateY(2px);box-shadow:0 3px 0 #cfe6f5;">◀ Back</button>
+                <button onClick="{{ next }}" style="{{ navNextStyle }}" style-hover="transform:translateY(2px);box-shadow:0 4px 0 #064A93;">{{ nextLabel }}</button>
+              </div>
+            </sc-if>
           </div>
-        </sc-if>
+        </div>
 
         <!-- PLAY controls -->
         <sc-if value="{{ isPlay }}" hint-placeholder-val="{{ false }}">
-          <sc-if value="{{ raining }}" hint-placeholder-val="{{ false }}">
-            <div style="margin-top:14px;font-family:'Nunito',sans-serif;font-weight:900;font-size:19px;white-space:nowrap;color:#fff;background:#2f88ff;padding:11px 28px;border-radius:40px;box-shadow:0 5px 0 #1f6fe0;text-align:center;">☔ Rain! The smart roof closed to keep the clothes dry.</div>
-          </sc-if>
-          <sc-if value="{{ notRaining }}" hint-placeholder-val="{{ true }}">
-            <div style="margin-top:14px;font-family:'Nunito',sans-serif;font-weight:900;font-size:19px;white-space:nowrap;color:#fff;background:#ff9f1c;padding:11px 28px;border-radius:40px;box-shadow:0 5px 0 #e07f00;text-align:center;">☀ Sunny! The roof opened so the clothes can dry.</div>
-          </sc-if>
           <div style="display:flex;gap:20px;margin-top:14px;align-items:center;">
             <button onClick="{{ makeRain }}" style="border:none;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;white-space:nowrap;color:#fff;background:linear-gradient(180deg,#3a97ff,#1f6fe0);padding:14px 34px;border-radius:40px;box-shadow:0 6px 0 #1657b8;" style-hover="transform:translateY(2px);box-shadow:0 4px 0 #1657b8;">{{ rainLabel }}</button>
             <button onClick="{{ makeSun }}" style="border:none;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:700;font-size:22px;white-space:nowrap;color:#fff;background:linear-gradient(180deg,#ffc24d,#ff9f1c);padding:14px 34px;border-radius:40px;box-shadow:0 6px 0 #e07f00;" style-hover="transform:translateY(2px);box-shadow:0 4px 0 #e07f00;">{{ sunLabel }}</button>
           </div>
+          <button onClick="{{ watchOutro }}" style="margin-top:16px;border:none;cursor:pointer;font-family:'Fredoka',sans-serif;font-weight:700;font-size:24px;white-space:nowrap;color:#fff;background:linear-gradient(180deg,#4ba2ff,#2f88ff);padding:16px 44px;border-radius:42px;box-shadow:0 7px 0 #0b63c7,0 14px 26px rgba(47,136,255,.28);animation:pulse 2.2s ease-in-out infinite;" style-hover="transform:translateY(2px);box-shadow:0 5px 0 #0b63c7;">Watch the outro ▶</button>
         </sc-if>
 
       </div>
@@ -305,6 +197,7 @@ class Component extends DCLogic {
     super(props);
     this.state = {
       screen:'intro', step:0, raining:false,
+      weatherPreview:null,
       soundOn: this.props.soundOn !== false,
       confetti:[], scale: 0.85
     };
@@ -327,6 +220,14 @@ class Component extends DCLogic {
       dur:  (0.7 + Math.random()*0.4).toFixed(2),
       delay:(Math.random()*1.1).toFixed(2)
     }));
+    this.rainStreaks = Array.from({length:34},(_,i)=>({
+      left:(-5 + Math.random()*110).toFixed(1),
+      top:(-30 - Math.random()*120).toFixed(1),
+      length:(34 + Math.random()*34).toFixed(0),
+      dur:(0.72 + Math.random()*0.52).toFixed(2),
+      delay:(Math.random()*1.2).toFixed(2),
+      opacity:(0.38 + Math.random()*0.5).toFixed(2)
+    }));
     this.rayIdx = [0,1,2,3,4,5,6,7];
   }
 
@@ -335,8 +236,11 @@ class Component extends DCLogic {
   componentDidUpdate(){}
 
   fit(){
-    const s = Math.min(window.innerWidth/1100, window.innerHeight/772);
-    this.setState({ scale: Math.max(0.42, Math.min(s, 1.35)) });
+    const safeW = Math.max(320, window.innerWidth || 1080);
+    const safeH = Math.max(360, window.innerHeight || 640);
+    const reserveY = safeH < 560 ? 18 : 0;
+    const s = Math.min((safeW - 16) / 1080, (safeH - reserveY) / 640);
+    this.setState({ scale: Math.max(0.28, Math.min(s, 1.35)) });
   }
 
   /* ---------- audio ---------- */
@@ -349,17 +253,16 @@ class Component extends DCLogic {
   notifyDone(done){ try{ window.parent&&window.parent.postMessage({type:'smartDryerSimulationDone',done:!!done},'*'); }catch(e){} }
 
   /* ---------- actions ---------- */
-  start(){ this.ensureAudio(); this.sPop(); this.notifyDone(false); this.setState({screen:'steps', step:1, raining:false}); }
+  start(){ this.ensureAudio(); this.sPop(); this.notifyDone(false); this.setState({screen:'steps', step:1, raining:false, weatherPreview:null}); }
   next(){ this.ensureAudio(); const n=this.state.step;
-    if(n<9){ this.sPop(); this.setState({step:n+1, raining:false}); }
-    else { this.sCheer(); this.spawnConfetti(); this.notifyDone(true); this.setState({screen:'play', raining:false}); } }
+    if(n<8){ this.sPop(); this.setState({step:n+1, raining:false, weatherPreview:null}); }
+    else { this.watchOutro(); } }
   prev(){ this.ensureAudio(); this.sPop(); const n=this.state.step;
-    this.notifyDone(false); if(n>1) this.setState({step:n-1, raining:false}); else this.setState({screen:'intro'}); }
-  makeRain(){ this.ensureAudio(); this.sRain(); this.setState({raining:true}); }
-  makeSun(){ this.ensureAudio(); this.sSun(); this.setState({raining:false}); }
-  buildAgain(){ this.ensureAudio(); this.sPop(); this.notifyDone(false); clearInterval(this._demo); this.setState({screen:'intro', step:0, raining:false, confetti:[]}); }
-  toggleSound(){ this.ensureAudio(); this.setState(s=>({soundOn:!s.soundOn})); }
-
+    this.notifyDone(false); if(n>1) this.setState({step:n-1, raining:false, weatherPreview:null}); else this.setState({screen:'intro', weatherPreview:null}); }
+  makeRain(){ this.ensureAudio(); this.sRain(); this.setState({raining:true, weatherPreview:'rain'}); }
+  makeSun(){ this.ensureAudio(); this.sSun(); this.setState({raining:false, weatherPreview:'sunny'}); }
+  watchOutro(){ this.ensureAudio(); this.sPop(); try{ window.parent&&window.parent.postMessage({type:'smartDryerSimulationDone',done:true,watchOutro:true},'*'); }catch(e){} }
+  buildAgain(){ this.ensureAudio(); this.sPop(); this.notifyDone(false); clearInterval(this._demo); this.setState({screen:'intro', step:0, raining:false, weatherPreview:null, confetti:[]}); }
   spawnConfetti(){
     const colors=['#ff5a5a','#ffd23f','#4caf50','#2f88ff','#ff8a00','#9b5de5'];
     const arr = Array.from({length:72},(_,i)=>({
@@ -375,7 +278,7 @@ class Component extends DCLogic {
 
   renderVals(){
     const TRANS='all .55s cubic-bezier(.34,1.56,.64,1)';
-    const {screen, step:rs, raining, soundOn, scale, confetti} = this.state;
+    const {screen, step:rs, raining, weatherPreview, scale, confetti} = this.state;
     const isIntro = screen==='intro';
     const isSteps = screen==='steps';
     const isPlay  = screen==='play';
@@ -388,14 +291,11 @@ class Component extends DCLogic {
       {t:'Place the Servo Motor', c:'Stick the servo motor on the top corner — it will move the roof!', a:'#2f88ff'},
       {t:'Attach the Straw Roof', c:'Clip the yellow straws onto the servo arm. This is your sliding roof!', a:'#ff8a00'},
       {t:'Place the Rain Sensor', c:'Pop the rain sensor outside where it can feel the raindrops.', a:'#8a4fff'},
-      {t:'Make the Connections', c:'Connect the sensor, the board, and the servo with colorful wires.', a:'#ff5a5a'},
-      {t:'Insert the Battery', c:'Snap in the 9V battery to give your dryer some power! ⚡', a:'#2bb24c'},
-      {t:'Hang the Clothes', c:'Hang the bright clothes on the rack so they can dry.', a:'#2f88ff'},
-      {t:"It's Working!", c:'Try it yourself! Tap to make it rain, then bring out the sun.', a:'#ff8a00'},
-      {t:'All Set!', c:'Hooray! Your Rain-Sensing Smart Clothes Dryer is ready to play with!', a:'#8a4fff'}
+      {t:'Mount the Arduino', c:'Add the controller board so the dryer can decide what to do.', a:'#ff5a5a'},
+      {t:'Connect the Wires', c:'Connect the sensor, Arduino, battery, and servo so the whole dryer can work.', a:'#2f88ff'},
+      {t:'Insert the Battery', c:'Snap in the 9V battery to give your dryer some power!', a:'#2bb24c'},
+      {t:"It's Working!", c:'Try it yourself! Tap to make it rain, then bring out the sun.', a:'#ff8a00'}
     ];
-    const cur = STEPS[(rs||1)-1] || STEPS[0];
-
     // visibility booleans (sc-if drives mount/unmount — reliably reactive)
     const showServo   = n>=2;
     const showRoof    = n>=3;
@@ -422,9 +322,17 @@ class Component extends DCLogic {
       opacity:raining?1:0,
       transition:'opacity 1s ease'
     };
+    const tutorialLayoutStyle = {
+      width:'100%',display:'flex',alignItems:'flex-start',justifyContent:isSteps?'center':'center',
+      gap:isSteps?'26px':'0',marginTop:isSteps?'0':'14px'
+    };
+    const sceneColumnStyle = {
+      display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'flex-start',
+      width:isSteps?'642px':'760px',flexShrink:0
+    };
     const sceneCardStyle = {
-      marginTop:'14px',width:'760px',height:'448px',
-      background:raining?'linear-gradient(180deg,#879bb0 0%,#9caab4 100%)':'linear-gradient(180deg,#dff4ff 0%,#eafaff 100%)',
+      marginTop:'0',width:isSteps?'642px':'760px',height:isSteps?'408px':'448px',
+      background:raining?'linear-gradient(180deg,#8fa5b8 0%,#b8c5cc 100%)':'linear-gradient(180deg,#dff4ff 0%,#effbff 100%)',
       borderRadius:'30px',
       boxShadow:raining?'0 10px 0 #5f7181, inset 0 0 0 4px rgba(255,255,255,.62)':'0 10px 0 #cfe6f5, inset 0 0 0 4px #ffffff',
       overflow:'hidden',position:'relative',flexShrink:0,
@@ -436,6 +344,57 @@ class Component extends DCLogic {
       opacity:raining?1:0,
       transition:'opacity 1s ease'
     };
+    const sceneImageSrc = weatherPreview
+      ? `assets/simulation/${weatherPreview}.png`
+      : `assets/simulation/step-${Math.max(1, Math.min(rs || 1, 8))}.png`;
+    const photoStageStyle = {
+      position:'relative',width:'92%',height:'100%',margin:'0 auto',display:'flex',alignItems:'center',justifyContent:'center',
+      padding:'4px 0 16px'
+    };
+    const sceneImageStyle = {
+      width:'100%',height:'100%',objectFit:'contain',display:'block',
+      filter:raining?'drop-shadow(0 18px 24px rgba(26,45,62,.34))':'drop-shadow(22px 24px 18px rgba(96,74,28,.22)) drop-shadow(0 0 18px rgba(255,214,89,.28))',
+      transition:'filter .4s ease'
+    };
+    const highlightMap = {
+      2:{left:'13%',top:'11%',rot:'42deg',x:'7px',y:'7px'},
+      3:{left:'50%',top:'-1%',rot:'94deg',x:'1px',y:'9px'},
+      4:{left:'76%',top:'9%',rot:'138deg',x:'-7px',y:'7px'},
+      5:{left:'88%',top:'35%',rot:'180deg',x:'-9px',y:'0px'},
+      6:{left:'50%',top:'24%',rot:'-82deg',x:'1px',y:'-9px'},
+      7:{left:'87%',top:'66%',rot:'190deg',x:'-9px',y:'-2px'}
+    };
+    const highlight = isSteps ? highlightMap[rs] : null;
+    const showHighlight = !!highlight;
+    const highlightStyle = highlight ? {
+      position:'absolute',left:highlight.left,top:highlight.top,width:'42px',height:'42px',
+      display:'flex',alignItems:'center',justifyContent:'center',fontSize:'42px',fontFamily:"'Nunito'",fontWeight:900,
+      color:'#2F88FF',textShadow:'0 3px 0 white,0 0 16px rgba(47,136,255,.95),0 0 30px rgba(47,136,255,.72)',
+      pointerEvents:'none',zIndex:5,'--arrow-rot':highlight.rot,'--arrow-x':highlight.x,'--arrow-y':highlight.y,
+      animation:'arrowNudge 1s ease-in-out infinite'
+    } : {};
+    const highlightArrow = '➤';
+    const showSunEffect = !raining && (isPlay || rs>=8);
+    const sunBeamStyle = {
+      position:'absolute',left:'-24%',top:'-12%',width:'150%',height:'82%',zIndex:4,pointerEvents:'none',
+      background:'linear-gradient(125deg,rgba(255,246,178,0) 0%,rgba(255,238,113,.34) 24%,rgba(255,203,55,.22) 42%,rgba(255,246,178,0) 68%)',
+      mixBlendMode:'screen',filter:'blur(7px)',animation:'sunshineGlow 2.6s ease-in-out infinite'
+    };
+    const sunWarmthStyle = {
+      position:'absolute',left:'8%',top:'4%',width:'84%',height:'88%',zIndex:4,pointerEvents:'none',
+      background:'radial-gradient(circle at 42% 30%,rgba(255,239,120,.42) 0%,rgba(255,207,59,.22) 34%,rgba(255,255,255,0) 72%)',
+      mixBlendMode:'screen',filter:'blur(3px)',animation:'sunshineGlow 3.1s ease-in-out infinite reverse'
+    };
+    const showRainEffect = raining && (isSteps || isPlay);
+    const rainLayerStyle = {
+      position:'absolute',inset:0,zIndex:36,pointerEvents:'none',overflow:'hidden',borderRadius:'30px'
+    };
+    const rainStreaks = this.rainStreaks.map(drop=>({style:{
+      position:'absolute',left:drop.left+'%',top:drop.top+'px',width:'3px',height:drop.length+'px',borderRadius:'999px',
+      background:'linear-gradient(180deg,rgba(235,250,255,0),rgba(235,250,255,.92) 28%,rgba(89,174,255,.68))',
+      opacity:drop.opacity,transform:'rotate(10deg)',filter:'drop-shadow(0 0 5px rgba(210,238,255,.65))',
+      animation:`rainSheet ${drop.dur}s linear ${drop.delay}s infinite`
+    }}));
 
     const rays = this.rayIdx.map(i=>({ style:{ position:'absolute', left:'calc(50% - 4px)', top:'calc(50% - 10px)',
       width:'8px', height:'20px', background:'#ffcf33', borderRadius:'4px',
@@ -446,28 +405,71 @@ class Component extends DCLogic {
       background:'linear-gradient(#cdeaff,#4aa3ef)', zIndex:12,
       animation:`rainFall ${d.dur}s linear ${d.delay}s infinite` } }));
 
-    // progress dots
-    const dotB = {};
-    for(let i=1;i<=9;i++){ dotB['d'+i+'on'] = i<=rs; dotB['d'+i+'off'] = i>rs; }
     const dotColors = ['#2bb24c','#2f88ff','#ff8a00','#8a4fff','#ff5a5a','#2bb24c','#2f88ff','#ff8a00','#8a4fff'];
-    const stepDots = dotColors.map((color,i)=>{
-      const done = i + 1 <= rs;
-      const current = i + 1 === rs;
+
+    const stepGuideCardStyle = {
+      width:'318px',height:'408px',padding:'14px 14px 13px',borderRadius:'26px',
+      background:'rgba(255,255,255,.72)',border:'3px solid rgba(255,255,255,.9)',
+      boxShadow:'0 9px 0 rgba(80,150,190,.16)',display:'flex',flexDirection:'column',
+      gap:'6px',flexShrink:0,overflow:'hidden'
+    };
+    const stepGuideRows = STEPS.map((step,i)=>{
+      const num = i + 1;
+      const active = num === rs;
+      const done = num < rs;
+      const color = dotColors[i];
       return {
-        num:String(i+1),
-        style:{
+        num:String(num), title:step.t,
+        rowStyle:{
+          display:'grid',gridTemplateColumns:'34px 1fr',gap:'9px',alignItems:'center',
+          minHeight:active?'41px':'36px',padding:active?'5px 9px':'4px 8px',
+          borderRadius:'18px',background:active?'#ffffff':'rgba(255,255,255,.34)',
+          boxShadow:active?'0 4px 0 rgba(207,230,245,.92)':'none',
+          transition:'all .2s ease'
+        },
+        dotStyle:{
           width:'32px',height:'32px',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',
           fontFamily:"'Fredoka',sans-serif",fontWeight:700,fontSize:'15px',
-          background:done?color:'#d4ebf8',color:done?'#fff':'#7fa8c4',
-          boxShadow:done?'0 4px 0 rgba(0,0,0,.18)':'inset 0 0 0 2px rgba(255,255,255,.45)',
-          transform:current?'scale(1.16)':'scale(1)',transition:'all .2s ease'
+          background:(active||done)?color:'#d4ebf8',color:(active||done)?'#fff':'#7fa8c4',
+          boxShadow:(active||done)?'0 4px 0 rgba(0,0,0,.18)':'inset 0 0 0 2px rgba(255,255,255,.45)'
+        },
+        titleStyle:{
+          fontFamily:"'Fredoka',sans-serif",fontWeight:700,fontSize:active?'14px':'13px',
+          lineHeight:'1.05',color:active?'#1f3b52':'#4f7f9f',whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'
         }
       };
     });
-
-    const stepBadgeStyle = { width:'46px',height:'46px',borderRadius:'50%',background:cur.a,
-      color:'#fff',fontFamily:"'Fredoka',sans-serif",fontWeight:700,fontSize:'24px',
-      display:'flex',alignItems:'center',justifyContent:'center',boxShadow:`0 4px 0 ${cur.a}99` };
+    const rainActive = weatherPreview === 'rain';
+    const sunActive = weatherPreview === 'sunny';
+    const toggleBaseStyle = {
+      width:'118px',height:'34px',border:'none',outline:'none',cursor:'pointer',borderRadius:'999px',
+      fontFamily:"'Fredoka',sans-serif",fontWeight:700,fontSize:'14px',whiteSpace:'nowrap',
+      display:'flex',alignItems:'center',justifyContent:'center',transition:'all .18s ease'
+    };
+    const rainToggleStyle = {
+      ...toggleBaseStyle,
+      color:rainActive?'#fff':'#4d7fa2',
+      background:rainActive?'linear-gradient(180deg,#3a97ff,#1f6fe0)':'transparent',
+      boxShadow:rainActive?'0 3px 0 #1657b8':'none'
+    };
+    const sunToggleStyle = {
+      ...toggleBaseStyle,
+      color:sunActive?'#fff':'#9a6b18',
+      background:sunActive?'linear-gradient(180deg,#ffc24d,#ff9f1c)':'transparent',
+      boxShadow:sunActive?'0 3px 0 #d47a00':'none'
+    };
+    const navButtonBase = {
+      width:'140px',height:'46px',border:'none',outline:'none',cursor:'pointer',fontFamily:"'Fredoka'",fontWeight:700,
+      fontSize:'17px',borderRadius:'28px',display:'flex',alignItems:'center',justifyContent:'center',
+      transition:'all .2s ease',whiteSpace:'nowrap'
+    };
+    const navBackStyle = {
+      ...navButtonBase,color:'#5b86a6',background:'#fff',boxShadow:'0 5px 0 #cfe6f5'
+    };
+    const navNextStyle = {
+      ...navButtonBase,color:'#fff',background:'linear-gradient(180deg,#55B8FF,#2F88FF)',
+      boxShadow:'0 6px 0 #064A93,0 12px 22px rgba(47,136,255,.22)'
+    };
 
     // confetti
     const confettiV = (confetti||[]).map(c=>({ style:{ position:'absolute', top:'-24px', left:c.left+'%',
@@ -477,13 +479,6 @@ class Component extends DCLogic {
     const maker = (this.props.makerName||'').trim();
     const celebText = maker ? `Great work, ${maker}! 🎉` : 'Great work, Maker! 🎉';
 
-    const statusText = raining
-      ? '☔ It is raining! The smart roof closed to keep the clothes dry.'
-      : '☀ Sunny day! The roof opened so the clothes can dry.';
-    const statusStyle = { marginTop:'14px', fontFamily:"'Nunito',sans-serif", fontWeight:900, fontSize:'21px',
-      color:'#fff', background: raining? '#2f88ff':'#ff9f1c', padding:'10px 26px', borderRadius:'40px',
-      boxShadow: raining? '0 5px 0 #1f6fe0':'0 5px 0 #e07f00', textAlign:'center', transition:'all .4s' };
-
     const rainBtnStyle = { border:'none', cursor:'pointer', fontFamily:"'Fredoka',sans-serif", fontWeight:700,
       fontSize:'22px', color:'#fff', background: raining?'linear-gradient(180deg,#3a97ff,#1f6fe0)':'linear-gradient(180deg,#7fb8f0,#5b9fe0)',
       padding:'14px 34px', borderRadius:'40px', boxShadow:'0 6px 0 #1657b8', transition:'all .2s',
@@ -492,23 +487,37 @@ class Component extends DCLogic {
       fontSize:'22px', color:'#fff', background: !raining?'linear-gradient(180deg,#ffc24d,#ff9f1c)':'linear-gradient(180deg,#ffd98a,#ffc24d)',
       padding:'14px 34px', borderRadius:'40px', boxShadow:'0 6px 0 #e07f00', transition:'all .2s',
       outline: !raining?'4px solid #ff9f1c66':'none' };
+    const introCardStyle = {
+      width:'150px',height:'142px',background:'#fff',borderRadius:'22px',
+      boxShadow:'0 6px 0 #d4ebf8',display:'flex',flexDirection:'column',
+      alignItems:'center',justifyContent:'center',gap:'10px',padding:'10px'
+    };
+    const mainComponentCards = [
+      {label:'Arduino', img:'assets/components/arduino.png', w:'114px', h:'72px'},
+      {label:'Jumper Wires', img:'assets/components/jumper_wires.png', w:'112px', h:'72px'},
+      {label:'Rain Sensor', img:'assets/components/rain_sensor.png', w:'116px', h:'72px'},
+      {label:'Servo Motor', img:'assets/components/servo_motor.png', w:'108px', h:'72px'},
+    ].map(card=>({...card,style:introCardStyle,imgStyle:{width:card.w,height:card.h,objectFit:'contain',filter:'drop-shadow(0 6px 8px rgba(0,0,0,.14))'}}));
+    const otherComponentCards = [
+      {label:'9V Battery', img:'uploads/battery.jpeg', hasImg:true, isStraws:false, w:'80px', h:'72px'},
+      {label:'Straws', img:'', hasImg:false, isStraws:true, w:'0', h:'0'},
+    ].map(card=>({...card,style:{...introCardStyle,width:'150px',height:'126px',background:'rgba(255,255,255,.94)'},imgStyle:{width:card.w,height:card.h,objectFit:'contain',filter:'drop-shadow(0 6px 8px rgba(0,0,0,.14))'}}));
 
     return {
-      frameStyle:{ width:'1080px', height:'772px', position:'relative', zIndex:2, transform:`scale(${scale})`, flexShrink:0 },
-      appBgStyle,appWeatherOverlayStyle,sceneCardStyle,weatherOverlayStyle,
+      frameStyle:{ width:'1080px', height:'640px', position:'relative', zIndex:2, transform:`scale(${scale})`, transformOrigin:'center center', flexShrink:0 },
+      appBgStyle,appWeatherOverlayStyle,tutorialLayoutStyle,sceneColumnStyle,sceneCardStyle,weatherOverlayStyle,
+      stepGuideCardStyle,stepGuideRows,rainToggleStyle,sunToggleStyle,navBackStyle,navNextStyle,
+      photoStageStyle,sceneImageSrc,sceneImageStyle,showHighlight,highlightStyle,highlightArrow,
+      showSunEffect,sunBeamStyle,sunWarmthStyle,showRainEffect,rainLayerStyle,rainStreaks,
       isIntro, isApp, isSteps, isPlay,
-      soundLabel: soundOn ? '🔊' : '🔇',
       showFunFact: this.props.showFunFact !== false,
       start:()=>this.start(), next:()=>this.next(), prev:()=>this.prev(),
       makeRain:()=>this.makeRain(), makeSun:()=>this.makeSun(),
-      buildAgain:()=>this.buildAgain(), toggleSound:()=>this.toggleSound(),
+      watchOutro:()=>this.watchOutro(),
+      buildAgain:()=>this.buildAgain(),
+      mainComponentCards, otherComponentCards,
       bubbles:this.bubbles, confetti:confettiV,
-      ...dotB, stepDots, stepBadge:String(rs), stepBadgeStyle,
-      stepTitle:cur.t, stepCaption:cur.c,
-      stepCaptionStyle: isSteps && rs===8
-        ? { marginTop:'10px', fontFamily:"'Nunito'", fontWeight:800, fontSize:'18px', color:'#3a5a72', textAlign:'center', maxWidth:'700px', minHeight:'26px', textWrap:'balance' }
-        : { marginTop:'48px', fontFamily:"'Nunito'", fontWeight:800, fontSize:'24px', color:'#3a5a72', textAlign:'center', maxWidth:'700px', minHeight:'36px', textWrap:'balance', lineHeight:'1.4' },
-      nextLabel: rs>=9 ? "Let's Play! ▶" : 'Next ▶',
+      nextLabel: 'Next ▶',
       celebText,
       showServo, showSensor, showBoard, showWires, showBattery, showClothes,
       showSun, showCloud, roofClosedV, roofOpenV, rays, raindrops,

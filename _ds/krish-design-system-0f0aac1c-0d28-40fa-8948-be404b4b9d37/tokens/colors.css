@@ -1,0 +1,66 @@
+:root {
+  /* ── Brand Blue (Primary CTA) ── */
+  --color-blue-100: #d4e9ff;
+  --color-blue-200: #a8d4ff;
+  --color-blue-300: #55B8FF;
+  --color-blue-500: #2F88FF;
+  --color-blue-700: #0B63C7;
+  --color-blue-900: #064A93;
+
+  /* ── Sense — Green ── */
+  --color-green-100: #EAF8EF;
+  --color-green-300: #3DBE6C;
+  --color-green-500: #18A957;
+  --color-green-700: #0D7A3A;
+  --color-green-900: #0A5C2C;
+
+  /* ── Signal — Amber ── */
+  --color-amber-100: #FFF6DE;
+  --color-amber-300: #FFD700;
+  --color-amber-500: #FFB800;
+  --color-amber-700: #C9A100;
+  --color-amber-900: #8A6E00;
+
+  /* ── Think — Purple ── */
+  --color-purple-100: #F0E9FF;
+  --color-purple-300: #A87BEE;
+  --color-purple-500: #7B35D8;
+  --color-purple-700: #5B1FAD;
+  --color-purple-900: #3D1075;
+
+  /* ── Act — Orange ── */
+  --color-orange-100: #FFF0E8;
+  --color-orange-300: #FF8A00;
+  --color-orange-500: #F36A21;
+  --color-orange-700: #C4450A;
+  --color-orange-900: #8A2F00;
+
+  /* ── Error — Red ── */
+  --color-red-100: #FFE5E5;
+  --color-red-500: #E84040;
+  --color-red-700: #B31010;
+
+  /* ── Backgrounds ── */
+  --color-bg-dark: #1a2a35;
+  --color-bg-sky: #bfe6ff;
+  --color-bg-sky-light: #dff3ff;
+  --color-bg-sky-pale: #f1fbff;
+  --color-bg-white: #FFFFFF;
+  --color-bg-warm: #FFFBF0;
+  --color-bg-cream: #FFF8E8;
+
+  /* ── Text ── */
+  --color-text-dark: #0A1C4B;
+  --color-text-navy: #1a2744;
+  --color-text-brown: #5a3a00;
+  --color-text-warm: #FFF8E8;
+  --color-text-muted-light: rgba(255, 248, 232, 0.75);
+  --color-text-muted-blue: #5b86a6;
+  --color-text-muted-navy: #4f7f9f;
+
+  /* ── Role Semantics (the Sense→Signal→Think→Act chain) ── */
+  --color-sense:  var(--color-green-500);
+  --color-signal: var(--color-amber-500);
+  --color-think:  var(--color-purple-500);
+  --color-act:    var(--color-orange-500);
+}

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="brain icon">
+  <defs>
+    <linearGradient id="pink" x1="80" y1="50" x2="410" y2="450" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff9bd7"/>
+      <stop offset=".45" stop-color="#f171c8"/>
+      <stop offset="1" stop-color="#cc42a6"/>
+    </linearGradient>
+  </defs>
+  <path d="M244 95c-38-44-111-19-117 38-43-3-72 31-63 70-38 17-47 74-15 101-11 42 27 83 68 73 9 45 65 58 96 26 12 28 57 28 73 1 31 32 87 19 96-26 41 10 79-31 68-73 33-27 23-84-15-101 9-39-20-73-63-70-6-57-79-82-117-38-4 5-8 10-11 15-3-5-7-10-11-15Z" fill="url(#pink)" stroke="#6d276c" stroke-width="13" stroke-linejoin="round"/>
+  <path d="M244 103v310" stroke="#6d276c" stroke-width="11" stroke-linecap="round"/>
+  <path d="M157 148c31-20 66 3 65 36M110 205c34-8 58 12 57 42M83 289c26-5 50 14 50 43M154 347c26 5 45 22 51 48M215 226c-34-10-60 7-67 35M214 299c-29 3-47 22-49 49" fill="none" stroke="#a8328b" stroke-width="10" stroke-linecap="round"/>
+  <path d="M331 148c-31-20-66 3-65 36M378 205c-34-8-58 12-57 42M405 289c-26-5-50 14-50 43M334 347c-26 5-45 22-51 48M273 226c34-10 60 7 67 35M274 299c29 3 47 22 49 49" fill="none" stroke="#a8328b" stroke-width="10" stroke-linecap="round"/>
+  <path d="M153 123c20-26 62-29 84 2M336 123c-20-26-62-29-84 2" fill="none" stroke="#ffc2e9" stroke-width="15" stroke-linecap="round" opacity=".75"/>
+  <path d="M415 123l32-33M442 169l48-6" stroke="#7e3fc8" stroke-width="15" stroke-linecap="round"/>
+</svg>

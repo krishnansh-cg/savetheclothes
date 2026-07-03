@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="lightning icon">
+  <defs>
+    <linearGradient id="bolt" x1="120" y1="60" x2="390" y2="460" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff36b"/>
+      <stop offset=".42" stop-color="#ffc800"/>
+      <stop offset="1" stop-color="#ff8a00"/>
+    </linearGradient>
+    <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#b45b00" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <path d="M292 34 102 291h131l-31 187 210-276H274L292 34Z" fill="url(#bolt)" stroke="#e07300" stroke-width="14" stroke-linejoin="round" filter="url(#softShadow)"/>
+  <path d="M270 73 134 267h126l-21 132 134-173H243l27-153Z" fill="none" stroke="#fff8a6" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>
+  <path d="M392 97l14-45M425 133l44-22M421 179l47 10" stroke="#ffae00" stroke-width="17" stroke-linecap="round"/>
+</svg>
