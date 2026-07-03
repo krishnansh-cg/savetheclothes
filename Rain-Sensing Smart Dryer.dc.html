@@ -9,9 +9,12 @@
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;}
+x-dc *{font-weight:500!important}
+x-dc h1,x-dc h2,x-dc h3,x-dc [data-heading="true"],x-dc [data-heading="true"] *{font-weight:700!important}
+img,svg,image,[src$=".png"],[src$=".svg"]{-webkit-user-drag:none!important;user-drag:none!important;pointer-events:none}
 html,body{margin:0;padding:0;-webkit-font-smoothing:antialiased;}
 button:focus-visible{outline:3px solid #2F88FF;outline-offset:2px;}
 @keyframes cloudFloat{from{transform:translateX(-200px)}to{transform:translateX(calc(100vw + 160px))}}
@@ -190,8 +193,39 @@ class Component extends DCLogic {
     }));
   }
 
-  componentDidMount(){ this.fit(); window.addEventListener('resize', this.fit); }
-  componentWillUnmount(){ window.removeEventListener('resize', this.fit); }
+  componentDidMount(){
+    this.fit();
+    window.addEventListener('resize', this.fit);
+    this._markHeadings=()=>{
+      document.querySelectorAll('[data-heading="true"]').forEach(el=>el.removeAttribute('data-heading'));
+      document.querySelectorAll('h1,h2,h3,div,span,p').forEach(el=>{
+        if(el.closest('button'))return;
+        const text=(el.textContent||'').trim();
+        if(!/[A-Za-z]/.test(text))return;
+        const fw=parseInt(el.style&&el.style.fontWeight,10);
+        const fs=parseFloat(el.style&&el.style.fontSize);
+        if(el.matches('h1,h2,h3')||(fw>=700&&fs>=26))el.setAttribute('data-heading','true');
+      });
+    };
+    this._lockMediaDrag=()=>{
+      document.querySelectorAll('img,svg,image,[src$=".png"],[src$=".svg"]').forEach(el=>el.setAttribute('draggable','false'));
+    };
+    this._markHeadings();
+    this._lockMediaDrag();
+    this._uiObs=new MutationObserver(()=>{
+      clearTimeout(this._uiTimer);
+      this._uiTimer=setTimeout(()=>{this._markHeadings();this._lockMediaDrag();},0);
+    });
+    this._uiObs.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class','src']});
+    this._noMediaDrag=(e)=>{const t=e.target;if(t&&t.closest&&t.closest('img,svg,image,[src$=".png"],[src$=".svg"]'))e.preventDefault();};
+    document.addEventListener('dragstart',this._noMediaDrag);
+  }
+  componentWillUnmount(){
+    window.removeEventListener('resize', this.fit);
+    if(this._uiObs)this._uiObs.disconnect();
+    clearTimeout(this._uiTimer);
+    document.removeEventListener('dragstart',this._noMediaDrag);
+  }
 
   fit(){
     const s = Math.min(window.innerWidth/1100, window.innerHeight/640);

@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="_ds/krish-design-system-0f0aac1c-0d28-40fa-8948-be404b4b9d37/styles.css">
   <script src="_ds/krish-design-system-0f0aac1c-0d28-40fa-8948-be404b4b9d37/_ds_bundle.js"></script>
   <style>
+    x-dc * { font-weight: 500 !important; }
+    x-dc h1, x-dc h2, x-dc h3, x-dc [data-heading="true"], x-dc [data-heading="true"] * { font-weight: 900 !important; }
+    img, svg, image, [src$=".png"], [src$=".svg"] { -webkit-user-drag: none !important; user-drag: none !important; pointer-events: none; }
     html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
     button:focus-visible { outline: 3px solid #FFB800; outline-offset: 2px; }
     @keyframes wwDropFall { from { transform: translateY(0); } to { transform: translateY(880px); } }
@@ -211,6 +214,29 @@ class Component extends DCLogic {
     }); });
     this._krishObs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['src'] });
     document.querySelectorAll('img').forEach(el => this._krishFreeze(el));
+    this._markHeadings = () => {
+      document.querySelectorAll('[data-heading="true"]').forEach(el => el.removeAttribute('data-heading'));
+      document.querySelectorAll('h1,h2,h3,div,span,p').forEach(el => {
+        if (el.closest('button')) return;
+        const text = (el.textContent || '').trim();
+        if (!/[A-Za-z]/.test(text)) return;
+        const fw = parseInt(el.style && el.style.fontWeight, 10);
+        const fs = parseFloat(el.style && el.style.fontSize);
+        if (el.matches('h1,h2,h3') || (fw >= 800 && fs >= 21)) el.setAttribute('data-heading', 'true');
+      });
+    };
+    this._lockMediaDrag = () => {
+      document.querySelectorAll('img,svg,image,[src$=".png"],[src$=".svg"]').forEach(el => el.setAttribute('draggable', 'false'));
+    };
+    this._markHeadings();
+    this._lockMediaDrag();
+    this._uiObs = new MutationObserver(() => {
+      clearTimeout(this._uiTimer);
+      this._uiTimer = setTimeout(() => { this._markHeadings(); this._lockMediaDrag(); }, 0);
+    });
+    this._uiObs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class', 'src'] });
+    this._noMediaDrag = (e) => { const t = e.target; if (t && t.closest && t.closest('img,svg,image,[src$=".png"],[src$=".svg"]')) e.preventDefault(); };
+    document.addEventListener('dragstart', this._noMediaDrag);
     const measure = () => {
       const el = this.simRef.current;
       if (!el) return;
@@ -223,7 +249,14 @@ class Component extends DCLogic {
     measure();
   }
 
-  componentWillUnmount() { clearTimeout(this.timer); if (this._ro) this._ro.disconnect(); if (this._krishObs) this._krishObs.disconnect(); }
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+    clearTimeout(this._uiTimer);
+    if (this._ro) this._ro.disconnect();
+    if (this._krishObs) this._krishObs.disconnect();
+    if (this._uiObs) this._uiObs.disconnect();
+    document.removeEventListener('dragstart', this._noMediaDrag);
+  }
 
   lagFor(d) {
     if (d <= 500) return 0;

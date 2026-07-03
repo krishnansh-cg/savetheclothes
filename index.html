@@ -10,11 +10,14 @@
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
 <style>
   *{box-sizing:border-box;user-select:none;-webkit-user-select:none}
-  img{-webkit-user-drag:none;pointer-events:none}
+  x-dc *{font-weight:500!important}
+  x-dc h1,x-dc h2,x-dc h3,x-dc [data-heading="true"],x-dc [data-heading="true"] *{font-weight:900!important}
+  x-dc .ti{font-weight:400!important}
+  img,svg,image,[src$=".png"],[src$=".svg"]{-webkit-user-drag:none!important;user-drag:none!important;pointer-events:none}
   html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#1a2a35;font-family:'Nunito',system-ui,sans-serif}
   button:active{filter:brightness(0.86)!important;transform:translateY(3px)!important;transition:transform .07s,filter .07s!important}
   button:focus-visible{outline:3px solid #FFB800;outline-offset:2px}
@@ -90,8 +93,7 @@
       </sc-if>
       <sc-if value="{{ videoEnded }}" hint-placeholder-val="{{ false }}">
         <div style="position:absolute;left:53%;top:15%;z-index:2;max-width:440px;padding:30px 38px;background:rgba(255,255,255,0.97);border:4px solid #2F88FF;border-radius:26px 26px 26px 6px;box-shadow:0 10px 0 rgba(6,74,147,0.4),0 22px 44px rgba(0,0,0,0.4);animation:kidPop .6s ease;">
-          <div style="font-family:'Nunito';font-weight:900;font-size:34px;line-height:1.15;color:#0A1C4B;">Krish had an idea.</div>
-          <div style="margin-top:10px;font-family:'Nunito';font-weight:800;font-size:20px;color:#3E5A75;">Want to help him build it?</div>
+          <div style="font-family:'Nunito';font-weight:900;font-size:34px;line-height:1.15;color:#0A1C4B;">Let's build it together, Genius!</div>
           <div style="position:absolute;left:-16px;bottom:20px;width:26px;height:26px;background:rgba(255,255,255,0.97);border-left:4px solid #2F88FF;border-bottom:4px solid #2F88FF;transform:rotate(45deg);"></div>
         </div>
       </sc-if>
@@ -173,7 +175,7 @@
               <span style="color:#2EB35B;font-size:40px;flex-shrink:0;font-weight:900;text-shadow:0 2px 0 rgba(0,0,0,0.08);">→</span>
               <sc-for list="{{ p2Slots }}" as="slot" hint-placeholder-count="4">
                 <div style="display:contents">
-                  <button data-p2-slot-index="{{ slot.index }}" onClick="{{ slot.onClick }}" onPointerDown="{{ slot.onPointerDown }}" style="{{ slot.style }}">
+                  <button data-p2-slot-index="{{ slot.index }}" onClick="{{ slot.onClick }}" onMouseDown="{{ slot.onMouseDown }}" style="{{ slot.style }}">
                     <sc-if value="{{ slot.filled }}" hint-placeholder-val="{{ false }}">
                       <img src="{{ slot.img }}" alt="" style="{{ slot.imgStyle }}" />
                       <span style="{{ slot.labelStyle }}">{{ slot.label }}</span>
@@ -217,7 +219,7 @@
           <sc-if value="{{ p2ActivityFront }}" hint-placeholder-val="{{ true }}">
           <div style="margin-top:34px;min-height:128px;display:flex;gap:18px;flex-wrap:nowrap;justify-content:center;align-items:center;width:100%;max-width:1080px;">
             <sc-for list="{{ p2ChipList }}" as="chip" hint-placeholder-count="4">
-              <button onClick="{{ chip.onClick }}" onPointerDown="{{ chip.onPointerDown }}" style="{{ chip.style }}">
+              <button data-p2-chip-label="{{ chip.label }}" onClick="{{ chip.onClick }}" onMouseDown="{{ chip.onMouseDown }}" style="{{ chip.style }}">
                 <img src="{{ chip.img }}" alt="" style="{{ chip.imgStyle }}" />
                 <span>{{ chip.label }}</span>
               </button>
@@ -341,8 +343,8 @@
     <div data-screen-label="Phase 5 — Circuit" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 40px 110px;">
       <sc-if value="{{ p4ActivityScreen }}" hint-placeholder-val="{{ true }}">
       <div style="{{ p4ActivityStyle }}">
-        <h1 style="font-family:'Nunito';font-weight:900;font-size:52px;line-height:1.04;margin:-36px 0 8px;text-align:center;color:#FFF8E8;text-shadow:0 3px 16px rgba(0,0,0,0.75);">Now build Krish's smart machine!</h1>
-        <p style="margin:0 0 52px;color:rgba(255,248,232,0.94);font-size:23px;font-weight:900;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,0.68);">Tap a part, then tap the correct slot. Same chain: <span style="color:#43C76F;">Sense</span> <span style="color:#FFC93C;">→ Signal</span> <span style="color:#8B4DD8;">→ Think</span> <span style="color:#F36A21;">→ Act.</span></p>
+        <h1 style="font-family:'Nunito';font-weight:900;font-size:52px;line-height:1.04;margin:34px 0 8px;text-align:center;color:#FFF8E8;text-shadow:0 3px 16px rgba(0,0,0,0.75);">Now build Krish's smart machine!</h1>
+        <p style="margin:0 0 40px;color:rgba(255,248,232,0.94);font-size:23px;font-weight:900;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,0.68);">Tap a part, then tap the correct slot. Same chain: <span style="color:#43C76F;">Sense</span> <span style="color:#FFC93C;">→ Signal</span> <span style="color:#8B4DD8;">→ Think</span> <span style="color:#F36A21;">→ Act.</span></p>
 
         <!-- Drag ghost (follows cursor) -->
         <div style="{{ p4GhostStyle }}">
@@ -353,7 +355,7 @@
         <div style="position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;width:100%;max-width:1000px;">
           <sc-for list="{{ p4Slots }}" as="slot" hint-placeholder-count="4">
             <div style="position:relative;">
-              <button data-p4-slot-index="{{ slot.index }}" onClick="{{ slot.onClick }}" onPointerDown="{{ slot.onPointerDown }}" style="{{ slot.style }}">
+              <button data-p4-slot-index="{{ slot.index }}" onClick="{{ slot.onClick }}" onMouseDown="{{ slot.onMouseDown }}" style="{{ slot.style }}">
                 <div style="{{ slot.topBadgeStyle }}"><i class="ti {{ slot.roleIcon }}" style="font-size:34px;"></i></div>
                 <div style="font-family:'Nunito';font-weight:900;font-size:21px;color:{{ slot.color }};text-transform:uppercase;margin-top:26px;">{{ slot.role }}</div>
                 <div style="font-family:'Nunito';font-weight:900;font-size:16px;color:#0A1C4B;margin-top:8px;">{{ slot.helper }}</div>
@@ -370,7 +372,7 @@
             </div>
           </sc-for>
           <sc-if value="{{ p4correct }}" hint-placeholder-val="{{ false }}">
-            <div style="position:absolute;left:0;right:0;top:-30px;height:12px;pointer-events:none;">
+            <div style="position:absolute;left:0;right:0;bottom:-30px;height:12px;pointer-events:none;">
               <div style="position:absolute;top:0;width:16px;height:16px;border-radius:50%;background:#FFD700;box-shadow:0 0 20px 5px rgba(255,215,0,0.85);animation:signalRun 1.6s ease-in-out infinite;"></div>
             </div>
             <div style="position:absolute;inset:-16px;pointer-events:none;">
@@ -385,7 +387,7 @@
 
         <div style="margin-top:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;width:100%;max-width:1000px;">
           <sc-for list="{{ p4ChipList }}" as="chip" hint-placeholder-count="4">
-            <button onClick="{{ chip.onClick }}" onPointerDown="{{ chip.onPointerDown }}" style="{{ chip.style }}">
+            <button data-p4-chip-key="{{ chip.key }}" onClick="{{ chip.onClick }}" onMouseDown="{{ chip.onMouseDown }}" style="{{ chip.style }}">
               <img src="{{ chip.img }}" alt="" style="width:150px;height:86px;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(0,0,0,0.16));" />
               <div style="display:flex;align-items:center;justify-content:center;">
                 <span>{{ chip.label }}</span>
@@ -473,9 +475,9 @@
     </sc-if>
   </sc-if>
 
-  <!-- Developer navigation — only with ?dev=1 -->
+  <!-- Developer navigation -->
   <sc-if value="{{ devVisible }}" hint-placeholder-val="{{ false }}">
-    <div style="position:absolute;right:18px;bottom:18px;z-index:80;display:flex;align-items:center;gap:4px;padding:5px 6px;border-radius:10px;background:rgba(0,0,0,0.38);border:1px solid rgba(255,255,255,0.18);box-shadow:0 4px 14px rgba(0,0,0,0.22);">
+    <div style="position:absolute;right:18px;bottom:18px;z-index:140;display:flex;align-items:center;gap:4px;padding:5px 6px;border-radius:10px;background:rgba(0,0,0,0.38);border:1px solid rgba(255,255,255,0.18);box-shadow:0 4px 14px rgba(0,0,0,0.22);">
       <span style="font-family:'Nunito';font-weight:900;font-size:10px;color:rgba(255,248,232,0.78);">DEV</span>
       <sc-for list="{{ devDots }}" as="dot" hint-placeholder-count="8">
         <button onClick="{{ dot.onClick }}" title="{{ dot.title }}" style="{{ dot.style }}">{{ dot.num }}</button>
@@ -497,7 +499,7 @@ class Component extends DCLogic {
     this.shuffledP2Chips = this._shuffleArr(this.P2CHIPS.slice());
     this.shuffledBody    = this._shuffleArr(this.BODY.slice());
     this.shuffledP4Parts = this._shuffleArr(this.P4PARTS.slice());
-    try{this._devMode=/[?&]dev=1/.test(window.location.search);}catch(e){this._devMode=false;}
+    try{this._devMode=!/[?&]dev=0/.test(window.location.search);}catch(e){this._devMode=true;}
   }
 
   rainDrops = Array.from({length:55}).map(()=>{
@@ -588,44 +590,6 @@ class Component extends DCLogic {
       const t=(e.changedTouches&&e.changedTouches[0])||(e.touches&&e.touches[0])||e;
       return{x:t&&typeof t.clientX==='number'?t.clientX:0,y:t&&typeof t.clientY==='number'?t.clientY:0};
     };
-    this._p2GlobalMove=(e)=>{
-      if(!this._p2PointerDrag)return;
-      const pt=this._p2EventPoint(e);
-      const dx=pt.x-this._p2PointerDrag.x;
-      const dy=pt.y-this._p2PointerDrag.y;
-      if(Math.hypot(dx,dy)>8)this._p2PointerDrag.moved=true;
-      const target=document.elementFromPoint(pt.x,pt.y);
-      const slot=target&&target.closest&&target.closest('[data-p2-slot-index]');
-      const over=slot?Number(slot.getAttribute('data-p2-slot-index')):null;
-      const info=this.P2INFO[this._p2PointerDrag.label];
-      this.setState({
-        p2dragGhost:{
-          label:this._p2PointerDrag.label,
-          img:info?info.img:'',
-          color:info?info.color:'#1A8A45',
-          soft:info?info.soft:'#F3FFF7',
-          x:pt.x,
-          y:pt.y
-        },
-        p2dragOver:over
-      });
-      if(this._p2PointerDrag.moved&&e.cancelable&&e.preventDefault)e.preventDefault();
-    };
-    this._p2GlobalEnd=(e)=>{
-      const drag=this._p2PointerDrag;
-      if(!drag)return;
-      const pt=this._p2EventPoint(e);
-      const target=document.elementFromPoint(pt.x,pt.y);
-      const slot=target&&target.closest&&target.closest('[data-p2-slot-index]');
-      if(slot&&(drag.moved||drag.fromIndex!==Number(slot.getAttribute('data-p2-slot-index')))){
-        this.p2applyDrop(Number(slot.getAttribute('data-p2-slot-index')),drag);
-        this._p2SuppressClick=true;
-        setTimeout(()=>{this._p2SuppressClick=false;},120);
-        if(e.preventDefault)e.preventDefault();
-      }
-      this._p2PointerDrag=null;
-      this.setState({p2dragGhost:null,p2dragOver:null});
-    };
     this._simMessage=(e)=>{
       if(e.data&&e.data.type==='smartDryerWatchOutro')this.goPhase(8);
       if(e.data&&e.data.type==='servoSimComplete')this.goPhase(7);
@@ -650,22 +614,45 @@ class Component extends DCLogic {
     });});
     this._krishObs.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['src']});
     document.querySelectorAll('img').forEach(el=>this._krishFreeze(el));
-    this._noImgDrag=(e)=>{if(e.target&&e.target.tagName==='IMG')e.preventDefault();};
+    this._markHeadings=()=>{
+      document.querySelectorAll('[data-heading="true"]').forEach(el=>el.removeAttribute('data-heading'));
+      document.querySelectorAll('h1,h2,h3,div,span,p').forEach(el=>{
+        if(el.closest('button'))return;
+        const text=(el.textContent||'').trim();
+        if(!/[A-Za-z]/.test(text))return;
+        const fw=parseInt(el.style&&el.style.fontWeight,10);
+        const fs=parseFloat(el.style&&el.style.fontSize);
+        if(el.matches('h1,h2,h3')||(fw>=800&&fs>=30))el.setAttribute('data-heading','true');
+      });
+    };
+    this._markHeadings();
+    this._headingObs=new MutationObserver(()=>{clearTimeout(this._headingTimer);this._headingTimer=setTimeout(this._markHeadings,0);});
+    this._headingObs.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['style','class']});
+    this._lockMediaDrag=()=>{
+      document.querySelectorAll('img,svg,image,[src$=".png"],[src$=".svg"]').forEach(el=>el.setAttribute('draggable','false'));
+    };
+    this._lockMediaDrag();
+    this._noImgDrag=(e)=>{
+      const t=e.target;
+      if(!t||!t.closest)return;
+      const media=t.closest('img,svg,image,[src$=".png"],[src$=".svg"]');
+      if(media)e.preventDefault();
+    };
+    this._mediaObs=new MutationObserver(()=>{clearTimeout(this._mediaTimer);this._mediaTimer=setTimeout(this._lockMediaDrag,0);});
+    this._mediaObs.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['src']});
     document.addEventListener('dragstart',this._noImgDrag);
-    document.addEventListener('pointermove',this._p2GlobalMove);
-    document.addEventListener('pointerup',this._p2GlobalEnd);
-    document.addEventListener('pointercancel',this._p2GlobalEnd);
     window.addEventListener('message',this._simMessage);
   }
   componentWillUnmount(){
     if(this._krishObs)this._krishObs.disconnect();
+    if(this._headingObs)this._headingObs.disconnect();
+    if(this._mediaObs)this._mediaObs.disconnect();
+    clearTimeout(this._headingTimer);
+    clearTimeout(this._mediaTimer);
     window.removeEventListener('resize',this._fitStage);
     document.removeEventListener('mouseover',this._sfxHover);
     document.removeEventListener('click',this._sfxClick);
     document.removeEventListener('dragstart',this._noImgDrag);
-    document.removeEventListener('pointermove',this._p2GlobalMove);
-    document.removeEventListener('pointerup',this._p2GlobalEnd);
-    document.removeEventListener('pointercancel',this._p2GlobalEnd);
     window.removeEventListener('message',this._simMessage);
     if(this._feelTimers)this._feelTimers.forEach(clearTimeout);
     if(this._p4timers)this._p4timers.forEach(clearTimeout);
@@ -773,7 +760,55 @@ class Component extends DCLogic {
     const pt=this._p2EventPoint?this._p2EventPoint(e):{x:e&&e.clientX?e.clientX:0,y:e&&e.clientY?e.clientY:0};
     const info=this.P2INFO[label];
     this._p2PointerDrag={label,fromIndex:typeof fromIndex==='number'?fromIndex:null,x:pt.x,y:pt.y,moved:false};
-    this.setState({p2dragGhost:{label,img:info?info.img:'',color:info?info.color:'#1A8A45',soft:info?info.soft:'#F3FFF7',x:pt.x,y:pt.y},p2dragOver:null});
+    this._p2DragOverIdx=null;
+    this.setState({p2dragGhost:{label,fromIndex:typeof fromIndex==='number'?fromIndex:null,img:info?info.img:'',color:info?info.color:'#1A8A45',soft:info?info.soft:'#F3FFF7',x:pt.x,y:pt.y},p2dragOver:null});
+    const onMove=(ev)=>{
+      if(!this._p2PointerDrag)return;
+      const p=this._p2EventPoint?this._p2EventPoint(ev):{x:ev&&ev.clientX?ev.clientX:0,y:ev&&ev.clientY?ev.clientY:0};
+      const dx=p.x-this._p2PointerDrag.x;
+      const dy=p.y-this._p2PointerDrag.y;
+      if(Math.hypot(dx,dy)>8)this._p2PointerDrag.moved=true;
+      const currentInfo=this.P2INFO[this._p2PointerDrag.label];
+      let over=null;
+      document.querySelectorAll('[data-p2-slot-index]').forEach(el=>{
+        const r=el.getBoundingClientRect();
+        if(p.x>=r.left&&p.x<=r.right&&p.y>=r.top&&p.y<=r.bottom)over=Number(el.getAttribute('data-p2-slot-index'));
+      });
+      this._p2DragOverIdx=over;
+      this.setState({
+        p2dragGhost:{
+          label:this._p2PointerDrag.label,
+          fromIndex:this._p2PointerDrag.fromIndex,
+          img:currentInfo?currentInfo.img:'',
+          color:currentInfo?currentInfo.color:'#1A8A45',
+          soft:currentInfo?currentInfo.soft:'#F3FFF7',
+          x:p.x,
+          y:p.y
+        },
+        p2dragOver:over
+      });
+      if(this._p2PointerDrag.moved&&ev&&ev.cancelable&&ev.preventDefault)ev.preventDefault();
+    };
+    const onUp=(ev)=>{
+      window.removeEventListener('mousemove',onMove);
+      window.removeEventListener('mouseup',onUp);
+      const drag=this._p2PointerDrag;
+      this._p2PointerDrag=null;
+      const over=this._p2DragOverIdx;
+      this._p2DragOverIdx=null;
+      this.setState({p2dragGhost:null,p2dragOver:null});
+      if(!drag)return;
+      if(drag.moved){
+        this._p2SuppressClick=true;
+        setTimeout(()=>{this._p2SuppressClick=false;},160);
+      }
+      if(over!==null&&over!==undefined&&(drag.moved||drag.fromIndex!==over)){
+        this.p2applyDrop(over,drag);
+        if(ev&&ev.preventDefault)ev.preventDefault();
+      }
+    };
+    window.addEventListener('mousemove',onMove);
+    window.addEventListener('mouseup',onUp);
     if(e&&e.currentTarget&&e.currentTarget.setPointerCapture&&e.pointerId!==undefined){
       try{e.currentTarget.setPointerCapture(e.pointerId);}catch(err){}
     }
@@ -864,9 +899,8 @@ class Component extends DCLogic {
       this.setState({p4dragOver:over}); // visual highlight
     };
     const onUp=(ev)=>{
-      window.removeEventListener('pointermove',onMove);
-      window.removeEventListener('pointerup',onUp);
-      window.removeEventListener('pointercancel',onUp);
+      window.removeEventListener('mousemove',onMove);
+      window.removeEventListener('mouseup',onUp);
       const drag=this._p4PointerDrag;
       this._p4PointerDrag=null;
       const over=this._p4DragOverIdx;
@@ -884,9 +918,8 @@ class Component extends DCLogic {
         }
       }
     };
-    window.addEventListener('pointermove',onMove);
-    window.addEventListener('pointerup',onUp);
-    window.addEventListener('pointercancel',onUp);
+    window.addEventListener('mousemove',onMove);
+    window.addEventListener('mouseup',onUp);
     if(e&&e.currentTarget&&e.currentTarget.setPointerCapture&&e.pointerId!==undefined){
       try{e.currentTarget.setPointerCapture(e.pointerId);}catch(err){}
     }
@@ -990,21 +1023,21 @@ class Component extends DCLogic {
     // phase 3 — problem slots & chips
     const p2Ghost=s.p2dragGhost;
     const p2DragGhostVisible=!!p2Ghost;
-    const p2DragGhostStyle=p2Ghost?{position:'fixed',left:(p2Ghost.x/uiS)+'px',top:(p2Ghost.y/uiS)+'px',zIndex:120,width:'218px',height:'88px',padding:'12px 16px',borderRadius:'20px',pointerEvents:'none',transform:'translate(-50%,-50%) rotate(-2deg) scale(1.04)',fontFamily:"'Nunito'",fontWeight:900,fontSize:'18px',lineHeight:1.16,background:p2Ghost.soft,border:'3px solid '+p2Ghost.color,color:p2Ghost.color,boxShadow:'0 11px 0 rgba(0,0,0,0.18),0 20px 38px rgba(0,0,0,0.32)',display:'flex',alignItems:'center',justifyContent:'center',gap:'12px',textAlign:'left',opacity:0.96}:{display:'none'};
+    const p2DragGhostStyle=p2Ghost?{position:'fixed',left:(p2Ghost.x/uiS)+'px',top:(p2Ghost.y/uiS)+'px',zIndex:120,width:'244px',height:'102px',padding:'14px 18px',borderRadius:'20px',pointerEvents:'none',transform:'translate(-50%,-50%) rotate(-2deg) scale(1.04)',fontFamily:"'Nunito'",fontWeight:900,fontSize:'20px',lineHeight:1.12,background:p2Ghost.soft,border:'3px solid '+p2Ghost.color,color:p2Ghost.color,boxShadow:'0 11px 0 rgba(0,0,0,0.18),0 20px 38px rgba(0,0,0,0.32)',display:'flex',alignItems:'center',justifyContent:'center',gap:'13px',textAlign:'left',opacity:0.96}:{display:'none'};
     const p2DragGhostImg=p2Ghost?p2Ghost.img:'';
     const p2DragGhostLabel=p2Ghost?p2Ghost.label:'';
-    const p2DragGhostImgStyle={width:'58px',height:'58px',objectFit:'contain',flexShrink:0};
-    const p2DragGhostLabelStyle={fontFamily:"'Nunito'",fontWeight:900,fontSize:'18px',lineHeight:1.16};
+    const p2DragGhostImgStyle={width:'66px',height:'66px',objectFit:'contain',flexShrink:0};
+    const p2DragGhostLabelStyle={fontFamily:"'Nunito'",fontWeight:900,fontSize:'20px',lineHeight:1.12};
     const p2Slots=s.p2slots.map((v,i)=>{
       const info=v?this.P2INFO[v]:null;
       const over=s.p2dragOver===i;
       const wrongHere=s.p2wrong&&!!v&&this.P2ANSWER[i]!==v;
-      return{index:i,label:v||'',filled:!!v,empty:!v,img:info?info.img:'',onClick:()=>this.p2slotClick(i),onPointerDown:(e)=>v?this.p2pointerStart(v,i,e):null,
+      return{index:i,label:v||'',filled:!!v,empty:!v,img:info?info.img:'',onClick:()=>this.p2slotClick(i),onMouseDown:(e)=>v?this.p2pointerStart(v,i,e):null,
         imgStyle:{width:info?info.imgSize:'0',height:info?info.imgSize:'0',objectFit:'contain',flexShrink:0},
         labelStyle:{fontFamily:"'Nunito'",fontWeight:900,fontSize:'15px',lineHeight:1.18,color:info?info.color:'#5a3a00'},
         style:v?{width:'118px',height:'168px',flexShrink:0,padding:'13px 9px',borderRadius:'20px',cursor:'grab',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'9px',textAlign:'center',transition:'all .2s ease',whiteSpace:'normal',background:wrongHere?'#FFE7E7':(info?info.soft:'#FFF3CC'),border:'3px solid '+(wrongHere?'#E84040':(over?'#2F88FF':(info?info.color:WARM))),color:info?info.color:'#5a3a00',boxShadow:wrongHere?'0 5px 0 #B31010':(over?'0 0 0 6px rgba(47,136,255,0.18),0 7px 0 #0B63C7':'0 5px 0 rgba(0,0,0,0.16)'),animation:wrongHere?'wobbleKid .5s ease':'chipFlyToSlot .5s ease both'}:{width:'118px',height:'168px',flexShrink:0,padding:'13px 9px',borderRadius:'20px',cursor:'default',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'10px',textAlign:'center',transition:'all .2s ease',whiteSpace:'normal',background:over?'#EAF4FF':'rgba(255,255,255,0.88)',border:'3px dashed '+(over?'#2F88FF':'#FFB800'),color:over?'#064A93':'rgba(44,62,80,0.42)',boxShadow:over?'0 0 0 6px rgba(47,136,255,0.16),0 6px 0 #0B63C7':'none'}};
     });
-    const p2ChipList=this.shuffledP2Chips.map(label=>{const used=s.p2slots.includes(label),info=this.P2INFO[label];return{label,img:info.img,onClick:used?()=>{}:()=>this.p2chipClick(label),onPointerDown:(e)=>used?null:this.p2pointerStart(label,null,e),imgStyle:{width:'66px',height:'66px',objectFit:'contain',flexShrink:0},style:used?{display:'none'}:{width:'244px',height:'102px',padding:'14px 18px',borderRadius:'20px',cursor:'grab',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,fontSize:'20px',lineHeight:1.12,transition:'all .2s ease',background:info.soft,border:'3px solid '+info.color,color:info.color,boxShadow:'0 5px 0 rgba(0,0,0,0.2)',display:'flex',alignItems:'center',justifyContent:'center',gap:'13px',textAlign:'left'}};});
+    const p2ChipList=this.shuffledP2Chips.map(label=>{const used=s.p2slots.includes(label),info=this.P2INFO[label],dragging=p2Ghost&&p2Ghost.label===label&&p2Ghost.fromIndex===null;return{label,img:info.img,onClick:used?()=>{}:()=>this.p2chipClick(label),onMouseDown:(e)=>used?null:this.p2pointerStart(label,null,e),imgStyle:{width:'66px',height:'66px',objectFit:'contain',flexShrink:0},style:used?{display:'none'}:{width:'244px',height:'102px',padding:'14px 18px',borderRadius:'20px',cursor:'grab',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,fontSize:'20px',lineHeight:1.12,transition:'box-shadow .2s ease,background .2s ease,border-color .2s ease,color .2s ease,opacity .12s ease',background:info.soft,border:'3px solid '+info.color,color:info.color,boxShadow:'0 5px 0 rgba(0,0,0,0.2)',display:'flex',alignItems:'center',justifyContent:'center',gap:'13px',textAlign:'left',opacity:dragging?0.35:1}};});
     const p2ResultFlow=[
       {label:'It rains',img:'assets/screen3/rain.webp',color:p2ResultTheme.main,soft:'#F8FCF8',imgSize:'68px'},
       ...this.P2ANSWER.map(label=>({label,img:this.P2INFO[label].img,color:p2ResultTheme.main,soft:this.P2INFO[label].soft,imgSize:'68px'})),
@@ -1062,7 +1095,7 @@ class Component extends DCLogic {
       const isReject=s.p4reject===i;
       return{filled,empty:!filled,img:part?part.img:'',label:filled?part.label:'Drop here',role:meta.role,helper:meta.helper,roleIcon:meta.icon,color:meta.color,notLast:i<this.P4ORDER.length-1,index:i,
         onClick:()=>this.p4slotClick(i),
-        onPointerDown:(e)=>v?this.p4pointerStart(v,{label:part?part.label:'',img:part?part.img:'',color:meta.color},i,e):null,
+        onMouseDown:(e)=>v?this.p4pointerStart(v,{label:part?part.label:'',img:part?part.img:'',color:meta.color},i,e):null,
         labelStyle:{fontFamily:"'Nunito'",fontWeight:900,fontSize:'17px',lineHeight:1.1,color:filled?meta.color:'rgba(44,62,80,0.5)',marginTop:'4px'},
         topBadgeStyle:{position:'absolute',top:'-40px',left:'50%',transform:'translateX(-50%)',width:'74px',height:'74px',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',background:meta.color,color:'white',border:'5px solid rgba(255,255,255,0.96)',boxShadow:'0 6px 0 rgba(0,0,0,0.18),0 12px 22px rgba(0,0,0,0.22)'},
         dropCircleStyle:{width:'70px',height:'70px',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'42px',lineHeight:1,color:meta.color,border:'3px dashed '+meta.color,background:isDragOver?meta.soft:'rgba(255,255,255,0.46)',marginTop:'14px',transition:'background .18s ease'},
@@ -1071,9 +1104,9 @@ class Component extends DCLogic {
     });
     const p4ChipList=this.shuffledP4Parts.map(p=>{
       const used=s.p4slots.includes(p.key),picked=s.p4picked===p.key;
-      return{label:p.label,icon:p.icon,img:p.img,color:p.color,
+      return{key:p.key,label:p.label,icon:p.icon,img:p.img,color:p.color,
         onClick:used?()=>{}:()=>this.p4chipClick(p.key),
-        onPointerDown:used?()=>{}:(e)=>this.p4pointerStart(p.key,p,e),
+        onMouseDown:used?()=>{}:(e)=>this.p4pointerStart(p.key,p,e),
         style:{height:'168px',padding:'14px 16px',borderRadius:'20px',cursor:used?'default':'grab',fontFamily:"'Nunito'",fontWeight:900,fontSize:'19px',lineHeight:1.08,transition:'all .2s ease, opacity .2s ease',background:picked?'#FFF8E8':(used?'rgba(255,255,255,0.46)':'rgba(255,255,255,0.96)'),border:'3px solid '+(picked?WARM:(used?'rgba(255,255,255,0.35)':p.color)),color:used?'rgba(44,62,80,0.3)':'#0A1C4B',boxShadow:picked?'0 6px 0 #C96E00':(used?'none':'0 6px 0 '+p.color+',0 14px 24px rgba(0,0,0,0.18)'),transform:picked?'translateY(-6px) scale(1.04)':'none',display:'flex',opacity:used?0:1,pointerEvents:used?'none':'auto',flexDirection:'column',alignItems:'center',justifyContent:'space-between',gap:'8px',userSelect:'none',touchAction:'none'}};
     });
     // drag ghost
