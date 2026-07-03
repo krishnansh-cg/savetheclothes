@@ -1052,7 +1052,7 @@ class Component extends DCLogic {
     // phase 4 — flip card subscreens
     const p3board=!s.p3done;
     const curComp=this.COMPONENTS[Math.min(s.p3idx,this.COMPONENTS.length-1)];
-    const p3BoardStyle={width:'100%',maxWidth:'1000px',minHeight:'620px',padding:'30px 54px 32px',borderRadius:'34px',background:'rgba(255,255,255,0.96)',border:'3px solid rgba(32,52,70,0.16)',boxShadow:'0 9px 0 rgba(32,52,70,0.14),0 22px 48px rgba(0,0,0,0.24)',display:'flex',flexDirection:'column',alignItems:'center',animation:s.p3transition?'p3SubscreenOut .42s ease both':'p3SubscreenIn .48s ease both'};
+    const p3BoardStyle={width:'100%',maxWidth:'1000px',minHeight:'700px',padding:'30px 54px 32px',borderRadius:'34px',background:'rgba(255,255,255,0.96)',border:'3px solid rgba(32,52,70,0.16)',boxShadow:'0 9px 0 rgba(32,52,70,0.14),0 22px 48px rgba(0,0,0,0.24)',display:'flex',flexDirection:'column',alignItems:'center',animation:s.p3transition?'p3SubscreenOut .42s ease both':'p3SubscreenIn .48s ease both'};
     const p3Card={name:curComp.name,behavior:curComp.behavior,img:curComp.img};
     const p3PartNum=String(Math.min(s.p3idx+1,this.COMPONENTS.length));
     const p3CollectStatus=s.p3view==='correct'?'Nice match':(s.p3view==='wrong'?'Try again':'You are discovering');
