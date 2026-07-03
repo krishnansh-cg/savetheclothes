@@ -1,0 +1,138 @@
+{"kind":"deck","id":"pr/lo6jyb","name":"Deck"}
+{"kind":"layout","layoutId":"c8852c42-ce21-49ec-81b3-9ddf3c8df13b","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"2559cbf2-3627-432e-9e41-963a82a9760a","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/hetvfa","slide":1,"title":"WeatherWise","textShapes":4}
+{"kind":"textbox","id":"sh/29gr2p8n","slide":1,"text":"WeatherWise","textPreview":"WeatherWise","textChars":11,"textLines":1,"bbox":[72,72,760,90]}
+{"kind":"textbox","id":"sh/d0z61032","slide":1,"text":"Shareable web app walkthrough","textPreview":"Shareable web app walkthrough","textChars":29,"textLines":1,"bbox":[72,178,760,38]}
+{"kind":"shape","id":"sh/kf6dcbul","slide":1,"bbox":[72,250,1136,1]}
+{"kind":"textbox","id":"sh/v6psfil0","slide":1,"text":"The deck captures the complete app journey: the main story/game flow, the build simulation, every tutorial step, and the final play mode.","textPreview":"The deck captures the complete app journey: the main story/game flow, the build simulation, every tutorial step, and the final play mode.","textChars":137,"textLines":1,"bbox":[72,292,620,150]}
+{"kind":"textbox","id":"sh/2lszqtcj","slide":1,"text":"18 captured app screens","textPreview":"18 captured app screens","textChars":23,"textLines":1,"bbox":[72,570,420,42]}
+{"kind":"shape","id":"sh/knih4byh","slide":1,"bbox":[790,292,418,235]}
+{"kind":"image","id":"im/8jqh0fep","slide":1,"name":"","alt":"WeatherWise story opening screenshot","bbox":[790,292,418,235]}
+{"kind":"notes","id":"nt/hetvfa","slide":1,"text":""}
+{"kind":"slide","id":"sl/0kxyzj","slide":2,"title":"Story opening","textShapes":3}
+{"kind":"textbox","id":"sh/kb6xkf6d","slide":2,"text":"Story opening","textPreview":"Story opening","textChars":13,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/rqd4vmtw","slide":2,"text":"MAIN APP","textPreview":"MAIN APP","textChars":8,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/25kb6xkf","slide":2,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/kzupwb2h","slide":2,"text":"02 / 19","textPreview":"02 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/obm58z25","slide":2,"name":"","alt":"Main app: Story opening","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/0kxyzj","slide":2,"text":""}
+{"kind":"slide","id":"sl/vkg29i","slide":3,"title":"Feel the rain","textShapes":3}
+{"kind":"textbox","id":"sh/6psfil0r","slide":3,"text":"Feel the rain","textPreview":"Feel the rain","textChars":13,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/dcbulwva","slide":3,"text":"MAIN APP","textPreview":"MAIN APP","textChars":8,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/kre1w7mp","slide":3,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/2x4nap4r","slide":3,"text":"03 / 19","textPreview":"03 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/yhgn29gr","slide":3,"name":"","alt":"Main app: Feel the rain","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/vkg29i","slide":3,"text":""}
+{"kind":"slide","id":"sl/zlhdtd","slide":4,"title":"Complete the steps","textShapes":3}
+{"kind":"textbox","id":"sh/gfmlkjm1","slide":4,"text":"Complete the steps","textPreview":"Complete the steps","textChars":18,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/rytsvu9k","slide":4,"text":"MAIN APP","textPreview":"MAIN APP","textChars":8,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/yd0z6103","slide":4,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/g7adsji5","slide":4,"text":"04 / 19","textPreview":"04 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/szqtcj6t","slide":4,"name":"","alt":"Main app: Complete the steps","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/zlhdtd","slide":4,"text":""}
+{"kind":"slide","id":"sl/iukt3n","slide":5,"title":"Match machine parts","textShapes":3}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":5,"text":"Match machine parts","textPreview":"Match machine parts","textChars":19,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/d4vmtwra","slide":5,"text":"MAIN APP","textPreview":"MAIN APP","textChars":8,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/oj2t83it","slide":5,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/61032lsz","slide":5,"text":"05 / 19","textPreview":"05 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/6tovahoz","slide":5,"name":"","alt":"Main app: Match machine parts","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/iukt3n","slide":5,"text":""}
+{"kind":"slide","id":"sl/sdrd81","slide":6,"title":"Build the circuit","textShapes":3}
+{"kind":"textbox","id":"sh/s72x4nap","slide":6,"text":"Build the circuit","textPreview":"Build the circuit","textChars":17,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/3m94fu18","slide":6,"text":"MAIN APP","textPreview":"MAIN APP","textChars":8,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/a5gbq1or","slide":6,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/sji5snel","slide":6,"text":"06 / 19","textPreview":"06 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/kjm1cfa9","slide":6,"name":"","alt":"Main app: Build the circuit","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/sdrd81","slide":6,"text":""}
+{"kind":"slide","id":"sl/ti3pv5","slide":7,"title":"Simulation handoff","textShapes":3}
+{"kind":"textbox","id":"sh/lc7u54zi","slide":7,"text":"Simulation handoff","textPreview":"Simulation handoff","textChars":18,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/eloj2t83","slide":7,"text":"MAIN APP","textPreview":"MAIN APP","textChars":8,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/36hcrmhk","slide":7,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/l0rqd4vm","slide":7,"text":"07 / 19","textPreview":"07 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/hcrmhk3q","slide":7,"name":"","alt":"Main app: Simulation handoff","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/ti3pv5","slide":7,"text":""}
+{"kind":"slide","id":"sl/shgfqo","slide":8,"title":"Outro","textShapes":3}
+{"kind":"textbox","id":"sh/8z25kb6x","slide":8,"text":"Outro","textPreview":"Outro","textChars":5,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/je9cvixc","slide":8,"text":"MAIN APP","textPreview":"MAIN APP","textChars":8,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/qtcj6tov","slide":8,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/87ed8bat","slide":8,"text":"08 / 19","textPreview":"08 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/83itgfml","slide":8,"name":"","alt":"Main app: Outro","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/shgfqo","slide":8,"text":""}
+{"kind":"slide","id":"sl/cdsz34","slide":9,"title":"Simulation intro","textShapes":3}
+{"kind":"textbox","id":"sh/t47y1kre","slide":9,"text":"Simulation intro","textPreview":"Simulation intro","textChars":16,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/idonyd0z","slide":9,"text":"SIMULATION","textPreview":"SIMULATION","textChars":10,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/byhgn29g","slide":9,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/tcj6tova","slide":9,"text":"09 / 19","textPreview":"09 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/lc7u54zi","slide":9,"name":"","alt":"Simulation: Simulation intro","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/cdsz34","slide":9,"text":""}
+{"kind":"slide","id":"sl/0q0dyh","slide":10,"title":"Build step 1: Open the house model","textShapes":3}
+{"kind":"textbox","id":"sh/kre1w7mp","slide":10,"text":"Build step 1: Open the house model","textPreview":"Build step 1: Open the house model","textChars":34,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/val87ed8","slide":10,"text":"SIMULATION","textPreview":"SIMULATION","textChars":10,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/6psfil0r","slide":10,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":10,"text":"10 / 19","textPreview":"10 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/kre1w7mp","slide":10,"name":"","alt":"Simulation: Build step 1: Open the house model","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/0q0dyh","slide":10,"text":""}
+{"kind":"slide","id":"sl/4gf900","slide":11,"title":"Build step 2: Place the servo motor","textShapes":3}
+{"kind":"textbox","id":"sh/mtwra5gb","slide":11,"text":"Build step 2: Place the servo motor","textPreview":"Build step 2: Place the servo motor","textChars":35,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/xkf6dcbu","slide":11,"text":"SIMULATION","textPreview":"SIMULATION","textChars":10,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/4zidonyd","slide":11,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/mlkjm1cf","slide":11,"text":"11 / 19","textPreview":"11 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/eloj2t83","slide":11,"name":"","alt":"Simulation: Build step 2: Place the servo motor","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/4gf900","slide":11,"text":""}
+{"kind":"slide","id":"sl/kgl38c","slide":12,"title":"Build step 3: Attach the straw roof","textShapes":3}
+{"kind":"textbox","id":"sh/crmhk3q5","slide":12,"text":"Build step 3: Attach the straw roof","textPreview":"Build step 3: Attach the straw roof","textChars":35,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/j6tovaho","slide":12,"text":"SIMULATION","textPreview":"SIMULATION","textChars":10,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/ulwval87","slide":12,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/c3ylc7u5","slide":12,"text":"12 / 19","textPreview":"12 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/wb2hwfyx","slide":12,"name":"","alt":"Simulation: Build step 3: Attach the straw roof","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/kgl38c","slide":12,"text":""}
+{"kind":"slide","id":"sl/d6cql9","slide":13,"title":"Build step 4: Place rain sensor outside","textShapes":3}
+{"kind":"textbox","id":"sh/58z25kb6","slide":13,"text":"Build step 4: Place rain sensor outside","textPreview":"Build step 4: Place rain sensor outside","textChars":39,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/yhgn29gr","slide":13,"text":"SIMULATION","textPreview":"SIMULATION","textChars":10,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/n29gr2p8","slide":13,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":13,"text":"13 / 19","textPreview":"13 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/x4nap4r6","slide":13,"name":"","alt":"Simulation: Build step 4: Place rain sensor outside","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/d6cql9","slide":13,"text":""}
+{"kind":"slide","id":"sl/bv8qqv","slide":14,"title":"Build step 5: Mount the Arduino","textShapes":3}
+{"kind":"textbox","id":"sh/y90je9cv","slide":14,"text":"Build step 5: Mount the Arduino","textPreview":"Build step 5: Mount the Arduino","textChars":31,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/5wjudg7a","slide":14,"text":"SIMULATION","textPreview":"SIMULATION","textChars":10,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/gbq1oryt","slide":14,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/yhgn29gr","slide":14,"text":"14 / 19","textPreview":"14 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/qpg3ex0n","slide":14,"name":"","alt":"Simulation: Build step 5: Mount the Arduino","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/bv8qqv","slide":14,"text":""}
+{"kind":"slide","id":"sl/m5qvd9","slide":15,"title":"Build step 6: Insert the battery","textShapes":3}
+{"kind":"textbox","id":"sh/ovahoza1","slide":15,"text":"Build step 6: Insert the battery","textPreview":"Build step 6: Insert the battery","textChars":32,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/vahoza1g","slide":15,"text":"SIMULATION","textPreview":"SIMULATION","textChars":10,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/6tovahoz","slide":15,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/onyd0z61","slide":15,"text":"15 / 19","textPreview":"15 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/s72x4nap","slide":15,"name":"","alt":"Simulation: Build step 6: Insert the battery","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/m5qvd9","slide":15,"text":""}
+{"kind":"slide","id":"sl/jsaj3l","slide":16,"title":"Build step 7: Connect the wires","textShapes":3}
+{"kind":"textbox","id":"sh/re1w7mp0","slide":16,"text":"Build step 7: Connect the wires","textPreview":"Build step 7: Connect the wires","textChars":31,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/kzupwb2h","slide":16,"text":"SIMULATION","textPreview":"SIMULATION","textChars":10,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/9knih4by","slide":16,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/rqd4vmtw","slide":16,"text":"16 / 19","textPreview":"16 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/fu18jqh0","slide":16,"name":"","alt":"Simulation: Build step 7: Connect the wires","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/jsaj3l","slide":16,"text":""}
+{"kind":"slide","id":"sl/z73gcu","slide":17,"title":"Build step 8: It is working","textShapes":3}
+{"kind":"textbox","id":"sh/h0fepkzu","slide":17,"text":"Build step 8: It is working","textPreview":"Build step 8: It is working","textChars":27,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/a9w3m94f","slide":17,"text":"SIMULATION","textPreview":"SIMULATION","textChars":10,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/zupwb2hw","slide":17,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/hcrmhk3q","slide":17,"text":"17 / 19","textPreview":"17 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/d0z61032","slide":17,"name":"","alt":"Simulation: Build step 8: It is working","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/z73gcu","slide":17,"text":""}
+{"kind":"slide","id":"sl/rgwhcp","slide":18,"title":"Build step 9: All set","textShapes":3}
+{"kind":"textbox","id":"sh/bat47y1k","slide":18,"text":"Build step 9: All set","textPreview":"Build step 9: All set","textChars":21,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/4vmtwra5","slide":18,"text":"SIMULATION","textPreview":"SIMULATION","textChars":10,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/tgfmlkjm","slide":18,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/bm58z25k","slide":18,"text":"18 / 19","textPreview":"18 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/r65wjudg","slide":18,"name":"","alt":"Simulation: Build step 9: All set","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/rgwhcp","slide":18,"text":""}
+{"kind":"slide","id":"sl/nz9rsr","slide":19,"title":"Final play mode","textShapes":3}
+{"kind":"textbox","id":"sh/gr2p8nqx","slide":19,"text":"Final play mode","textPreview":"Final play mode","textChars":15,"textLines":1,"bbox":[72,18,780,46]}
+{"kind":"textbox","id":"sh/r65wjudg","slide":19,"text":"SIMULATION","textPreview":"SIMULATION","textChars":10,"textLines":1,"bbox":[970,29,238,24]}
+{"kind":"shape","id":"sh/ylc7u54z","slide":19,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/g3ex0nux","slide":19,"text":"19 / 19","textPreview":"19 / 19","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/szqtcj6t","slide":19,"name":"","alt":"Simulation: Final play mode","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/nz9rsr","slide":19,"text":""}

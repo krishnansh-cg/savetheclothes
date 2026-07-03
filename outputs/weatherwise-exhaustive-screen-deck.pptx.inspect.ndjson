@@ -1,0 +1,404 @@
+{"kind":"deck","id":"pr/rv84bs","name":"Deck"}
+{"kind":"layout","layoutId":"1d84b5f9-dd17-4112-bbf1-47183148c25d","name":"Master","type":"master"}
+{"kind":"layout","layoutId":"9abbfa2b-1063-4bf0-b835-722744b22556","name":"Title Slide","type":"title"}
+{"kind":"slide","id":"sl/yls84g","slide":1,"title":"WeatherWise","textShapes":4}
+{"kind":"textbox","id":"sh/ra5gbq1o","slide":1,"text":"WeatherWise","textPreview":"WeatherWise","textChars":11,"textLines":1,"bbox":[72,72,760,90]}
+{"kind":"textbox","id":"sh/gvy90je9","slide":1,"text":"Exhaustive screen-state slide deck","textPreview":"Exhaustive screen-state slide deck","textChars":34,"textLines":1,"bbox":[72,178,840,38]}
+{"kind":"shape","id":"sh/9gr2p8nq","slide":1,"bbox":[72,250,1136,1]}
+{"kind":"textbox","id":"sh/2hwfyxob","slide":1,"text":"Every main page, sub-screen, interaction result, and right/wrong branch captured in app order.","textPreview":"Every main page, sub-screen, interaction result, and right/wrong branch captured in app order.","textChars":94,"textLines":1,"bbox":[72,292,640,140]}
+{"kind":"textbox","id":"sh/r2p8nqxs","slide":1,"text":"56 captured app states","textPreview":"56 captured app states","textChars":22,"textLines":1,"bbox":[72,570,420,42]}
+{"kind":"shape","id":"sh/94fu18jq","slide":1,"bbox":[790,292,418,235]}
+{"kind":"image","id":"im/lc7u54zi","slide":1,"name":"","alt":"WeatherWise story end-state screenshot","bbox":[790,292,418,235]}
+{"kind":"notes","id":"nt/yls84g","slide":1,"text":""}
+{"kind":"slide","id":"sl/5czqh2","slide":2,"title":"Story opening - play prompt","textShapes":3}
+{"kind":"textbox","id":"sh/3ex0nuxc","slide":2,"text":"Story opening - play prompt","textPreview":"Story opening - play prompt","textChars":27,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/szqtcj6t","slide":2,"text":"MAIN APP / STORY","textPreview":"MAIN APP / STORY","textChars":16,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/lkjm1cfa","slide":2,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/32lszqtc","slide":2,"text":"02 / 57","textPreview":"02 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/3itgfmlk","slide":2,"name":"","alt":"Main app / Story: Story opening - play prompt","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/5czqh2","slide":2,"text":""}
+{"kind":"slide","id":"sl/8oy97m","slide":3,"title":"Story video ended - idea prompt","textShapes":3}
+{"kind":"textbox","id":"sh/3itgfmlk","slide":3,"text":"Story video ended - idea prompt","textPreview":"Story video ended - idea prompt","textChars":31,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/w3m94fu1","slide":3,"text":"MAIN APP / STORY","textPreview":"MAIN APP / STORY","textChars":16,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/loj2t83i","slide":3,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/3q5o7qpg","slide":3,"text":"03 / 57","textPreview":"03 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/bat47y1k","slide":3,"name":"","alt":"Main app / Story: Story video ended - idea prompt","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/8oy97m","slide":3,"text":""}
+{"kind":"slide","id":"sl/r85l0x","slide":4,"title":"Feel chain - all cards hidden","textShapes":3}
+{"kind":"textbox","id":"sh/judg7ads","slide":4,"text":"Feel chain - all cards hidden","textPreview":"Feel chain - all cards hidden","textChars":29,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/cfa9w3m9","slide":4,"text":"PHASE 2 / FEEL CHAIN","textPreview":"PHASE 2 / FEEL CHAIN","textChars":20,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/1032lszq","slide":4,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/jm1cfa9w","slide":4,"text":"04 / 57","textPreview":"04 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/f6dcbulw","slide":4,"name":"","alt":"Phase 2 / Feel chain: Feel chain - all cards hidden","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/r85l0x","slide":4,"text":""}
+{"kind":"slide","id":"sl/xcjszi","slide":5,"title":"Feel chain - Sense revealed","textShapes":3}
+{"kind":"textbox","id":"sh/zed8v6ps","slide":5,"text":"Feel chain - Sense revealed","textPreview":"Feel chain - Sense revealed","textChars":27,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":5,"text":"PHASE 2 / FEEL CHAIN","textPreview":"PHASE 2 / FEEL CHAIN","textChars":20,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/hk3q5o7q","slide":5,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/zqtcj6to","slide":5,"text":"05 / 57","textPreview":"05 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/vy90je9c","slide":5,"name":"","alt":"Phase 2 / Feel chain: Feel chain - Sense revealed","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/xcjszi","slide":5,"text":""}
+{"kind":"slide","id":"sl/p02hge","slide":6,"title":"Feel chain - Sense and Signal revealed","textShapes":3}
+{"kind":"textbox","id":"sh/czed8v6p","slide":6,"text":"Feel chain - Sense and Signal revealed","textPreview":"Feel chain - Sense and Signal revealed","textChars":38,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/neloj2t8","slide":6,"text":"PHASE 2 / FEEL CHAIN","textPreview":"PHASE 2 / FEEL CHAIN","textChars":20,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/ytsvu9kn","slide":6,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/cbulwval","slide":6,"text":"06 / 57","textPreview":"06 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/onyd0z61","slide":6,"name":"","alt":"Phase 2 / Feel chain: Feel chain - Sense and Signal revealed","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/p02hge","slide":6,"text":""}
+{"kind":"slide","id":"sl/2geex2","slide":7,"title":"Feel chain - Sense, Signal, Think revealed","textShapes":3}
+{"kind":"textbox","id":"sh/bat47y1k","slide":7,"text":"Feel chain - Sense, Signal, Think revealed","textPreview":"Feel chain - Sense, Signal, Think revealed","textChars":42,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/4vmtwra5","slide":7,"text":"PHASE 2 / FEEL CHAIN","textPreview":"PHASE 2 / FEEL CHAIN","textChars":20,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/tgfmlkjm","slide":7,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/bm58z25k","slide":7,"text":"07 / 57","textPreview":"07 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/3ex0nuxc","slide":7,"name":"","alt":"Phase 2 / Feel chain: Feel chain - Sense, Signal, Think revealed","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/2geex2","slide":7,"text":""}
+{"kind":"slide","id":"sl/krczhl","slide":8,"title":"Feel chain - all cards revealed with CTA","textShapes":3}
+{"kind":"textbox","id":"sh/a5gbq1or","slide":8,"text":"Feel chain - all cards revealed with CTA","textPreview":"Feel chain - all cards revealed with CTA","textChars":40,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/lszqtcj6","slide":8,"text":"PHASE 2 / FEEL CHAIN","textPreview":"PHASE 2 / FEEL CHAIN","textChars":20,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/s72x4nap","slide":8,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/adsji5sn","slide":8,"text":"08 / 57","textPreview":"08 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/eloj2t83","slide":8,"name":"","alt":"Phase 2 / Feel chain: Feel chain - all cards revealed with CTA","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/krczhl","slide":8,"text":""}
+{"kind":"slide","id":"sl/csk2n9","slide":9,"title":"Feel chain - wrap result screen","textShapes":3}
+{"kind":"textbox","id":"sh/onyd0z61","slide":9,"text":"Feel chain - wrap result screen","textPreview":"Feel chain - wrap result screen","textChars":31,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/z25kb6xk","slide":9,"text":"PHASE 2 / FEEL CHAIN","textPreview":"PHASE 2 / FEEL CHAIN","textChars":20,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/6hcrmhk3","slide":9,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/ovahoza1","slide":9,"text":"09 / 57","textPreview":"09 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/0nuxc3yl","slide":9,"name":"","alt":"Phase 2 / Feel chain: Feel chain - wrap result screen","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/csk2n9","slide":9,"text":""}
+{"kind":"slide","id":"sl/7bxbbr","slide":10,"title":"Order activity - empty slots","textShapes":3}
+{"kind":"textbox","id":"sh/7qpg3ex0","slide":10,"text":"Order activity - empty slots","textPreview":"Order activity - empty slots","textChars":28,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/0bi9s36h","slide":10,"text":"PHASE 3 / ORDER ACTIVITY","textPreview":"PHASE 3 / ORDER ACTIVITY","textChars":24,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/pwb2hwfy","slide":10,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/7y1kre1w","slide":10,"text":"10 / 57","textPreview":"10 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/jqh0fepk","slide":10,"name":"","alt":"Phase 3 / Order activity: Order activity - empty slots","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/7bxbbr","slide":10,"text":""}
+{"kind":"slide","id":"sl/tr6wek","slide":11,"title":"Order activity - first step placed","textShapes":3}
+{"kind":"textbox","id":"sh/pwb2hwfy","slide":11,"text":"Order activity - first step placed","textPreview":"Order activity - first step placed","textChars":34,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/i5sneloj","slide":11,"text":"PHASE 3 / ORDER ACTIVITY","textPreview":"PHASE 3 / ORDER ACTIVITY","textChars":24,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/7qpg3ex0","slide":11,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/p4r65wju","slide":11,"text":"11 / 57","textPreview":"11 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/p0bi9s36","slide":11,"name":"","alt":"Phase 3 / Order activity: Order activity - first step placed","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/tr6wek","slide":11,"text":""}
+{"kind":"slide","id":"sl/nf91ja","slide":12,"title":"Order activity - first two steps placed","textShapes":3}
+{"kind":"textbox","id":"sh/vixczed8","slide":12,"text":"Order activity - first two steps placed","textPreview":"Order activity - first two steps placed","textChars":39,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/k3q5o7qp","slide":12,"text":"PHASE 3 / ORDER ACTIVITY","textPreview":"PHASE 3 / ORDER ACTIVITY","textChars":24,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/donyd0z6","slide":12,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/val87ed8","slide":12,"text":"12 / 57","textPreview":"12 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/nih4byhg","slide":12,"name":"","alt":"Phase 3 / Order activity: Order activity - first two steps placed","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/nf91ja","slide":12,"text":""}
+{"kind":"slide","id":"sl/0ihdsb","slide":13,"title":"Order activity - first three steps placed","textShapes":3}
+{"kind":"textbox","id":"sh/8v6psfil","slide":13,"text":"Order activity - first three steps placed","textPreview":"Order activity - first three steps placed","textChars":41,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/fa9w3m94","slide":13,"text":"PHASE 3 / ORDER ACTIVITY","textPreview":"PHASE 3 / ORDER ACTIVITY","textChars":24,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/qpg3ex0n","slide":13,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/8jqh0fep","slide":13,"text":"13 / 57","textPreview":"13 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/4r65wjud","slide":13,"name":"","alt":"Phase 3 / Order activity: Order activity - first three steps placed","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/0ihdsb","slide":13,"text":""}
+{"kind":"slide","id":"sl/abchd9","slide":14,"title":"Order activity - wrong order ready to check","textShapes":3}
+{"kind":"textbox","id":"sh/rmhk3q5o","slide":14,"text":"Order activity - wrong order ready to check","textPreview":"Order activity - wrong order ready to check","textChars":43,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/g7adsji5","slide":14,"text":"PHASE 3 / ORDER ACTIVITY","textPreview":"PHASE 3 / ORDER ACTIVITY","textChars":24,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/9s36hcrm","slide":14,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/rytsvu9k","slide":14,"text":"14 / 57","textPreview":"14 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/fyxobm58","slide":14,"name":"","alt":"Phase 3 / Order activity: Order activity - wrong order ready to check","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/abchd9","slide":14,"text":""}
+{"kind":"slide","id":"sl/snswfg","slide":15,"title":"Order activity - wrong result screen","textShapes":3}
+{"kind":"textbox","id":"sh/uxc3ylc7","slide":15,"text":"Order activity - wrong result screen","textPreview":"Order activity - wrong result screen","textChars":36,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/1kre1w7m","slide":15,"text":"PHASE 3 / ORDER ACTIVITY","textPreview":"PHASE 3 / ORDER ACTIVITY","textChars":24,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/c3ylc7u5","slide":15,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/ulwval87","slide":15,"text":"15 / 57","textPreview":"15 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/eloj2t83","slide":15,"name":"","alt":"Phase 3 / Order activity: Order activity - wrong result screen","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/snswfg","slide":15,"text":""}
+{"kind":"slide","id":"sl/jr93fq","slide":16,"title":"Order activity - correct order ready to check","textShapes":3}
+{"kind":"textbox","id":"sh/9s36hcrm","slide":16,"text":"Order activity - correct order ready to check","textPreview":"Order activity - correct order ready to check","textChars":45,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/y1kre1w7","slide":16,"text":"PHASE 3 / ORDER ACTIVITY","textPreview":"PHASE 3 / ORDER ACTIVITY","textChars":24,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/rmhk3q5o","slide":16,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/90je9cvi","slide":16,"text":"16 / 57","textPreview":"16 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/tgfmlkjm","slide":16,"name":"","alt":"Phase 3 / Order activity: Order activity - correct order ready to check","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/jr93fq","slide":16,"text":""}
+{"kind":"slide","id":"sl/bfwxcd","slide":17,"title":"Order activity - correct result screen","textShapes":3}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":17,"text":"Order activity - correct result screen","textPreview":"Order activity - correct result screen","textChars":38,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/x4nap4r6","slide":17,"text":"PHASE 3 / ORDER ACTIVITY","textPreview":"PHASE 3 / ORDER ACTIVITY","textChars":24,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/8jqh0fep","slide":17,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/qpg3ex0n","slide":17,"text":"17 / 57","textPreview":"17 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/a5gbq1or","slide":17,"name":"","alt":"Phase 3 / Order activity: Order activity - correct result screen","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/bfwxcd","slide":17,"text":""}
+{"kind":"slide","id":"sl/tvehnb","slide":18,"title":"Arduino match question","textShapes":3}
+{"kind":"textbox","id":"sh/zed8v6ps","slide":18,"text":"Arduino match question","textPreview":"Arduino match question","textChars":22,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/oza1gvy9","slide":18,"text":"PHASE 4 / COMPONENT MATCHING","textPreview":"PHASE 4 / COMPONENT MATCHING","textChars":28,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/hk3q5o7q","slide":18,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/zqtcj6to","slide":18,"text":"18 / 57","textPreview":"18 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/vahoza1g","slide":18,"name":"","alt":"Phase 4 / Component matching: Arduino match question","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/tvehnb","slide":18,"text":""}
+{"kind":"slide","id":"sl/3aewrh","slide":19,"title":"Arduino wrong-choice result","textShapes":3}
+{"kind":"textbox","id":"sh/cvixczed","slide":19,"text":"Arduino wrong-choice result","textPreview":"Arduino wrong-choice result","textChars":27,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/nap4r65w","slide":19,"text":"PHASE 4 / COMPONENT MATCHING","textPreview":"PHASE 4 / COMPONENT MATCHING","textChars":28,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/upwb2hwf","slide":19,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/cj6tovah","slide":19,"text":"19 / 57","textPreview":"19 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/onyd0z61","slide":19,"name":"","alt":"Phase 4 / Component matching: Arduino wrong-choice result","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/3aewrh","slide":19,"text":""}
+{"kind":"slide","id":"sl/ibua7c","slide":20,"title":"Arduino correct-choice result","textShapes":3}
+{"kind":"textbox","id":"sh/v6psfil0","slide":20,"text":"Arduino correct-choice result","textPreview":"Arduino correct-choice result","textChars":29,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/knih4byh","slide":20,"text":"PHASE 4 / COMPONENT MATCHING","textPreview":"PHASE 4 / COMPONENT MATCHING","textChars":28,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/d8bat47y","slide":20,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/vu9knih4","slide":20,"text":"20 / 57","textPreview":"20 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/fil0rqd4","slide":20,"name":"","alt":"Phase 4 / Component matching: Arduino correct-choice result","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/ibua7c","slide":20,"text":""}
+{"kind":"slide","id":"sl/2gis4w","slide":21,"title":"Rain Sensor match question","textShapes":3}
+{"kind":"textbox","id":"sh/wra5gbq1","slide":21,"text":"Rain Sensor match question","textPreview":"Rain Sensor match question","textChars":26,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/36hcrmhk","slide":21,"text":"PHASE 4 / COMPONENT MATCHING","textPreview":"PHASE 4 / COMPONENT MATCHING","textChars":28,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/eloj2t83","slide":21,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/wfyxobm5","slide":21,"text":"21 / 57","textPreview":"21 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/kjm1cfa9","slide":21,"name":"","alt":"Phase 4 / Component matching: Rain Sensor match question","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/2gis4w","slide":21,"text":""}
+{"kind":"slide","id":"sl/pysrjs","slide":22,"title":"Rain Sensor wrong-choice result","textShapes":3}
+{"kind":"textbox","id":"sh/hgn29gr2","slide":22,"text":"Rain Sensor wrong-choice result","textPreview":"Rain Sensor wrong-choice result","textChars":31,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/ap4r65wj","slide":22,"text":"PHASE 4 / COMPONENT MATCHING","textPreview":"PHASE 4 / COMPONENT MATCHING","textChars":28,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/za1gvy90","slide":22,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/hoza1gvy","slide":22,"text":"22 / 57","textPreview":"22 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/9s36hcrm","slide":22,"name":"","alt":"Phase 4 / Component matching: Rain Sensor wrong-choice result","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/pysrjs","slide":22,"text":""}
+{"kind":"slide","id":"sl/y8i7ew","slide":23,"title":"Rain Sensor correct-choice result","textShapes":3}
+{"kind":"textbox","id":"sh/l0rqd4vm","slide":23,"text":"Rain Sensor correct-choice result","textPreview":"Rain Sensor correct-choice result","textChars":33,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/ed8bat47","slide":23,"text":"PHASE 4 / COMPONENT MATCHING","textPreview":"PHASE 4 / COMPONENT MATCHING","textChars":28,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/7u54zido","slide":23,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/lc7u54zi","slide":23,"text":"23 / 57","textPreview":"23 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/pg3ex0nu","slide":23,"name":"","alt":"Phase 4 / Component matching: Rain Sensor correct-choice result","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/y8i7ew","slide":23,"text":""}
+{"kind":"slide","id":"sl/lgbz10","slide":24,"title":"Jumper Wires match question","textShapes":3}
+{"kind":"textbox","id":"sh/mp0bi9s3","slide":24,"text":"Jumper Wires match question","textPreview":"Jumper Wires match question","textChars":27,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/tgfmlkjm","slide":24,"text":"PHASE 4 / COMPONENT MATCHING","textPreview":"PHASE 4 / COMPONENT MATCHING","textChars":28,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/4vmtwra5","slide":24,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/m1cfa9w3","slide":24,"text":"24 / 57","textPreview":"24 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/at47y1kr","slide":24,"name":"","alt":"Phase 4 / Component matching: Jumper Wires match question","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/lgbz10","slide":24,"text":""}
+{"kind":"slide","id":"sl/4ldvlr","slide":25,"title":"Jumper Wires wrong-choice result","textShapes":3}
+{"kind":"textbox","id":"sh/q1orytsv","slide":25,"text":"Jumper Wires wrong-choice result","textPreview":"Jumper Wires wrong-choice result","textChars":32,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/xs72x4na","slide":25,"text":"PHASE 4 / COMPONENT MATCHING","textPreview":"PHASE 4 / COMPONENT MATCHING","textChars":28,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/87ed8bat","slide":25,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":25,"text":"25 / 57","textPreview":"25 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/qd4vmtwr","slide":25,"name":"","alt":"Phase 4 / Component matching: Jumper Wires wrong-choice result","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/4ldvlr","slide":25,"text":""}
+{"kind":"slide","id":"sl/7tty4u","slide":26,"title":"Jumper Wires correct-choice result","textShapes":3}
+{"kind":"textbox","id":"sh/vu9knih4","slide":26,"text":"Jumper Wires correct-choice result","textPreview":"Jumper Wires correct-choice result","textChars":34,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/kf6dcbul","slide":26,"text":"PHASE 4 / COMPONENT MATCHING","textPreview":"PHASE 4 / COMPONENT MATCHING","textChars":28,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/d0z61032","slide":26,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/v6psfil0","slide":26,"text":"26 / 57","textPreview":"26 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/fmlkjm1c","slide":26,"name":"","alt":"Phase 4 / Component matching: Jumper Wires correct-choice result","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/7tty4u","slide":26,"text":""}
+{"kind":"slide","id":"sl/dx0prb","slide":27,"title":"Servo Motor match question","textShapes":3}
+{"kind":"textbox","id":"sh/q5o7qpg3","slide":27,"text":"Servo Motor match question","textPreview":"Servo Motor match question","textChars":26,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/1w7mp0bi","slide":27,"text":"PHASE 4 / COMPONENT MATCHING","textPreview":"PHASE 4 / COMPONENT MATCHING","textChars":28,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/8bat47y1","slide":27,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/qh0fepkz","slide":27,"text":"27 / 57","textPreview":"27 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/ixczed8v","slide":27,"name":"","alt":"Phase 4 / Component matching: Servo Motor match question","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/dx0prb","slide":27,"text":""}
+{"kind":"slide","id":"sl/5x28tf","slide":28,"title":"Servo Motor wrong-choice result","textShapes":3}
+{"kind":"textbox","id":"sh/1gvy90je","slide":28,"text":"Servo Motor wrong-choice result","textPreview":"Servo Motor wrong-choice result","textChars":31,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/qtcj6tov","slide":28,"text":"PHASE 4 / COMPONENT MATCHING","textPreview":"PHASE 4 / COMPONENT MATCHING","textChars":28,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/je9cvixc","slide":28,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/xs72x4na","slide":28,"text":"28 / 57","textPreview":"28 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/tsvu9kni","slide":28,"name":"","alt":"Phase 4 / Component matching: Servo Motor wrong-choice result","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/5x28tf","slide":28,"text":""}
+{"kind":"slide","id":"sl/k7tcd4","slide":29,"title":"Servo Motor correct-choice result","textShapes":3}
+{"kind":"textbox","id":"sh/zidonyd0","slide":29,"text":"Servo Motor correct-choice result","textPreview":"Servo Motor correct-choice result","textChars":33,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/s36hcrmh","slide":29,"text":"PHASE 4 / COMPONENT MATCHING","textPreview":"PHASE 4 / COMPONENT MATCHING","textChars":28,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/hoza1gvy","slide":29,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/za1gvy90","slide":29,"text":"29 / 57","textPreview":"29 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/zupwb2hw","slide":29,"name":"","alt":"Phase 4 / Component matching: Servo Motor correct-choice result","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/k7tcd4","slide":29,"text":""}
+{"kind":"slide","id":"sl/v6u8pt","slide":30,"title":"Body-to-machine summary table","textShapes":3}
+{"kind":"textbox","id":"sh/9cvixcze","slide":30,"text":"Body-to-machine summary table","textPreview":"Body-to-machine summary table","textChars":29,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/ylc7u54z","slide":30,"text":"PHASE 4 / COMPONENT MATCHING","textPreview":"PHASE 4 / COMPONENT MATCHING","textChars":28,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/r65wjudg","slide":30,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/5o7qpg3e","slide":30,"text":"30 / 57","textPreview":"30 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/p0bi9s36","slide":30,"name":"","alt":"Phase 4 / Component matching: Body-to-machine summary table","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/v6u8pt","slide":30,"text":""}
+{"kind":"slide","id":"sl/9sytqs","slide":31,"title":"Circuit builder - empty slots","textShapes":3}
+{"kind":"textbox","id":"sh/p8nqxs72","slide":31,"text":"Circuit builder - empty slots","textPreview":"Circuit builder - empty slots","textChars":29,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/ih4byhgn","slide":31,"text":"PHASE 5 / CIRCUIT BUILDER","textPreview":"PHASE 5 / CIRCUIT BUILDER","textChars":25,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/72x4nap4","slide":31,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/pkzupwb2","slide":31,"text":"31 / 57","textPreview":"31 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/h0fepkzu","slide":31,"name":"","alt":"Phase 5 / Circuit builder: Circuit builder - empty slots","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/9sytqs","slide":31,"text":""}
+{"kind":"slide","id":"sl/80ksw9","slide":32,"title":"Circuit builder - part selected","textShapes":3}
+{"kind":"textbox","id":"sh/wval87ed","slide":32,"text":"Circuit builder - part selected","textPreview":"Circuit builder - part selected","textChars":31,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/7adsji5s","slide":32,"text":"PHASE 5 / CIRCUIT BUILDER","textPreview":"PHASE 5 / CIRCUIT BUILDER","textChars":25,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/epkzupwb","slide":32,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/w7mp0bi9","slide":32,"text":"32 / 57","textPreview":"32 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/k3q5o7qp","slide":32,"name":"","alt":"Phase 5 / Circuit builder: Circuit builder - part selected","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/80ksw9","slide":32,"text":""}
+{"kind":"slide","id":"sl/fuuinw","slide":33,"title":"Circuit builder - sensor placed","textShapes":3}
+{"kind":"textbox","id":"sh/61032lsz","slide":33,"text":"Circuit builder - sensor placed","textPreview":"Circuit builder - sensor placed","textChars":31,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/dsji5sne","slide":33,"text":"PHASE 5 / CIRCUIT BUILDER","textPreview":"PHASE 5 / CIRCUIT BUILDER","textChars":25,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/o7qpg3ex","slide":33,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":33,"text":"33 / 57","textPreview":"33 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/29gr2p8n","slide":33,"name":"","alt":"Phase 5 / Circuit builder: Circuit builder - sensor placed","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/fuuinw","slide":33,"text":""}
+{"kind":"slide","id":"sl/njevgu","slide":34,"title":"Circuit builder - wires placed","textShapes":3}
+{"kind":"textbox","id":"sh/b2hwfyxo","slide":34,"text":"Circuit builder - wires placed","textPreview":"Circuit builder - wires placed","textChars":30,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/4nap4r65","slide":34,"text":"PHASE 5 / CIRCUIT BUILDER","textPreview":"PHASE 5 / CIRCUIT BUILDER","textChars":25,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/t83itgfm","slide":34,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/bq1oryts","slide":34,"text":"34 / 57","textPreview":"34 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/bq1oryts","slide":34,"name":"","alt":"Phase 5 / Circuit builder: Circuit builder - wires placed","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/njevgu","slide":34,"text":""}
+{"kind":"slide","id":"sl/wjdxu8","slide":35,"title":"Circuit builder - Arduino placed","textShapes":3}
+{"kind":"textbox","id":"sh/qh0fepkz","slide":35,"text":"Circuit builder - Arduino placed","textPreview":"Circuit builder - Arduino placed","textChars":32,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/18jqh0fe","slide":35,"text":"PHASE 5 / CIRCUIT BUILDER","textPreview":"PHASE 5 / CIRCUIT BUILDER","textChars":25,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/8nqxs72x","slide":35,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/q5o7qpg3","slide":35,"text":"35 / 57","textPreview":"35 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/uxc3ylc7","slide":35,"name":"","alt":"Phase 5 / Circuit builder: Circuit builder - Arduino placed","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/wjdxu8","slide":35,"text":""}
+{"kind":"slide","id":"sl/n1q5db","slide":36,"title":"Circuit builder - all correct ready to test","textShapes":3}
+{"kind":"textbox","id":"sh/5gbq1ory","slide":36,"text":"Circuit builder - all correct ready to test","textPreview":"Circuit builder - all correct ready to test","textChars":43,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/upwb2hwf","slide":36,"text":"PHASE 5 / CIRCUIT BUILDER","textPreview":"PHASE 5 / CIRCUIT BUILDER","textChars":25,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/nap4r65w","slide":36,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/54zidony","slide":36,"text":"36 / 57","textPreview":"36 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/xobm58z2","slide":36,"name":"","alt":"Phase 5 / Circuit builder: Circuit builder - all correct ready to test","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/n1q5db","slide":36,"text":""}
+{"kind":"slide","id":"sl/aa1kyu","slide":37,"title":"Circuit builder - wrong order ready to test","textShapes":3}
+{"kind":"textbox","id":"sh/a1gvy90j","slide":37,"text":"Circuit builder - wrong order ready to test","textPreview":"Circuit builder - wrong order ready to test","textChars":43,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/hoza1gvy","slide":37,"text":"PHASE 5 / CIRCUIT BUILDER","textPreview":"PHASE 5 / CIRCUIT BUILDER","textChars":25,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/s36hcrmh","slide":37,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/ap4r65wj","slide":37,"text":"37 / 57","textPreview":"37 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/eloj2t83","slide":37,"name":"","alt":"Phase 5 / Circuit builder: Circuit builder - wrong order ready to test","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/aa1kyu","slide":37,"text":""}
+{"kind":"slide","id":"sl/91ds5v","slide":38,"title":"Circuit builder - wrong test result","textShapes":3}
+{"kind":"textbox","id":"sh/2t83itgf","slide":38,"text":"Circuit builder - wrong test result","textPreview":"Circuit builder - wrong test result","textChars":35,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/9knih4by","slide":38,"text":"PHASE 5 / CIRCUIT BUILDER","textPreview":"PHASE 5 / CIRCUIT BUILDER","textChars":25,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/kzupwb2h","slide":38,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/25kb6xkf","slide":38,"text":"38 / 57","textPreview":"38 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/u54zidon","slide":38,"name":"","alt":"Phase 5 / Circuit builder: Circuit builder - wrong test result","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/91ds5v","slide":38,"text":""}
+{"kind":"slide","id":"sl/8nu60o","slide":39,"title":"Circuit builder - correct circuit live","textShapes":3}
+{"kind":"textbox","id":"sh/mtwra5gb","slide":39,"text":"Circuit builder - correct circuit live","textPreview":"Circuit builder - correct circuit live","textChars":38,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/xkf6dcbu","slide":39,"text":"PHASE 5 / CIRCUIT BUILDER","textPreview":"PHASE 5 / CIRCUIT BUILDER","textChars":25,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/4zidonyd","slide":39,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/mlkjm1cf","slide":39,"text":"39 / 57","textPreview":"39 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/at47y1kr","slide":39,"name":"","alt":"Phase 5 / Circuit builder: Circuit builder - correct circuit live","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/8nu60o","slide":39,"text":""}
+{"kind":"slide","id":"sl/830gah","slide":40,"title":"Circuit builder - circuit live wrap screen","textShapes":3}
+{"kind":"textbox","id":"sh/54zidony","slide":40,"text":"Circuit builder - circuit live wrap screen","textPreview":"Circuit builder - circuit live wrap screen","textChars":42,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/udg7adsj","slide":40,"text":"PHASE 5 / CIRCUIT BUILDER","textPreview":"PHASE 5 / CIRCUIT BUILDER","textChars":25,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/nyd0z610","slide":40,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/5gbq1ory","slide":40,"text":"40 / 57","textPreview":"40 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/t47y1kre","slide":40,"name":"","alt":"Phase 5 / Circuit builder: Circuit builder - circuit live wrap screen","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/830gah","slide":40,"text":""}
+{"kind":"slide","id":"sl/45da1n","slide":41,"title":"Embedded simulation - intro handoff","textShapes":3}
+{"kind":"textbox","id":"sh/nqxs72x4","slide":41,"text":"Embedded simulation - intro handoff","textPreview":"Embedded simulation - intro handoff","textChars":35,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/cbulwval","slide":41,"text":"PHASE 6 / EMBEDDED SIMULATION","textPreview":"PHASE 6 / EMBEDDED SIMULATION","textChars":29,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/5sneloj2","slide":41,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/neloj2t8","slide":41,"text":"41 / 57","textPreview":"41 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/nap4r65w","slide":41,"name":"","alt":"Phase 6 / Embedded simulation: Embedded simulation - intro handoff","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/45da1n","slide":41,"text":""}
+{"kind":"slide","id":"sl/hf3l29","slide":42,"title":"Embedded simulation - completed with outro CTA","textShapes":3}
+{"kind":"textbox","id":"sh/25kb6xkf","slide":42,"text":"Embedded simulation - completed with outro CTA","textPreview":"Embedded simulation - completed with outro CTA","textChars":46,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/9w3m94fu","slide":42,"text":"PHASE 6 / EMBEDDED SIMULATION","textPreview":"PHASE 6 / EMBEDDED SIMULATION","textChars":29,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/kb6xkf6d","slide":42,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/2t83itgf","slide":42,"text":"42 / 57","textPreview":"42 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/u9knih4b","slide":42,"name":"","alt":"Phase 6 / Embedded simulation: Embedded simulation - completed with outro CTA","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/hf3l29","slide":42,"text":""}
+{"kind":"slide","id":"sl/a05n5u","slide":43,"title":"Outro video screen","textShapes":3}
+{"kind":"textbox","id":"sh/qpg3ex0n","slide":43,"text":"Outro video screen","textPreview":"Outro video screen","textChars":18,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/xczed8v6","slide":43,"text":"PHASE 7 / OUTRO","textPreview":"PHASE 7 / OUTRO","textChars":15,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/8v6psfil","slide":43,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/qd4vmtwr","slide":43,"text":"43 / 57","textPreview":"43 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/6tovahoz","slide":43,"name":"","alt":"Phase 7 / Outro: Outro video screen","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/a05n5u","slide":43,"text":""}
+{"kind":"slide","id":"sl/6da2xm","slide":44,"title":"Outro fallback play overlay","textShapes":3}
+{"kind":"textbox","id":"sh/c3ylc7u5","slide":44,"text":"Outro fallback play overlay","textPreview":"Outro fallback play overlay","textChars":27,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/ji5snelo","slide":44,"text":"PHASE 7 / OUTRO","textPreview":"PHASE 7 / OUTRO","textChars":15,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/uxc3ylc7","slide":44,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/crmhk3q5","slide":44,"text":"44 / 57","textPreview":"44 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/kf6dcbul","slide":44,"name":"","alt":"Phase 7 / Outro: Outro fallback play overlay","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/6da2xm","slide":44,"text":""}
+{"kind":"slide","id":"sl/kn9wcy","slide":45,"title":"Simulation intro","textShapes":3}
+{"kind":"textbox","id":"sh/tovahoza","slide":45,"text":"Simulation intro","textPreview":"Simulation intro","textChars":16,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/ixczed8v","slide":45,"text":"SIMULATION / BUILD TUTORIAL","textPreview":"SIMULATION / BUILD TUTORIAL","textChars":27,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/bi9s36hc","slide":45,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/p0bi9s36","slide":45,"text":"45 / 57","textPreview":"45 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/tovahoza","slide":45,"name":"","alt":"Simulation / Build tutorial: Simulation intro","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/kn9wcy","slide":45,"text":""}
+{"kind":"slide","id":"sl/rnzj6j","slide":46,"title":"Simulation step 1","textShapes":3}
+{"kind":"textbox","id":"sh/uxc3ylc7","slide":46,"text":"Simulation step 1","textPreview":"Simulation step 1","textChars":17,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/1kre1w7m","slide":46,"text":"SIMULATION / BUILD TUTORIAL","textPreview":"SIMULATION / BUILD TUTORIAL","textChars":27,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/c3ylc7u5","slide":46,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/ulwval87","slide":46,"text":"46 / 57","textPreview":"46 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/m94fu18j","slide":46,"name":"","alt":"Simulation / Build tutorial: Simulation step 1","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/rnzj6j","slide":46,"text":""}
+{"kind":"slide","id":"sl/ku6l1b","slide":47,"title":"Simulation step 2","textShapes":3}
+{"kind":"textbox","id":"sh/1orytsvu","slide":47,"text":"Simulation step 2","textPreview":"Simulation step 2","textChars":17,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/u18jqh0f","slide":47,"text":"SIMULATION / BUILD TUTORIAL","textPreview":"SIMULATION / BUILD TUTORIAL","textChars":27,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/jm1cfa9w","slide":47,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/1032lszq","slide":47,"text":"47 / 57","textPreview":"47 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/d8bat47y","slide":47,"name":"","alt":"Simulation / Build tutorial: Simulation step 2","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/ku6l1b","slide":47,"text":""}
+{"kind":"slide","id":"sl/tqe6gu","slide":48,"title":"Simulation step 3","textShapes":3}
+{"kind":"textbox","id":"sh/qxs72x4n","slide":48,"text":"Simulation step 3","textPreview":"Simulation step 3","textChars":17,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/xobm58z2","slide":48,"text":"SIMULATION / BUILD TUTORIAL","textPreview":"SIMULATION / BUILD TUTORIAL","textChars":27,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/83itgfml","slide":48,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/m94fu18j","slide":48,"text":"48 / 57","textPreview":"48 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/ap4r65wj","slide":48,"name":"","alt":"Simulation / Build tutorial: Simulation step 3","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/tqe6gu","slide":48,"text":""}
+{"kind":"slide","id":"sl/wzcder","slide":49,"title":"Simulation step 4","textShapes":3}
+{"kind":"textbox","id":"sh/loj2t83i","slide":49,"text":"Simulation step 4","textPreview":"Simulation step 4","textChars":17,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/ex0nuxc3","slide":49,"text":"SIMULATION / BUILD TUTORIAL","textPreview":"SIMULATION / BUILD TUTORIAL","textChars":27,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/3itgfmlk","slide":49,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/lwval87e","slide":49,"text":"49 / 57","textPreview":"49 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/twra5gbq","slide":49,"name":"","alt":"Simulation / Build tutorial: Simulation step 4","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/wzcder","slide":49,"text":""}
+{"kind":"slide","id":"sl/u7kjww","slide":50,"title":"Simulation step 5","textShapes":3}
+{"kind":"textbox","id":"sh/7u54zido","slide":50,"text":"Simulation step 5","textPreview":"Simulation step 5","textChars":17,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/wfyxobm5","slide":50,"text":"SIMULATION / BUILD TUTORIAL","textPreview":"SIMULATION / BUILD TUTORIAL","textChars":27,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/l0rqd4vm","slide":50,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/36hcrmhk","slide":50,"text":"50 / 57","textPreview":"50 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/zed8v6ps","slide":50,"name":"","alt":"Simulation / Build tutorial: Simulation step 5","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/u7kjww","slide":50,"text":""}
+{"kind":"slide","id":"sl/rof0qp","slide":51,"title":"Simulation step 6","textShapes":3}
+{"kind":"textbox","id":"sh/e9cvixcz","slide":51,"text":"Simulation step 6","textPreview":"Simulation step 6","textChars":17,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/lwval87e","slide":51,"text":"SIMULATION / BUILD TUTORIAL","textPreview":"SIMULATION / BUILD TUTORIAL","textChars":27,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/wb2hwfyx","slide":51,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/ex0nuxc3","slide":51,"text":"51 / 57","textPreview":"51 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/2x4nap4r","slide":51,"name":"","alt":"Simulation / Build tutorial: Simulation step 6","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/rof0qp","slide":51,"text":""}
+{"kind":"slide","id":"sl/psfrf9","slide":52,"title":"Simulation step 7","textShapes":3}
+{"kind":"textbox","id":"sh/idonyd0z","slide":52,"text":"Simulation step 7","textPreview":"Simulation step 7","textChars":17,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/t47y1kre","slide":52,"text":"SIMULATION / BUILD TUTORIAL","textPreview":"SIMULATION / BUILD TUTORIAL","textChars":27,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/0je9cvix","slide":52,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/il0rqd4v","slide":52,"text":"52 / 57","textPreview":"52 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/u54zidon","slide":52,"name":"","alt":"Simulation / Build tutorial: Simulation step 7","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/psfrf9","slide":52,"text":""}
+{"kind":"slide","id":"sl/csz64c","slide":53,"title":"Simulation step 8 - sunny state","textShapes":3}
+{"kind":"textbox","id":"sh/f6dcbulw","slide":53,"text":"Simulation step 8 - sunny state","textPreview":"Simulation step 8 - sunny state","textChars":31,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/4r65wjud","slide":53,"text":"SIMULATION / BUILD TUTORIAL","textPreview":"SIMULATION / BUILD TUTORIAL","textChars":27,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/xc3ylc7u","slide":53,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/fepkzupw","slide":53,"text":"53 / 57","textPreview":"53 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/vmtwra5g","slide":53,"name":"","alt":"Simulation / Build tutorial: Simulation step 8 - sunny state","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/csz64c","slide":53,"text":""}
+{"kind":"slide","id":"sl/9719jp","slide":54,"title":"Simulation step 8 - rainy state","textShapes":3}
+{"kind":"textbox","id":"sh/61032lsz","slide":54,"text":"Simulation step 8 - rainy state","textPreview":"Simulation step 8 - rainy state","textChars":31,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/dsji5sne","slide":54,"text":"SIMULATION / BUILD TUTORIAL","textPreview":"SIMULATION / BUILD TUTORIAL","textChars":27,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/o7qpg3ex","slide":54,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/6dcbulwv","slide":54,"text":"54 / 57","textPreview":"54 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/idonyd0z","slide":54,"name":"","alt":"Simulation / Build tutorial: Simulation step 8 - rainy state","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/9719jp","slide":54,"text":""}
+{"kind":"slide","id":"sl/68wxjd","slide":55,"title":"Simulation step 9 - all set","textShapes":3}
+{"kind":"textbox","id":"sh/fil0rqd4","slide":55,"text":"Simulation step 9 - all set","textPreview":"Simulation step 9 - all set","textChars":27,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/83itgfml","slide":55,"text":"SIMULATION / BUILD TUTORIAL","textPreview":"SIMULATION / BUILD TUTORIAL","textChars":27,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/xobm58z2","slide":55,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/fu18jqh0","slide":55,"text":"55 / 57","textPreview":"55 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/fepkzupw","slide":55,"name":"","alt":"Simulation / Build tutorial: Simulation step 9 - all set","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/68wxjd","slide":55,"text":""}
+{"kind":"slide","id":"sl/cl3g4l","slide":56,"title":"Simulation play mode - sunny","textShapes":3}
+{"kind":"textbox","id":"sh/psfil0rq","slide":56,"text":"Simulation play mode - sunny","textPreview":"Simulation play mode - sunny","textChars":28,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/e1w7mp0b","slide":56,"text":"SIMULATION / BUILD TUTORIAL","textPreview":"SIMULATION / BUILD TUTORIAL","textChars":27,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/7mp0bi9s","slide":56,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/pg3ex0nu","slide":56,"text":"56 / 57","textPreview":"56 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/1w7mp0bi","slide":56,"name":"","alt":"Simulation / Build tutorial: Simulation play mode - sunny","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/cl3g4l","slide":56,"text":""}
+{"kind":"slide","id":"sl/n4rq3b","slide":57,"title":"Simulation play mode - rainy","textShapes":3}
+{"kind":"textbox","id":"sh/0je9cvix","slide":57,"text":"Simulation play mode - rainy","textPreview":"Simulation play mode - rainy","textChars":28,"textLines":1,"bbox":[72,18,840,46]}
+{"kind":"textbox","id":"sh/byhgn29g","slide":57,"text":"SIMULATION / BUILD TUTORIAL","textPreview":"SIMULATION / BUILD TUTORIAL","textChars":27,"textLines":1,"bbox":[892,30,316,24]}
+{"kind":"shape","id":"sh/idonyd0z","slide":57,"bbox":[72,66,1136,1]}
+{"kind":"textbox","id":"sh/0rqd4vmt","slide":57,"text":"57 / 57","textPreview":"57 / 57","textChars":7,"textLines":1,"bbox":[1090,690,118,22]}
+{"kind":"image","id":"im/gfmlkjm1","slide":57,"name":"","alt":"Simulation / Build tutorial: Simulation play mode - rainy","bbox":[72,76,1136,639]}
+{"kind":"notes","id":"nt/n4rq3b","slide":57,"text":""}

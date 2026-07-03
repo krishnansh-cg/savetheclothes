@@ -14,111 +14,37 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
 <style>
   *{box-sizing:border-box;user-select:none;-webkit-user-select:none}
+  img{-webkit-user-drag:none;pointer-events:none}
   html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#1a2a35;font-family:'Nunito',system-ui,sans-serif}
   button:active{filter:brightness(0.86)!important;transform:translateY(3px)!important;transition:transform .07s,filter .07s!important}
+  button:focus-visible{outline:3px solid #FFB800;outline-offset:2px}
+  :root{--app-scale:1} /* set precisely by _fitStage() against the 1440x860 design canvas */
   @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
   @keyframes phaseFadeOut{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(18px)}}
   @keyframes kidPop{0%{opacity:0;transform:scale(0.2) rotate(-14deg)}55%{transform:scale(1.18) rotate(5deg)}78%{transform:scale(0.96) rotate(-2deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
   @keyframes wobbleKid{0%,100%{transform:rotate(0) scale(1)}20%{transform:rotate(-8deg) scale(1.04)}40%{transform:rotate(8deg) scale(1.04)}60%{transform:rotate(-5deg)}80%{transform:rotate(4deg)}}
-  @keyframes cardFlipKid{0%{transform:rotateY(-95deg) scale(0.85);opacity:0}65%{transform:rotateY(7deg) scale(1.04)}100%{transform:rotateY(0) scale(1);opacity:1}}
-  @keyframes cardFlipSmooth{0%{transform:rotateY(-88deg) scale(.96);opacity:.35;filter:blur(2px)}58%{transform:rotateY(6deg) scale(1.015);opacity:1;filter:blur(0)}100%{transform:rotateY(0) scale(1);opacity:1;filter:blur(0)}}
   @keyframes feelCardReveal{0%{transform:perspective(900px) rotateY(0deg) scale(1)}30%{transform:perspective(900px) rotateY(-92deg) scale(0.92)}32%{transform:perspective(900px) rotateY(-92deg) scale(0.92)}55%{transform:perspective(900px) rotateY(12deg) scale(1.04)}72%{transform:perspective(900px) rotateY(-4deg) scale(1.01)}100%{transform:perspective(900px) rotateY(0deg) scale(1)}}
   @keyframes feelCardHide{0%{transform:perspective(900px) rotateY(0deg) scale(1)}30%{transform:perspective(900px) rotateY(92deg) scale(0.92)}32%{transform:perspective(900px) rotateY(92deg) scale(0.92)}55%{transform:perspective(900px) rotateY(-12deg) scale(1.04)}72%{transform:perspective(900px) rotateY(4deg) scale(1.01)}100%{transform:perspective(900px) rotateY(0deg) scale(1)}}
   @keyframes resultFlipVertical{0%{transform:rotateX(-88deg) scale(.96);opacity:.45}62%{transform:rotateX(7deg) scale(1.015);opacity:1}100%{transform:rotateX(0) scale(1);opacity:1}}
   @keyframes p3SubscreenIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
   @keyframes p3SubscreenOut{from{opacity:1;transform:translateY(0) scale(1)}to{opacity:0;transform:translateY(-16px) scale(.985)}}
-  @keyframes rainFall{to{transform:translateY(120vh)}}
+  @keyframes rainFall{to{transform:translateY(170vh)}}
   @keyframes glowRing{0%,100%{box-shadow:0 0 0 0 rgba(47,136,255,.7)}50%{box-shadow:0 0 0 18px rgba(47,136,255,0)}}
   @keyframes signalRun{0%{left:2%;opacity:0}8%{opacity:1}92%{opacity:1}100%{left:98%;opacity:0}}
-  @keyframes ctaBounce{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-6px) scale(1.03)}}
-  @keyframes slideIn{from{opacity:0;transform:translateX(46px)}to{opacity:1;transform:none}}
-  @keyframes nodePop{0%{opacity:0;transform:scale(0.6) translateY(10px)}70%{transform:scale(1.06) translateY(-2px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+  @keyframes starPop{0%{opacity:0;transform:scale(0) rotate(-30deg)}55%{opacity:1;transform:scale(1.25) rotate(8deg)}100%{opacity:0;transform:scale(.4) rotate(24deg)}}
+  @keyframes ctaPulse{0%,100%{box-shadow:0 6px 0 #064A93,0 12px 24px rgba(0,0,0,0.26),0 0 0 0 rgba(47,136,255,0.55)}50%{box-shadow:0 6px 0 #064A93,0 12px 24px rgba(0,0,0,0.26),0 0 0 14px rgba(47,136,255,0)}}
   @keyframes chipFlyToSlot{0%{opacity:0;transform:translateY(86px) scale(1.18)}72%{opacity:1;transform:translateY(-6px) scale(1.03)}100%{opacity:1;transform:translateY(0) scale(1)}}
-  @keyframes simCloudBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-  @keyframes simSunSpin{to{transform:rotate(360deg)}}
-  @keyframes simDrop{0%{transform:translateY(-12px);opacity:0}14%{opacity:1}100%{transform:translateY(250px);opacity:0}}
-  @keyframes simPulse{0%{transform:scale(.75);opacity:.15}45%{opacity:1}100%{transform:scale(1.7);opacity:0}}
-  @keyframes simSignal{0%{left:2%;opacity:0}12%{opacity:1}88%{opacity:1}100%{left:96%;opacity:0}}
-  @keyframes simClothSwing{0%,100%{transform:rotate(-2deg)}50%{transform:rotate(3deg)}}
-  @keyframes simServoSpin{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(22deg)}}
-  @keyframes simGlow{0%,100%{box-shadow:0 0 0 rgba(255,215,0,0)}50%{box-shadow:0 0 28px rgba(255,215,0,.8)}}
-  @keyframes simAssemblePop{0%{opacity:0;transform:translateY(18px) scale(.72)}70%{transform:translateY(-4px) scale(1.06)}100%{opacity:1;transform:translateY(0) scale(1)}}
-  @keyframes simFocusRing{0%,100%{box-shadow:0 0 0 0 rgba(255,184,0,.62)}50%{box-shadow:0 0 0 16px rgba(255,184,0,0)}}
-  @keyframes simWireFlow{0%{background-position:0 0}100%{background-position:90px 0}}
-  @keyframes simSoftFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-  @keyframes simRainDrop2{0%{transform:translateY(-24px);opacity:0}18%{opacity:1}100%{transform:translateY(180px);opacity:0}}
-  :root{--ww-safe-top:env(safe-area-inset-top,0px);--ww-safe-right:env(safe-area-inset-right,0px);--ww-safe-bottom:env(safe-area-inset-bottom,0px);--ww-safe-left:env(safe-area-inset-left,0px)}
-  .ww-progress,.ww-dev-dots,.ww-mute,.ww-code-next{max-width:calc(100vw - 24px)}
-  .ww-sim-frame{width:100%;height:100%;border:0;display:block}
-  @media (max-width:1440px),(max-height:820px){
-    [data-screen-label="Phase 2 — Feel"],
-    [data-screen-label="Phase 3 — Problem"],
-    [data-screen-label="Phase 4 — Discover"],
-    [data-screen-label="Phase 5 — Circuit"]{padding-left:250px!important;padding-right:24px!important;padding-top:78px!important}
-    .ww-krish{left:-128px!important;width:440px!important}
-    .ww-krish img{height:min(76vh,660px)!important}
-    [data-screen-label] h1{font-size:clamp(34px,4vw,48px)!important}
-    [data-screen-label] p{font-size:clamp(16px,2vw,21px)!important}
-  }
-  @media (max-width:1120px),(max-height:680px){
-    .ww-progress{top:calc(10px + var(--ww-safe-top))!important;left:calc(12px + var(--ww-safe-left))!important;gap:6px!important;padding:6px 10px!important}
-    .ww-progress button{width:28px!important;height:28px!important;font-size:12px!important;border-width:2px!important}
-    .ww-mute{top:calc(10px + var(--ww-safe-top))!important;right:calc(12px + var(--ww-safe-right))!important;width:38px!important;height:38px!important;border-radius:12px!important;font-size:18px!important}
-    .ww-dev-dots{right:calc(8px + var(--ww-safe-right))!important;bottom:calc(8px + var(--ww-safe-bottom))!important;transform:scale(.9);transform-origin:right bottom}
-    .ww-krish{left:-118px!important;width:350px!important;opacity:.92}
-    .ww-krish img{height:min(68vh,560px)!important}
-    [data-screen-label="Phase 2 — Feel"],
-    [data-screen-label="Phase 3 — Problem"],
-    [data-screen-label="Phase 4 — Discover"],
-    [data-screen-label="Phase 5 — Circuit"]{padding:68px 18px 78px 190px!important;overflow:auto!important;justify-content:flex-start!important}
-    [data-screen-label="Phase 5 — Circuit"] [style*="grid-template-columns:repeat(4,1fr)"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
-    [data-screen-label="Phase 3 — Problem"] [style*="flex-wrap:nowrap"],
-    [data-screen-label="Phase 4 — Discover"] [style*="grid-template-columns:42% 8% 24% 26%"]{flex-wrap:wrap!important}
-  }
-  @media (max-width:780px),(max-height:560px){
-    html,body{overflow:hidden}
-    .ww-progress{gap:4px!important;padding:5px 8px!important}
-    .ww-progress button{width:24px!important;height:24px!important;font-size:11px!important;box-shadow:none!important}
-    .ww-mute{width:34px!important;height:34px!important;border-width:2px!important;box-shadow:0 3px 0 #0868BE!important}
-    .ww-dev-dots{display:none!important}
-    .ww-krish{display:none!important}
-    [data-screen-label="Phase 2 — Feel"],
-    [data-screen-label="Phase 3 — Problem"],
-    [data-screen-label="Phase 4 — Discover"],
-    [data-screen-label="Phase 5 — Circuit"]{padding:60px 10px 86px!important;overflow:auto!important;align-items:center!important;justify-content:flex-start!important}
-    [data-screen-label] h1{font-size:clamp(26px,8vw,36px)!important}
-    [data-screen-label] p{font-size:clamp(14px,4.3vw,18px)!important}
-    [data-screen-label="Phase 3 — Problem"] [style*="width:100%;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:nowrap"],
-    [data-screen-label="Phase 3 — Problem"] [style*="margin-top:28px;display:flex"],
-    [data-screen-label="Phase 4 — Discover"] [style*="display:grid;grid-template-columns:minmax(0,1fr) 270px"],
-    [data-screen-label="Phase 4 — Discover"] [style*="display:grid;grid-template-columns:repeat(4,1fr)"],
-    [data-screen-label="Phase 5 — Circuit"] [style*="grid-template-columns:repeat(4,1fr)"]{display:flex!important;flex-wrap:wrap!important;justify-content:center!important}
-    [data-screen-label="Phase 5 — Circuit"] [style*="right:-32px"]{display:none!important}
-    [data-screen-label="Phase 5 — Circuit"] [style*="position:fixed;inset:0"]{overflow:auto!important}
-    [data-screen-label="Phase 5 — Circuit"] [style*="left:58px;bottom:42px"]{position:relative!important;left:auto!important;bottom:auto!important;height:min(46vh,360px)!important;margin:54px auto 0!important;display:block!important}
-    [data-screen-label="Phase 5 — Circuit"] [style*="left:430px;right:64px"]{position:relative!important;left:auto!important;right:auto!important;top:auto!important;margin:16px 12px 120px!important;min-height:auto!important;padding:32px 18px!important}
-    [data-screen-label="Phase 5 — Circuit"] [style*="font-size:52px"]{font-size:clamp(28px,8vw,40px)!important}
-    [data-screen-label="Phase 5 — Circuit"] [style*="font-size:38px"]{font-size:clamp(20px,5.8vw,28px)!important}
-    .ww-code-next{right:calc(58px + var(--ww-safe-right))!important;top:calc(10px + var(--ww-safe-top))!important;height:38px!important;min-width:76px!important;padding:0 11px!important;font-size:14px!important;border-radius:12px!important}
-  }
-  @media (max-width:560px){
-    .ww-progress{left:calc(8px + var(--ww-safe-left))!important;right:calc(52px + var(--ww-safe-right))!important;overflow-x:auto!important;border-radius:16px!important}
-    .ww-progress button{flex:0 0 auto!important}
-    [data-screen-label="Phase 1 — Story"] [style*="min-width:380px"]{min-width:0!important;width:min(86vw,360px)!important;font-size:18px!important;padding:16px 22px!important}
-    [data-screen-label="Phase 1 — Story"] [style*="width:158px"]{width:104px!important;height:104px!important;font-size:48px!important}
-    [data-screen-label="Phase 5 — Circuit"] [style*="min-width:300px"]{min-width:0!important;width:min(82vw,300px)!important}
-  }
 </style>
 </helmet>
 
-<div style="position:fixed;inset:0;overflow:hidden;font-family:'Nunito',sans-serif;">
+<div style="position:fixed;left:0;top:0;width:calc(100vw / var(--app-scale));height:calc(100vh / var(--app-scale));transform:scale(var(--app-scale));transform-origin:0 0;overflow:hidden;font-family:'Nunito',sans-serif;">
 
   <!-- Base dark background -->
   <div style="position:absolute;inset:0;background:#1a2a35;z-index:0;"></div>
 
   <!-- Background image — game phases only -->
   <div style="position:absolute;inset:0;z-index:1;pointer-events:none;transition:opacity 1.4s ease;opacity:{{ bgImageOpacity }};">
-    <img src="uploads/bgimage.png" alt="" style="position:absolute;inset:-70px;width:calc(100% + 140px);height:calc(100% + 140px);object-fit:cover;object-position:36% 58%;filter:blur(2px);transform:scale(1.22);transform-origin:36% 62%;" />
+    <img src="uploads/bgimage.webp" alt="" style="position:absolute;inset:-70px;width:calc(100% + 140px);height:calc(100% + 140px);object-fit:cover;object-position:36% 58%;filter:blur(2px);transform:scale(1.22);transform-origin:36% 62%;" />
     <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,18,28,0.22) 0%,rgba(8,18,28,0.08) 55%,rgba(8,18,28,0.32) 100%);"></div>
   </div>
 
@@ -129,23 +55,18 @@
     </sc-for>
   </div>
 
-  <!-- Temporary developer slide controls -->
-  <div class="ww-dev-dots" style="position:absolute;right:18px;bottom:18px;z-index:80;display:flex;align-items:center;gap:4px;padding:5px 6px;border-radius:10px;background:rgba(0,0,0,0.38);border:1px solid rgba(255,255,255,0.18);box-shadow:0 4px 14px rgba(0,0,0,0.22);">
-    <span style="font-family:'Nunito';font-weight:900;font-size:10px;color:rgba(255,248,232,0.78);letter-spacing:0;">DEV</span>
-    <sc-for list="{{ devDots }}" as="dot" hint-placeholder-count="8">
-      <button onClick="{{ dot.onClick }}" title="{{ dot.title }}" style="{{ dot.style }}">{{ dot.num }}</button>
-    </sc-for>
-  </div>
+  <!-- Header scrim -->
+  <div style="position:absolute;top:0;left:0;right:0;height:84px;background:linear-gradient(180deg,rgba(8,16,26,0.5) 0%,rgba(8,16,26,0) 100%);pointer-events:none;z-index:38;"></div>
 
   <!-- Progress dots -->
-  <div class="ww-progress" style="position:absolute;top:18px;left:22px;display:flex;gap:10px;z-index:40;background:rgba(0,0,0,0.3);padding:8px 16px;border-radius:999px;">
+  <div style="position:absolute;top:20px;left:24px;display:flex;align-items:center;gap:12px;z-index:40;background:rgba(0,0,0,0.32);padding:10px 18px;border-radius:999px;">
     <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="8">
-      <button onClick="{{ dot.onClick }}" style="{{ dot.style }}">{{ dot.num }}</button>
+      <button onClick="{{ dot.onClick }}" title="{{ dot.title }}" aria-label="{{ dot.title }}" style="{{ dot.style }}">{{ dot.num }}</button>
     </sc-for>
   </div>
 
   <!-- Mute button -->
-  <button class="ww-mute" onClick="{{ toggleMute }}" title="Sound" style="position:absolute;top:16px;right:22px;z-index:40;width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:linear-gradient(180deg,#55B8FF 0%,#1688F4 100%);border:3px solid #35A7FF;color:#FFFFFF;font-size:20px;box-shadow:0 5px 0 #0868BE,0 10px 18px rgba(0,82,168,0.36),inset 0 2px 0 rgba(255,255,255,0.35);">
+  <button onClick="{{ toggleMute }}" title="{{ muteLabel }}" aria-label="{{ muteLabel }}" style="position:absolute;top:20px;right:24px;z-index:40;width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:linear-gradient(180deg,#55B8FF 0%,#1688F4 100%);border:3px solid #35A7FF;color:#FFFFFF;font-size:20px;box-shadow:0 5px 0 #0868BE,0 10px 18px rgba(0,82,168,0.36),inset 0 2px 0 rgba(255,255,255,0.35);">
     <i class="ti {{ muteIcon }}"></i>
   </button>
 
@@ -155,22 +76,23 @@
   <sc-if value="{{ isPhase1 }}" hint-placeholder-val="{{ true }}">
     <div data-screen-label="Phase 1 — Story" style="position:absolute;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;">
       <video ref="{{ videoRef }}" onEnded="{{ onVideoEnd }}" playsInline="{{ true }}" muted="{{ videoMuted }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#1a2a35;">
-        <source src="uploads/Intro_compressed.mp4" type="video/mp4" />
+        <source src="uploads/Intro_compressed.webm" type="video/webm" />
       </video>
       <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,25,35,0.25) 0%,rgba(15,25,35,0.55) 100%);"></div>
       <sc-if value="{{ p1ShowPlay }}" hint-placeholder-val="{{ true }}">
-        <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:34px;animation:fadeUp .5s ease;">
-          <button onClick="{{ playVideo }}" style="display:flex;flex-direction:column;align-items:center;gap:24px;background:none;border:none;cursor:pointer;">
-            <span style="width:158px;height:158px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#2F88FF;color:white;font-size:74px;animation:glowRing 2.4s ease-in-out infinite;padding-left:10px;border:6px solid #0B63C7;box-shadow:0 11px 0 #064A93,0 20px 38px rgba(0,0,0,0.3);"><i class="ti ti-player-play-filled"></i></span>
-            <span style="font-family:'Nunito';font-weight:900;font-size:34px;color:#FFF8E8;text-shadow:0 3px 12px rgba(0,0,0,0.72);">Play Krish's story</span>
-          </button>
-          <button onClick="{{ skipVideo }}" style="min-width:380px;padding:21px 42px;border-radius:24px;background:rgba(255,255,255,0.13);border:3px solid rgba(255,255,255,0.34);color:rgba(255,248,232,0.82);cursor:pointer;font-family:'Nunito';font-weight:900;font-size:24px;box-shadow:0 8px 0 rgba(0,0,0,0.18);">Skip storyline →</button>
+        <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:34px;animation:fadeUp .5s ease;transform:translateY(-6%);">
+          <div style="text-align:center;">
+            <div style="font-family:'Nunito';font-weight:900;font-size:96px;line-height:1;color:#FFF8E8;text-shadow:0 6px 0 rgba(11,72,140,0.9),0 20px 46px rgba(0,0,0,0.55);letter-spacing:1px;">WeatherWise</div>
+            <div style="margin-top:18px;font-family:'Nunito';font-weight:900;font-size:26px;color:rgba(255,248,232,0.96);text-shadow:0 2px 12px rgba(0,0,0,0.7);">Help Krish build a rain-sensing smart dryer!</div>
+          </div>
+          <button onClick="{{ playVideo }}" style="width:280px;height:74px;border-radius:22px;border:3px solid #0B63C7;background:#2F88FF;color:white;font-family:'Nunito';font-weight:900;font-size:28px;letter-spacing:2px;display:flex;align-items:center;justify-content:center;gap:14px;cursor:pointer;box-shadow:0 8px 0 #064A93,0 16px 32px rgba(0,0,0,0.35);"><i class="ti ti-player-play-filled" style="font-size:26px;"></i>PLAY</button>
         </div>
       </sc-if>
       <sc-if value="{{ videoEnded }}" hint-placeholder-val="{{ false }}">
-        <div style="position:relative;z-index:2;text-align:center;padding:46px 64px;background:rgba(255,255,255,0.1);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:3px solid rgba(255,248,232,0.28);border-radius:28px;animation:kidPop .6s ease;">
-          <div style="font-family:'Nunito';font-weight:900;font-size:48px;line-height:1.1;color:#FFF8E8;text-shadow:0 2px 12px rgba(0,0,0,0.6);">Krish had an idea.</div>
-          <div style="margin-top:14px;font-size:24px;color:rgba(255,248,232,0.75);">Want to help him build it?</div>
+        <div style="position:absolute;left:53%;top:15%;z-index:2;max-width:440px;padding:30px 38px;background:rgba(255,255,255,0.97);border:4px solid #2F88FF;border-radius:26px 26px 26px 6px;box-shadow:0 10px 0 rgba(6,74,147,0.4),0 22px 44px rgba(0,0,0,0.4);animation:kidPop .6s ease;">
+          <div style="font-family:'Nunito';font-weight:900;font-size:34px;line-height:1.15;color:#0A1C4B;">Krish had an idea.</div>
+          <div style="margin-top:10px;font-family:'Nunito';font-weight:800;font-size:20px;color:#3E5A75;">Want to help him build it?</div>
+          <div style="position:absolute;left:-16px;bottom:20px;width:26px;height:26px;background:rgba(255,255,255,0.97);border-left:4px solid #2F88FF;border-bottom:4px solid #2F88FF;transform:rotate(45deg);"></div>
         </div>
       </sc-if>
     </div>
@@ -181,7 +103,7 @@
        (body chain animation)
   ============================= -->
   <sc-if value="{{ isPhase2 }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Phase 2 — Feel" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:88px 48px 28px 330px;">
+    <div data-screen-label="Phase 2 — Feel" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:84px 40px 110px;">
       <sc-if value="{{ p2ActivityScreen }}" hint-placeholder-val="{{ true }}">
         <div style="{{ p2ActivityStyle }}">
           <h1 style="font-family:'Nunito';font-weight:900;font-size:52px;line-height:1.04;margin:0 0 8px;text-align:center;color:#FFF8E8;text-shadow:0 3px 16px rgba(0,0,0,0.75);">How does your body know it's raining?</h1>
@@ -194,6 +116,11 @@
                   <span style="{{ node.arrowStyle }}">→</span>
                 </sc-if>
                 <button onClick="{{ node.onClick }}" style="{{ node.style }}">
+                  <sc-if value="{{ node.lit }}" hint-placeholder-val="{{ false }}">
+                    <span style="position:absolute;left:-9px;top:-11px;font-size:20px;line-height:1;color:#FFD700;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.05s both;">✦</span>
+                    <span style="position:absolute;right:-8px;top:26px;font-size:14px;line-height:1;color:#FFE9A0;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.22s both;">✦</span>
+                    <span style="position:absolute;right:14px;bottom:-10px;font-size:17px;line-height:1;color:#FFD700;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.38s both;">✦</span>
+                  </sc-if>
                   <div style="{{ node.iconWrapStyle }}">
                     <img src="{{ node.iconSrc }}" alt="" style="{{ node.iconImgStyle }}" />
                   </div>
@@ -211,11 +138,11 @@
         </div>
       </sc-if>
       <sc-if value="{{ p2WrapScreen }}" hint-placeholder-val="{{ false }}">
-        <div style="width:100%;max-width:980px;margin-left:auto;margin-top:-100px;display:flex;align-items:center;justify-content:center;animation:fadeUp .7s ease both;">
-          <div style="width:100%;min-height:480px;padding:50px 58px;border-radius:28px;background:rgba(255,251,240,0.97);border:4px solid #FFB800;box-shadow:0 10px 0 #C9A100,0 24px 48px rgba(0,0,0,0.28);display:flex;flex-direction:column;justify-content:center;">
-            <div style="font-family:'Nunito';font-weight:900;font-size:52px;line-height:1.08;color:#1a2744;margin-bottom:22px;">That is the whole chain.</div>
-            <div style="font-size:31px;line-height:1.34;color:#5a3a00;font-family:'Nunito';font-weight:900;">Your body already runs this circuit. I wanted to build the same thing for clothes!</div>
-            <div style="font-family:'Nunito';font-weight:900;font-size:34px;line-height:1.18;color:#0D5C2A;margin-top:26px;">Sense → Signal → Think → Act.</div>
+        <div style="width:100%;max-width:900px;display:flex;align-items:center;justify-content:center;animation:fadeUp .7s ease both;">
+          <div style="width:100%;padding:56px 64px;border-radius:28px;background:rgba(255,251,240,0.97);border:4px solid #FFB800;box-shadow:0 10px 0 #C9A100,0 24px 48px rgba(0,0,0,0.28);display:flex;flex-direction:column;justify-content:center;">
+            <div style="font-family:'Nunito';font-weight:900;font-size:46px;line-height:1.08;color:#1a2744;margin-bottom:20px;">That is the whole chain.</div>
+            <div style="font-size:27px;line-height:1.34;color:#5a3a00;font-family:'Nunito';font-weight:900;">Your body already runs this circuit. I wanted to build the same thing for clothes!</div>
+            <div style="font-family:'Nunito';font-weight:900;font-size:30px;line-height:1.18;color:#0D5C2A;margin-top:22px;"><span style="color:#28A862;">Sense</span> <span style="color:#C98F00;">→ Signal</span> <span style="color:#7B54D8;">→ Think</span> <span style="color:#F36A21;">→ Act.</span></div>
           </div>
         </div>
       </sc-if>
@@ -226,10 +153,10 @@
        PHASE 3 — HOW WOULD YOU SOLVE IT
   ============================= -->
   <sc-if value="{{ isPhase3 }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Phase 3 — Problem" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:92px 44px 42px 330px;">
+    <div data-screen-label="Phase 3 — Problem" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:84px 40px 110px;">
 
       <sc-if value="{{ p2Build }}" hint-placeholder-val="{{ true }}">
-        <div style="width:100%;max-width:1220px;display:flex;flex-direction:column;align-items:center;animation:fadeUp .5s ease;">
+        <div style="width:100%;max-width:1000px;display:flex;flex-direction:column;align-items:center;animation:fadeUp .5s ease;">
           <div style="{{ p2BoardStyle }}">
             <sc-if value="{{ p2ActivityFront }}" hint-placeholder-val="{{ true }}">
               <h1 style="font-family:'Nunito';font-weight:900;font-size:52px;line-height:1.04;margin:0 0 9px;text-align:center;color:#0A1C4B;text-shadow:0 3px 0 rgba(10,28,75,0.08);">Can you complete the steps?</h1>
@@ -238,15 +165,15 @@
                 <img src="{{ p2DragGhostImg }}" alt="" style="{{ p2DragGhostImgStyle }}" />
                 <span style="{{ p2DragGhostLabelStyle }}">{{ p2DragGhostLabel }}</span>
               </div>
-              <div style="width:100%;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:nowrap;">
+              <div style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:nowrap;">
               <div style="width:136px;height:168px;padding:14px 12px;border-radius:20px;background:#F8FCF8;border:3px solid #C6D8CB;font-family:'Nunito';font-weight:900;font-size:17px;color:#0D6B30;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 4px 0 rgba(24,72,42,0.12);">
-                <img src="assets/screen3/rain.png" alt="" style="width:78px;height:78px;object-fit:contain;margin-bottom:10px;" />
+                <img src="assets/screen3/rain.webp" alt="" style="width:76px;height:76px;object-fit:contain;margin-bottom:10px;" />
                 <span>It rains</span>
               </div>
               <span style="color:#2EB35B;font-size:40px;flex-shrink:0;font-weight:900;text-shadow:0 2px 0 rgba(0,0,0,0.08);">→</span>
               <sc-for list="{{ p2Slots }}" as="slot" hint-placeholder-count="4">
                 <div style="display:contents">
-                  <button data-p2-slot-index="{{ slot.index }}" onClick="{{ slot.onClick }}" onPointerDown="{{ slot.onPointerDown }}" onMouseDown="{{ slot.onMouseDown }}" onTouchStart="{{ slot.onTouchStart }}" onDragOver="{{ slot.onDragOver }}" onDrop="{{ slot.onDrop }}" style="{{ slot.style }}">
+                  <button data-p2-slot-index="{{ slot.index }}" onClick="{{ slot.onClick }}" onPointerDown="{{ slot.onPointerDown }}" style="{{ slot.style }}">
                     <sc-if value="{{ slot.filled }}" hint-placeholder-val="{{ false }}">
                       <img src="{{ slot.img }}" alt="" style="{{ slot.imgStyle }}" />
                       <span style="{{ slot.labelStyle }}">{{ slot.label }}</span>
@@ -259,13 +186,17 @@
                 </div>
               </sc-for>
               <div style="width:150px;height:168px;padding:14px 12px;border-radius:20px;background:#F8FCF8;border:3px solid #C6D8CB;font-family:'Nunito';font-weight:900;font-size:17px;line-height:1.15;color:#0D6B30;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 4px 0 rgba(24,72,42,0.12);">
-                <img src="assets/screen3/house.png" alt="" style="width:76px;height:76px;object-fit:contain;margin-bottom:8px;" />
+                <img src="assets/screen3/house.webp" alt="" style="width:76px;height:76px;object-fit:contain;margin-bottom:8px;" />
                 <span>Clothes<br/>come inside</span>
               </div>
               </div>
             </sc-if>
             <sc-if value="{{ p2ResultVisible }}" hint-placeholder-val="{{ false }}">
-              <div style="width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+              <div style="position:relative;width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+                <span style="position:absolute;left:-6px;top:-6px;font-size:22px;line-height:1;color:#FFD700;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.1s both;">✦</span>
+                <span style="position:absolute;right:-4px;top:10px;font-size:16px;line-height:1;color:#FFE9A0;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.28s both;">✦</span>
+                <span style="position:absolute;left:34px;bottom:-2px;font-size:15px;line-height:1;color:#FFE9A0;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.42s both;">✦</span>
+                <span style="position:absolute;right:40px;bottom:8px;font-size:20px;line-height:1;color:#FFD700;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.55s both;">✦</span>
                 <div style="{{ p2ResultBadgeStyle }}">{{ p2ResultTitle }}</div>
                 <div style="margin-top:28px;display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:nowrap;width:100%;">
                   <sc-for list="{{ p2ResultFlow }}" as="item" hint-placeholder-count="6">
@@ -286,20 +217,17 @@
           <sc-if value="{{ p2ActivityFront }}" hint-placeholder-val="{{ true }}">
           <div style="margin-top:34px;min-height:128px;display:flex;gap:18px;flex-wrap:nowrap;justify-content:center;align-items:center;width:100%;max-width:1080px;">
             <sc-for list="{{ p2ChipList }}" as="chip" hint-placeholder-count="4">
-              <button onClick="{{ chip.onClick }}" onPointerDown="{{ chip.onPointerDown }}" onMouseDown="{{ chip.onMouseDown }}" onTouchStart="{{ chip.onTouchStart }}" style="{{ chip.style }}">
+              <button onClick="{{ chip.onClick }}" onPointerDown="{{ chip.onPointerDown }}" style="{{ chip.style }}">
                 <img src="{{ chip.img }}" alt="" style="{{ chip.imgStyle }}" />
                 <span>{{ chip.label }}</span>
               </button>
             </sc-for>
           </div>
-          <sc-if value="{{ p2Ready }}" hint-placeholder-val="{{ false }}">
-            <button onClick="{{ p2CheckClick }}" style="{{ p2CheckStyle }}">
-              <span>Next</span><span style="width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:white;color:#064A93;font-size:24px;box-shadow:0 4px 0 rgba(6,74,147,0.18);">→</span>
-            </button>
-          </sc-if>
-          </sc-if>
-          <sc-if value="{{ p2ResultVisible }}" hint-placeholder-val="{{ false }}">
-            <button onClick="{{ p2MoveNext }}" style="{{ p2MoveNextStyle }}">Next <span style="font-size:26px;">→</span></button>
+          <div style="margin-top:18px;min-height:72px;display:flex;flex-direction:column;align-items:center;gap:10px;">
+            <sc-if value="{{ p2WrongVisible }}" hint-placeholder-val="{{ false }}">
+              <div style="{{ p2WrongStyle }}">Almost! The steps are not in the right order yet — tap a card to send it back, then try again.</div>
+            </sc-if>
+          </div>
           </sc-if>
         </div>
       </sc-if>
@@ -311,7 +239,7 @@
        PHASE 4 — NERVOUS SYSTEM (flip cards)
   ============================= -->
   <sc-if value="{{ isPhase4 }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Phase 4 — Discover" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:76px 38px 20px 330px;">
+    <div data-screen-label="Phase 4 — Discover" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 40px 110px;">
 
       <sc-if value="{{ p3Board }}" hint-placeholder-val="{{ true }}">
         <div style="{{ p3BoardStyle }}">
@@ -341,6 +269,9 @@
           <div style="width:100%;margin-top:18px;border-radius:24px;background:rgba(255,255,255,0.97);box-shadow:0 7px 0 rgba(32,52,70,0.08),0 16px 30px rgba(0,0,0,0.12);border:2px solid rgba(32,52,70,0.08);padding:16px 34px 18px;">
             <sc-if value="{{ p3QuestionVisible }}" hint-placeholder-val="{{ true }}">
               <div style="font-family:'Nunito';font-weight:900;font-size:24px;color:#0A1C4B;text-align:center;margin-bottom:12px;">If this were part of Krish's body — what would it be?</div>
+              <sc-if value="{{ p3RetryVisible }}" hint-placeholder-val="{{ false }}">
+                <div style="font-family:'Nunito';font-weight:900;font-size:17px;color:#C22B2B;text-align:center;margin:-4px 0 10px;animation:wobbleKid .5s ease;">Not quite — try one more time!</div>
+              </sc-if>
               <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;">
                 <sc-for list="{{ p3Chips }}" as="chip" hint-placeholder-count="4">
                   <button onClick="{{ chip.onClick }}" style="{{ chip.style }}">
@@ -351,12 +282,14 @@
               </div>
             </sc-if>
             <sc-if value="{{ p3Result }}" hint-placeholder-val="{{ false }}">
-              <div style="min-height:126px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;animation:kidPop .35s ease;">
-                <div style="font-family:'Nunito';font-weight:900;font-size:32px;line-height:1.08;color:{{ p3ResultColor }};">{{ p3ResultTitle }}</div>
-                <div style="font-size:18px;color:#5a6c7d;margin-top:10px;max-width:760px;line-height:1.35;font-weight:800;">{{ p3ResultLine }}</div>
-                <sc-if value="{{ p3ShowContinue }}" hint-placeholder-val="{{ false }}">
-                  <button onClick="{{ p3onContinue }}" style="{{ globalNextStyle }}">Next <span style="font-size:26px;">→</span></button>
+              <div style="position:relative;min-height:126px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;animation:kidPop .35s ease;">
+                <sc-if value="{{ p3Correct }}" hint-placeholder-val="{{ false }}">
+                  <span style="position:absolute;left:8px;top:2px;font-size:20px;line-height:1;color:#FFD700;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.08s both;">✦</span>
+                  <span style="position:absolute;right:12px;top:8px;font-size:15px;line-height:1;color:#FFE9A0;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.26s both;">✦</span>
+                  <span style="position:absolute;right:52px;bottom:2px;font-size:18px;line-height:1;color:#FFD700;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.44s both;">✦</span>
                 </sc-if>
+                <div style="font-family:'Nunito';font-weight:900;font-size:32px;line-height:1.08;color:{{ p3ResultColor }};">{{ p3ResultTitle }}</div>
+                <div style="font-size:19px;color:#48596B;margin-top:10px;max-width:760px;line-height:1.35;font-weight:800;">{{ p3ResultLine }}</div>
               </div>
             </sc-if>
           </div>
@@ -380,7 +313,7 @@
                 <div style="display:grid;grid-template-columns:90px minmax(0,1fr);align-items:center;min-height:84px;border-radius:18px;background:{{ row.machineBg }};overflow:hidden;">
                   <div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;background:{{ row.color }};color:white;font-family:'Nunito';font-weight:900;text-align:center;">
                     <div style="font-size:31px;line-height:1;">{{ row.num }}</div>
-                    <div style="font-size:12px;line-height:1.05;margin-top:5px;">{{ row.role }}</div>
+                    <div style="font-size:13px;line-height:1.05;margin-top:5px;">{{ row.role }}</div>
                   </div>
                   <div style="display:flex;align-items:center;gap:14px;padding:10px 16px;">
                     <img src="{{ row.img }}" alt="" style="width:118px;height:62px;object-fit:contain;filter:drop-shadow(0 7px 9px rgba(0,0,0,0.12));" />
@@ -405,11 +338,11 @@
        PHASE 5 — BUILD KRISH'S CIRCUIT
   ============================= -->
   <sc-if value="{{ isPhase5 }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Phase 5 — Circuit" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:76px 38px 20px 315px;">
+    <div data-screen-label="Phase 5 — Circuit" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 40px 110px;">
       <sc-if value="{{ p4ActivityScreen }}" hint-placeholder-val="{{ true }}">
       <div style="{{ p4ActivityStyle }}">
         <h1 style="font-family:'Nunito';font-weight:900;font-size:52px;line-height:1.04;margin:-36px 0 8px;text-align:center;color:#FFF8E8;text-shadow:0 3px 16px rgba(0,0,0,0.75);">Now build Krish's smart machine!</h1>
-        <p style="margin:0 0 52px;color:rgba(255,248,232,0.94);font-size:23px;font-weight:900;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,0.68);">Tap a part, then tap the correct slot. Same chain: <span style="color:#43C76F;">Sense</span> <span style="color:#2F88FF;">→ Signal</span> <span style="color:#8B4DD8;">→ Think</span> <span style="color:#F36A21;">→ Act.</span></p>
+        <p style="margin:0 0 52px;color:rgba(255,248,232,0.94);font-size:23px;font-weight:900;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,0.68);">Tap a part, then tap the correct slot. Same chain: <span style="color:#43C76F;">Sense</span> <span style="color:#FFC93C;">→ Signal</span> <span style="color:#8B4DD8;">→ Think</span> <span style="color:#F36A21;">→ Act.</span></p>
 
         <!-- Drag ghost (follows cursor) -->
         <div style="{{ p4GhostStyle }}">
@@ -417,19 +350,19 @@
           <span style="font-family:'Nunito';font-weight:900;font-size:16px;color:#0A1C4B;">{{ p4GhostLabel }}</span>
         </div>
 
-        <div style="position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:26px;width:100%;max-width:1120px;">
+        <div style="position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;width:100%;max-width:1000px;">
           <sc-for list="{{ p4Slots }}" as="slot" hint-placeholder-count="4">
             <div style="position:relative;">
-              <button data-p4-slot-index="{{ slot.index }}" onClick="{{ slot.onClick }}" onPointerDown="{{ slot.onPointerDown }}" onMouseDown="{{ slot.onMouseDown }}" onTouchStart="{{ slot.onTouchStart }}" onDragOver="{{ slot.onDragOver }}" onDrop="{{ slot.onDrop }}" style="{{ slot.style }}">
+              <button data-p4-slot-index="{{ slot.index }}" onClick="{{ slot.onClick }}" onPointerDown="{{ slot.onPointerDown }}" style="{{ slot.style }}">
                 <div style="{{ slot.topBadgeStyle }}"><i class="ti {{ slot.roleIcon }}" style="font-size:34px;"></i></div>
                 <div style="font-family:'Nunito';font-weight:900;font-size:21px;color:{{ slot.color }};text-transform:uppercase;margin-top:26px;">{{ slot.role }}</div>
-                <div style="font-family:'Nunito';font-weight:900;font-size:15px;color:#0A1C4B;margin-top:8px;">{{ slot.helper }}</div>
+                <div style="font-family:'Nunito';font-weight:900;font-size:16px;color:#0A1C4B;margin-top:8px;">{{ slot.helper }}</div>
                 <sc-if value="{{ slot.filled }}" hint-placeholder-val="{{ false }}">
                   <img src="{{ slot.img }}" alt="" style="width:126px;height:76px;object-fit:contain;margin-top:14px;filter:drop-shadow(0 8px 10px rgba(0,0,0,0.16));" />
                   <span style="{{ slot.labelStyle }}">{{ slot.label }}</span>
                 </sc-if>
                 <sc-if value="{{ slot.empty }}" hint-placeholder-val="{{ true }}">
-                  <div style="font-family:'Nunito';font-weight:900;font-size:15px;color:{{ slot.color }};margin-top:26px;">Drop here</div>
+                  <div style="font-family:'Nunito';font-weight:900;font-size:16px;color:{{ slot.color }};margin-top:26px;">Drop here</div>
                   <div style="{{ slot.dropCircleStyle }}">↓</div>
                 </sc-if>
               </button>
@@ -440,15 +373,21 @@
             <div style="position:absolute;left:0;right:0;top:-30px;height:12px;pointer-events:none;">
               <div style="position:absolute;top:0;width:16px;height:16px;border-radius:50%;background:#FFD700;box-shadow:0 0 20px 5px rgba(255,215,0,0.85);animation:signalRun 1.6s ease-in-out infinite;"></div>
             </div>
+            <div style="position:absolute;inset:-16px;pointer-events:none;">
+              <span style="position:absolute;left:-4px;top:-4px;font-size:22px;line-height:1;color:#FFD700;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.05s both;">✦</span>
+              <span style="position:absolute;right:-2px;top:-8px;font-size:17px;line-height:1;color:#FFE9A0;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.2s both;">✦</span>
+              <span style="position:absolute;left:30%;bottom:-6px;font-size:15px;line-height:1;color:#FFE9A0;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.35s both;">✦</span>
+              <span style="position:absolute;right:26%;bottom:-2px;font-size:19px;line-height:1;color:#FFD700;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.5s both;">✦</span>
+              <span style="position:absolute;left:48%;top:-10px;font-size:16px;line-height:1;color:#FFD700;text-shadow:0 0 10px rgba(255,215,0,0.85);pointer-events:none;z-index:6;animation:starPop .95s ease 0.65s both;">✦</span>
+            </div>
           </sc-if>
         </div>
 
-        <div style="margin-top:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;width:100%;max-width:1120px;">
+        <div style="margin-top:22px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;width:100%;max-width:1000px;">
           <sc-for list="{{ p4ChipList }}" as="chip" hint-placeholder-count="4">
-            <button onClick="{{ chip.onClick }}" onPointerDown="{{ chip.onPointerDown }}" onMouseDown="{{ chip.onMouseDown }}" onTouchStart="{{ chip.onTouchStart }}" style="{{ chip.style }}">
+            <button onClick="{{ chip.onClick }}" onPointerDown="{{ chip.onPointerDown }}" style="{{ chip.style }}">
               <img src="{{ chip.img }}" alt="" style="width:150px;height:86px;object-fit:contain;filter:drop-shadow(0 8px 10px rgba(0,0,0,0.16));" />
-              <div style="display:flex;align-items:center;justify-content:center;gap:9px;">
-                <i class="ti {{ chip.icon }}" style="font-size:20px;color:{{ chip.color }};"></i>
+              <div style="display:flex;align-items:center;justify-content:center;">
                 <span>{{ chip.label }}</span>
               </div>
             </button>
@@ -456,32 +395,19 @@
         </div>
 
         <div style="margin-top:12px;min-height:78px;display:flex;flex-direction:column;align-items:center;gap:8px;">
-          <sc-if value="{{ p4ShowTest }}" hint-placeholder-val="{{ false }}">
-            <button onClick="{{ p4onTest }}" style="{{ p4TestStyle }}">Next</button>
-            <div style="display:flex;align-items:center;gap:7px;font-family:'Nunito';font-weight:900;font-size:13px;color:rgba(255,248,232,0.86);text-shadow:0 2px 8px rgba(0,0,0,0.6);opacity:{{ p4NeedsParts ? 1 : 0 }};pointer-events:none;transition:opacity 0.2s ease;"><i class="ti ti-lock"></i> Place all parts in the correct order to test.</div>
-          </sc-if>
-          <sc-if value="{{ p4error }}" hint-placeholder-val="{{ false }}">
-            <div style="display:flex;flex-direction:column;align-items:center;gap:12px;animation:wobbleKid .5s ease;">
-              <div style="padding:14px 24px;border-radius:16px;background:rgba(255,255,255,0.96);border:3px solid #E84040;color:#7D0A0A;font-size:16px;max-width:560px;text-align:center;font-family:'Nunito';font-weight:700;box-shadow:0 5px 0 #B31010;">{{ p4error }}</div>
-              <button onClick="{{ p4onClear }}" style="padding:12px 26px;border-radius:14px;background:#4A90E2;color:white;border:3px solid #1A5BA8;cursor:pointer;font-family:'Nunito';font-weight:800;font-size:15px;box-shadow:0 5px 0 #0D3F7D;">Clear and try again</button>
-            </div>
-          </sc-if>
           <sc-if value="{{ p4correct }}" hint-placeholder-val="{{ false }}">
-            <div style="font-family:'Nunito';font-weight:900;font-size:22px;color:#FFD700;animation:kidPop .4s ease;text-shadow:0 2px 12px rgba(0,0,0,0.6);">🎉 Circuit live. Feel → Think → Act.</div>
+            <div style="font-family:'Nunito';font-weight:900;font-size:22px;color:#FFD700;animation:kidPop .4s ease;text-shadow:0 2px 12px rgba(0,0,0,0.6);">🎉 Circuit live! Sense → Signal → Think → Act.</div>
           </sc-if>
         </div>
       </div>
       </sc-if>
       <sc-if value="{{ p4WrapScreen }}" hint-placeholder-val="{{ false }}">
         <div style="position:fixed;inset:0;z-index:12;animation:fadeUp .7s ease both;overflow:hidden;">
-          <img src="assets/krish_celebrate.png" alt="Krish" style="position:absolute;left:58px;bottom:42px;height:68vh;max-height:700px;width:auto;display:block;object-fit:contain;filter:drop-shadow(0 18px 30px rgba(0,0,0,0.35));" />
-          <div style="position:absolute;left:430px;right:64px;top:148px;min-height:430px;padding:72px 84px;border-radius:34px;background:rgba(255,255,255,0.98);border:4px solid #3DBE6C;box-shadow:0 12px 0 #1A8A45,0 26px 54px rgba(0,0,0,0.28);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
-            <div style="font-family:'Nunito';font-weight:900;font-size:52px;line-height:1.12;color:#0B5CAD;">Almost ready for the build.</div>
-            <div style="margin-top:24px;font-family:'Nunito';font-weight:900;font-size:38px;line-height:1.2;color:#0D6B30;">But first, lets have a look at our Arduino Code</div>
+          <img src="assets/krish_celebrate.webp" alt="Krish" style="position:absolute;left:12px;bottom:0;height:500px;width:auto;display:block;object-fit:contain;filter:drop-shadow(0 14px 26px rgba(0,0,0,0.45));" />
+          <div style="position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:100%;max-width:900px;padding:60px 72px;border-radius:34px;background:rgba(255,255,255,0.98);border:4px solid #3DBE6C;box-shadow:0 12px 0 #1A8A45,0 26px 54px rgba(0,0,0,0.28);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;">
+            <div style="font-family:'Nunito';font-weight:900;font-size:48px;line-height:1.12;color:#0B5CAD;">Almost ready for the build.</div>
+            <div style="margin-top:20px;font-family:'Nunito';font-weight:900;font-size:32px;line-height:1.25;color:#0D6B30;">But first, let&#8217;s have a look at our Arduino code.</div>
           </div>
-          <button onClick="{{ p4RunSimulation }}" style="position:absolute;left:50%;bottom:36px;transform:translateX(-50%);min-width:300px;height:64px;border-radius:22px;border:3px solid #0B63C7;background:#2F88FF;color:white;font-family:'Nunito';font-weight:900;font-size:24px;display:flex;align-items:center;justify-content:center;gap:12px;cursor:pointer;box-shadow:0 8px 0 #064A93,0 16px 30px rgba(0,0,0,0.28);">
-            <span>Next</span><span style="font-size:30px;">→</span>
-          </button>
         </div>
       </sc-if>
     </div>
@@ -490,14 +416,14 @@
   <!-- PHASE 6 — CODE PARAMETER SIMULATION -->
   <sc-if value="{{ isPhase6 }}" hint-placeholder-val="{{ false }}">
     <div data-screen-label="Phase 6 — Code Simulation" style="position:absolute;inset:0;z-index:10;overflow:hidden;background:#1a2a35;">
-      <iframe class="ww-sim-frame" src="Servo%20Parameter%20Simulation.dc.html?v=roof-pivot-3" title="Servo Parameter Simulation" style="position:absolute;inset:0;width:100%;height:100%;border:0;background:#1a2a35;"></iframe>
+      <iframe src="Servo%20Parameter%20Simulation.dc.html" title="Servo Parameter Simulation" style="position:absolute;inset:0;width:100%;height:100%;border:0;background:#1a2a35;"></iframe>
     </div>
   </sc-if>
 
   <!-- PHASE 7 — INTERACTIVE SIMULATION -->
   <sc-if value="{{ isPhase7 }}" hint-placeholder-val="{{ false }}">
     <div data-screen-label="Phase 7 — Build Tutorial" style="position:absolute;inset:0;z-index:10;overflow:hidden;background:#bfe6ff;">
-      <iframe class="ww-sim-frame" src="Rain-Sensing%20Smart%20Dryer.dc.html" title="Rain-Sensing Smart Dryer Simulation" style="position:absolute;inset:0;width:100%;height:100%;border:0;background:#bfe6ff;"></iframe>
+      <iframe src="Rain-Sensing%20Smart%20Dryer.dc.html" title="Rain-Sensing Smart Dryer Simulation" style="position:absolute;inset:0;width:100%;height:100%;border:0;background:#bfe6ff;"></iframe>
     </div>
   </sc-if>
 
@@ -505,7 +431,7 @@
   <sc-if value="{{ isPhase8 }}" hint-placeholder-val="{{ false }}">
     <div data-screen-label="Phase 8 — Outro" style="position:absolute;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;">
       <video ref="{{ outroVideoRef }}" onEnded="{{ onOutroEnd }}" playsInline="{{ true }}" muted="{{ outroVideoMuted }}" autoPlay="{{ true }}" controls="{{ true }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#1a2a35;">
-        <source src="uploads/Outro.mp4" type="video/mp4" />
+        <source src="uploads/Outro.webm" type="video/webm" />
       </video>
       <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,25,35,0.18) 0%,rgba(15,25,35,0.45) 100%);pointer-events:none;"></div>
       <sc-if value="{{ outroNeedsPlay }}" hint-placeholder-val="{{ false }}">
@@ -519,43 +445,42 @@
 
   <!-- Krish — bottom left (hidden on phase 4 summary to avoid overlap) -->
   <sc-if value="{{ krishNeutral }}" hint-placeholder-val="false">
-    <div class="ww-krish" style="position:absolute;left:-94px;top:72px;bottom:-8px;width:540px;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;pointer-events:none;overflow:visible;">
-      <sc-if value="{{ showSpeech }}" hint-placeholder-val="false">
-        <div style="margin-bottom:10px;max-width:286px;padding:14px 17px;border-radius:18px 18px 18px 4px;background:#FFFBF0;border:3px solid #FFB800;color:#5a3a00;font-size:14px;font-family:'Nunito';font-weight:700;line-height:1.45;animation:kidPop .4s ease;box-shadow:0 5px 0 #C9A100;">{{ speechText }}</div>
-      </sc-if>
-      <img src="assets/krish_speaking_v2.png" alt="Krish" style="height:calc(82vh - 12px);max-width:none;width:auto;display:block;object-fit:contain;filter:drop-shadow(0 18px 34px rgba(0,0,0,0.48));" />
+    <div style="position:absolute;left:-14px;bottom:0;width:330px;z-index:9;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;">
+      <img src="assets/krish_speaking_v2.webp" alt="Krish" style="height:480px;width:auto;display:block;object-fit:contain;filter:drop-shadow(0 14px 26px rgba(0,0,0,0.45));" />
     </div>
   </sc-if>
   <sc-if value="{{ krishExcited }}" hint-placeholder-val="false">
-    <div class="ww-krish" style="position:absolute;left:-94px;top:72px;bottom:-8px;width:540px;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;pointer-events:none;overflow:visible;">
-      <sc-if value="{{ showSpeech }}" hint-placeholder-val="false">
-        <div style="margin-bottom:10px;max-width:286px;padding:14px 17px;border-radius:18px 18px 18px 4px;background:#FFFBF0;border:3px solid #FFB800;color:#5a3a00;font-size:14px;font-family:'Nunito';font-weight:700;line-height:1.45;animation:kidPop .4s ease;box-shadow:0 5px 0 #C9A100;">{{ speechText }}</div>
-      </sc-if>
-      <img src="assets/krish_celebrate.png" alt="Krish" style="height:calc(82vh - 12px);max-width:none;width:auto;display:block;object-fit:contain;filter:drop-shadow(0 18px 34px rgba(0,0,0,0.48));" />
+    <div style="position:absolute;left:-14px;bottom:0;width:330px;z-index:9;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;">
+      <img src="assets/krish_celebrate.webp" alt="Krish" style="height:480px;width:auto;display:block;object-fit:contain;filter:drop-shadow(0 14px 26px rgba(0,0,0,0.45));" />
     </div>
   </sc-if>
   <sc-if value="{{ krishThinking }}" hint-placeholder-val="false">
-    <div class="ww-krish" style="position:absolute;left:-94px;top:72px;bottom:-8px;width:540px;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;pointer-events:none;overflow:visible;">
-      <sc-if value="{{ showSpeech }}" hint-placeholder-val="false">
-        <div style="margin-bottom:10px;max-width:286px;padding:14px 17px;border-radius:18px 18px 18px 4px;background:#FFFBF0;border:3px solid #FFB800;color:#5a3a00;font-size:14px;font-family:'Nunito';font-weight:700;line-height:1.45;animation:kidPop .4s ease;box-shadow:0 5px 0 #C9A100;">{{ speechText }}</div>
-      </sc-if>
-      <img src="assets/krish_think.png" alt="Krish" style="height:calc(82vh - 12px);max-width:none;width:auto;display:block;object-fit:contain;filter:drop-shadow(0 18px 34px rgba(0,0,0,0.48));" />
+    <div style="position:absolute;left:-14px;bottom:0;width:330px;z-index:9;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;">
+      <img src="assets/krish_think.webp" alt="Krish" style="height:480px;width:auto;display:block;object-fit:contain;filter:drop-shadow(0 14px 26px rgba(0,0,0,0.45));" />
     </div>
   </sc-if>
   <sc-if value="{{ krishMistake }}" hint-placeholder-val="false">
-    <div class="ww-krish" style="position:absolute;left:-94px;top:72px;bottom:-8px;width:540px;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;pointer-events:none;overflow:visible;">
-      <sc-if value="{{ showSpeech }}" hint-placeholder-val="false">
-        <div style="margin-bottom:10px;max-width:286px;padding:14px 17px;border-radius:18px 18px 18px 4px;background:#FFFBF0;border:3px solid #FFB800;color:#5a3a00;font-size:14px;font-family:'Nunito';font-weight:700;line-height:1.45;animation:kidPop .4s ease;box-shadow:0 5px 0 #C9A100;">{{ speechText }}</div>
-      </sc-if>
-      <img src="assets/krish_mistake_new.png" alt="Krish" style="height:calc(82vh - 12px);max-width:none;width:auto;display:block;object-fit:contain;filter:drop-shadow(0 18px 34px rgba(0,0,0,0.48));" />
+    <div style="position:absolute;left:-14px;bottom:0;width:330px;z-index:9;display:flex;align-items:flex-end;justify-content:center;pointer-events:none;">
+      <img src="assets/krish_mistake_new.webp" alt="Krish" style="height:480px;width:auto;display:block;object-fit:contain;filter:drop-shadow(0 14px 26px rgba(0,0,0,0.45));" />
     </div>
   </sc-if>
 
-  <!-- CTA — bottom right -->
+  <!-- Global CTA — one button, one position on every screen -->
   <sc-if value="{{ ctaVisible }}" hint-placeholder-val="{{ false }}">
-    <button onClick="{{ ctaClick }}" style="{{ ctaStyle }}">
-      <span>{{ ctaLabel }}</span><span style="font-size:22px;">→</span>
-    </button>
+    <button onClick="{{ ctaClick }}" style="{{ ctaStyle }}">{{ ctaLabel }}</button>
+    <sc-if value="{{ ctaHintVisible }}" hint-placeholder-val="{{ false }}">
+      <div style="{{ ctaHintStyle }}"><i class="ti ti-lock"></i> {{ ctaHint }}</div>
+    </sc-if>
+  </sc-if>
+
+  <!-- Developer navigation — only with ?dev=1 -->
+  <sc-if value="{{ devVisible }}" hint-placeholder-val="{{ false }}">
+    <div style="position:absolute;right:18px;bottom:18px;z-index:80;display:flex;align-items:center;gap:4px;padding:5px 6px;border-radius:10px;background:rgba(0,0,0,0.38);border:1px solid rgba(255,255,255,0.18);box-shadow:0 4px 14px rgba(0,0,0,0.22);">
+      <span style="font-family:'Nunito';font-weight:900;font-size:10px;color:rgba(255,248,232,0.78);">DEV</span>
+      <sc-for list="{{ devDots }}" as="dot" hint-placeholder-count="8">
+        <button onClick="{{ dot.onClick }}" title="{{ dot.title }}" style="{{ dot.style }}">{{ dot.num }}</button>
+      </sc-for>
+    </div>
   </sc-if>
 
 </div>
@@ -572,19 +497,13 @@ class Component extends DCLogic {
     this.shuffledP2Chips = this._shuffleArr(this.P2CHIPS.slice());
     this.shuffledBody    = this._shuffleArr(this.BODY.slice());
     this.shuffledP4Parts = this._shuffleArr(this.P4PARTS.slice());
+    try{this._devMode=/[?&]dev=1/.test(window.location.search);}catch(e){this._devMode=false;}
   }
 
   rainDrops = Array.from({length:55}).map(()=>{
     const dur=0.65+Math.random()*0.9;
     return{style:{position:'absolute',left:(Math.random()*100)+'%',top:(-20-Math.random()*120)+'px',width:'2px',height:(44+Math.random()*68)+'px',background:'linear-gradient(to bottom,rgba(120,170,235,0),rgba(150,200,255,0.55))',borderRadius:'2px',animation:'rainFall '+dur+'s linear '+(-Math.random()*2)+'s infinite',opacity:0.22+Math.random()*0.32}};
   });
-  simRainDrops = Array.from({length:16}).map((_,i)=>({
-    style:{position:'absolute',left:(8+(i*19)%88)+'%',top:(-34-(i%5)*15)+'px',width:'5px',height:'22px',borderRadius:'999px',background:'linear-gradient(180deg,rgba(255,255,255,0),rgba(58,150,222,.92))',animation:'simRainDrop2 '+(0.88+(i%4)*0.15)+'s linear '+(-(i%6)*0.11)+'s infinite',boxShadow:'0 8px 12px rgba(49,130,194,.2)'}
-  }));
-  strawBars = Array.from({length:7}).map((_,i)=>({
-    style:{position:'absolute',left:(i*8)+'px',top:(22-i*2)+'px',width:'58px',height:'7px',borderRadius:'999px',background:'#FFD83D',border:'2px solid #D6A000',transform:'rotate(-18deg)',transformOrigin:'left center'}
-  }));
-
   // ——— DATA ———
   // Phase 2: Body chain nodes (Sense first)
   FEEL_NODES = [
@@ -598,23 +517,17 @@ class Component extends DCLogic {
   P2CHIPS  = ['A sensor feels it','A signal travels','Something decides','Something moves'];
   P2ANSWER = ['A sensor feels it','A signal travels','Something decides','Something moves'];
   P2INFO = {
-    'A sensor feels it': {img:'assets/screen3/sensor.png', color:'#1A8A45', soft:'#F3FFF7', imgSize:'78px'},
-    'A signal travels': {img:'assets/screen3/lightning.png', color:'#B05D00', soft:'#FFF9EA', imgSize:'82px'},
-    'Something decides': {img:'assets/screen3/brain.png', color:'#7B3FB2', soft:'#FBF6FF', imgSize:'82px'},
-    'Something moves': {img:'assets/screen3/mechanical_gears.png', color:'#F05A18', soft:'#FFF7EF', imgSize:'82px'},
+    'A sensor feels it': {img:'assets/screen3/sensor.webp', color:'#1A8A45', soft:'#F3FFF7', imgSize:'76px'},
+    'A signal travels': {img:'assets/screen3/lightning.webp', color:'#B05D00', soft:'#FFF9EA', imgSize:'76px'},
+    'Something decides': {img:'assets/screen3/brain.webp', color:'#7B3FB2', soft:'#FBF6FF', imgSize:'76px'},
+    'Something moves': {img:'assets/screen3/mechanical_gears.webp', color:'#F05A18', soft:'#FFF7EF', imgSize:'76px'},
   };
-  P2KRISH  = [
-    {label:'Rain',               icon:'ti-cloud-rain'},
-    {label:'Sensor',             icon:'ti-droplet'},
-    {label:'Clothes move inside',icon:'ti-home'},
-  ];
-
   // Phase 4: Component flip cards
   COMPONENTS = [
-    {key:'arduino',name:'Arduino',     behavior:'Reads signals, decides what to do.',body:'Brain',   icon:'ti-cpu',            img:'assets/components/arduino.png',      insight:'Both receive a signal and decide what to do.',    krish:"I literally coded its brain. I told it: if rain, move the hanger. I gave it its thoughts."},
-    {key:'sensor', name:'Rain Sensor', behavior:'Detects moisture, fires a signal.', body:'Skin',    icon:'ti-droplet',        img:'assets/components/rain_sensor.png',  insight:'Both detect changes in the outside world.',      krish:"My machine feels rain the same way your skin does — just electricity instead of nerves!"},
-    {key:'wires',  name:'Jumper Wires',behavior:'Carries signals between parts.',    body:'Nerves',  icon:'ti-plug-connected', img:'assets/components/jumper_wires.png', insight:'Both carry signals from one place to another.',   krish:"Without nerves you can\u2019t feel anything. Without wires, neither can my machine."},
-    {key:'servo',  name:'Servo Motor', behavior:'Gets a command, physically moves.', body:'Muscles', icon:'ti-rotate-2',       img:'assets/components/servo_motor.png',  insight:'Both turn a signal into physical movement.',      krish:"When I saw it move for the first time \u2014 I jumped. Like giving my machine a hand."},
+    {key:'arduino',name:'Arduino Uno', behavior:'Reads signals, decides what to do.',body:'Brain',   icon:'ti-cpu',            img:'assets/components/arduino.webp',      insight:'Both receive a signal and decide what to do.',    krish:"I literally coded its brain. I told it: if rain, move the hanger. I gave it its thoughts."},
+    {key:'sensor', name:'Rain Sensor', behavior:'Detects moisture (water droplets), fires a signal.', body:'Skin',    icon:'ti-droplet',        img:'assets/components/rain_sensor.webp',  insight:'Both detect changes in the outside world.',      krish:"My machine feels rain the same way your skin does — just electricity instead of nerves!"},
+    {key:'wires',  name:'Jumper Wires',behavior:'Carries signals between parts.',    body:'Nerves',  icon:'ti-plug-connected', img:'assets/components/jumper_wires.webp', insight:'Both carry signals from one place to another.',   krish:"Without nerves you can\u2019t feel anything. Without wires, neither can my machine."},
+    {key:'servo',  name:'Servo Motor', behavior:'Gets a command signal, physically moves.', body:'Muscles', icon:'ti-rotate-2',       img:'assets/components/servo_motor.webp',  insight:'Both turn a signal into physical movement.',      krish:"When I saw it move for the first time \u2014 I jumped. Like giving my machine a hand."},
   ];
   BODY = [
     {key:'Nerves',  label:'Nerves',  icon:'ti-activity', emoji:'🧬', color:'#9A5BFF', soft:'#FBF5FF'},
@@ -625,54 +538,25 @@ class Component extends DCLogic {
 
   // Phase 5: Circuit builder
   P4PARTS = [
-    {key:'sensor', label:'Rain Sensor',  icon:'ti-droplet',        img:'assets/components/rain_sensor.png',  color:'#18A957', soft:'#F2FFF5'},
-    {key:'wires',  label:'Jumper Wires', icon:'ti-activity',       img:'assets/components/jumper_wires.png', color:'#2F88FF', soft:'#F3F9FF'},
-    {key:'arduino',label:'Arduino',      icon:'ti-cpu',            img:'assets/components/arduino.png',      color:'#7B35D8', soft:'#FBF5FF'},
-    {key:'servo',  label:'Servo Motor',  icon:'ti-rotate-2',       img:'assets/components/servo_motor.png',  color:'#F36A21', soft:'#FFF4EA'},
+    {key:'sensor', label:'Rain Sensor',  icon:'ti-droplet',        img:'assets/components/rain_sensor.webp',  color:'#18A957', soft:'#F2FFF5'},
+    {key:'wires',  label:'Jumper Wires', icon:'ti-activity',       img:'assets/components/jumper_wires.webp', color:'#F4B400', soft:'#FFF6DE'},
+    {key:'arduino',label:'Arduino Uno',  icon:'ti-cpu',            img:'assets/components/arduino.webp',      color:'#7B35D8', soft:'#FBF5FF'},
+    {key:'servo',  label:'Servo Motor',  icon:'ti-rotate-2',       img:'assets/components/servo_motor.webp',  color:'#F36A21', soft:'#FFF4EA'},
   ];
   P4ORDER  = ['sensor','wires','arduino','servo'];
-  P4ERRORS = {
-    sensor: 'Step 1 should notice the weather first.',
-    wires:  'Step 2 should carry the signal to the controller.',
-    arduino:'Step 3 should use the signal and choose what happens next.',
-    servo:  'Step 4 should be the part that makes something move.',
-  };
-
-  SIM_STEPS = [
-    {title:'Open the house model', line:'Start with the cardboard house open.', part:'house'},
-    {title:'Place the servo motor', line:'Fix the motor on the top corner.', part:'servo'},
-    {title:'Attach the straw roof', line:'The straw becomes the sliding roof.', part:'straw'},
-    {title:'Place rain sensor outside', line:'Keep it where raindrops can touch.', part:'sensor'},
-    {title:'Make connections', line:'Sensor, board, and motor talk by wires.', part:'wires'},
-    {title:'Insert the battery', line:'Power wakes the controller board.', part:'battery'},
-    {title:'Place the clothes', line:'Hang clothes on the rack.', part:'clothes'},
-    {title:"It's working", line:'Rain closes. Sun opens.', part:'test'},
-    {title:'All set', line:'Your smart dryer is ready.', part:'done'},
-  ];
-  SIM_PARTS = [
-    {key:'board', label:'Controller', img:'assets/components/arduino.png', step:4},
-    {key:'battery', label:'9V Battery', img:'uploads/battery.jpeg', step:5},
-    {key:'wires', label:'Wires', img:'assets/components/jumper_wires.png', step:4},
-    {key:'servo', label:'Servo Motor', img:'assets/components/servo_motor.png', step:1},
-    {key:'sensor', label:'Rain Sensor', img:'assets/components/rain_sensor.png', step:3},
-    {key:'straw', label:'Straws', step:2},
-  ];
 
   state = {
     phase:1, maxReached:1, muted:false,
     videoStarted:false, videoEnded:false,
-    outroStarted:false, outroEnded:false,
     outroNeedsPlay:false,
     // phase 2 feel chain
     feelStep:-1, feelRevealed:[false,false,false,false], phase2Leaving:false, phase2Wrap:false,
     // phase 3 problem
-    p2slots:[null,null,null,null], p2revealed:false, p2correct:false, p2dragGhost:null, p2dragOver:null,
+    p2slots:[null,null,null,null], p2revealed:false, p2correct:false, p2wrong:false, p2dragGhost:null, p2dragOver:null,
     // phase 4 flip cards
-    p3idx:0, p3view:'front', p3matched:[], p3picked:null, p3done:false, p3transition:false,
+    p3idx:0, p3view:'mcq', p3matched:[], p3picked:null, p3wrongs:0, p3done:false, p3transition:false,
     // phase 5 circuit
-    p4slots:[null,null,null,null], p4picked:null, p4error:null, p4correct:false, p4Leaving:false, p4Wrap:false, p4dragGhost:null, p4dragOver:null,
-    // phase 6 simulation
-    simStep:0, simWeather:'rain', simDone:false,
+    p4slots:[null,null,null,null], p4picked:null, p4reject:null, p4correct:false, p4Leaving:false, p4Wrap:false, p4dragGhost:null, p4dragOver:null,
   };
 
   // ——— SOUND ———
@@ -691,6 +575,12 @@ class Component extends DCLogic {
   }
 
   componentDidMount(){
+    this._fitStage=()=>{
+      const s=Math.max(0.35,Math.min(window.innerWidth/1440,window.innerHeight/860,1));
+      document.documentElement.style.setProperty('--app-scale',String(s));
+    };
+    this._fitStage();
+    window.addEventListener('resize',this._fitStage);
     this._lastHovered=null;
     this._sfxHover=(e)=>{const t=e.target&&e.target.closest&&e.target.closest('button');if(t&&t!==this._lastHovered){this._lastHovered=t;this.playSfx('hover');}};
     this._sfxClick=(e)=>{if(e.target&&e.target.closest&&e.target.closest('button'))this.playSfx('click');};
@@ -737,32 +627,45 @@ class Component extends DCLogic {
       this.setState({p2dragGhost:null,p2dragOver:null});
     };
     this._simMessage=(e)=>{
-      if(e.data&&e.data.type==='smartDryerSimulationDone'){
-        if(e.data.watchOutro){this.goPhase(8);return;}
-        this.setState({simDone:!!e.data.done});
-      }
-      if(e.data&&e.data.type==='smartDryerCodeSimNext')this.goPhase(7);
       if(e.data&&e.data.type==='smartDryerWatchOutro')this.goPhase(8);
+      if(e.data&&e.data.type==='servoSimComplete')this.goPhase(7);
     };
     document.addEventListener('mouseover',this._sfxHover);
     document.addEventListener('click',this._sfxClick);
+    // Animated Krish poses play exactly once: Chrome over-repeats WebP loop counts,
+    // so after one full play we swap to a static hold frame (the last frame).
+    this._krishDur={krish_celebrate:3600,krish_mistake_new:3960,krish_smile_point:3960,krish_speaking_v2:3240,krish_think:3240,krish_thinking:1440};
+    this._krishFreeze=(img)=>{
+      const m=(img.getAttribute('src')||'').match(/assets\/(krish_[a-z0-9_]+?)\.webp$/);
+      if(!m||!this._krishDur[m[1]]||img._krishTimer)return;
+      img._krishTimer=setTimeout(()=>{img._krishTimer=null;if(img.isConnected)img.src='assets/'+m[1]+'_hold.webp';},this._krishDur[m[1]]+60);
+    };
+    this._krishObs=new MutationObserver(muts=>{muts.forEach(mu=>{
+      if(mu.type==='attributes'&&mu.target.tagName==='IMG'){this._krishFreeze(mu.target);return;}
+      mu.addedNodes&&mu.addedNodes.forEach(n=>{
+        if(n.nodeType!==1)return;
+        if(n.tagName==='IMG')this._krishFreeze(n);
+        else if(n.querySelectorAll)n.querySelectorAll('img').forEach(el=>this._krishFreeze(el));
+      });
+    });});
+    this._krishObs.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['src']});
+    document.querySelectorAll('img').forEach(el=>this._krishFreeze(el));
+    this._noImgDrag=(e)=>{if(e.target&&e.target.tagName==='IMG')e.preventDefault();};
+    document.addEventListener('dragstart',this._noImgDrag);
     document.addEventListener('pointermove',this._p2GlobalMove);
     document.addEventListener('pointerup',this._p2GlobalEnd);
-    document.addEventListener('mousemove',this._p2GlobalMove);
-    document.addEventListener('mouseup',this._p2GlobalEnd);
-    document.addEventListener('touchmove',this._p2GlobalMove,{passive:false});
-    document.addEventListener('touchend',this._p2GlobalEnd,{passive:false});
+    document.addEventListener('pointercancel',this._p2GlobalEnd);
     window.addEventListener('message',this._simMessage);
   }
   componentWillUnmount(){
+    if(this._krishObs)this._krishObs.disconnect();
+    window.removeEventListener('resize',this._fitStage);
     document.removeEventListener('mouseover',this._sfxHover);
     document.removeEventListener('click',this._sfxClick);
+    document.removeEventListener('dragstart',this._noImgDrag);
     document.removeEventListener('pointermove',this._p2GlobalMove);
     document.removeEventListener('pointerup',this._p2GlobalEnd);
-    document.removeEventListener('mousemove',this._p2GlobalMove);
-    document.removeEventListener('mouseup',this._p2GlobalEnd);
-    document.removeEventListener('touchmove',this._p2GlobalMove);
-    document.removeEventListener('touchend',this._p2GlobalEnd);
+    document.removeEventListener('pointercancel',this._p2GlobalEnd);
     window.removeEventListener('message',this._simMessage);
     if(this._feelTimers)this._feelTimers.forEach(clearTimeout);
     if(this._p4timers)this._p4timers.forEach(clearTimeout);
@@ -786,7 +689,7 @@ class Component extends DCLogic {
   startMusic(){
     if(this._musicStarted)return;this._musicStarted=true;
     try{
-      const a=new Audio('assets/new_bgm.wav');
+      const a=new Audio('assets/new_bgm.ogg');
       a.loop=true;
       a.preload='auto';
       a.volume=this.state.muted?0:0.42;
@@ -798,11 +701,10 @@ class Component extends DCLogic {
   toggleMute=()=>{this.ensureAudio();this.setState(s=>{const m=!s.muted;if(this._masterGain)this._masterGain.gain.value=m?0:1;if(this._bgmAudio){this._bgmAudio.volume=m?0:0.42;if(m)this._bgmAudio.pause();else this._bgmAudio.play().catch(()=>{});}return{muted:m};});};
   goPhase=(n)=>{
     this.ensureAudio();this.playSfx('transition');
-    this.setState(s=>({phase:n,maxReached:Math.max(s.maxReached,n),p3view:n===4&&s.p3view==='front'?'mcq':s.p3view,outroStarted:n===8?false:s.outroStarted,outroEnded:n===8?false:s.outroEnded,outroNeedsPlay:false,simDone:n===7?false:s.simDone}),()=>{
+    this.setState(s=>({phase:n,maxReached:Math.max(s.maxReached,n),outroNeedsPlay:false}),()=>{
       if(n===8)this._playOutroSoon();
     });
   };
-  skipVideo=()=>this.goPhase(2);
 
   // Phase 1
   playVideo=()=>{this.ensureAudio();const v=this.videoRef.current;if(v){v.muted=this.state.muted;v.play().catch(()=>{});}this.setState({videoStarted:true});};
@@ -814,27 +716,23 @@ class Component extends DCLogic {
     const v=this.outroVideoRef.current;
     if(!v){this.setState({outroNeedsPlay:true});return;}
     try{
-      v.muted=false;
+      v.muted=this.state.muted;
       if(v.readyState>0)v.currentTime=0;
       else v.load();
       const p=v.play();
-      if(p&&p.catch)p.catch(()=>this.setState({outroNeedsPlay:true,outroStarted:false}));
-      this.setState({outroStarted:true,outroNeedsPlay:false});
-    }catch(e){this.setState({outroNeedsPlay:true,outroStarted:false});}
+      if(p&&p.catch)p.catch(()=>this.setState({outroNeedsPlay:true}));
+      this.setState({outroNeedsPlay:false});
+    }catch(e){this.setState({outroNeedsPlay:true});}
   };
-  onOutroEnd=()=>this.setState({outroEnded:true,outroNeedsPlay:false});
+  onOutroEnd=()=>this.setState({outroNeedsPlay:false});
 
   // Phase 2 — feel chain
-  onFeelStart=()=>{
+  p2ShowWrap=()=>{
     if(this._feelTimers)this._feelTimers.forEach(clearTimeout);
     this._feelTimers=[];
-    this.setState({feelStep:-1,feelRevealed:[false,false,false,false],phase2Leaving:false,phase2Wrap:false});
-    for(let i=0;i<this.FEEL_NODES.length;i++){
-      this._feelTimers.push(setTimeout(()=>this.setState(s=>{const revealed=s.feelRevealed.slice();revealed[i]=true;return{feelStep:i,feelRevealed:revealed};}),i*3000));
-    }
-    const wrapAt=this.FEEL_NODES.length*3000;
-    this._feelTimers.push(setTimeout(()=>this.setState({phase2Leaving:true}),wrapAt-700));
-    this._feelTimers.push(setTimeout(()=>this.setState({phase2Wrap:true,phase2Leaving:false}),wrapAt));
+    this.ensureAudio();this.playSfx('transition');
+    this.setState({phase2Leaving:true});
+    this._feelTimers.push(setTimeout(()=>this.setState({phase2Wrap:true,phase2Leaving:false}),700));
   };
   feelFlip=(i)=>{
     this.ensureAudio();this.playSfx('flip');
@@ -849,19 +747,10 @@ class Component extends DCLogic {
   };
 
   // Phase 3 — problem
-  p2place=(label)=>{this.ensureAudio();this.setState(s=>{if(s.p2slots.includes(label))return{};const slots=s.p2slots.slice();const i=slots.indexOf(null);if(i===-1)return{};slots[i]=label;return{p2slots:slots};});};
+  p2place=(label)=>{this.ensureAudio();this.setState(s=>{if(s.p2slots.includes(label))return{};const slots=s.p2slots.slice();const i=slots.indexOf(null);if(i===-1)return{};slots[i]=label;return{p2slots:slots,p2wrong:false};});};
   p2chipClick=(label)=>{if(this._p2SuppressClick)return;this.p2place(label);};
-  p2remove=(i)=>this.setState(s=>{const sl=s.p2slots.slice();sl[i]=null;return{p2slots:sl,p2revealed:false,p2correct:false};});
+  p2remove=(i)=>this.setState(s=>{const sl=s.p2slots.slice();sl[i]=null;return{p2slots:sl,p2revealed:false,p2correct:false,p2wrong:false};});
   p2slotClick=(i)=>{if(this._p2SuppressClick)return;if(this.state.p2slots[i])this.p2remove(i);};
-  p2dragStart=(label,fromIndex,e)=>{
-    this.ensureAudio();
-    this._p2Drag={label,fromIndex:typeof fromIndex==='number'?fromIndex:null};
-    if(e&&e.dataTransfer){
-      e.dataTransfer.effectAllowed='move';
-      e.dataTransfer.setData('text/plain',JSON.stringify(this._p2Drag));
-    }
-  };
-  p2dragOver=(e)=>{if(e&&e.preventDefault)e.preventDefault();if(e&&e.dataTransfer)e.dataTransfer.dropEffect='move';};
   p2applyDrop=(i,drag)=>{
     if(!drag||!drag.label)return;
     this.setState(s=>{
@@ -876,16 +765,8 @@ class Component extends DCLogic {
         for(let k=0;k<slots.length;k++)if(slots[k]===drag.label)slots[k]=null;
         slots[i]=drag.label;
       }
-      return{p2slots:slots,p2revealed:false,p2correct:false};
+      return{p2slots:slots,p2revealed:false,p2correct:false,p2wrong:false};
     });
-  };
-  p2dropSlot=(i,e)=>{
-    if(e&&e.preventDefault)e.preventDefault();
-    let drag=this._p2Drag;
-    if((!drag||!drag.label)&&e&&e.dataTransfer){
-      try{drag=JSON.parse(e.dataTransfer.getData('text/plain'));}catch(err){}
-    }
-    this.p2applyDrop(i,drag);
   };
   p2pointerStart=(label,fromIndex,e)=>{
     if(e&&e.button!==undefined&&e.button!==0)return;
@@ -897,93 +778,61 @@ class Component extends DCLogic {
       try{e.currentTarget.setPointerCapture(e.pointerId);}catch(err){}
     }
   };
-  p2pointerDrop=(i,e)=>{
-    const drag=this._p2PointerDrag;
-    if(!drag||!drag.label)return;
-    this.p2applyDrop(i,drag);
-    this._p2PointerDrag=null;
-    if(e&&e.preventDefault)e.preventDefault();
-  };
-  p2dragEnd=()=>{this._p2Drag=null;};
   p2reveal=()=>{
     const correct=this.P2ANSWER.every((label,i)=>this.state.p2slots[i]===label);
     this.ensureAudio();this.playSfx('flip');
     setTimeout(()=>this.playSfx(correct?'correct':'wrong'),180);
-    this.setState({p2revealed:true,p2correct:correct});
+    if(correct)this.setState({p2revealed:true,p2correct:true,p2wrong:false});
+    else this.setState({p2wrong:true});
   };
   p2MoveNext=()=>this.goPhase(4);
 
-  // Phase 4 — flip cards
-  p3flip=()=>{this.playSfx('flip');this.setState({p3view:'mcq'});};
-  p3gotIt=()=>{this.playSfx('click');this.setState({p3view:'mcq'});};
+  // Phase 4 — match cards
   p3pick=(bodyKey)=>{
     const s=this.state;
     const correct=bodyKey===this.COMPONENTS[s.p3idx].body;
     this.playSfx(correct?'correct':'wrong');
-    if(correct){
-      if(this._p3timers)this._p3timers.forEach(clearTimeout);
-      this._p3timers=[
-        setTimeout(()=>this.setState({p3transition:true}),2600),
-        setTimeout(()=>this.p3continue(),3000),
-      ];
-    }
     this.setState(prev=>{
       if(correct){
         const matched=prev.p3matched.includes(bodyKey)?prev.p3matched:prev.p3matched.concat([bodyKey]);
         return{p3view:'correct',p3matched:matched,p3picked:bodyKey,p3transition:false};
       }
+      // first miss: stay on the question and invite another try; second miss: reveal
+      if(prev.p3wrongs<1)return{p3wrongs:prev.p3wrongs+1,p3picked:bodyKey,p3transition:false};
       return{p3view:'wrong',p3picked:bodyKey,p3transition:false};
     });
   };
-  p3continue=()=>{this.setState(s=>{const next=s.p3idx+1;if(next>=this.COMPONENTS.length)return{p3done:true,p3transition:false};return{p3idx:next,p3view:'mcq',p3picked:null,p3transition:false};});};
+  p3continue=()=>{
+    if(this._p3timers)this._p3timers.forEach(clearTimeout);
+    this.setState({p3transition:true});
+    this._p3timers=[setTimeout(()=>this.setState(s=>{const next=s.p3idx+1;if(next>=this.COMPONENTS.length)return{p3done:true,p3transition:false};return{p3idx:next,p3view:'mcq',p3picked:null,p3wrongs:0,p3transition:false};}),420)];
+  };
 
   // Phase 5 — circuit builder
-  // Click-to-pick (mirrors Phase 3 p2chipClick)
-  p4chipClick=(key)=>{if(this._p4SuppressClick)return;this.ensureAudio();this.setState(s=>{if(s.p4slots.includes(key))return{};const slots=s.p4slots.slice();const i=slots.indexOf(null);if(i===-1)return{};slots[i]=key;this.playSfx('click');return{p4slots:slots,p4picked:null,p4error:null,p4correct:false};});};
-  p4slotClick=(i)=>{if(this._p4SuppressClick)return;this.setState(s=>{const slots=s.p4slots.slice();if(slots[i]){slots[i]=null;return{p4slots:slots,p4error:null,p4correct:false};}const picked=s.p4picked||this._p4Picked;if(!picked)return{};for(let k=0;k<slots.length;k++)if(slots[k]===picked)slots[k]=null;slots[i]=picked;this._p4Picked=null;this.playSfx('click');return{p4slots:slots,p4picked:null,p4error:null};});};
+  // A part only sticks in its correct slot; a wrong slot glows red and the part bounces back.
+  p4reject=(i)=>{
+    this.ensureAudio();this.playSfx('wrong');
+    if(this._p4RejectTimer)clearTimeout(this._p4RejectTimer);
+    this.setState({p4reject:i,p4picked:null,p4dragGhost:null,p4dragOver:null});
+    this._p4RejectTimer=setTimeout(()=>this.setState({p4reject:null}),700);
+  };
+  p4chipClick=(key)=>{if(this._p4SuppressClick)return;this.ensureAudio();const s=this.state;if(s.p4slots.includes(key))return;const i=s.p4slots.indexOf(null);if(i===-1)return;if(this.P4ORDER[i]!==key){this.p4reject(i);return;}const slots=s.p4slots.slice();slots[i]=key;this.playSfx('click');this.setState({p4slots:slots,p4picked:null,p4correct:false});};
+  p4slotClick=(i)=>{if(this._p4SuppressClick)return;const s=this.state;if(s.p4slots[i]){const slots=s.p4slots.slice();slots[i]=null;this.setState({p4slots:slots,p4correct:false});return;}const picked=s.p4picked||this._p4Picked;if(!picked)return;if(this.P4ORDER[i]!==picked){this._p4Picked=null;this.p4reject(i);return;}const slots=s.p4slots.slice();for(let k=0;k<slots.length;k++)if(slots[k]===picked)slots[k]=null;slots[i]=picked;this._p4Picked=null;this.playSfx('click');this.setState({p4slots:slots,p4picked:null});};
 
-  // Unified Drop Application (mirrors Phase 3 p2applyDrop pattern)
+  // Unified Drop Application — validates the target slot on drop
   p4applyDrop=(i,drag)=>{
     if(!drag||!drag.key)return;
+    const fromIndex=typeof drag.fromIndex==='number'?drag.fromIndex:null;
+    if(fromIndex===i){this.setState({p4dragOver:null});return;}
+    if(this.P4ORDER[i]!==drag.key){this.p4reject(i);return;}
     this.setState(s=>{
       const slots=s.p4slots.slice();
-      const fromIndex=typeof drag.fromIndex==='number'?drag.fromIndex:null;
-      if(fromIndex===i)return{p4dragOver:null};
-      if(fromIndex!==null){
-        const target=slots[i];
-        slots[i]=drag.key;
-        slots[fromIndex]=target||null;
-      }else{
-        for(let k=0;k<slots.length;k++)if(slots[k]===drag.key)slots[k]=null;
-        slots[i]=drag.key;
-      }
+      for(let k=0;k<slots.length;k++)if(slots[k]===drag.key)slots[k]=null;
+      slots[i]=drag.key;
       this.playSfx('click');
-      return{p4slots:slots,p4picked:null,p4error:null,p4dragOver:null};
+      return{p4slots:slots,p4picked:null,p4dragOver:null};
     });
   };
-
-  // HTML5 drag API (mirrors Phase 3 pattern)
-  p4dragStart=(key,e)=>{
-    this.ensureAudio();
-    this._p4Drag={key};
-    if(e&&e.dataTransfer){e.dataTransfer.effectAllowed='move';e.dataTransfer.setData('text/plain',key);}
-    this.setState({p4picked:key});
-    this._p4Picked=key;
-  };
-  p4htmlDragOver=(e)=>{if(e&&e.preventDefault)e.preventDefault();if(e&&e.dataTransfer)e.dataTransfer.dropEffect='move';};
-  p4htmlDragLeave=(i)=>{this.setState(s=>s.p4dragOver===i?{p4dragOver:null}:{});};
-  p4htmlDrop=(i,e)=>{
-    if(e&&e.preventDefault)e.preventDefault();
-    let drag=this._p4Drag;
-    if((!drag||!drag.key)&&e&&e.dataTransfer){
-      try{
-        const key=e.dataTransfer.getData('text/plain');
-        if(key)drag={key};
-      }catch(err){}
-    }
-    this.p4applyDrop(i,drag);
-  };
-  p4dragEnd=()=>{this._p4Drag=null;this.setState({p4dragOver:null});};
 
   // Pointer/touch drag with ghost (mirrors Phase 3 p2pointerStart pattern)
   p4pointerStart=(key,partInfo,arg3,arg4)=>{
@@ -1017,6 +866,7 @@ class Component extends DCLogic {
     const onUp=(ev)=>{
       window.removeEventListener('pointermove',onMove);
       window.removeEventListener('pointerup',onUp);
+      window.removeEventListener('pointercancel',onUp);
       const drag=this._p4PointerDrag;
       this._p4PointerDrag=null;
       const over=this._p4DragOverIdx;
@@ -1036,29 +886,18 @@ class Component extends DCLogic {
     };
     window.addEventListener('pointermove',onMove);
     window.addEventListener('pointerup',onUp);
+    window.addEventListener('pointercancel',onUp);
     if(e&&e.currentTarget&&e.currentTarget.setPointerCapture&&e.pointerId!==undefined){
       try{e.currentTarget.setPointerCapture(e.pointerId);}catch(err){}
     }
   };
-  p4pointerDropSlot=(i,e)=>{
-    const drag=this._p4PointerDrag;
-    if(!drag||!drag.key)return;
-    this.p4applyDrop(i,drag);
-    this._p4PointerDrag=null;
-    if(e&&e.preventDefault)e.preventDefault();
-  };
-  p4test=()=>{const s=this.state;let firstWrong=-1;for(let i=0;i<this.P4ORDER.length;i++)if(s.p4slots[i]!==this.P4ORDER[i]){firstWrong=i;break;}if(firstWrong===-1){this.ensureAudio();this.playSfx('correct');if(this._p4timers)this._p4timers.forEach(clearTimeout);this.setState({p4correct:true,p4error:null,p4Leaving:false,p4Wrap:true});}else{this.playSfx('wrong');this.setState({p4error:this.P4ERRORS[this.P4ORDER[firstWrong]],p4correct:false,p4Leaving:false,p4Wrap:false});}};
-  p4clear=()=>{if(this._p4timers)this._p4timers.forEach(clearTimeout);this._p4Picked=null;this._p4PointerDrag=null;this.setState({p4slots:[null,null,null,null],p4picked:null,p4error:null,p4correct:false,p4Leaving:false,p4Wrap:false,p4dragGhost:null,p4dragOver:null});};
+  p4test=()=>{this.ensureAudio();this.playSfx('correct');if(this._p4timers)this._p4timers.forEach(clearTimeout);this.setState({p4correct:true,p4Leaving:false});this._p4timers=[setTimeout(()=>this.setState({p4Leaving:true}),1500),setTimeout(()=>this.setState({p4Wrap:true,p4Leaving:false}),2100)];};
 
-  // Phase 7 — simulation
-  simGoStep=(i)=>{this.ensureAudio();this.playSfx('click');this.setState({simStep:Math.max(0,Math.min(this.SIM_STEPS.length-1,i))});};
-  simNext=()=>{this.ensureAudio();this.playSfx('click');this.setState(s=>({simStep:Math.min(this.SIM_STEPS.length-1,s.simStep+1)}));};
-  simPrev=()=>{this.ensureAudio();this.playSfx('click');this.setState(s=>({simStep:Math.max(0,s.simStep-1)}));};
-  simRain=()=>{this.ensureAudio();this.playSfx('correct');this.setState({simWeather:'rain'});};
-  simSun=()=>{this.ensureAudio();this.playSfx('transition');this.setState({simWeather:'sun'});};
+  _uiScale(){try{const v=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--app-scale'));return v>0?v:1;}catch(e){return 1;}}
 
   renderVals(){
     const s=this.state;
+    const uiS=this._uiScale();
     const ACCENT='#3DBE6C',WARM='#FF9F43',BLUE='#4A90E2',WRONG='#E84040',YELLOW='#FFD700';
 
     const bgImageOpacity=s.phase>=2?0.75:0;
@@ -1066,80 +905,92 @@ class Component extends DCLogic {
     // progress dots
     const dots=Array.from({length:8}).map((_,i)=>{
       const ph=i+1,isCur=ph===s.phase,done=ph<s.phase,reachable=ph<=s.maxReached;
-      return{num:String(ph),onClick:reachable?()=>this.goPhase(ph):()=>{},style:{width:'32px',height:'32px',borderRadius:'50%',padding:0,cursor:reachable?'pointer':'default',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Nunito'",fontWeight:900,fontSize:'13px',transition:'all .25s ease',background:isCur?YELLOW:(done?ACCENT:'rgba(255,255,255,0.2)'),border:'3px solid '+(isCur?'#C9A100':(done?'#1A8A45':'rgba(255,255,255,0.35)')),boxShadow:'0 3px 0 '+(isCur?'#8A6D00':(done?'#0D6B30':'rgba(0,0,0,0.18)')),color:isCur?'#5a3a00':(done?'white':'rgba(255,255,255,0.45)'),transform:isCur?'scale(1.18)':'scale(1)'}};
+      return{num:String(ph),title:reachable?('Go to step '+ph):('Step '+ph+' — locked'),onClick:reachable?()=>this.goPhase(ph):()=>{},style:{width:'36px',height:'36px',borderRadius:'50%',padding:0,cursor:reachable?'pointer':'default',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Nunito'",fontWeight:900,fontSize:'14px',transition:'all .25s ease',background:isCur?YELLOW:(done?ACCENT:'rgba(255,255,255,0.2)'),border:'3px solid '+(isCur?'#C9A100':(done?'#1A8A45':'rgba(255,255,255,0.35)')),boxShadow:'0 3px 0 '+(isCur?'#8A6D00':(done?'#0D6B30':'rgba(0,0,0,0.18)')),color:isCur?'#5a3a00':(done?'white':'rgba(255,255,255,0.6)'),transform:isCur?'scale(1.14)':'scale(1)'}};
     });
-    const devDots=Array.from({length:8}).map((_,i)=>{
+    const devDots=this._devMode?Array.from({length:8}).map((_,i)=>{
       const ph=i+1,isCur=ph===s.phase;
       return{num:String(ph),title:'Jump to screen '+ph,onClick:()=>this.goPhase(ph),style:{width:'21px',height:'21px',borderRadius:'7px',padding:0,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Nunito'",fontWeight:900,fontSize:'10px',transition:'all .16s ease',background:isCur?'#FFD700':'rgba(255,255,255,0.9)',border:'2px solid '+(isCur?'#C9A100':'rgba(255,255,255,0.58)'),boxShadow:isCur?'0 2px 0 #8A6D00':'0 2px 0 rgba(0,0,0,0.25)',color:isCur?'#5a3a00':'#1a2744'}};
-    });
-
+    }):[];
     // phase 2 feel chain
     const feelLit=s.feelRevealed.every(Boolean);
-    const feelShowStart=false;
     const feelNodes=this.FEEL_NODES.map((n,i)=>{
       const lit=!!s.feelRevealed[i];
       const prevLit=i===0||!!s.feelRevealed[i-1];
       const nextVisible=i===0||s.feelRevealed[i-1]||lit;
       // Track previous revealed state to detect direction of flip
       const flipAnim=lit?'feelCardReveal .54s cubic-bezier(.25,.46,.45,.94) both':'feelCardHide .48s cubic-bezier(.25,.46,.45,.94) both';
-      return{label:n.label,behavior:n.behavior,iconSrc:n.iconSrc,notFirst:i>0,num:String(i+1),onClick:()=>this.feelFlip(i),
+      return{label:n.label,behavior:n.behavior,iconSrc:n.iconSrc,notFirst:i>0,num:String(i+1),lit,onClick:()=>this.feelFlip(i),
         textColor:n.color,
         footerText:lit?'':'Click to reveal',
         arrowStyle:{color:(s.feelRevealed[i-1]&&lit)?'#FFF8E8':'rgba(255,255,255,0.5)',fontSize:'26px',alignSelf:'center',transition:'color .4s ease',fontWeight:900,textShadow:'0 2px 8px rgba(0,0,0,0.55)',margin:'0 -4px'},
-        iconImgStyle:{width:n.iconSize?'68px':'86px',height:n.iconSize?'68px':'86px',objectFit:'contain',objectPosition:'center',filter:'drop-shadow(0 6px 8px rgba(0,0,0,0.12))'},
-        iconWrapStyle:{width:'132px',height:'132px',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',background:n.soft,border:'3px dashed '+n.color,boxShadow:'inset 0 0 0 12px rgba(255,255,255,0.72)',marginBottom:'24px',overflow:'hidden'},
-        badgeStyle:{width:'54px',height:'54px',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Nunito'",fontWeight:900,fontSize:'26px',background:n.color,color:'#fff',boxShadow:'0 4px 0 rgba(0,0,0,0.18)',marginBottom:'13px'},
+        iconImgStyle:{width:n.iconSize?'60px':'76px',height:n.iconSize?'60px':'76px',objectFit:'contain',objectPosition:'center',filter:'drop-shadow(0 6px 8px rgba(0,0,0,0.12))'},
+        iconWrapStyle:{width:'116px',height:'116px',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',background:n.soft,border:'3px dashed '+n.color,boxShadow:'inset 0 0 0 10px rgba(255,255,255,0.72)',marginBottom:'16px',overflow:'hidden'},
+        badgeStyle:{width:'48px',height:'48px',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Nunito'",fontWeight:900,fontSize:'24px',background:n.color,color:'#fff',boxShadow:'0 4px 0 rgba(0,0,0,0.18)',marginBottom:'11px'},
         ruleStyle:{width:'126px',height:'5px',borderRadius:'999px',background:'linear-gradient(90deg,rgba(255,255,255,0),'+n.color+',rgba(255,255,255,0))',marginBottom:'12px'},
-        revealStyle:{minHeight:'66px',marginTop:'14px',fontFamily:"'Nunito'",fontWeight:800,fontSize:'15px',lineHeight:1.34,color:lit?'#34505F':'transparent',textShadow:'none',transition:'color .3s ease .1s',padding:'0 5px'},
-        footerStyle:{marginTop:'16px',width:'100%',padding:'13px 10px',borderRadius:'14px',background:lit?n.soft:'rgba(255,255,255,0.55)',color:lit?n.color:'#527083',fontFamily:"'Nunito'",fontWeight:900,fontSize:'14px',boxShadow:'inset 0 0 0 2px '+(lit?n.color+'44':'rgba(0,0,0,0.06)'),transition:'background .3s ease,color .3s ease',opacity:lit?0:1},
-        style:{width:'190px',height:'392px',padding:'24px 16px 16px',borderRadius:'24px',textAlign:'center',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'flex-start',background:lit?'#FFFFFF':n.soft,border:'4px solid '+n.color,boxShadow:'0 8px 0 '+n.color+',0 18px 34px rgba(0,0,0,0.24)',opacity:1,cursor:'pointer',fontFamily:"'Nunito'",appearance:'none',animation:flipAnim,filter:nextVisible?'none':'saturate(.86)',transformStyle:'preserve-3d'}};
+        revealStyle:{minHeight:'66px',marginTop:'12px',fontFamily:"'Nunito'",fontWeight:800,fontSize:'16px',lineHeight:1.34,color:lit?'#34505F':'transparent',textShadow:'none',transition:'color .3s ease .1s',padding:'0 5px'},
+        footerStyle:{marginTop:'14px',width:'100%',padding:'13px 10px',borderRadius:'14px',background:lit?n.soft:'rgba(255,255,255,0.55)',color:lit?n.color:'#3E6478',fontFamily:"'Nunito'",fontWeight:900,fontSize:'15px',boxShadow:'inset 0 0 0 2px '+(lit?n.color+'44':'rgba(0,0,0,0.06)'),transition:'background .3s ease,color .3s ease',opacity:lit?0:1},
+        style:{width:'190px',height:'352px',padding:'20px 16px 14px',borderRadius:'20px',position:'relative',textAlign:'center',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'flex-start',background:lit?'#FFFFFF':n.soft,border:'4px solid '+n.color,boxShadow:'0 8px 0 '+n.color+',0 18px 34px rgba(0,0,0,0.24)',opacity:1,cursor:'pointer',fontFamily:"'Nunito'",appearance:'none',animation:flipAnim,filter:nextVisible?'none':'saturate(.86)',transformStyle:'preserve-3d'}};
     });
 
     // krish mood + speech
     // NOTE: speech is suppressed on p3done (summary screen) to avoid overlap
-    let mood='neutral',speech=null;
+    let mood='neutral';
     if(s.phase===1&&s.videoEnded)mood='excited';
-    if(s.phase===2&&s.phase2Wrap){mood='excited';speech=null;}
-    if(s.phase===3&&!s.p2revealed)mood='thinking';
-    if(s.phase===3&&s.p2revealed){mood=s.p2correct?'excited':'mistake';speech=null;}
+    if(s.phase===2&&s.phase2Wrap)mood='excited';
+    if(s.phase===3&&!s.p2revealed)mood=s.p2wrong?'mistake':'thinking';
+    if(s.phase===3&&s.p2revealed)mood='excited';
     if(s.phase===4){
-      if(s.p3done){mood='excited';speech=null;} // suppressed — summary table needs full space
-      else if(s.p3view==='correct'){mood='excited';speech=null;}
-      else if(s.p3view==='wrong'){mood='mistake';speech=null;}
+      if(s.p3done)mood='excited'; // summary hides Krish for full-width table
+      else if(s.p3view==='correct')mood='excited';
+      else if(s.p3view==='wrong')mood='mistake';
       else mood='thinking';
     }
-    if(s.phase===5&&!s.p4correct)mood=s.p4error?'mistake':'thinking';
-    if(s.phase===5&&s.p4correct){mood='excited';speech=null;}
-    if(s.phase===8){mood='excited';speech="Time to build. Let\u2019s go!";}
+    if(s.phase===5&&!s.p4correct)mood=(s.p4reject!==null&&s.p4reject!==undefined)?'mistake':'thinking';
+    if(s.phase===5&&s.p4correct)mood='excited';
+    if(s.phase===8)mood='excited';
 
     // CTA
-    let ctaVisible=false,ctaLabel='',ctaClick=()=>{};
-    if(s.phase===1&&s.videoEnded){ctaVisible=true;ctaLabel='Next';ctaClick=()=>this.goPhase(2);}
-    if(s.phase===2&&feelLit&&!s.phase2Wrap){ctaVisible=true;ctaLabel='Next';ctaClick=()=>this.goPhase(3);}
-    if(s.phase===2&&s.phase2Wrap){ctaVisible=true;ctaLabel='Next';ctaClick=()=>this.goPhase(3);}
-    if(s.phase===4&&s.p3done){ctaVisible=true;ctaLabel='Next';ctaClick=()=>this.goPhase(5);}
-    // Phase 7 uses the embedded simulation's own outro button so controls do not overlap.
-    const phase3Ready=s.phase===3&&!s.p2revealed&&s.p2slots.every(Boolean);
+    // ——— GLOBAL CTA — one button, one position on every screen ———
+    // Disabled + hint until the phase task is done; hidden only where the
+    // embedded sim owns navigation (7) or the lesson ends (8).
+    let ctaVisible=false,ctaEnabled=false,ctaHint='',ctaClick=()=>{};
+    const p4AllFilled=s.p4slots.every(Boolean);
+    if(s.phase===1&&s.videoEnded){ctaVisible=true;ctaEnabled=true;ctaClick=()=>this.goPhase(2);}
+    if(s.phase===2&&!s.phase2Wrap){ctaVisible=true;ctaEnabled=feelLit;ctaHint='Flip all four cards to continue.';ctaClick=feelLit?this.p2ShowWrap:()=>{};}
+    if(s.phase===2&&s.phase2Wrap){ctaVisible=true;ctaEnabled=true;ctaClick=()=>this.goPhase(3);}
+    if(s.phase===3&&!s.p2revealed){const full=s.p2slots.every(Boolean);ctaVisible=true;ctaEnabled=full;ctaHint='Place all four steps to continue.';ctaClick=full?this.p2reveal:()=>{};}
+    if(s.phase===3&&s.p2revealed){ctaVisible=true;ctaEnabled=true;ctaClick=this.p2MoveNext;}
+    if(s.phase===4&&!s.p3done){
+      if(s.p3view==='mcq'){ctaVisible=true;ctaEnabled=false;ctaHint='Match the part to continue.';}
+      else{ctaVisible=true;ctaEnabled=true;ctaClick=this.p3continue;}
+    }
+    if(s.phase===4&&s.p3done){ctaVisible=true;ctaEnabled=true;ctaClick=()=>this.goPhase(5);}
+    if(s.phase===5&&!s.p4Wrap){
+      if(s.p4correct){ctaVisible=false;}
+      else{ctaVisible=true;ctaEnabled=p4AllFilled;ctaHint='Place all parts in the correct order.';ctaClick=p4AllFilled?this.p4test:()=>{};}
+    }
+    if(s.phase===5&&s.p4Wrap){ctaVisible=true;ctaEnabled=true;ctaClick=()=>this.goPhase(6);}
+    // Phase 6's Next lives inside the simulation and unlocks on the perfect combination.
+    // Phase 7 uses the embedded simulation's own navigation; phase 8 ends the lesson.
+    const ctaHintVisible=ctaVisible&&!ctaEnabled&&!!ctaHint;
     const p2ActivityFront=s.phase===3&&!s.p2revealed;
     const p2ResultVisible=s.phase===3&&s.p2revealed;
-    const p2ResultTitle=s.p2correct?'HURRAY! YOU ARE RIGHT':'YOU WERE ALMOST THERE.';
-    const p2ResultTheme=s.p2correct
-      ? {main:'#3DBE6C',dark:'#1A8A45',soft:'#F2FFF5',text:'#0D6B30'}
-      : {main:'#F36A21',dark:'#B05D00',soft:'#FFF4EA',text:'#7A3100'};
+    const p2ResultTitle='HURRAY! YOU ARE RIGHT';
+    const p2ResultTheme={main:'#3DBE6C',dark:'#1A8A45',soft:'#F2FFF5',text:'#0D6B30'};
+    const p2WrongVisible=s.phase===3&&s.p2wrong&&!s.p2revealed;
+    const p2WrongStyle={padding:'2px 0',color:'#FFB9B9',fontFamily:"'Nunito'",fontWeight:900,fontSize:'17px',lineHeight:1.35,maxWidth:'680px',textAlign:'center',textShadow:'0 2px 10px rgba(0,0,0,0.65)',animation:'wobbleKid .5s ease'};
     const p2BoardStyle={width:'100%',minHeight:'426px',background:'rgba(255,255,255,0.96)',borderRadius:'34px',padding:'34px 34px 36px',border:'3px solid '+(p2ResultVisible?p2ResultTheme.main:'rgba(32,52,70,0.16)'),boxShadow:(p2ResultVisible?('0 9px 0 '+p2ResultTheme.dark):'0 9px 0 rgba(32,52,70,0.16)')+',0 22px 48px rgba(0,0,0,0.26)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:p2ResultVisible?'center':'flex-start',animation:p2ResultVisible?'resultFlipVertical .58s cubic-bezier(.18,.9,.22,1) both':'none',transformOrigin:'center center'};
     const p2ResultBadgeStyle={display:'inline-flex',alignItems:'center',justifyContent:'center',padding:'15px 34px',borderRadius:'999px',fontFamily:"'Nunito'",fontWeight:900,fontSize:'44px',letterSpacing:'0',background:p2ResultTheme.soft,color:p2ResultTheme.text,border:'3px solid '+p2ResultTheme.main,boxShadow:'0 5px 0 '+p2ResultTheme.dark};
-    const globalNextStyle={width:'340px',height:'54px',maxWidth:'100%',display:'flex',alignItems:'center',justifyContent:'center',gap:'10px',padding:'0 26px',borderRadius:'18px',background:'#2F88FF',color:'white',border:'3px solid #0B63C7',cursor:'pointer',fontFamily:"'Nunito'",fontWeight:900,fontSize:'20px',boxShadow:'0 6px 0 #064A93,0 12px 24px rgba(0,0,0,0.26)',animation:'none'};
-    const p2CheckStyle={...globalNextStyle,position:'absolute',left:'calc(330px + ((100vw - 374px) / 2) - 215px)',top:'608px',zIndex:36,opacity:1};
-    const p2MoveNextStyle={...globalNextStyle,marginTop:'34px'};
-    const ctaPosition=(s.phase===4&&s.p3done)?'fixed':'absolute';
-    const ctaBottom=(s.phase===4&&s.p3done)?'18px':'36px';
-    const ctaAnimation=(s.phase===4&&s.p3done)?'none':'ctaBounce 2.6s ease-in-out infinite';
-    const ctaStyle={...globalNextStyle,position:ctaPosition,left:'calc(330px + ((100vw - 374px) / 2) - 215px)',bottom:ctaBottom,zIndex:35,animation:ctaAnimation};
+    const ctaBase={position:'fixed',left:'calc(50% - 170px)',bottom:'26px',width:'340px',height:'56px',zIndex:45,display:'flex',alignItems:'center',justifyContent:'center',borderRadius:'18px',fontFamily:"'Nunito'",fontWeight:900,fontSize:'20px',transition:'background .2s ease,color .2s ease,box-shadow .2s ease'};
+    const ctaStyle=ctaEnabled
+      ?{...ctaBase,background:'#2F88FF',color:'white',border:'3px solid #0B63C7',cursor:'pointer',boxShadow:'0 6px 0 #064A93,0 12px 24px rgba(0,0,0,0.26)',animation:'ctaPulse 2.4s ease-in-out infinite'}
+      :{...ctaBase,background:'rgba(255,255,255,0.55)',color:'rgba(44,62,80,0.5)',border:'3px solid rgba(255,255,255,0.4)',cursor:'default',boxShadow:'0 4px 0 rgba(0,0,0,0.15)',animation:'none'};
+    const ctaHintStyle={position:'fixed',left:'0',right:'0',bottom:'4px',zIndex:45,display:'flex',alignItems:'center',justifyContent:'center',gap:'6px',fontFamily:"'Nunito'",fontWeight:800,fontSize:'15px',color:'rgba(255,248,232,0.92)',textShadow:'0 2px 8px rgba(0,0,0,0.6)',pointerEvents:'none'};
 
     // phase 3 — problem slots & chips
     const p2Ghost=s.p2dragGhost;
     const p2DragGhostVisible=!!p2Ghost;
-    const p2DragGhostStyle=p2Ghost?{position:'fixed',left:p2Ghost.x+'px',top:p2Ghost.y+'px',zIndex:120,width:'218px',height:'88px',padding:'12px 16px',borderRadius:'20px',pointerEvents:'none',transform:'translate(-50%,-50%) rotate(-2deg) scale(1.04)',fontFamily:"'Nunito'",fontWeight:900,fontSize:'18px',lineHeight:1.16,background:p2Ghost.soft,border:'3px solid '+p2Ghost.color,color:p2Ghost.color,boxShadow:'0 11px 0 rgba(0,0,0,0.18),0 20px 38px rgba(0,0,0,0.32)',display:'flex',alignItems:'center',justifyContent:'center',gap:'12px',textAlign:'left',opacity:0.96}:{display:'none'};
+    const p2DragGhostStyle=p2Ghost?{position:'fixed',left:(p2Ghost.x/uiS)+'px',top:(p2Ghost.y/uiS)+'px',zIndex:120,width:'218px',height:'88px',padding:'12px 16px',borderRadius:'20px',pointerEvents:'none',transform:'translate(-50%,-50%) rotate(-2deg) scale(1.04)',fontFamily:"'Nunito'",fontWeight:900,fontSize:'18px',lineHeight:1.16,background:p2Ghost.soft,border:'3px solid '+p2Ghost.color,color:p2Ghost.color,boxShadow:'0 11px 0 rgba(0,0,0,0.18),0 20px 38px rgba(0,0,0,0.32)',display:'flex',alignItems:'center',justifyContent:'center',gap:'12px',textAlign:'left',opacity:0.96}:{display:'none'};
     const p2DragGhostImg=p2Ghost?p2Ghost.img:'';
     const p2DragGhostLabel=p2Ghost?p2Ghost.label:'';
     const p2DragGhostImgStyle={width:'58px',height:'58px',objectFit:'contain',flexShrink:0};
@@ -1147,33 +998,29 @@ class Component extends DCLogic {
     const p2Slots=s.p2slots.map((v,i)=>{
       const info=v?this.P2INFO[v]:null;
       const over=s.p2dragOver===i;
-      return{index:i,label:v||'',filled:!!v,empty:!v,img:info?info.img:'',onClick:()=>this.p2slotClick(i),onPointerDown:(e)=>v?this.p2pointerStart(v,i,e):null,onMouseDown:(e)=>v?this.p2pointerStart(v,i,e):null,onTouchStart:(e)=>v?this.p2pointerStart(v,i,e):null,onDragOver:this.p2dragOver,onDrop:(e)=>this.p2dropSlot(i,e),
+      const wrongHere=s.p2wrong&&!!v&&this.P2ANSWER[i]!==v;
+      return{index:i,label:v||'',filled:!!v,empty:!v,img:info?info.img:'',onClick:()=>this.p2slotClick(i),onPointerDown:(e)=>v?this.p2pointerStart(v,i,e):null,
         imgStyle:{width:info?info.imgSize:'0',height:info?info.imgSize:'0',objectFit:'contain',flexShrink:0},
-        labelStyle:{fontFamily:"'Nunito'",fontWeight:900,fontSize:'13px',lineHeight:1.18,color:info?info.color:'#5a3a00'},
-        style:v?{width:'126px',height:'168px',flexShrink:0,padding:'13px 9px',borderRadius:'18px',cursor:'grab',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'9px',textAlign:'center',transition:'all .2s ease',whiteSpace:'normal',background:info?info.soft:'#FFF3CC',border:'3px solid '+(over?'#2F88FF':(info?info.color:WARM)),color:info?info.color:'#5a3a00',boxShadow:over?'0 0 0 6px rgba(47,136,255,0.18),0 7px 0 #0B63C7':'0 5px 0 rgba(0,0,0,0.16)',animation:'chipFlyToSlot .5s ease both'}:{width:'126px',height:'168px',flexShrink:0,padding:'13px 9px',borderRadius:'18px',cursor:'default',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'10px',textAlign:'center',transition:'all .2s ease',whiteSpace:'normal',background:over?'#EAF4FF':'rgba(255,255,255,0.88)',border:'3px dashed '+(over?'#2F88FF':'#FFB800'),color:over?'#064A93':'rgba(44,62,80,0.42)',boxShadow:over?'0 0 0 6px rgba(47,136,255,0.16),0 6px 0 #0B63C7':'none'}};
+        labelStyle:{fontFamily:"'Nunito'",fontWeight:900,fontSize:'15px',lineHeight:1.18,color:info?info.color:'#5a3a00'},
+        style:v?{width:'118px',height:'168px',flexShrink:0,padding:'13px 9px',borderRadius:'20px',cursor:'grab',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'9px',textAlign:'center',transition:'all .2s ease',whiteSpace:'normal',background:wrongHere?'#FFE7E7':(info?info.soft:'#FFF3CC'),border:'3px solid '+(wrongHere?'#E84040':(over?'#2F88FF':(info?info.color:WARM))),color:info?info.color:'#5a3a00',boxShadow:wrongHere?'0 5px 0 #B31010':(over?'0 0 0 6px rgba(47,136,255,0.18),0 7px 0 #0B63C7':'0 5px 0 rgba(0,0,0,0.16)'),animation:wrongHere?'wobbleKid .5s ease':'chipFlyToSlot .5s ease both'}:{width:'118px',height:'168px',flexShrink:0,padding:'13px 9px',borderRadius:'20px',cursor:'default',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'10px',textAlign:'center',transition:'all .2s ease',whiteSpace:'normal',background:over?'#EAF4FF':'rgba(255,255,255,0.88)',border:'3px dashed '+(over?'#2F88FF':'#FFB800'),color:over?'#064A93':'rgba(44,62,80,0.42)',boxShadow:over?'0 0 0 6px rgba(47,136,255,0.16),0 6px 0 #0B63C7':'none'}};
     });
-    const p2ChipList=this.shuffledP2Chips.map(label=>{const used=s.p2slots.includes(label),info=this.P2INFO[label];return{label,img:info.img,onClick:used?()=>{}:()=>this.p2chipClick(label),onPointerDown:(e)=>used?null:this.p2pointerStart(label,null,e),onMouseDown:(e)=>used?null:this.p2pointerStart(label,null,e),onTouchStart:(e)=>used?null:this.p2pointerStart(label,null,e),imgStyle:{width:'66px',height:'66px',objectFit:'contain',flexShrink:0},style:used?{display:'none'}:{width:'244px',height:'102px',padding:'14px 18px',borderRadius:'20px',cursor:'grab',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,fontSize:'20px',lineHeight:1.12,transition:'all .2s ease',background:info.soft,border:'3px solid '+info.color,color:info.color,boxShadow:'0 5px 0 rgba(0,0,0,0.2)',display:'flex',alignItems:'center',justifyContent:'center',gap:'13px',textAlign:'left'}};});
+    const p2ChipList=this.shuffledP2Chips.map(label=>{const used=s.p2slots.includes(label),info=this.P2INFO[label];return{label,img:info.img,onClick:used?()=>{}:()=>this.p2chipClick(label),onPointerDown:(e)=>used?null:this.p2pointerStart(label,null,e),imgStyle:{width:'66px',height:'66px',objectFit:'contain',flexShrink:0},style:used?{display:'none'}:{width:'244px',height:'102px',padding:'14px 18px',borderRadius:'20px',cursor:'grab',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,fontSize:'20px',lineHeight:1.12,transition:'all .2s ease',background:info.soft,border:'3px solid '+info.color,color:info.color,boxShadow:'0 5px 0 rgba(0,0,0,0.2)',display:'flex',alignItems:'center',justifyContent:'center',gap:'13px',textAlign:'left'}};});
     const p2ResultFlow=[
-      {label:'It rains',img:'assets/screen3/rain.png',color:p2ResultTheme.main,soft:'#F8FCF8',imgSize:'70px'},
-      ...this.P2ANSWER.map(label=>({label,img:this.P2INFO[label].img,color:p2ResultTheme.main,soft:this.P2INFO[label].soft,imgSize:this.P2INFO[label].imgSize})),
-      {label:'Clothes come inside',img:'assets/screen3/house.png',color:p2ResultTheme.main,soft:'#F8FCF8',imgSize:'68px'},
+      {label:'It rains',img:'assets/screen3/rain.webp',color:p2ResultTheme.main,soft:'#F8FCF8',imgSize:'68px'},
+      ...this.P2ANSWER.map(label=>({label,img:this.P2INFO[label].img,color:p2ResultTheme.main,soft:this.P2INFO[label].soft,imgSize:'68px'})),
+      {label:'Clothes come inside',img:'assets/screen3/house.webp',color:p2ResultTheme.main,soft:'#F8FCF8',imgSize:'68px'},
     ].map((item,i,arr)=>({label:item.label,img:item.img,notLast:i<arr.length-1,
       imgStyle:{width:item.imgSize,height:item.imgSize,objectFit:'contain',flexShrink:0},
-      labelStyle:{fontFamily:"'Nunito'",fontWeight:900,fontSize:'13px',lineHeight:1.16,color:p2ResultTheme.text},
-      style:{width:'132px',height:'166px',flexShrink:0,padding:'13px 9px',borderRadius:'18px',background:item.soft,border:'3px solid '+p2ResultTheme.main,boxShadow:'0 5px 0 '+p2ResultTheme.dark+',0 12px 22px rgba(0,0,0,0.16)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'8px',textAlign:'center'}
+      labelStyle:{fontFamily:"'Nunito'",fontWeight:900,fontSize:'15px',lineHeight:1.16,color:p2ResultTheme.text},
+      style:{width:'118px',height:'166px',flexShrink:0,padding:'13px 8px',borderRadius:'20px',background:item.soft,border:'3px solid '+p2ResultTheme.main,boxShadow:'0 5px 0 '+p2ResultTheme.dark+',0 12px 22px rgba(0,0,0,0.16)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'8px',textAlign:'center'}
     }));
     const p2ResultArrowStyle={color:p2ResultTheme.main,fontSize:'30px',flexShrink:0,fontWeight:900,textShadow:'0 2px 0 rgba(0,0,0,0.08)'};
 
     // phase 4 — flip card subscreens
     const p3board=!s.p3done;
     const curComp=this.COMPONENTS[Math.min(s.p3idx,this.COMPONENTS.length-1)];
-    const p3BoardStyle={width:'100%',maxWidth:'1160px',minHeight:'620px',padding:'30px 54px 32px',borderRadius:'34px',background:'rgba(255,255,255,0.96)',border:'2px solid rgba(32,52,70,0.08)',boxShadow:'0 9px 0 rgba(32,52,70,0.12),0 22px 52px rgba(0,0,0,0.24)',display:'flex',flexDirection:'column',alignItems:'center',animation:s.p3transition?'p3SubscreenOut .42s ease both':'p3SubscreenIn .48s ease both'};
-    const currentFlipped=s.p3view!=='front';
-    const p3Card={name:curComp.name,behavior:curComp.behavior,icon:curComp.icon,img:curComp.img,showFront:!currentFlipped,showBack:currentFlipped,
-      onClick:s.p3view==='front'?this.p3flip:()=>{},
-      wrapStyle:{position:'relative',width:'390px',height:'318px',border:'none',background:'none',padding:0,cursor:s.p3view==='front'?'pointer':'default',transition:'transform .35s ease,filter .35s ease',transform:s.p3view==='front'?'translateY(-4px)':'none',filter:s.p3view==='front'?'drop-shadow(0 0 20px rgba(255,215,0,.76)) drop-shadow(0 14px 20px rgba(0,0,0,.3))':'drop-shadow(0 12px 20px rgba(0,0,0,.34))',borderRadius:'28px'},
-      frontBgStyle:{position:'absolute',inset:'18px 26px 58px',backgroundImage:"url('"+curComp.img+"')",backgroundSize:'contain',backgroundPosition:'center',backgroundRepeat:'no-repeat',filter:'drop-shadow(0 12px 16px rgba(0,0,0,.18))'},
-      blurBgStyle:{position:'absolute',top:'-16px',left:'-16px',right:'-16px',bottom:'-16px',backgroundImage:"url('"+curComp.img+"')",backgroundSize:'cover',backgroundPosition:'center',filter:'blur(16px)',opacity:0.2}};
+    const p3BoardStyle={width:'100%',maxWidth:'1000px',minHeight:'620px',padding:'30px 54px 32px',borderRadius:'34px',background:'rgba(255,255,255,0.96)',border:'3px solid rgba(32,52,70,0.16)',boxShadow:'0 9px 0 rgba(32,52,70,0.14),0 22px 48px rgba(0,0,0,0.24)',display:'flex',flexDirection:'column',alignItems:'center',animation:s.p3transition?'p3SubscreenOut .42s ease both':'p3SubscreenIn .48s ease both'};
+    const p3Card={name:curComp.name,behavior:curComp.behavior,img:curComp.img};
     const p3PartNum=String(Math.min(s.p3idx+1,this.COMPONENTS.length));
     const p3CollectStatus=s.p3view==='correct'?'Nice match':(s.p3view==='wrong'?'Try again':'You are discovering');
     const p3CollectDots=Array.from({length:this.COMPONENTS.length}).map((_,i)=>{
@@ -1181,24 +1028,18 @@ class Component extends DCLogic {
       const done=i<s.p3idx||s.p3matched.includes(this.COMPONENTS[i].body);
       return{num:String(i+1),style:{width:'38px',height:'38px',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Nunito'",fontWeight:900,fontSize:'16px',background:current?'#FFD700':(done?'#2F88FF':'#CACDD2'),color:current?'#5A3A00':'white',border:'2px solid '+(current?'#C9A100':(done?'#0B63C7':'#BABDC3')),boxShadow:'0 4px 0 '+(current?'#8A6D00':(done?'#064A93':'#A5A8AE'))}};
     });
-    const p3GotIt=p3board&&s.p3view==='back';
-    const p3Mcq=p3board&&s.p3view==='mcq';
     const p3Result=p3board&&(s.p3view==='correct'||s.p3view==='wrong');
     const p3QuestionVisible=p3board&&s.p3view==='mcq';
     const p3Chips=this.shuffledBody.map(b=>{
       const accepted=s.p3matched.includes(b.key);
       const picked=s.p3picked===b.key;
-      const pickedWrong=picked&&s.p3view==='wrong'&&!accepted;
-      return{label:b.label,icon:b.icon,emoji:b.emoji,onClick:()=>this.p3pick(b.key),style:{height:'112px',padding:'12px 14px',borderRadius:'18px',cursor:'pointer',fontFamily:"'Nunito'",fontWeight:900,fontSize:'20px',transition:'all .2s ease',background:pickedWrong?'#FFE7E7':b.soft,border:'3px solid #2F88FF',color:'#0A1C4B',boxShadow:pickedWrong?'0 5px 0 #B31010':'0 5px 0 rgba(0,0,0,0.12)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'6px',transform:picked?'translateY(-3px)':'none'}};
+      const pickedWrong=picked&&!accepted&&(s.p3view==='wrong'||s.p3wrongs>0);
+      return{label:b.label,icon:b.icon,emoji:b.emoji,onClick:()=>this.p3pick(b.key),style:{height:'112px',padding:'12px 14px',borderRadius:'20px',cursor:'pointer',fontFamily:"'Nunito'",fontWeight:900,fontSize:'20px',transition:'all .2s ease',background:pickedWrong?'#FFE7E7':b.soft,border:'3px solid #2F88FF',color:'#0A1C4B',boxShadow:pickedWrong?'0 5px 0 #B31010':'0 5px 0 rgba(0,0,0,0.12)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'6px',transform:picked?'translateY(-3px)':'none'}};
     });
     const correct=s.p3view==='correct';
     const p3ResultColor=correct?ACCENT:WRONG;
-    const p3ResultTitle=correct?(curComp.name+' = '+curComp.body):("It\u2019s the "+curComp.body);
-    const p3ResultLine=correct?curComp.insight:(curComp.name+' = '+curComp.body+'. '+curComp.insight);
-    const lastCard=s.p3idx>=this.COMPONENTS.length-1;
-    const p3ContinueLabel=lastCard?'See the full picture':'Next card';
-    const p3ShowContinue=s.p3view==='wrong';
-    const p3AutoAdvance=s.p3view==='correct';
+    const p3ResultTitle=curComp.name+' = '+curComp.body;
+    const p3ResultLine=curComp.insight;
     const summaryMeta={
       sensor:{num:'1',role:'SENSE',color:'#16A957',machineBg:'#F2FFF5',bodyBg:'#F7FFF6',bodyBorder:'#B9DDF5',jobBg:'#F7FFF6',job:'Feels rain and detects changes.'},
       wires:{num:'2',role:'SIGNAL',color:'#F4B400',machineBg:'#FFF9EA',bodyBg:'#FFF9EA',bodyBorder:'#B9DDF5',jobBg:'#FFF9EA',job:'Carries signals from one place to another.'},
@@ -1206,38 +1047,33 @@ class Component extends DCLogic {
       servo:{num:'4',role:'ACT',color:'#F36A21',machineBg:'#FFF4EA',bodyBg:'#FFF4EA',bodyBorder:'#F6C7A7',jobBg:'#FFF4EA',job:'Turns the signal into movement.'},
     };
     const summaryOrder=['sensor','wires','arduino','servo'];
-    const p3SummaryRows=summaryOrder.map((key,i)=>{const c=this.COMPONENTS.find(part=>part.key===key);const body=this.BODY.find(b=>b.key===c.body);const meta=summaryMeta[key];const name=key==='arduino'?'Controller (Arduino)':c.name;return{name,body:c.body,img:c.img,emoji:body?body.emoji:'',...meta,style:{display:'grid',gridTemplateColumns:'42% 8% 24% 26%',alignItems:'center',gap:'0',minHeight:'88px',padding:'2px 0',borderRadius:'18px',background:i%2===0?'rgba(255,255,255,0.52)':'rgba(255,255,255,0.2)'}};});
+    const p3SummaryRows=summaryOrder.map((key,i)=>{const c=this.COMPONENTS.find(part=>part.key===key);const body=this.BODY.find(b=>b.key===c.body);const meta=summaryMeta[key];const name=key==='arduino'?'Controller (Arduino Uno)':c.name;return{name,body:c.body,img:c.img,emoji:body?body.emoji:'',...meta,style:{display:'grid',gridTemplateColumns:'42% 8% 24% 26%',alignItems:'center',gap:'0',minHeight:'88px',padding:'2px 0',borderRadius:'18px',background:i%2===0?'rgba(255,255,255,0.52)':'rgba(255,255,255,0.2)'}};});
 
     // phase 5 — circuit builder
     const p4RoleMeta=[
       {role:'SENSE',helper:'Feel changes',color:'#18A957',soft:'#F2FFF5',icon:'ti-eye'},
-      {role:'SIGNAL',helper:'Carry signals',color:'#2F88FF',soft:'#F3F9FF',icon:'ti-activity'},
+      {role:'SIGNAL',helper:'Carry signals',color:'#F4B400',soft:'#FFF6DE',icon:'ti-activity'},
       {role:'THINK',helper:'Process signals',color:'#7B35D8',soft:'#FBF5FF',icon:'ti-brain'},
       {role:'ACT',helper:'Do something',color:'#F36A21',soft:'#FFF4EA',icon:'ti-barbell'},
     ];
     const p4Slots=s.p4slots.map((v,i)=>{
       const part=v?this.P4PARTS.find(p=>p.key===v):null,filled=!!v,meta=p4RoleMeta[i];
       const isDragOver=s.p4dragOver===i;
+      const isReject=s.p4reject===i;
       return{filled,empty:!filled,img:part?part.img:'',label:filled?part.label:'Drop here',role:meta.role,helper:meta.helper,roleIcon:meta.icon,color:meta.color,notLast:i<this.P4ORDER.length-1,index:i,
         onClick:()=>this.p4slotClick(i),
         onPointerDown:(e)=>v?this.p4pointerStart(v,{label:part?part.label:'',img:part?part.img:'',color:meta.color},i,e):null,
-        onMouseDown:(e)=>v?this.p4pointerStart(v,{label:part?part.label:'',img:part?part.img:'',color:meta.color},i,e):null,
-        onTouchStart:(e)=>v?this.p4pointerStart(v,{label:part?part.label:'',img:part?part.img:'',color:meta.color},i,e):null,
-        onDragOver:this.p4htmlDragOver,
-        onDrop:(e)=>this.p4htmlDrop(i,e),
-        labelStyle:{fontFamily:"'Nunito'",fontWeight:900,fontSize:'16px',lineHeight:1.1,color:filled?meta.color:'rgba(44,62,80,0.45)',marginTop:'4px'},
+        labelStyle:{fontFamily:"'Nunito'",fontWeight:900,fontSize:'17px',lineHeight:1.1,color:filled?meta.color:'rgba(44,62,80,0.5)',marginTop:'4px'},
         topBadgeStyle:{position:'absolute',top:'-40px',left:'50%',transform:'translateX(-50%)',width:'74px',height:'74px',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',background:meta.color,color:'white',border:'5px solid rgba(255,255,255,0.96)',boxShadow:'0 6px 0 rgba(0,0,0,0.18),0 12px 22px rgba(0,0,0,0.22)'},
         dropCircleStyle:{width:'70px',height:'70px',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'42px',lineHeight:1,color:meta.color,border:'3px dashed '+meta.color,background:isDragOver?meta.soft:'rgba(255,255,255,0.46)',marginTop:'14px',transition:'background .18s ease'},
-        arrowStyle:{position:'absolute',right:'-32px',top:'112px',zIndex:5,width:'50px',height:'48px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'42px',fontWeight:900,color:meta.color,textShadow:'0 3px 0 white,0 6px 10px rgba(0,0,0,0.24)',pointerEvents:'none'},
-        style:{position:'relative',width:'100%',height:'266px',padding:'44px 20px 20px',borderRadius:'24px',cursor:filled?'grab':'pointer',fontFamily:"'Nunito'",fontWeight:900,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'flex-start',textAlign:'center',transition:'all .24s ease',background:isDragOver?meta.soft:(filled?'rgba(255,255,255,0.98)':'rgba(255,255,255,0.9)'),border:(isDragOver?'3px solid ':'3px dashed ')+meta.color,color:'#0A1C4B',boxShadow:isDragOver?'0 0 0 4px '+meta.color+'55,0 7px 0 '+meta.color+',0 14px 28px rgba(0,0,0,0.24)':(filled?'0 7px 0 '+meta.color+',0 14px 28px rgba(0,0,0,0.24)':'0 6px 0 rgba(0,0,0,0.14),0 14px 28px rgba(0,0,0,0.18)'),overflow:'visible',userSelect:'none',touchAction:'none',transform:isDragOver?'scale(1.03)':'scale(1)'}};
+        arrowStyle:{position:'absolute',right:'-30px',top:'112px',zIndex:5,width:'46px',height:'48px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'40px',fontWeight:900,color:meta.color,textShadow:'0 3px 8px rgba(0,0,0,0.3)',pointerEvents:'none'},
+        style:{position:'relative',width:'100%',height:'266px',padding:'44px 20px 20px',borderRadius:'20px',cursor:filled?'grab':'pointer',fontFamily:"'Nunito'",fontWeight:900,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'flex-start',textAlign:'center',transition:'all .24s ease',background:isReject?'#FFE7E7':(isDragOver?meta.soft:(filled?'rgba(255,255,255,0.98)':'rgba(255,255,255,0.9)')),border:isReject?'3px solid #E84040':((isDragOver?'3px solid ':'3px dashed ')+meta.color),color:'#0A1C4B',boxShadow:isReject?'0 0 0 6px rgba(232,64,64,0.4),0 0 24px rgba(232,64,64,0.65),0 7px 0 #B31010':(isDragOver?'0 0 0 4px '+meta.color+'55,0 7px 0 '+meta.color+',0 14px 28px rgba(0,0,0,0.24)':(filled?'0 7px 0 '+meta.color+',0 14px 28px rgba(0,0,0,0.24)':'0 6px 0 rgba(0,0,0,0.14),0 14px 28px rgba(0,0,0,0.18)')),animation:isReject?'wobbleKid .5s ease':'none',overflow:'visible',userSelect:'none',touchAction:'none',transform:isDragOver?'scale(1.03)':'scale(1)'}};
     });
     const p4ChipList=this.shuffledP4Parts.map(p=>{
       const used=s.p4slots.includes(p.key),picked=s.p4picked===p.key;
       return{label:p.label,icon:p.icon,img:p.img,color:p.color,
         onClick:used?()=>{}:()=>this.p4chipClick(p.key),
         onPointerDown:used?()=>{}:(e)=>this.p4pointerStart(p.key,p,e),
-        onMouseDown:used?()=>{}:(e)=>this.p4pointerStart(p.key,p,e),
-        onTouchStart:used?()=>{}:(e)=>this.p4pointerStart(p.key,p,e),
         style:{height:'168px',padding:'14px 16px',borderRadius:'20px',cursor:used?'default':'grab',fontFamily:"'Nunito'",fontWeight:900,fontSize:'19px',lineHeight:1.08,transition:'all .2s ease, opacity .2s ease',background:picked?'#FFF8E8':(used?'rgba(255,255,255,0.46)':'rgba(255,255,255,0.96)'),border:'3px solid '+(picked?WARM:(used?'rgba(255,255,255,0.35)':p.color)),color:used?'rgba(44,62,80,0.3)':'#0A1C4B',boxShadow:picked?'0 6px 0 #C96E00':(used?'none':'0 6px 0 '+p.color+',0 14px 24px rgba(0,0,0,0.18)'),transform:picked?'translateY(-6px) scale(1.04)':'none',display:'flex',opacity:used?0:1,pointerEvents:used?'none':'auto',flexDirection:'column',alignItems:'center',justifyContent:'space-between',gap:'8px',userSelect:'none',touchAction:'none'}};
     });
     // drag ghost
@@ -1245,76 +1081,19 @@ class Component extends DCLogic {
     const p4GhostVisible=!!p4Ghost;
     const p4GhostImg=p4Ghost?p4Ghost.img:'';
     const p4GhostLabel=p4Ghost?p4Ghost.label:'';
-    const p4GhostStyle=p4Ghost?{position:'fixed',left:p4Ghost.x+'px',top:p4Ghost.y+'px',zIndex:999,width:'160px',padding:'12px 14px',borderRadius:'18px',pointerEvents:'none',transform:'translate(-50%,-50%) rotate(-3deg) scale(1.06)',fontFamily:"'Nunito'",fontWeight:900,fontSize:'16px',background:'rgba(255,255,255,0.97)',border:'3px solid '+(p4Ghost.color||'#2F88FF'),color:'#0A1C4B',boxShadow:'0 12px 0 rgba(0,0,0,0.12),0 20px 40px rgba(0,0,0,0.32)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'6px',opacity:0.95}:{display:'none'};
-    const allFilled=s.p4slots.every(Boolean);
-    const p4ShowTest=!s.p4correct&&!s.p4error;
-    const p4NeedsParts=!allFilled;
-    const p4TestStyle={...globalNextStyle,cursor:allFilled?'pointer':'default',background:allFilled?'#2F88FF':'rgba(255,255,255,0.62)',color:allFilled?'white':'rgba(44,62,80,0.42)',border:'3px solid '+(allFilled?'#0B63C7':'rgba(255,255,255,0.34)'),boxShadow:allFilled?'0 8px 0 #064A93,0 14px 28px rgba(0,0,0,0.28)':'0 5px 0 rgba(0,0,0,0.15)',animation:allFilled?'ctaBounce 2.6s ease-in-out infinite':'none'};
+    const p4GhostStyle=p4Ghost?{position:'fixed',left:(p4Ghost.x/uiS)+'px',top:(p4Ghost.y/uiS)+'px',zIndex:999,width:'160px',padding:'12px 14px',borderRadius:'18px',pointerEvents:'none',transform:'translate(-50%,-50%) rotate(-3deg) scale(1.06)',fontFamily:"'Nunito'",fontWeight:900,fontSize:'16px',background:'rgba(255,255,255,0.97)',border:'3px solid '+(p4Ghost.color||'#2F88FF'),color:'#0A1C4B',boxShadow:'0 12px 0 rgba(0,0,0,0.12),0 20px 40px rgba(0,0,0,0.32)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'6px',opacity:0.95}:{display:'none'};
     const p4ActivityScreen=s.phase===5&&!s.p4Wrap;
     const p4WrapScreen=s.phase===5&&s.p4Wrap;
-    const p4ActivityStyle={width:'100%',maxWidth:'1120px',display:'flex',flexDirection:'column',alignItems:'center',animation:s.p4Leaving?'phaseFadeOut .7s ease both':'fadeUp .5s ease'};
+    const p4ActivityStyle={width:'100%',maxWidth:'1000px',display:'flex',flexDirection:'column',alignItems:'center',animation:s.p4Leaving?'phaseFadeOut .7s ease both':'fadeUp .5s ease'};
 
-    // phase 6 — digital build tutorial
-    const simStep=Math.max(0,Math.min(this.SIM_STEPS.length-1,s.simStep));
-    const simData=this.SIM_STEPS[simStep];
-    const simIsRain=s.simWeather==='rain';
-    const simShowWeather=simStep>=7;
-    const showAt=(n)=>simStep>=n;
-    const active=(n)=>simStep===n;
-    const focus=(n)=>active(n)?'drop-shadow(0 0 18px rgba(255,184,0,.95))':'drop-shadow(0 7px 10px rgba(0,0,0,.16))';
-    const appear=(n)=>showAt(n)?'simAssemblePop .42s ease both':'none';
-    const simParts=this.SIM_PARTS.map(p=>{
-      const isActive=simStep===p.step;
-      const isDone=simStep>=p.step;
-      return{label:p.label,img:p.img||'',hasImg:!!p.img,isStraw:p.key==='straw',style:{display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',gap:'4px',borderRadius:'14px',background:isActive?'#FFF3CC':'rgba(255,255,255,.78)',border:'3px solid '+(isActive?'#FFB800':(isDone?'#3DBE6C':'rgba(11,92,173,.16)')),opacity:isDone?1:.48,transform:isActive?'translateY(-3px)':'none',boxShadow:isActive?'0 6px 0 #C9A100':'none',transition:'all .25s ease'}};
-    });
-    const simBuildSteps=this.SIM_STEPS.map((step,i)=>{
-      const cur=i===simStep,done=i<simStep;
-      return{num:String(i+1),onClick:()=>this.simGoStep(i),style:{width:'100%',height:'100%',borderRadius:'13px',cursor:'pointer',fontFamily:"'Nunito'",fontWeight:900,fontSize:'16px',background:cur?'#FFD700':(done?'#3DBE6C':'rgba(255,255,255,.9)'),color:cur?'#5a3a00':(done?'white':'#55708A'),border:'3px solid '+(cur?'#C9A100':(done?'#1A8A45':'#D4E7F5')),boxShadow:cur?'0 5px 0 #8A6D00':(done?'0 4px 0 #0D6B30':'none'),transition:'all .2s ease'}};
-    });
-    const simButtonBase={width:'48px',height:'48px',borderRadius:'16px',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'22px',fontFamily:"'Nunito'",fontWeight:900,transition:'all .2s ease'};
-    const simPrevStyle={...simButtonBase,cursor:simStep>0?'pointer':'default',background:simStep>0?'#4A90E2':'rgba(255,255,255,.65)',color:simStep>0?'white':'rgba(56,80,106,.35)',border:'3px solid '+(simStep>0?'#1A5BA8':'#D4E7F5'),boxShadow:simStep>0?'0 6px 0 #0D3F7D':'none'};
-    const simNextStyle={...simButtonBase,cursor:'pointer',background:simStep<this.SIM_STEPS.length-1?'#2F88FF':'#FFD700',color:simStep<this.SIM_STEPS.length-1?'white':'#5a3a00',border:'3px solid '+(simStep<this.SIM_STEPS.length-1?'#0B63C7':'#C9A100'),boxShadow:'0 6px 0 '+(simStep<this.SIM_STEPS.length-1?'#064A93':'#8A6D00')};
-    const simRainButtonStyle={flex:1,display:'flex',alignItems:'center',justifyContent:'center',gap:'7px',padding:'12px 10px',borderRadius:'15px',cursor:'pointer',fontFamily:"'Nunito'",fontWeight:900,fontSize:'15px',background:simIsRain?'#4A90E2':'#F5FBFF',color:simIsRain?'white':'#0B5CAD',border:'3px solid '+(simIsRain?'#1A5BA8':'#B9DDF5'),boxShadow:simIsRain?'0 5px 0 #0D3F7D':'none'};
-    const simSunButtonStyle={flex:1,display:'flex',alignItems:'center',justifyContent:'center',gap:'7px',padding:'12px 10px',borderRadius:'15px',cursor:'pointer',fontFamily:"'Nunito'",fontWeight:900,fontSize:'15px',background:!simIsRain?'#FFD700':'#FFFDF0',color:'#5a3a00',border:'3px solid '+(!simIsRain?'#C9A100':'#F1D36B'),boxShadow:!simIsRain?'0 5px 0 #8A6D00':'none'};
-    const roofClosed=simShowWeather&&simIsRain;
-    const roofOpen=simShowWeather&&!simIsRain;
-    const simHouseStyle={position:'absolute',left:'78px',bottom:'66px',width:'430px',height:'270px',transform:'perspective(900px) rotateX(4deg) rotateY(-8deg)',transformOrigin:'center bottom'};
-    const simRoofStyle={position:'absolute',left:roofOpen?'128px':'44px',bottom:'204px',width:'334px',height:'75px',transform:roofOpen?'rotate(11deg)':'rotate(-2deg)',transformOrigin:'42px 63px',opacity:showAt(2)?1:.24,animation:active(2)?'simAssemblePop .42s ease both':(simShowWeather?'none':'none'),transition:'left .75s cubic-bezier(.2,.9,.2,1),transform .75s cubic-bezier(.2,.9,.2,1),opacity .25s ease',filter:active(2)||active(8)?'drop-shadow(0 0 18px rgba(255,184,0,.9))':'drop-shadow(0 7px 10px rgba(0,0,0,.12))'};
-    const simServoStyle={position:'absolute',left:'326px',bottom:'214px',width:'82px',height:'62px',opacity:showAt(1)?1:0,animation:appear(1),filter:focus(1),transition:'opacity .25s ease,filter .25s ease',zIndex:6};
-    const simServoArmStyle={position:'absolute',left:'55px',top:'27px',width:'76px',height:'8px',borderRadius:'999px',background:'#F64E32',border:'2px solid #C5301B',transformOrigin:'left center',transform:roofOpen?'rotate(-16deg)':'rotate(12deg)',transition:'transform .65s ease',animation:simShowWeather?'simServoSpin 1.25s ease-in-out infinite':'none'};
-    const simStrawStyle={position:'absolute',left:roofOpen?'192px':'104px',bottom:roofOpen?'254px':'238px',width:'210px',height:'12px',borderRadius:'999px',background:'#FFD83D',border:'3px solid #D6A000',opacity:showAt(2)?1:0,transform:roofOpen?'rotate(11deg)':'rotate(-2deg)',transition:'all .72s cubic-bezier(.2,.9,.2,1)',filter:focus(2),animation:active(2)?'simAssemblePop .42s ease both':'none',zIndex:7};
-    const simSensorStyle={position:'absolute',left:'-18px',bottom:'150px',width:'104px',height:'78px',opacity:showAt(3)?1:0,animation:appear(3),filter:focus(3),transition:'opacity .25s ease,filter .25s ease',zIndex:8};
-    const simRackStyle={position:'absolute',left:'116px',bottom:'54px',width:'286px',height:'110px',opacity:showAt(6)?1:.26,transition:'opacity .25s ease',filter:focus(6)};
-    const simClothes=[['#E84040',24,42],['#FFD700',74,56],['#4A90E2',125,47],['#3DBE6C',177,58],['#FF9F43',228,46]].map(([color,left,height],i)=>({style:{position:'absolute',left:left+'px',top:'29px',width:'34px',height:height+'px',borderRadius:'5px 5px 10px 10px',background:color,boxShadow:'inset 0 8px rgba(255,255,255,.18),0 5px 8px rgba(0,0,0,.12)',transformOrigin:'50% 0',animation:showAt(6)?('simClothSwing '+(1.9+i*.18)+'s ease-in-out infinite'):'none',opacity:showAt(6)?1:0,transition:'opacity .25s ease'}}));
-    const wireVisible=showAt(4);
-    const batteryVisible=showAt(5);
-    const simElectronicsStyle={position:'absolute',right:'42px',bottom:'76px',width:'286px',height:'224px',opacity:wireVisible?1:.18,transition:'opacity .25s ease'};
-    const simArduinoImgStyle={position:'absolute',left:'74px',top:'68px',width:'100px',height:'94px',objectFit:'contain',filter:active(4)||active(5)?'drop-shadow(0 0 18px rgba(61,190,108,.9))':'drop-shadow(0 8px 10px rgba(0,0,0,.16))'};
-    const simBatteryImgStyle={position:'absolute',right:'0',top:'82px',width:'86px',height:'100px',objectFit:'contain',opacity:batteryVisible?1:.24,filter:active(5)?'drop-shadow(0 0 18px rgba(255,184,0,.95))':'drop-shadow(0 8px 10px rgba(0,0,0,.16))',animation:active(5)?'simAssemblePop .42s ease both':'none'};
-    const wireStyleBase={position:'absolute',height:'8px',borderRadius:'999px',background:wireVisible?'repeating-linear-gradient(90deg,#E84040 0 16px,#222 16px 26px,#FFD700 26px 42px,#4A90E2 42px 58px)':'rgba(40,68,90,.16)',backgroundSize:'90px 8px',animation:wireVisible?'simWireFlow 1.8s linear infinite':'none',boxShadow:wireVisible?'0 0 10px rgba(74,144,226,.3)':'none'};
-    const simWireStyleA={...wireStyleBase,left:'-230px',top:'118px',width:'318px',transform:'rotate(-3deg)',transformOrigin:'right center'};
-    const simWireStyleB={...wireStyleBase,left:'160px',top:'118px',width:'90px',transform:'rotate(9deg)'};
-    const simWireStyleC={...wireStyleBase,left:'-106px',top:'48px',width:'200px',transform:'rotate(-26deg)',opacity:showAt(1)&&wireVisible?1:.2};
-    const simShowSignal=simShowWeather&&simIsRain;
-    const simSignalStyle={position:'absolute',left:'-220px',top:'106px',width:'26px',height:'26px',borderRadius:'50%',background:'#FFF8E8',boxShadow:'0 0 22px #FFD700',animation:'simSignal 1.25s ease-in-out infinite'};
-    const simShowRain=simShowWeather&&simIsRain;
-    const simShowSplit=simStep===7;
-    const simSpotByPart={house:{left:'112px',top:'104px',width:'370px',height:'230px'},servo:{left:'400px',top:'86px',width:'112px',height:'86px'},straw:{left:'258px',top:'84px',width:'280px',height:'76px'},sensor:{left:'56px',top:'122px',width:'132px',height:'102px'},wires:{left:'498px',top:'136px',width:'300px',height:'150px'},battery:{left:'708px',top:'162px',width:'114px',height:'132px'},clothes:{left:'124px',top:'244px',width:'300px',height:'112px'},test:{left:'76px',top:'28px',width:'750px',height:'330px'},done:{left:'76px',top:'28px',width:'750px',height:'330px'}};
-    const spot=simSpotByPart[simData.part]||simSpotByPart.house;
-    const simSpotlightStyle={position:'absolute',left:spot.left,top:spot.top,width:spot.width,height:spot.height,borderRadius:'24px',border:'4px solid rgba(255,184,0,.85)',boxShadow:'0 0 0 999px rgba(255,255,255,.18),0 0 26px rgba(255,184,0,.55)',pointerEvents:'none',animation:'simFocusRing 1.6s ease-in-out infinite',transition:'all .35s ease'};
-    const simCounter=(simStep+1)+' / '+this.SIM_STEPS.length;
-    const simStepNum=String(simStep+1);
-    const simTitle=simData.title;
-    const simLine=simData.line;
 
     return{
-      rainDrops:this.rainDrops,dots,devDots,bgImageOpacity,
-      muteIcon:s.muted?'ti-volume-off':'ti-volume',toggleMute:this.toggleMute,
+      rainDrops:this.rainDrops,dots,bgImageOpacity,
+      muteIcon:s.muted?'ti-volume-off':'ti-volume',muteLabel:s.muted?'Unmute sound':'Mute sound',toggleMute:this.toggleMute,
       isPhase1:s.phase===1,isPhase2:s.phase===2,isPhase3:s.phase===3,
       isPhase4:s.phase===4,isPhase5:s.phase===5,isPhase6:s.phase===6,isPhase7:s.phase===7,isPhase8:s.phase===8,
       // phase 2 feel
-      feelNodes,feelLit,feelShowStart,onFeelStart:this.onFeelStart,
+      feelNodes,
       p2ActivityScreen:s.phase===2&&!s.phase2Wrap,
       p2WrapScreen:s.phase===2&&s.phase2Wrap,
       p2ActivityStyle:{width:'100%',maxWidth:'900px',display:'flex',flexDirection:'column',alignItems:'center',animation:s.phase2Leaving?'phaseFadeOut .7s ease both':'fadeUp .5s ease'},
@@ -1323,36 +1102,26 @@ class Component extends DCLogic {
       krishExcited:s.phase!==1&&s.phase<6&&!s.p4Wrap&&mood==='excited',
       krishThinking:s.phase!==1&&s.phase<6&&!s.p4Wrap&&mood==='thinking',
       krishMistake:s.phase!==1&&s.phase<6&&!s.p4Wrap&&mood==='mistake',
-      showSpeech:s.phase<6&&s.phase!==4&&s.phase!==5&&!s.p4Wrap&&!!speech,speechText:speech||'',
-      ctaVisible,ctaLabel,ctaClick,ctaStyle,globalNextStyle,
+      ctaVisible,ctaLabel:'Next',ctaClick,ctaStyle,ctaHint,ctaHintVisible,ctaHintStyle,
+      devVisible:this._devMode===true,devDots,
       // phase 1
       videoRef:this.videoRef,videoMuted:s.muted,onVideoEnd:this.onVideoEnd,
-      p1ShowPlay:!s.videoStarted&&!s.videoEnded,playVideo:this.playVideo,videoEnded:s.videoEnded,skipVideo:this.skipVideo,
+      p1ShowPlay:!s.videoStarted&&!s.videoEnded,playVideo:this.playVideo,videoEnded:s.videoEnded,
       // phase 8 outro
       outroVideoRef:this.outroVideoRef,playOutro:this.playOutro,onOutroEnd:this.onOutroEnd,
-      outroVideoMuted:false,outroNeedsPlay:s.outroNeedsPlay,
+      outroVideoMuted:s.muted,outroNeedsPlay:s.outroNeedsPlay,
       // phase 3
-      p2Build:true,p2revealed:s.p2revealed,p2Slots,p2ChipList,
-      p2Ready:phase3Ready,p2Reveal:this.p2reveal,p2CheckStyle,p2CheckClick:phase3Ready?this.p2reveal:()=>{},
-      p2ActivityFront,p2ResultVisible,p2ResultTitle,p2ResultFlow,p2ResultArrowStyle,p2BoardStyle,p2ResultBadgeStyle,p2MoveNext:this.p2MoveNext,p2MoveNextStyle,
-      p2DragGhostVisible,p2DragGhostStyle,p2DragGhostImg,p2DragGhostImgStyle,p2DragGhostLabel,p2DragGhostLabelStyle,
+      p2Build:true,p2Slots,p2ChipList,
+      p2ActivityFront,p2ResultVisible,p2ResultTitle,p2ResultFlow,p2ResultArrowStyle,p2BoardStyle,p2ResultBadgeStyle,p2WrongVisible,p2WrongStyle,
+      p2DragGhostStyle,p2DragGhostImg,p2DragGhostImgStyle,p2DragGhostLabel,p2DragGhostLabelStyle,
       // phase 4
-      p3Board:p3board,p3BoardStyle,p3Card,p3done:s.p3done,p3CollectDots,p3CollectStatus,p3PartNum,
-      p3GotIt,p3onGotIt:this.p3gotIt,p3Mcq,p3Chips,
-      p3Result,p3QuestionVisible,p3ResultColor,p3ResultTitle,p3ResultLine,p3ContinueLabel,p3onContinue:this.p3continue,p3ShowContinue,p3AutoAdvance,
+      p3Board:p3board,p3BoardStyle,p3Card,p3done:s.p3done,p3CollectDots,p3CollectStatus,p3PartNum,p3Chips,
+      p3Result,p3QuestionVisible,p3RetryVisible:s.p3wrongs>0&&s.p3view==='mcq',p3ResultColor,p3ResultTitle,p3ResultLine,p3Correct:s.phase===4&&s.p3view==='correct',
       p3SummaryRows,
       // phase 5
-      p4Slots,p4ChipList,p4ShowTest,p4TestStyle,p4NeedsParts,p4onTest:this.p4test,
-      p4error:s.p4error,p4onClear:this.p4clear,p4correct:s.p4correct,p4ActivityScreen,p4WrapScreen,p4ActivityStyle,p4RunSimulation:()=>this.goPhase(6),
-      p4GhostVisible,p4GhostStyle,p4GhostImg,p4GhostLabel,
-      // phase 7
-      simParts,strawBars:this.strawBars,simBuildSteps,simPrev:this.simPrev,simNext:this.simNext,
-      simPrevStyle,simNextStyle,simCounter,simStepNum,simTitle,simLine,simShowWeather,
-      simRain:this.simRain,simSun:this.simSun,simRainButtonStyle,simSunButtonStyle,
-      simRainDrops:this.simRainDrops,simShowRain,simHouseStyle,simRoofStyle,simServoStyle,
-      simServoArmStyle,simStrawStyle,simSensorStyle,simRackStyle,simClothes,
-      simElectronicsStyle,simArduinoImgStyle,simBatteryImgStyle,simWireStyleA,simWireStyleB,
-      simWireStyleC,simShowSignal,simSignalStyle,simShowSplit,simSpotlightStyle,
+      p4Slots,p4ChipList,
+      p4correct:s.p4correct,p4ActivityScreen,p4WrapScreen,p4ActivityStyle,
+      p4GhostStyle,p4GhostImg,p4GhostLabel,
     };
   }
 }
