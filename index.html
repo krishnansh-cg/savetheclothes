@@ -20,6 +20,7 @@
   img,svg,image,[src$=".png"],[src$=".svg"]{-webkit-user-drag:none!important;user-drag:none!important;pointer-events:none}
   html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#1a2a35;font-family:'Nunito',system-ui,sans-serif}
   button:active{filter:brightness(0.86)!important;transform:translateY(3px)!important;transition:transform .07s,filter .07s!important}
+  button.title-btn:active{transform:translateX(-50%) translateY(3px)!important}
   button:focus-visible{outline:3px solid #FFB800;outline-offset:2px}
   :root{--app-scale:1} /* set precisely by _fitStage() against the 1440x860 design canvas */
   @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
@@ -37,6 +38,11 @@
   @keyframes starPop{0%{opacity:0;transform:scale(0) rotate(-30deg)}55%{opacity:1;transform:scale(1.25) rotate(8deg)}100%{opacity:0;transform:scale(.4) rotate(24deg)}}
   @keyframes ctaPulse{0%,100%{box-shadow:0 6px 0 #064A93,0 12px 24px rgba(0,0,0,0.26),0 0 0 0 rgba(47,136,255,0.55)}50%{box-shadow:0 6px 0 #064A93,0 12px 24px rgba(0,0,0,0.26),0 0 0 14px rgba(47,136,255,0)}}
   @keyframes chipFlyToSlot{0%{opacity:0;transform:translateY(86px) scale(1.18)}72%{opacity:1;transform:translateY(-6px) scale(1.03)}100%{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes titleLogoFloat{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-10px)}}
+  @keyframes titleLogoIn{from{opacity:0;transform:translateX(-50%) translateY(30px) scale(0.94)}to{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
+  @keyframes titleBtnIn{from{opacity:0;transform:translateX(-50%) translateY(22px) scale(0.92)}to{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
+  @keyframes titleBtnGlow{0%,100%{filter:drop-shadow(0 0 10px rgba(47,136,255,0.7)) drop-shadow(0 0 0px rgba(47,136,255,0))}50%{filter:drop-shadow(0 0 22px rgba(47,136,255,1)) drop-shadow(0 0 38px rgba(47,136,255,0.55))}}
+  @keyframes titleBtnBob{0%,100%{transform:translateX(-50%) translateY(0) scale(1)}50%{transform:translateX(-50%) translateY(-5px) scale(1.015)}}
 </style>
 </helmet>
 
@@ -58,20 +64,22 @@
     </sc-for>
   </div>
 
-  <!-- Header scrim -->
-  <div style="position:absolute;top:0;left:0;right:0;height:84px;background:linear-gradient(180deg,rgba(8,16,26,0.5) 0%,rgba(8,16,26,0) 100%);pointer-events:none;z-index:38;"></div>
+  <sc-if value="{{ appChromeVisible }}" hint-placeholder-val="{{ true }}">
+    <!-- Header scrim -->
+    <div style="position:absolute;top:0;left:0;right:0;height:84px;background:linear-gradient(180deg,rgba(8,16,26,0.5) 0%,rgba(8,16,26,0) 100%);pointer-events:none;z-index:38;"></div>
 
-  <!-- Progress dots -->
-  <div style="position:absolute;top:20px;left:24px;display:flex;align-items:center;gap:12px;z-index:40;background:rgba(0,0,0,0.32);padding:10px 18px;border-radius:999px;">
-    <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="8">
-      <button onClick="{{ dot.onClick }}" title="{{ dot.title }}" aria-label="{{ dot.title }}" style="{{ dot.style }}">{{ dot.num }}</button>
-    </sc-for>
-  </div>
+    <!-- Progress dots -->
+    <div style="position:absolute;top:20px;left:24px;display:flex;align-items:center;gap:12px;z-index:40;background:rgba(0,0,0,0.32);padding:10px 18px;border-radius:999px;">
+      <sc-for list="{{ dots }}" as="dot" hint-placeholder-count="8">
+        <button onClick="{{ dot.onClick }}" title="{{ dot.title }}" aria-label="{{ dot.title }}" style="{{ dot.style }}">{{ dot.num }}</button>
+      </sc-for>
+    </div>
 
-  <!-- Mute button -->
-  <button onClick="{{ toggleMute }}" title="{{ muteLabel }}" aria-label="{{ muteLabel }}" style="position:absolute;top:20px;right:24px;z-index:40;width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:linear-gradient(180deg,#55B8FF 0%,#1688F4 100%);border:3px solid #35A7FF;color:#FFFFFF;font-size:20px;box-shadow:0 5px 0 #0868BE,0 10px 18px rgba(0,82,168,0.36),inset 0 2px 0 rgba(255,255,255,0.35);">
-    <i class="ti {{ muteIcon }}"></i>
-  </button>
+    <!-- Mute button -->
+    <button onClick="{{ toggleMute }}" title="{{ muteLabel }}" aria-label="{{ muteLabel }}" style="position:absolute;top:20px;right:24px;z-index:40;width:50px;height:50px;border-radius:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:linear-gradient(180deg,#55B8FF 0%,#1688F4 100%);border:3px solid #35A7FF;color:#FFFFFF;font-size:20px;box-shadow:0 5px 0 #0868BE,0 10px 18px rgba(0,82,168,0.36),inset 0 2px 0 rgba(255,255,255,0.35);">
+      <i class="ti {{ muteIcon }}"></i>
+    </button>
+  </sc-if>
 
   <!-- ============================
        PHASE 1 — VIDEO
@@ -80,15 +88,28 @@
     <div data-screen-label="Phase 1 — Story" style="position:absolute;inset:0;z-index:10;display:flex;align-items:center;justify-content:center;">
       <video ref="{{ videoRef }}" onEnded="{{ onVideoEnd }}" playsInline="{{ true }}" muted="{{ videoMuted }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#1a2a35;">
         <source src="uploads/Intro_compressed.webm" type="video/webm" />
+        <source src="uploads/Intro_compressed.mp4" type="video/mp4" />
       </video>
       <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,25,35,0.25) 0%,rgba(15,25,35,0.55) 100%);"></div>
       <sc-if value="{{ p1ShowPlay }}" hint-placeholder-val="{{ true }}">
-        <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:34px;animation:fadeUp .5s ease;transform:translateY(-6%);">
-          <div style="text-align:center;">
-            <div style="font-family:'Nunito';font-weight:900;font-size:96px;line-height:1;color:#FFF8E8;text-shadow:0 6px 0 rgba(11,72,140,0.9),0 20px 46px rgba(0,0,0,0.55);letter-spacing:1px;">SAVE THE CLOTHES</div>
-            <div style="margin-top:18px;font-family:'Nunito';font-weight:900;font-size:26px;color:rgba(255,248,232,0.96);text-shadow:0 2px 12px rgba(0,0,0,0.7);">Help Krish build a rain-sensing smart dryer!</div>
-          </div>
-          <button onClick="{{ playVideo }}" style="width:280px;height:74px;border-radius:22px;border:3px solid #0B63C7;background:#2F88FF;color:white;font-family:'Nunito';font-weight:900;font-size:28px;letter-spacing:2px;display:flex;align-items:center;justify-content:center;gap:14px;cursor:pointer;box-shadow:0 8px 0 #064A93,0 16px 32px rgba(0,0,0,0.35);"><i class="ti ti-player-play-filled" style="font-size:26px;"></i>PLAY</button>
+        <div style="position:absolute;inset:0;z-index:5;background:#101d29;">
+          <!-- Background: Sharma Nivas home image — crisp, no blur -->
+          <img src="uploads/bgimage.webp" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:45% 50%;" />
+          <!-- Subtle dark overlay for legibility -->
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,14,26,0.22) 0%,rgba(6,14,26,0.08) 45%,rgba(6,14,26,0.40) 100%);"></div>
+          <!-- Title logo — animated float in then gentle bob -->
+          <img src="uploads/title-logo.png" alt="Save the Clothes — Help Krish build a rain-sensing smart dryer!" style="position:absolute;left:50%;top:5%;width:58%;height:auto;transform:translateX(-50%);z-index:6;animation:titleLogoIn 0.72s cubic-bezier(.18,.9,.22,1) both,titleLogoFloat 4s ease-in-out 0.75s infinite;pointer-events:none;filter:drop-shadow(0 14px 30px rgba(0,0,0,0.5));" />
+          <!-- START THE MISSION button — animated in then glow + bob -->
+          <button class="title-btn" onClick="{{ playVideo }}" aria-label="Start the Mission" title="Start the Mission" style="position:absolute;left:50%;top:66%;transform:translateX(-50%);width:36%;height:auto;z-index:8;cursor:pointer;background:transparent;border:0;padding:0;box-shadow:none;animation:titleBtnIn 0.82s cubic-bezier(.18,.9,.22,1) 0.22s both,titleBtnGlow 2.2s ease-in-out 1s infinite,titleBtnBob 3s ease-in-out 1s infinite;border-radius:999px;">
+            <img src="uploads/title-btn.png" alt="Start the Mission" style="width:100%;height:auto;display:block;pointer-events:none;" />
+          </button>
+          <!-- Mute toggle — invisible overlay in top-right -->
+          <button onClick="{{ toggleMute }}" aria-label="{{ muteLabel }}" title="{{ muteLabel }}" style="position:absolute;right:1.8%;top:1.8%;width:4.5%;height:8%;z-index:10;cursor:pointer;background:transparent;border:0;border-radius:18px;padding:0;color:transparent;box-shadow:none;"></button>
+          <sc-if value="{{ titleDevVisible }}" hint-placeholder-val="{{ true }}">
+            <sc-for list="{{ titleDevDots }}" as="dot" hint-placeholder-count="8">
+              <button onClick="{{ dot.onClick }}" aria-label="{{ dot.title }}" title="{{ dot.title }}" style="{{ dot.style }}">{{ dot.num }}</button>
+            </sc-for>
+          </sc-if>
         </div>
       </sc-if>
       <sc-if value="{{ videoEnded }}" hint-placeholder-val="{{ false }}">
@@ -105,7 +126,7 @@
        (body chain animation)
   ============================= -->
   <sc-if value="{{ isPhase2 }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Phase 2 — Feel" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:84px 40px 110px;">
+    <div data-screen-label="Phase 2 — Feel" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:124px 40px 100px;">
       <sc-if value="{{ p2ActivityScreen }}" hint-placeholder-val="{{ true }}">
         <div style="{{ p2ActivityStyle }}">
           <h1 style="font-family:'Nunito';font-weight:900;font-size:52px;line-height:1.04;margin:0 0 8px;text-align:center;color:#FFF8E8;text-shadow:0 3px 16px rgba(0,0,0,0.75);">How does your body know it's raining?</h1>
@@ -140,11 +161,12 @@
         </div>
       </sc-if>
       <sc-if value="{{ p2WrapScreen }}" hint-placeholder-val="{{ false }}">
-        <div style="width:100%;max-width:900px;display:flex;align-items:center;justify-content:center;animation:fadeUp .7s ease both;">
-          <div style="width:100%;padding:56px 64px;border-radius:28px;background:rgba(255,251,240,0.97);border:4px solid #FFB800;box-shadow:0 10px 0 #C9A100,0 24px 48px rgba(0,0,0,0.28);display:flex;flex-direction:column;justify-content:center;">
-            <div style="font-family:'Nunito';font-weight:900;font-size:46px;line-height:1.08;color:#1a2744;margin-bottom:20px;">That is the whole chain.</div>
-            <div style="font-size:27px;line-height:1.34;color:#5a3a00;font-family:'Nunito';font-weight:900;">Your body already runs this circuit. I wanted to build the same thing for clothes!</div>
-            <div style="font-family:'Nunito';font-weight:900;font-size:30px;line-height:1.18;color:#0D5C2A;margin-top:22px;"><span style="color:#28A862;">Sense</span> <span style="color:#C98F00;">→ Signal</span> <span style="color:#7B54D8;">→ Think</span> <span style="color:#F36A21;">→ Act.</span></div>
+        <div style="width:100%;display:flex;align-items:center;justify-content:center;animation:fadeUp .7s ease both;pointer-events:none;">
+          <div style="position:relative;width:min(860px,68vw);aspect-ratio:1.41;margin-left:96px;transform:translateY(-20px);filter:drop-shadow(0 20px 34px rgba(0,0,0,.34));">
+            <img src="assets/sc2/card.png" alt="" style="position:absolute;left:0;top:0;width:100%;height:100%;object-fit:fill;z-index:1;" />
+            <img src="assets/sc2/title.png" alt="Full chain unlocked!" style="position:absolute;left:50%;top:-12%;width:84%;height:auto;transform:translateX(-50%);z-index:3;filter:drop-shadow(0 12px 16px rgba(76,44,0,.24));" />
+            <img src="assets/sc2/chain.png" alt="Sense Signal Think Act" style="position:absolute;left:50%;top:28%;width:72%;height:auto;transform:translateX(-50%);z-index:4;filter:drop-shadow(0 7px 10px rgba(86,50,0,.18));" />
+            <img src="assets/sc2/bottomchain.png" alt="Rain sensor to controller to motor to clothes dryer" style="position:absolute;left:50%;bottom:10%;width:80%;height:auto;transform:translateX(-50%);z-index:4;" />
           </div>
         </div>
       </sc-if>
@@ -155,10 +177,10 @@
        PHASE 3 — HOW WOULD YOU SOLVE IT
   ============================= -->
   <sc-if value="{{ isPhase3 }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Phase 3 — Problem" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:84px 40px 110px;">
+    <div data-screen-label="Phase 3 — Problem" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:124px 40px 100px;">
 
       <sc-if value="{{ p2Build }}" hint-placeholder-val="{{ true }}">
-        <div style="width:100%;max-width:1000px;display:flex;flex-direction:column;align-items:center;animation:fadeUp .5s ease;">
+        <div style="width:100%;max-width:1160px;margin-left:96px;display:flex;flex-direction:column;align-items:center;animation:fadeUp .5s ease;">
           <div style="{{ p2BoardStyle }}">
             <sc-if value="{{ p2ActivityFront }}" hint-placeholder-val="{{ true }}">
               <h1 style="font-family:'Nunito';font-weight:900;font-size:52px;line-height:1.04;margin:0 0 9px;text-align:center;color:#0A1C4B;text-shadow:0 3px 0 rgba(10,28,75,0.08);">Can you complete the steps?</h1>
@@ -168,7 +190,7 @@
                 <span style="{{ p2DragGhostLabelStyle }}">{{ p2DragGhostLabel }}</span>
               </div>
               <div style="width:100%;display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:nowrap;">
-              <div style="width:136px;height:168px;padding:14px 12px;border-radius:20px;background:#F8FCF8;border:3px solid #C6D8CB;font-family:'Nunito';font-weight:900;font-size:17px;color:#0D6B30;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 4px 0 rgba(24,72,42,0.12);">
+              <div style="width:138px;height:168px;padding:14px 12px;border-radius:20px;background:#F8FCF8;border:3px solid #C6D8CB;font-family:'Nunito';font-weight:900;font-size:17px;color:#0D6B30;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;box-shadow:0 4px 0 rgba(24,72,42,0.12);">
                 <img src="assets/screen3/rain.webp" alt="" style="width:76px;height:76px;object-fit:contain;margin-bottom:10px;" />
                 <span>It rains</span>
               </div>
@@ -241,7 +263,7 @@
        PHASE 4 — NERVOUS SYSTEM (flip cards)
   ============================= -->
   <sc-if value="{{ isPhase4 }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Phase 4 — Discover" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 40px 110px;">
+    <div data-screen-label="Phase 4 — Discover" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 40px 100px;">
 
       <sc-if value="{{ p3Board }}" hint-placeholder-val="{{ true }}">
         <div style="{{ p3BoardStyle }}">
@@ -340,7 +362,7 @@
        PHASE 5 — BUILD KRISH'S CIRCUIT
   ============================= -->
   <sc-if value="{{ isPhase5 }}" hint-placeholder-val="{{ false }}">
-    <div data-screen-label="Phase 5 — Circuit" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 40px 110px;">
+    <div data-screen-label="Phase 5 — Circuit" style="position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:120px 40px 100px;">
       <sc-if value="{{ p4ActivityScreen }}" hint-placeholder-val="{{ true }}">
       <div style="{{ p4ActivityStyle }}">
         <h1 style="font-family:'Nunito';font-weight:900;font-size:52px;line-height:1.04;margin:34px 0 8px;text-align:center;color:#FFF8E8;text-shadow:0 3px 16px rgba(0,0,0,0.75);">Now build Krish's smart machine!</h1>
@@ -933,6 +955,7 @@ class Component extends DCLogic {
     const uiS=this._uiScale();
     const ACCENT='#3DBE6C',WARM='#FF9F43',BLUE='#4A90E2',WRONG='#E84040',YELLOW='#FFD700';
 
+    const titleScreenVisible=s.phase===1&&!s.videoStarted&&!s.videoEnded;
     const bgImageOpacity=s.phase>=2?0.75:0;
 
     // progress dots
@@ -943,6 +966,10 @@ class Component extends DCLogic {
     const devDots=this._devMode?Array.from({length:8}).map((_,i)=>{
       const ph=i+1,isCur=ph===s.phase;
       return{num:String(ph),title:'Jump to screen '+ph,onClick:()=>this.goPhase(ph),style:{width:'21px',height:'21px',borderRadius:'7px',padding:0,cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',fontFamily:"'Nunito'",fontWeight:900,fontSize:'10px',transition:'all .16s ease',background:isCur?'#FFD700':'rgba(255,255,255,0.9)',border:'2px solid '+(isCur?'#C9A100':'rgba(255,255,255,0.58)'),boxShadow:isCur?'0 2px 0 #8A6D00':'0 2px 0 rgba(0,0,0,0.25)',color:isCur?'#5a3a00':'#1a2744'}};
+    }):[];
+    const titleDevDots=this._devMode?Array.from({length:8}).map((_,i)=>{
+      const ph=i+1;
+      return{num:String(ph),title:'Jump to screen '+ph,onClick:()=>this.goPhase(ph),style:{position:'absolute',left:(82.2+i*2.02)+'%',top:'93.85%',width:'1.85%',height:'3.6%',zIndex:9,cursor:'pointer',background:'transparent',border:0,borderRadius:'9px',padding:0,color:'transparent',boxShadow:'none'}};
     }):[];
     // phase 2 feel chain
     const feelLit=s.feelRevealed.every(Boolean);
@@ -1035,7 +1062,7 @@ class Component extends DCLogic {
       return{index:i,label:v||'',filled:!!v,empty:!v,img:info?info.img:'',onClick:()=>this.p2slotClick(i),onMouseDown:(e)=>v?this.p2pointerStart(v,i,e):null,
         imgStyle:{width:info?info.imgSize:'0',height:info?info.imgSize:'0',objectFit:'contain',flexShrink:0},
         labelStyle:{fontFamily:"'Nunito'",fontWeight:900,fontSize:'15px',lineHeight:1.18,color:info?info.color:'#5a3a00'},
-        style:v?{width:'118px',height:'168px',flexShrink:0,padding:'13px 9px',borderRadius:'20px',cursor:'grab',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'9px',textAlign:'center',transition:'all .2s ease',whiteSpace:'normal',background:wrongHere?'#FFE7E7':(info?info.soft:'#FFF3CC'),border:'3px solid '+(wrongHere?'#E84040':(over?'#2F88FF':(info?info.color:WARM))),color:info?info.color:'#5a3a00',boxShadow:wrongHere?'0 5px 0 #B31010':(over?'0 0 0 6px rgba(47,136,255,0.18),0 7px 0 #0B63C7':'0 5px 0 rgba(0,0,0,0.16)'),animation:wrongHere?'wobbleKid .5s ease':'chipFlyToSlot .5s ease both'}:{width:'118px',height:'168px',flexShrink:0,padding:'13px 9px',borderRadius:'20px',cursor:'default',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'10px',textAlign:'center',transition:'all .2s ease',whiteSpace:'normal',background:over?'#EAF4FF':'rgba(255,255,255,0.88)',border:'3px dashed '+(over?'#2F88FF':'#FFB800'),color:over?'#064A93':'rgba(44,62,80,0.42)',boxShadow:over?'0 0 0 6px rgba(47,136,255,0.16),0 6px 0 #0B63C7':'none'}};
+        style:v?{width:'138px',height:'168px',flexShrink:0,padding:'13px 9px',borderRadius:'20px',cursor:'grab',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'9px',textAlign:'center',transition:'all .2s ease',whiteSpace:'normal',background:wrongHere?'#FFE7E7':(info?info.soft:'#FFF3CC'),border:'3px solid '+(wrongHere?'#E84040':(over?'#2F88FF':(info?info.color:WARM))),color:info?info.color:'#5a3a00',boxShadow:wrongHere?'0 5px 0 #B31010':(over?'0 0 0 6px rgba(47,136,255,0.18),0 7px 0 #0B63C7':'0 5px 0 rgba(0,0,0,0.16)'),animation:wrongHere?'wobbleKid .5s ease':'chipFlyToSlot .5s ease both'}:{width:'138px',height:'168px',flexShrink:0,padding:'13px 9px',borderRadius:'20px',cursor:'default',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'10px',textAlign:'center',transition:'all .2s ease',whiteSpace:'normal',background:over?'#EAF4FF':'rgba(255,255,255,0.88)',border:'3px dashed '+(over?'#2F88FF':'#FFB800'),color:over?'#064A93':'rgba(44,62,80,0.42)',boxShadow:over?'0 0 0 6px rgba(47,136,255,0.16),0 6px 0 #0B63C7':'none'}};
     });
     const p2ChipList=this.shuffledP2Chips.map(label=>{const used=s.p2slots.includes(label),info=this.P2INFO[label],dragging=p2Ghost&&p2Ghost.label===label&&p2Ghost.fromIndex===null;return{label,img:info.img,onClick:used?()=>{}:()=>this.p2chipClick(label),onMouseDown:(e)=>used?null:this.p2pointerStart(label,null,e),imgStyle:{width:'66px',height:'66px',objectFit:'contain',flexShrink:0},style:used?{display:'none'}:{width:'244px',height:'102px',padding:'14px 18px',borderRadius:'20px',cursor:'grab',userSelect:'none',touchAction:'none',fontFamily:"'Nunito'",fontWeight:900,fontSize:'20px',lineHeight:1.12,transition:'box-shadow .2s ease,background .2s ease,border-color .2s ease,color .2s ease,opacity .12s ease',background:info.soft,border:'3px solid '+info.color,color:info.color,boxShadow:'0 5px 0 rgba(0,0,0,0.2)',display:'flex',alignItems:'center',justifyContent:'center',gap:'13px',textAlign:'left',opacity:dragging?0.35:1}};});
     const p2ResultFlow=[
@@ -1045,7 +1072,7 @@ class Component extends DCLogic {
     ].map((item,i,arr)=>({label:item.label,img:item.img,notLast:i<arr.length-1,
       imgStyle:{width:item.imgSize,height:item.imgSize,objectFit:'contain',flexShrink:0},
       labelStyle:{fontFamily:"'Nunito'",fontWeight:900,fontSize:'15px',lineHeight:1.16,color:p2ResultTheme.text},
-      style:{width:'118px',height:'166px',flexShrink:0,padding:'13px 8px',borderRadius:'20px',background:item.soft,border:'3px solid '+p2ResultTheme.main,boxShadow:'0 5px 0 '+p2ResultTheme.dark+',0 12px 22px rgba(0,0,0,0.16)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'8px',textAlign:'center'}
+      style:{width:'138px',height:'168px',flexShrink:0,padding:'13px 8px',borderRadius:'20px',background:item.soft,border:'3px solid '+p2ResultTheme.main,boxShadow:'0 5px 0 '+p2ResultTheme.dark+',0 12px 22px rgba(0,0,0,0.16)',display:'flex',flexDirection:'column',alignItems:'center',justifyContent:'center',gap:'8px',textAlign:'center'}
     }));
     const p2ResultArrowStyle={color:p2ResultTheme.main,fontSize:'30px',flexShrink:0,fontWeight:900,textShadow:'0 2px 0 rgba(0,0,0,0.08)'};
 
@@ -1121,7 +1148,7 @@ class Component extends DCLogic {
 
 
     return{
-      rainDrops:this.rainDrops,dots,bgImageOpacity,
+      rainDrops:this.rainDrops,dots,bgImageOpacity,appChromeVisible:!titleScreenVisible,
       muteIcon:s.muted?'ti-volume-off':'ti-volume',muteLabel:s.muted?'Unmute sound':'Mute sound',toggleMute:this.toggleMute,
       isPhase1:s.phase===1,isPhase2:s.phase===2,isPhase3:s.phase===3,
       isPhase4:s.phase===4,isPhase5:s.phase===5,isPhase6:s.phase===6,isPhase7:s.phase===7,isPhase8:s.phase===8,
@@ -1136,7 +1163,7 @@ class Component extends DCLogic {
       krishThinking:s.phase!==1&&s.phase<6&&!s.p4Wrap&&mood==='thinking',
       krishMistake:s.phase!==1&&s.phase<6&&!s.p4Wrap&&mood==='mistake',
       ctaVisible,ctaLabel:'Next',ctaClick,ctaStyle,ctaHint,ctaHintVisible,ctaHintStyle,
-      devVisible:this._devMode===true,devDots,
+      devVisible:this._devMode===true&&!titleScreenVisible,devDots,titleDevVisible:this._devMode===true&&titleScreenVisible,titleDevDots,
       // phase 1
       videoRef:this.videoRef,videoMuted:s.muted,onVideoEnd:this.onVideoEnd,
       p1ShowPlay:!s.videoStarted&&!s.videoEnded,playVideo:this.playVideo,videoEnded:s.videoEnded,
